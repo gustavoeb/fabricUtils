@@ -1,0 +1,20 @@
+{
+  "version": "0.0.1",
+  "code": [
+    // classes
+    
+    // functions
+	"Converters/quatStringToXfoArray.kl",
+	"Converters/xfoArrayToQuatString.kl",
+	"Converters/poseToXfoArray.kl",
+	"FileIO/getClipPoseFromQuatCSV.kl"
+
+    // other
+
+    ],
+    
+  "dfgPresets": {
+    "dir": "DFG",
+    "presetPath": "fabricUtils"
+    }
+}

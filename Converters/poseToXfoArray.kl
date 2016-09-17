@@ -1,0 +1,24 @@
+require Characters;
+
+/// \dfgPresetFolder Converters
+/// Converts a skeleton's pose to an array of Xfos.
+function poseToXfoArray(
+  in IPose this,
+  out Xfo result[]
+)
+{
+  Size bones = Pose(this).skeleton.getNumBones();
+  Xfo tmp_array[];
+  for (Size i = 0; i <= bones - 1; i++) {
+    Xfo bone = Pose(this).getBoneXfo(i);
+
+    Size parentID = Pose(this).skeleton.getBone(i).parentIndex;
+    if (parentID > -1) {
+      Xfo parent = Pose(this).getBoneXfo(parentID);
+      bone = parent.inverse() * bone;
+    }
+
+    tmp_array.push(bone);
+  }
+  result = tmp_array;
+}

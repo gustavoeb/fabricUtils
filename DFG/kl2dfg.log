@@ -1,0 +1,44 @@
+[FABRIC:MT] Fabric Engine version 2.3.0 (Jul 20 2016 16:51:36 UTC)
+[FABRIC:MT] Loading DFG presets from C:\Users\gusta\OneDrive\Software\Portateis\FabricEngine-2.3.0-Windows-x86_64\Presets\DFG
+[FABRIC:MT] Loading DFG presets from C:\Users\gusta\OneDrive\Software\Portateis\MyFabricPresets
+[FABRIC:MT] Loading DFG presets from C:\Users\gusta\Fabric\Presets
+[FABRIC:MT] Registered extensions {Alembic:1.1.0,AlembicWrapper:1.5.0,Animation:1.1.0,AttributeHelpers:1.0.1,Bullet:1.0.2,BulletHelpers:1.0.0,Characters:1.2.0,Containers:1.2.0,DFGWrapper:1.2.0,FabricInterfaces:1.1.0,FabricSynchronization:1.2.0,Fbx:1.2.0,FbxHelpers:1.1.0,FileIO:1.3.1,Geometry:1.5.0,Images:1.1.0,InlineDrawing:1.5.0,JSON:1.1.0,LA:1.0.0,Manipulation:1.2.0,Math:1.4.0,FabricOBJ:1.1.0,OGLWrappers:1.1.0,FabricOGL:1.1.0,OpenImageIO:1.1.0,OSOGL:1.1.0,Parameters:1.1.0,Singletons:1.1.1,FabricStatistics:1.1.1,Util:1.3.0} in directory: C:\Users\gusta\OneDrive\Software\Portateis\FabricEngine-2.3.0-Windows-x86_64\Exts
+[FABRIC:MT] Ignored extension directory 'C:\Users\gusta\OneDrive\Software\Portateis\FabricEngine-2.3.0-Windows-x86_64\Tests\Exts': unable to open directory 'C:\Users\gusta\OneDrive\Software\Portateis\FabricEngine-2.3.0-Windows-x86_64\Tests\Exts': O sistema não pode encontrar o caminho especificado. (code 3 [0x3])
+[FABRIC:MT] Ignored extension directory 'C:\Users\gusta\OneDrive\Software\Portateis\FabricEngine-2.3.0-Windows-x86_64\Tests\SceneHub': unable to open directory 'C:\Users\gusta\OneDrive\Software\Portateis\FabricEngine-2.3.0-Windows-x86_64\Tests\SceneHub': O sistema não pode encontrar o caminho especificado. (code 3 [0x3])
+[FABRIC:MT] Registered extensions {fabricUtils:0.0.1,iAction:1.0.2,Arrays:0.0.1,Kraken:1.2.0,KrakenAnimation,KrakenForCanvas,Matrix:1.0.0} in directory: C:\Users\gusta\OneDrive\Software\Portateis\FabricEngine-2.3.0-Windows-x86_64\..\MyFabricExts
+[FABRIC:MT] IRCache: Not pruning since last prune was less than 24 hours ago
+[FABRIC:MT] Loaded extension Math in 281.358ms (cached)
+[FABRIC:MT] Loaded extension FabricSynchronization in 27.559ms (cached)
+[FABRIC:MT] Loaded extension Singletons in 3.664ms (cached)
+[FABRIC:MT] Loaded extension Util in 30.446ms (cached)
+[FABRIC:MT] Loaded extension FabricStatistics in 17.769ms (cached)
+[FABRIC:MT] Loaded extension Containers in 492.882ms (cached)
+[FABRIC:MT] Loaded extension Geometry in 720.157ms (cached)
+[FABRIC:MT] Loaded extension FabricOGL in 74.852ms (cached)
+[FABRIC:MT] Loaded extension Parameters in 57.223ms (cached)
+[FABRIC:MT] Loaded extension OpenImageIO in 14.647ms (cached)
+[FABRIC:MT] Loaded extension FabricInterfaces in 7.919ms (cached)
+[FABRIC:MT] Loaded extension FileIO in 33.177ms (cached)
+[FABRIC:MT] Loaded extension OSOGL in 6.743ms (cached)
+[FABRIC:MT] Loaded extension OGLWrappers in 167.412ms (cached)
+[FABRIC:MT] Loaded extension InlineDrawing in 492.020ms (cached)
+[FABRIC:MT] Loaded extension Animation in 38.272ms (cached)
+[FABRIC:MT] Loaded extension Characters in 73.173ms (cached)
+[FABRIC:MT] Loaded extension fabricUtils in 384.293ms (first time)
+registerFunction: thisType='(null)' func='function quatStringToXfoArray( in String this, in String separator, out Xfo result[] )'
+  Added to bin[normal][quatStringToXfoArray]
+registerFunction: thisType='(null)' func='function xfoArrayToQuatString( in Xfo this[], in String separator, out String result )'
+  Added to bin[normal][xfoArrayToQuatString]
+registerFunction: thisType='(null)' func='function poseToXfoArray( in IPose this, out Xfo result[] )'
+  Added to bin[normal][poseToXfoArray]
+registerFunction: thisType='(null)' func='function getClipPoseFromQuatCSV( in ISkeleton skeleton, in FilePath filepath, in String separator, out ClipPose result )'
+  Added to bin[normal][getClipPoseFromQuatCSV]
+processFunctions
+  bin[normal][quatStringToXfoArray][3] (asArray=false)
+    thisType='' code='function quatStringToXfoArray( in String this, in String separator, out Xfo result[] )'
+  bin[normal][xfoArrayToQuatString][3] (asArray=false)
+    thisType='' code='function xfoArrayToQuatString( in Xfo this[], in String separator, out String result )'
+  bin[normal][poseToXfoArray][2] (asArray=false)
+    thisType='' code='function poseToXfoArray( in IPose this, out Xfo result[] )'
+  bin[normal][getClipPoseFromQuatCSV][4] (asArray=false)
+    thisType='' code='function getClipPoseFromQuatCSV( in ISkeleton skeleton, in FilePath filepath, in String separator, out ClipPose result )'

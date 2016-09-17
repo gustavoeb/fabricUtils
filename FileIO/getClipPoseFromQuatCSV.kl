@@ -1,0 +1,45 @@
+require Animation;
+require Characters;
+
+/// \dfgPresetFolder FileIO
+/// Gets pose from quaternions stored in a CSV file. Quaternions must be stored in local space.
+function getClipPoseFromQuatCSV(
+  in ISkeleton skeleton,
+  in FilePath filepath,
+  in String separator,
+  out ClipPose result
+)
+{
+  Skeleton charSkel = skeleton;
+  Clip clip('myClip');
+  TextReader reader(filepath);
+  String quatString = "";
+  Scalar FPS = 24;
+  Scalar timestep = 1/FPS;
+  
+  // Build clip and tracks
+  for (Size i=0; i < charSkel.getNumBones(); i++) {
+    String boneName = charSkel.getBone(i).name;
+    KeyframeTrackSet sampleSet(boneName, Quat(), TRACKSETFLAG_ORI_TRACKS);
+    clip.addTrackSet(sampleSet);
+  }
+  
+  // Read file with quaternions, each line is a frame
+  Scalar time = 0.0;
+  while (~reader.eof()) {
+    quatString = reader.readLine();
+    String quatStringArray[] = quatString.splitAny(separator);
+
+    for(Integer j=0; j < quatStringArray.size(); j=j+4) // each bone has a 4 dimensional vector (Quat)
+    {
+      String boneName = charSkel.getBone(j/4).name;
+      Quat quat(quatStringArray[j].toScalar(), quatStringArray[j+1].toScalar(), quatStringArray[j+2].toScalar(), quatStringArray[j+3].toScalar());
+      // if (boneName == 'joint3') { report(quat); }
+      clip.getTrackSet(boneName).setTrackValues(time, quat); 
+    }
+
+    time = time+timestep;
+  }
+  //report(clip.getTrackSet('LeftLeg').getTrack(0).getDesc());
+  result = ClipPose(charSkel,clip);
+}

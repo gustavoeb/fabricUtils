@@ -1,0 +1,2 @@
+# fabricUtils
+This is as a collection of useful bits of code for manipulation of data inside the Fabric Engine plataform. Basic components are written in KL and exposed as canvas nodes. Higher level presets are canvas only.

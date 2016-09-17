@@ -1,0 +1,21 @@
+require Math;
+require Util;
+
+/// \dfgPresetFolder Converters
+/// Converts an array of Xfos to a string of quaternions.
+function xfoArrayToQuatString(
+  in Xfo this[],
+  in String separator,
+  out String result
+  )
+  {
+    Quat quat;
+  
+    for(Integer i=0; i <= this.size() - 1; i++)
+    {
+      quat = this[i].ori;
+      result = result + quat.v.x + separator + quat.v.y + separator + quat.v.z + separator + quat.w + separator;
+    }
+
+    result = result.rightStrip(2); // remove last column and space
+}
