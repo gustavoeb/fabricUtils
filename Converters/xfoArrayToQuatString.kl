@@ -17,5 +17,5 @@ function xfoArrayToQuatString(
       result = result + quat.v.x + separator + quat.v.y + separator + quat.v.z + separator + quat.w + separator;
     }
 
-    result = result.rightStrip(2); // remove last column and space
+    result = result.rightStrip(1); // remove last column and space
 }

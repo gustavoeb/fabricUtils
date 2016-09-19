@@ -2,7 +2,7 @@
 {
   "objectType" : "Func",
   "metadata" : {
-    "uiTooltip" : "Supported types:\n  this: Xfo[]\n  separator: String\n  result: String\n"
+    "uiTooltip" : "Converts an array of Xfos to a string of quaternions.\n\nSupported types:\n  this: Xfo[]\n  separator: String\n  result: String\n"
     },
   "title" : "XfoArrayToQuatString",
   "ports" : [

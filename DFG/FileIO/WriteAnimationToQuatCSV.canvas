@@ -30,7 +30,7 @@
       },
     {
       "objectType" : "ExecPort",
-      "name" : "result",
+      "name" : "filePath",
       "nodePortType" : "Out",
       "defaultValues" : {
         "String" : ""
@@ -52,8 +52,7 @@
       },
     {
       "objectType" : "ExecPort",
-      "metadata" : {},
-      "name" : "frame",
+      "name" : "currentFrame",
       "nodePortType" : "Out",
       "defaultValues" : {
         "Float64" : 0
@@ -62,7 +61,6 @@
       },
     {
       "objectType" : "ExecPort",
-      "metadata" : {},
       "name" : "writer",
       "nodePortType" : "In",
       "defaultValues" : {
@@ -73,7 +71,7 @@
       }
     ],
   "extDeps" : {},
-  "presetGUID" : "C596179436A32087E27EC08828B53BB5",
+  "presetGUID" : "DB74154110218B0ACB84847533DAC8BB",
   "nodes" : [
     {
       "objectType" : "Inst",
@@ -105,7 +103,7 @@
     {
       "objectType" : "Inst",
       "metadata" : {
-        "uiGraphPos" : "{\"x\":1126.22835493,\"y\":284.855880737}"
+        "uiGraphPos" : "{\"x\":1095.22839355,\"y\":279.855865479}"
         },
       "name" : "PoseToXfoArray_2",
       "ports" : [
@@ -131,7 +129,7 @@
     {
       "objectType" : "Inst",
       "metadata" : {
-        "uiGraphPos" : "{\"x\":1645.66367245,\"y\":189.365798712}"
+        "uiGraphPos" : "{\"x\":1705.66369629,\"y\":190.36579895}"
         },
       "name" : "WriteLinePerFrame_1",
       "ports" : [
@@ -175,7 +173,7 @@
     {
       "objectType" : "Inst",
       "metadata" : {
-        "uiGraphPos" : "{\"x\":1341.60188138,\"y\":263.700350165}"
+        "uiGraphPos" : "{\"x\":1293.60192871,\"y\":263.7003479}"
         },
       "name" : "XfoArrayToQuatString_1",
       "ports" : [
@@ -211,13 +209,13 @@
     "posedCharacter" : [
       "GetPose_1.this"
       ],
-    "result" : [
+    "filePath" : [
       "WriteLinePerFrame_1.filePath"
       ],
     "startFrame" : [
       "WriteLinePerFrame_1.startFrame"
       ],
-    "frame" : [
+    "currentFrame" : [
       "WriteLinePerFrame_1.frame"
       ],
     "GetPose_1.result" : [
@@ -269,7 +267,7 @@
           },
         {
           "objectType" : "ExecPort",
-          "name" : "result",
+          "name" : "filePath",
           "nodePortType" : "Out",
           "defaultValues" : {
             "String" : ""
@@ -291,8 +289,7 @@
           },
         {
           "objectType" : "ExecPort",
-          "metadata" : {},
-          "name" : "frame",
+          "name" : "currentFrame",
           "nodePortType" : "Out",
           "defaultValues" : {
             "Float64" : 0
@@ -301,7 +298,6 @@
           },
         {
           "objectType" : "ExecPort",
-          "metadata" : {},
           "name" : "writer",
           "nodePortType" : "In",
           "defaultValues" : {
@@ -312,7 +308,7 @@
           }
         ],
       "extDeps" : {},
-      "presetGUID" : "C596179436A32087E27EC08828B53BB5",
+      "presetGUID" : "DB74154110218B0ACB84847533DAC8BB",
       "nodes" : [
         {
           "objectType" : "Inst",
@@ -344,7 +340,7 @@
         {
           "objectType" : "Inst",
           "metadata" : {
-            "uiGraphPos" : "{\"x\":1126.22835493,\"y\":284.855880737}"
+            "uiGraphPos" : "{\"x\":1095.22839355,\"y\":279.855865479}"
             },
           "name" : "PoseToXfoArray_2",
           "ports" : [
@@ -370,7 +366,7 @@
         {
           "objectType" : "Inst",
           "metadata" : {
-            "uiGraphPos" : "{\"x\":1645.66367245,\"y\":189.365798712}"
+            "uiGraphPos" : "{\"x\":1705.66369629,\"y\":190.36579895}"
             },
           "name" : "WriteLinePerFrame_1",
           "ports" : [
@@ -414,7 +410,7 @@
         {
           "objectType" : "Inst",
           "metadata" : {
-            "uiGraphPos" : "{\"x\":1341.60188138,\"y\":263.700350165}"
+            "uiGraphPos" : "{\"x\":1293.60192871,\"y\":263.7003479}"
             },
           "name" : "XfoArrayToQuatString_1",
           "ports" : [
@@ -450,13 +446,13 @@
         "posedCharacter" : [
           "GetPose_1.this"
           ],
-        "result" : [
+        "filePath" : [
           "WriteLinePerFrame_1.filePath"
           ],
         "startFrame" : [
           "WriteLinePerFrame_1.startFrame"
           ],
-        "frame" : [
+        "currentFrame" : [
           "WriteLinePerFrame_1.frame"
           ],
         "GetPose_1.result" : [
@@ -1120,7 +1116,7 @@ dfgEntry {
     "fabricUtils.Converters.XfoArrayToQuatString" : {
       "objectType" : "Func",
       "metadata" : {
-        "uiTooltip" : "Supported types:\n  this: Xfo[]\n  separator: String\n  result: String\n"
+        "uiTooltip" : "Converts an array of Xfos to a string of quaternions.\n\nSupported types:\n  this: Xfo[]\n  separator: String\n  result: String\n"
         },
       "title" : "XfoArrayToQuatString",
       "ports" : [
