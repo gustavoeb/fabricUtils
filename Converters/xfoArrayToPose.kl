@@ -1,0 +1,13 @@
+require Characters;
+
+/// \dfgPresetFolder Converters
+/// Sets the xfos on a pose using an xfo array.
+function xfoArrayToPose(
+  io IPose this,
+  in Xfo xfos[]
+)
+{
+  for (Integer i = 0; i <= xfos.size()-1; i++) {
+    this.setBoneXfo(i, xfos[i]);
+  }
+}

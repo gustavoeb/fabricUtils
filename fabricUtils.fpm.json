@@ -1,11 +1,12 @@
 {
-  "version": "0.0.1",
+  "version": "0.0.2",
   "code": [
     // classes
     
     // functions
 	"Converters/quatStringToXfoArray.kl",
 	"Converters/xfoArrayToQuatString.kl",
+	"Converters/xfoArrayToPose.kl",
 	"Converters/poseToXfoArray.kl",
 	"FileIO/getClipPoseFromQuatCSV.kl"
 
