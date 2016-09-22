@@ -33,7 +33,7 @@
       "name" : "rootBone",
       "nodePortType" : "Out",
       "defaultValues" : {
-        "String" : ""
+        "String" : "Hips"
         },
       "execPortType" : "In",
       "typeSpec" : "String"
@@ -62,7 +62,7 @@
       }
     ],
   "extDeps" : {},
-  "presetGUID" : "CC09D3C7C86F1105B565D90DEB84F159",
+  "presetGUID" : "1CA7221C3B89C30C025819E72EBBFC07",
   "nodes" : [
     {
       "objectType" : "Inst",
@@ -385,32 +385,6 @@
     {
       "objectType" : "Inst",
       "metadata" : {
-        "uiGraphPos" : "{\"x\":1081.61851954,\"y\":-496.784969687}"
-        },
-      "name" : "Clone_2",
-      "ports" : [
-        {
-          "objectType" : "InstPort",
-          "name" : "exec",
-          "nodePortType" : "IO"
-          },
-        {
-          "objectType" : "InstPort",
-          "name" : "value",
-          "nodePortType" : "In"
-          },
-        {
-          "objectType" : "InstPort",
-          "name" : "clonedValue",
-          "nodePortType" : "Out"
-          }
-        ],
-      "executable" : "Fabric.Core.Data.Clone",
-      "presetGUID" : "30401D7851DEFCFA5C46EB3926DD8BAD"
-      },
-    {
-      "objectType" : "Inst",
-      "metadata" : {
         "uiGraphPos" : "{\"x\":2162.74873948,\"y\":-430.887926221}"
         },
       "name" : "XfoArrayToPose_1",
@@ -584,16 +558,14 @@
   "connections" : {
     "posedCharacter" : [
       "GetPose_1.this",
-      "GetSkeleton_1.this"
+      "GetSkeleton_1.this",
+      "SetPose_1.this"
       ],
     "rootBone" : [
       "FindBone_2.boneName"
       ],
     "mode" : [
       "ToBoolean_1.value"
-      ],
-    "GetPose_1.this" : [
-      "Clone_2.value"
       ],
     "GetPose_1.result" : [
       "GetBoneXfo_1.this",
@@ -635,9 +607,6 @@
     "SetPose_1.this" : [
       "this"
       ],
-    "Clone_2.clonedValue" : [
-      "SetPose_1.this"
-      ],
     "XfoArrayToPose_1.this" : [
       "SetPose_1.pose"
       ],
@@ -658,7 +627,7 @@
       ]
     },
   "requiredPresets" : {
-    "fabricUtils.Character.LocalizeCharacterPose" : {
+    "fabricUtils.Characters.LocalizeCharacterPose" : {
       "objectType" : "Graph",
       "metadata" : {
         "uiTextColor" : "{\n  \"r\" : 20,\n  \"g\" : 20,\n  \"b\" : 20\n  }",
@@ -693,7 +662,7 @@
           "name" : "rootBone",
           "nodePortType" : "Out",
           "defaultValues" : {
-            "String" : ""
+            "String" : "Hips"
             },
           "execPortType" : "In",
           "typeSpec" : "String"
@@ -722,7 +691,7 @@
           }
         ],
       "extDeps" : {},
-      "presetGUID" : "CC09D3C7C86F1105B565D90DEB84F159",
+      "presetGUID" : "1CA7221C3B89C30C025819E72EBBFC07",
       "nodes" : [
         {
           "objectType" : "Inst",
@@ -1045,32 +1014,6 @@
         {
           "objectType" : "Inst",
           "metadata" : {
-            "uiGraphPos" : "{\"x\":1081.61851954,\"y\":-496.784969687}"
-            },
-          "name" : "Clone_2",
-          "ports" : [
-            {
-              "objectType" : "InstPort",
-              "name" : "exec",
-              "nodePortType" : "IO"
-              },
-            {
-              "objectType" : "InstPort",
-              "name" : "value",
-              "nodePortType" : "In"
-              },
-            {
-              "objectType" : "InstPort",
-              "name" : "clonedValue",
-              "nodePortType" : "Out"
-              }
-            ],
-          "executable" : "Fabric.Core.Data.Clone",
-          "presetGUID" : "30401D7851DEFCFA5C46EB3926DD8BAD"
-          },
-        {
-          "objectType" : "Inst",
-          "metadata" : {
             "uiGraphPos" : "{\"x\":2162.74873948,\"y\":-430.887926221}"
             },
           "name" : "XfoArrayToPose_1",
@@ -1244,16 +1187,14 @@
       "connections" : {
         "posedCharacter" : [
           "GetPose_1.this",
-          "GetSkeleton_1.this"
+          "GetSkeleton_1.this",
+          "SetPose_1.this"
           ],
         "rootBone" : [
           "FindBone_2.boneName"
           ],
         "mode" : [
           "ToBoolean_1.value"
-          ],
-        "GetPose_1.this" : [
-          "Clone_2.value"
           ],
         "GetPose_1.result" : [
           "GetBoneXfo_1.this",
@@ -1294,9 +1235,6 @@
           ],
         "SetPose_1.this" : [
           "this"
-          ],
-        "Clone_2.clonedValue" : [
-          "SetPose_1.this"
           ],
         "XfoArrayToPose_1.this" : [
           "SetPose_1.pose"
@@ -1778,43 +1716,6 @@ dfgEntry {
 
 dfgEntry {
   this.setPose(pose);
-}
-"
-      },
-    "Fabric.Core.Data.Clone" : {
-      "objectType" : "Func",
-      "metadata" : {
-        "uiNodeColor" : "{\n  \"r\" : 214,\n  \"g\" : 191,\n  \"b\" : 103\n  }",
-        "uiHeaderColor" : "{\n  \"r\" : 188,\n  \"g\" : 129,\n  \"b\" : 83\n  }"
-        },
-      "title" : "Clone",
-      "ports" : [
-        {
-          "objectType" : "ExecPort",
-          "name" : "exec",
-          "nodePortType" : "IO",
-          "execPortType" : "IO",
-          "typeSpec" : "Execute"
-          },
-        {
-          "objectType" : "ExecPort",
-          "name" : "value",
-          "nodePortType" : "Out",
-          "execPortType" : "In",
-          "typeSpec" : "$TYPE$"
-          },
-        {
-          "objectType" : "ExecPort",
-          "name" : "clonedValue",
-          "nodePortType" : "In",
-          "execPortType" : "Out",
-          "typeSpec" : "$TYPE$"
-          }
-        ],
-      "extDeps" : {},
-      "presetGUID" : "30401D7851DEFCFA5C46EB3926DD8BAD",
-      "code" : "dfgEntry {
-  clonedValue = value.clone();
 }
 "
       },
