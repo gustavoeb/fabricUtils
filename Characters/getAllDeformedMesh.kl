@@ -1,0 +1,13 @@
+require Characters;
+
+/// \dfgPresetFolder Characters
+/// Gets a deformed copy of all meshes in a character.
+function getAllDeformedMesh(
+  io Character this,
+  out PolygonMesh result[]
+)
+{
+  for (Index i = 0; i<this.getNumGeometries(); i++) {
+    result.push(this.getDeformedMesh(i));
+  }
+}

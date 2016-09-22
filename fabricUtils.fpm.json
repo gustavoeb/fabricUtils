@@ -4,6 +4,7 @@
     // classes
     
     // functions
+	"Characters/getAllDeformedMesh.kl",
 	"Converters/quatStringToXfoArray.kl",
 	"Converters/xfoArrayToQuatString.kl",
 	"Converters/xfoArrayToPose.kl",
