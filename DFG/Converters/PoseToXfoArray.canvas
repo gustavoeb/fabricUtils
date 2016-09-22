@@ -2,7 +2,7 @@
 {
   "objectType" : "Func",
   "metadata" : {
-    "uiTooltip" : "Converts a skeleton's pose to an array of Xfos.\n\nSupported types:\n  this: IPose\n  result: Xfo[]\n"
+    "uiTooltip" : "Converts a skeleton's pose to an array of Xfos. Returns Xfos in local and global spaces.\n\nSupported types:\n  this: IPose\n  globalSpace: Boolean\n  result: Xfo[]\n"
     },
   "title" : "PoseToXfoArray",
   "ports" : [
@@ -22,6 +22,13 @@
       },
     {
       "objectType" : "ExecPort",
+      "name" : "globalSpace",
+      "nodePortType" : "Out",
+      "execPortType" : "In",
+      "typeSpec" : "Boolean"
+      },
+    {
+      "objectType" : "ExecPort",
       "metadata" : {
         "uiColor" : "{\n  \"r\" : 249,\n  \"g\" : 157,\n  \"b\" : 28\n  }"
         },
@@ -34,11 +41,11 @@
   "extDeps" : {
     "fabricUtils" : "*"
     },
-  "presetGUID" : "CB3AB61504E1CE6D25612184ED51F1A5",
+  "presetGUID" : "38B5F4ABA2AFC0251221E3498E9CC336",
   "code" : "require fabricUtils;
 
 dfgEntry {
-  poseToXfoArray(this, result);
+  poseToXfoArray(this, globalSpace, result);
 }
 "
   }
