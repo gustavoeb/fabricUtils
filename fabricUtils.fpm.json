@@ -9,6 +9,7 @@
 	"Converters/xfoArrayToQuatString.kl",
 	"Converters/xfoArrayToPose.kl",
 	"Converters/poseToXfoArray.kl",
+	"Converters/referencePoseToXfoArray.kl",
 	"FileIO/getClipPoseFromQuatCSV.kl"
 
     // other
