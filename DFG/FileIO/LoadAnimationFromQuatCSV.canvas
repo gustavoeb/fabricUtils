@@ -5,7 +5,7 @@
     "uiNodeColor" : "{\n  \"r\" : 121,\n  \"g\" : 134,\n  \"b\" : 143\n  }",
     "uiGraphZoom" : "{\n  \"value\" : 1.0\n  }",
     "uiTooltip" : "Loads character animation from CSV files filled with quaternions.",
-    "uiGraphPan" : "{\n  \"x\" : -486.8377685546875,\n  \"y\" : 137.9070043563843\n  }"
+    "uiGraphPan" : "{\n  \"x\" : -524.8377685546875,\n  \"y\" : 56.90699768066406\n  }"
     },
   "title" : "LoadAnimationFromQuatCSV",
   "ports" : [
@@ -66,8 +66,10 @@
       "execPortType" : "Out"
       }
     ],
-  "extDeps" : {},
-  "presetGUID" : "980D3EF06261E8CCDF1A8D8CA7BEAE65",
+  "extDeps" : {
+    "Characters" : "*"
+    },
+  "presetGUID" : "6D1ADB581962A0CAB8FE9E532FDE2A49",
   "nodes" : [
     {
       "objectType" : "Inst",
@@ -247,7 +249,7 @@
         "uiNodeColor" : "{\n  \"r\" : 121,\n  \"g\" : 134,\n  \"b\" : 143\n  }",
         "uiGraphZoom" : "{\n  \"value\" : 1.0\n  }",
         "uiTooltip" : "Loads character animation from CSV files filled with quaternions.",
-        "uiGraphPan" : "{\n  \"x\" : -486.8377685546875,\n  \"y\" : 137.9070043563843\n  }"
+        "uiGraphPan" : "{\n  \"x\" : -524.8377685546875,\n  \"y\" : 56.90699768066406\n  }"
         },
       "title" : "LoadAnimationFromQuatCSV",
       "ports" : [
@@ -308,8 +310,10 @@
           "execPortType" : "Out"
           }
         ],
-      "extDeps" : {},
-      "presetGUID" : "980D3EF06261E8CCDF1A8D8CA7BEAE65",
+      "extDeps" : {
+        "Characters" : "*"
+        },
+      "presetGUID" : "6D1ADB581962A0CAB8FE9E532FDE2A49",
       "nodes" : [
         {
           "objectType" : "Inst",

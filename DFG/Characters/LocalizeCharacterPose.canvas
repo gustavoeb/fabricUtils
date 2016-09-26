@@ -3,9 +3,9 @@
   "metadata" : {
     "uiTextColor" : "{\n  \"r\" : 20,\n  \"g\" : 20,\n  \"b\" : 20\n  }",
     "uiNodeColor" : "{\n  \"r\" : 121,\n  \"g\" : 134,\n  \"b\" : 143\n  }",
-    "uiGraphZoom" : "{\n  \"value\" : 0.7807489633560181\n  }",
+    "uiGraphZoom" : "{\n  \"value\" : 0.6891233325004578\n  }",
     "uiTooltip" : "Localizes the pose of a character based on the transforms of one of its bones.",
-    "uiGraphPan" : "{\n  \"x\" : -609.58740234375,\n  \"y\" : 408.73828125\n  }"
+    "uiGraphPan" : "{\n  \"x\" : -485.4426891631083,\n  \"y\" : 369.3867526031477\n  }"
     },
   "title" : "LocalizeCharacterPose",
   "ports" : [
@@ -46,10 +46,40 @@
       "name" : "mode",
       "nodePortType" : "Out",
       "defaultValues" : {
-        "Integer" : 0
+        "Integer" : 1
         },
       "execPortType" : "In",
       "typeSpec" : "Integer"
+      },
+    {
+      "objectType" : "ExecPort",
+      "metadata" : {},
+      "name" : "offset",
+      "nodePortType" : "Out",
+      "defaultValues" : {
+        "Xfo" : {
+          "ori" : {
+            "v" : {
+              "x" : -1.099999904632568,
+              "y" : 0,
+              "z" : 0
+              },
+            "w" : 1
+            },
+          "tr" : {
+            "x" : 0,
+            "y" : 0,
+            "z" : 0
+            },
+          "sc" : {
+            "x" : 1,
+            "y" : 1,
+            "z" : 1
+            }
+          }
+        },
+      "execPortType" : "In",
+      "typeSpec" : "Xfo"
       },
     {
       "objectType" : "ExecPort",
@@ -62,7 +92,7 @@
       }
     ],
   "extDeps" : {},
-  "presetGUID" : "1CA7221C3B89C30C025819E72EBBFC07",
+  "presetGUID" : "6EBA1BC5F8DA58EAF92E1035C7EA00FD",
   "nodes" : [
     {
       "objectType" : "Inst",
@@ -249,7 +279,7 @@
     {
       "objectType" : "Inst",
       "metadata" : {
-        "uiGraphPos" : "{\"x\":1888.18596756,\"y\":-211.928522706}"
+        "uiGraphPos" : "{\"x\":2090.10226059,\"y\":-216.374824524}"
         },
       "name" : "Fill_1",
       "ports" : [
@@ -328,7 +358,7 @@
     {
       "objectType" : "Inst",
       "metadata" : {
-        "uiGraphPos" : "{\"x\":2027.02016151,\"y\":-415.602586865}"
+        "uiGraphPos" : "{\"x\":2244.77981567,\"y\":-413.443527222}"
         },
       "name" : "Mul_1",
       "ports" : [
@@ -359,7 +389,7 @@
     {
       "objectType" : "Inst",
       "metadata" : {
-        "uiGraphPos" : "{\"x\":2343.37192309,\"y\":-470.414387584}"
+        "uiGraphPos" : "{\"x\":2561.13137817,\"y\":-468.255325317}"
         },
       "name" : "SetPose_1",
       "ports" : [
@@ -385,7 +415,7 @@
     {
       "objectType" : "Inst",
       "metadata" : {
-        "uiGraphPos" : "{\"x\":2162.74873948,\"y\":-430.887926221}"
+        "uiGraphPos" : "{\"x\":2380.5083313,\"y\":-428.72883606}"
         },
       "name" : "XfoArrayToPose_1",
       "ports" : [
@@ -553,6 +583,37 @@
         ],
       "executable" : "Fabric.Core.Data.Cache",
       "presetGUID" : "D903AFD981FE9214C69943F542D5FD60"
+      },
+    {
+      "objectType" : "Inst",
+      "metadata" : {
+        "uiGraphPos" : "{\"x\":1926.84510112,\"y\":-235.644224644}"
+        },
+      "name" : "Mul_3",
+      "ports" : [
+        {
+          "objectType" : "InstPort",
+          "name" : "exec",
+          "nodePortType" : "IO"
+          },
+        {
+          "objectType" : "InstPort",
+          "name" : "lhs",
+          "nodePortType" : "In"
+          },
+        {
+          "objectType" : "InstPort",
+          "name" : "rhs",
+          "nodePortType" : "In"
+          },
+        {
+          "objectType" : "InstPort",
+          "name" : "result",
+          "nodePortType" : "Out"
+          }
+        ],
+      "executable" : "Fabric.Core.Math.Mul",
+      "presetGUID" : "CC951B43BB879483B46EFF7965692350"
       }
     ],
   "connections" : {
@@ -566,6 +627,9 @@
       ],
     "mode" : [
       "ToBoolean_1.value"
+      ],
+    "offset" : [
+      "Mul_3.lhs"
       ],
     "GetPose_1.result" : [
       "GetBoneXfo_1.this",
@@ -620,10 +684,13 @@
       "If_1.cond"
       ],
     "If_1.result" : [
-      "Fill_1.element"
+      "Mul_3.rhs"
       ],
     "Cache_1.value" : [
       "GetBoneXfo_1.index"
+      ],
+    "Mul_3.result" : [
+      "Fill_1.element"
       ]
     },
   "requiredPresets" : {
@@ -632,9 +699,9 @@
       "metadata" : {
         "uiTextColor" : "{\n  \"r\" : 20,\n  \"g\" : 20,\n  \"b\" : 20\n  }",
         "uiNodeColor" : "{\n  \"r\" : 121,\n  \"g\" : 134,\n  \"b\" : 143\n  }",
-        "uiGraphZoom" : "{\n  \"value\" : 0.7807489633560181\n  }",
+        "uiGraphZoom" : "{\n  \"value\" : 0.6891233325004578\n  }",
         "uiTooltip" : "Localizes the pose of a character based on the transforms of one of its bones.",
-        "uiGraphPan" : "{\n  \"x\" : -609.58740234375,\n  \"y\" : 408.73828125\n  }"
+        "uiGraphPan" : "{\n  \"x\" : -485.4426891631083,\n  \"y\" : 369.3867526031477\n  }"
         },
       "title" : "LocalizeCharacterPose",
       "ports" : [
@@ -675,10 +742,40 @@
           "name" : "mode",
           "nodePortType" : "Out",
           "defaultValues" : {
-            "Integer" : 0
+            "Integer" : 1
             },
           "execPortType" : "In",
           "typeSpec" : "Integer"
+          },
+        {
+          "objectType" : "ExecPort",
+          "metadata" : {},
+          "name" : "offset",
+          "nodePortType" : "Out",
+          "defaultValues" : {
+            "Xfo" : {
+              "ori" : {
+                "v" : {
+                  "x" : -1.099999904632568,
+                  "y" : 0,
+                  "z" : 0
+                  },
+                "w" : 1
+                },
+              "tr" : {
+                "x" : 0,
+                "y" : 0,
+                "z" : 0
+                },
+              "sc" : {
+                "x" : 1,
+                "y" : 1,
+                "z" : 1
+                }
+              }
+            },
+          "execPortType" : "In",
+          "typeSpec" : "Xfo"
           },
         {
           "objectType" : "ExecPort",
@@ -691,7 +788,7 @@
           }
         ],
       "extDeps" : {},
-      "presetGUID" : "1CA7221C3B89C30C025819E72EBBFC07",
+      "presetGUID" : "6EBA1BC5F8DA58EAF92E1035C7EA00FD",
       "nodes" : [
         {
           "objectType" : "Inst",
@@ -878,7 +975,7 @@
         {
           "objectType" : "Inst",
           "metadata" : {
-            "uiGraphPos" : "{\"x\":1888.18596756,\"y\":-211.928522706}"
+            "uiGraphPos" : "{\"x\":2090.10226059,\"y\":-216.374824524}"
             },
           "name" : "Fill_1",
           "ports" : [
@@ -957,7 +1054,7 @@
         {
           "objectType" : "Inst",
           "metadata" : {
-            "uiGraphPos" : "{\"x\":2027.02016151,\"y\":-415.602586865}"
+            "uiGraphPos" : "{\"x\":2244.77981567,\"y\":-413.443527222}"
             },
           "name" : "Mul_1",
           "ports" : [
@@ -988,7 +1085,7 @@
         {
           "objectType" : "Inst",
           "metadata" : {
-            "uiGraphPos" : "{\"x\":2343.37192309,\"y\":-470.414387584}"
+            "uiGraphPos" : "{\"x\":2561.13137817,\"y\":-468.255325317}"
             },
           "name" : "SetPose_1",
           "ports" : [
@@ -1014,7 +1111,7 @@
         {
           "objectType" : "Inst",
           "metadata" : {
-            "uiGraphPos" : "{\"x\":2162.74873948,\"y\":-430.887926221}"
+            "uiGraphPos" : "{\"x\":2380.5083313,\"y\":-428.72883606}"
             },
           "name" : "XfoArrayToPose_1",
           "ports" : [
@@ -1182,6 +1279,37 @@
             ],
           "executable" : "Fabric.Core.Data.Cache",
           "presetGUID" : "D903AFD981FE9214C69943F542D5FD60"
+          },
+        {
+          "objectType" : "Inst",
+          "metadata" : {
+            "uiGraphPos" : "{\"x\":1926.84510112,\"y\":-235.644224644}"
+            },
+          "name" : "Mul_3",
+          "ports" : [
+            {
+              "objectType" : "InstPort",
+              "name" : "exec",
+              "nodePortType" : "IO"
+              },
+            {
+              "objectType" : "InstPort",
+              "name" : "lhs",
+              "nodePortType" : "In"
+              },
+            {
+              "objectType" : "InstPort",
+              "name" : "rhs",
+              "nodePortType" : "In"
+              },
+            {
+              "objectType" : "InstPort",
+              "name" : "result",
+              "nodePortType" : "Out"
+              }
+            ],
+          "executable" : "Fabric.Core.Math.Mul",
+          "presetGUID" : "CC951B43BB879483B46EFF7965692350"
           }
         ],
       "connections" : {
@@ -1195,6 +1323,9 @@
           ],
         "mode" : [
           "ToBoolean_1.value"
+          ],
+        "offset" : [
+          "Mul_3.lhs"
           ],
         "GetPose_1.result" : [
           "GetBoneXfo_1.this",
@@ -1249,10 +1380,13 @@
           "If_1.cond"
           ],
         "If_1.result" : [
-          "Fill_1.element"
+          "Mul_3.rhs"
           ],
         "Cache_1.value" : [
           "GetBoneXfo_1.index"
+          ],
+        "Mul_3.result" : [
+          "Fill_1.element"
           ]
         }
       },

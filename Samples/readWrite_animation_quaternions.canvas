@@ -2371,7 +2371,7 @@ dfgEntry {
           }
         ],
       "extDeps" : {
-        "Chracters" : "*"
+        "Characters" : "*"
         },
       "presetGUID" : "AC641CE6354807C722DEAE353CD1DBEA",
       "nodes" : [
