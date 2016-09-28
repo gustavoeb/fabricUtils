@@ -1,0 +1,16 @@
+/// \dfgPresetFolder Arrays
+/// Generates an index array from a value range.
+function indexArrayFromRange(
+  in Index from,
+  in Index to,
+  in Size step,
+  out Index result[]
+)
+{
+  if (from >= to) { 
+    throw('Value "to" should be greater then value "from".');
+  }
+  for (Index i = from; i<to; i=i+step) {
+    result.push(i);
+  }
+}

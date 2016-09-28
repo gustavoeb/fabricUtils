@@ -7,6 +7,7 @@ function getClipPoseFromQuatCSV(
   in ISkeleton skeleton,
   in FilePath filepath,
   in String separator,
+  in Index boneIDs[],
   out ClipPose result
 )
 {
@@ -17,9 +18,18 @@ function getClipPoseFromQuatCSV(
   Scalar FPS = 24;
   Scalar timestep = 1/FPS;
   
+  // If a set of bone indices are not given we assume we are loading animation of all bones
+  Index activeBones[];
+  if (boneIDs.size() <= 0) {
+    indexArrayFromRange(Index(0), Index(charSkel.getNumBones()), Size(1), activeBones);
+  }
+  else {
+    activeBones = boneIDs;
+  }
+
   // Build clip and tracks
-  for (Size i=0; i < charSkel.getNumBones(); i++) {
-    String boneName = charSkel.getBone(i).name;
+  for (Size i=0; i < activeBones.size(); i++) {
+    String boneName = charSkel.getBone(activeBones[i]).name;
     KeyframeTrackSet sampleSet(boneName, Quat(), TRACKSETFLAG_ORI_TRACKS);
     clip.addTrackSet(sampleSet);
   }
@@ -32,7 +42,7 @@ function getClipPoseFromQuatCSV(
 
     for(Integer j=0; j < quatStringArray.size(); j=j+4) // each bone has a 4 dimensional vector (Quat)
     {
-      String boneName = charSkel.getBone(j/4).name;
+      String boneName = charSkel.getBone(activeBones[j/4]).name;
       Quat quat(quatStringArray[j].toScalar(), quatStringArray[j+1].toScalar(), quatStringArray[j+2].toScalar(), quatStringArray[j+3].toScalar());
       // if (boneName == 'joint3') { report(quat); }
       clip.getTrackSet(boneName).setTrackValues(time, quat); 

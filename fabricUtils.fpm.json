@@ -4,13 +4,18 @@
     // classes
     
     // functions
+  "Arrays/indexArrayFromRange.kl",
+
 	"Characters/getAllDeformedMesh.kl",
-	"Converters/quatStringToXfoArray.kl",
-	"Converters/xfoArrayToQuatString.kl",
-	"Converters/xfoArrayToPose.kl",
+
+  "Converters/boneNameArrayToIDArray.kl",
 	"Converters/poseToXfoArray.kl",
+  "Converters/quatStringToXfoArray.kl",
 	"Converters/referencePoseToXfoArray.kl",
-	"FileIO/getClipPoseFromQuatCSV.kl"
+	"Converters/xfoArrayToQuatString.kl",
+  "Converters/xfoArrayToPose.kl",
+
+  "FileIO/getClipPoseFromQuatCSV.kl"
 
     // other
 

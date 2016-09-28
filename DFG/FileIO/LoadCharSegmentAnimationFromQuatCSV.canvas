@@ -1,0 +1,1001 @@
+{
+  "objectType" : "Graph",
+  "metadata" : {
+    "uiTextColor" : "{\n  \"r\" : 20,\n  \"g\" : 20,\n  \"b\" : 20\n  }",
+    "uiNodeColor" : "{\n  \"r\" : 121,\n  \"g\" : 134,\n  \"b\" : 143\n  }",
+    "uiGraphZoom" : "{\n  \"value\" : 1.0\n  }",
+    "uiTooltip" : "Loads character animation from CSV files filled with quaternions.",
+    "uiGraphPan" : "{\n  \"x\" : -365.234375,\n  \"y\" : 118.3871765136719\n  }"
+    },
+  "title" : "LoadCharSegmentAnimationFromQuatCSV",
+  "ports" : [
+    {
+      "objectType" : "ExecPort",
+      "name" : "exec",
+      "nodePortType" : "IO",
+      "defaultValues" : {
+        "Execute" : {}
+        },
+      "execPortType" : "IO",
+      "typeSpec" : "Execute"
+      },
+    {
+      "objectType" : "ExecPort",
+      "name" : "character",
+      "nodePortType" : "Out",
+      "defaultValues" : {
+        "Character" : null
+        },
+      "execPortType" : "In"
+      },
+    {
+      "objectType" : "ExecPort",
+      "name" : "boneNames",
+      "nodePortType" : "Out",
+      "defaultValues" : {
+        "String" : ""
+        },
+      "execPortType" : "In",
+      "typeSpec" : "String"
+      },
+    {
+      "objectType" : "ExecPort",
+      "name" : "file",
+      "nodePortType" : "Out",
+      "defaultValues" : {
+        "String" : ""
+        },
+      "execPortType" : "In"
+      },
+    {
+      "objectType" : "ExecPort",
+      "name" : "separator",
+      "nodePortType" : "Out",
+      "defaultValues" : {
+        "String" : ";"
+        },
+      "execPortType" : "In",
+      "typeSpec" : "String"
+      },
+    {
+      "objectType" : "ExecPort",
+      "metadata" : {},
+      "name" : "fps",
+      "nodePortType" : "Out",
+      "defaultValues" : {
+        "Scalar" : 24
+        },
+      "execPortType" : "In",
+      "typeSpec" : "Scalar"
+      },
+    {
+      "objectType" : "ExecPort",
+      "name" : "time",
+      "nodePortType" : "Out",
+      "defaultValues" : {
+        "Float64" : 0
+        },
+      "execPortType" : "In"
+      },
+    {
+      "objectType" : "ExecPort",
+      "name" : "posedCharacter",
+      "nodePortType" : "In",
+      "defaultValues" : {
+        "Character" : null
+        },
+      "execPortType" : "Out"
+      }
+    ],
+  "extDeps" : {
+    "Characters" : "*"
+    },
+  "presetGUID" : "681B11FF175EFFC6261C873315E4AB29",
+  "nodes" : [
+    {
+      "objectType" : "Inst",
+      "metadata" : {
+        "uiGraphPos" : "{\"x\":1446.734375,\"y\":-4.13717937469}"
+        },
+      "name" : "SetClipPoseTime",
+      "ports" : [
+        {
+          "objectType" : "InstPort",
+          "name" : "exec",
+          "nodePortType" : "IO"
+          },
+        {
+          "objectType" : "InstPort",
+          "name" : "this",
+          "nodePortType" : "IO"
+          },
+        {
+          "objectType" : "InstPort",
+          "name" : "time",
+          "nodePortType" : "In"
+          }
+        ],
+      "executable" : "Fabric.Exts.Characters.Character.SetClipPoseTime",
+      "presetGUID" : "61A54402005662F78D1EB2B48DB39451"
+      },
+    {
+      "objectType" : "Inst",
+      "metadata" : {
+        "uiGraphPos" : "{\"x\":1331.734375,\"y\":-4.13717937469}"
+        },
+      "name" : "SetPose_1",
+      "ports" : [
+        {
+          "objectType" : "InstPort",
+          "name" : "exec",
+          "nodePortType" : "IO"
+          },
+        {
+          "objectType" : "InstPort",
+          "name" : "this",
+          "nodePortType" : "IO"
+          },
+        {
+          "objectType" : "InstPort",
+          "name" : "pose",
+          "nodePortType" : "In"
+          }
+        ],
+      "executable" : "Fabric.Exts.Characters.Character.SetPose",
+      "presetGUID" : "03D48EF598593C73963AF0A4F3828076"
+      },
+    {
+      "objectType" : "Inst",
+      "metadata" : {
+        "uiGraphPos" : "{\"x\":1217.734375,\"y\":-4.13717937469}"
+        },
+      "name" : "Cache_2",
+      "ports" : [
+        {
+          "objectType" : "InstPort",
+          "name" : "exec",
+          "nodePortType" : "IO"
+          },
+        {
+          "objectType" : "InstPort",
+          "name" : "value",
+          "nodePortType" : "In"
+          }
+        ],
+      "executable" : "Fabric.Core.Data.Cache",
+      "presetGUID" : "D903AFD981FE9214C69943F542D5FD60"
+      },
+    {
+      "objectType" : "Inst",
+      "metadata" : {
+        "uiGraphPos" : "{\"x\":530.734375,\"y\":-25.6371765137}"
+        },
+      "name" : "GetSkeleton_2",
+      "ports" : [
+        {
+          "objectType" : "InstPort",
+          "name" : "exec",
+          "nodePortType" : "IO"
+          },
+        {
+          "objectType" : "InstPort",
+          "name" : "this",
+          "nodePortType" : "In"
+          },
+        {
+          "objectType" : "InstPort",
+          "name" : "result",
+          "nodePortType" : "Out"
+          }
+        ],
+      "executable" : "Fabric.Exts.Characters.Func.GetSkeleton",
+      "presetGUID" : "A6403CFCD4204EBC55E5EBF8999EF98E"
+      },
+    {
+      "objectType" : "Inst",
+      "metadata" : {
+        "uiGraphPos" : "{\"x\":996.734375,\"y\":-4.13717937469}",
+        "uiCollapsedState" : "0"
+        },
+      "name" : "GetClipPoseFromQuatCSV_1",
+      "ports" : [
+        {
+          "objectType" : "InstPort",
+          "name" : "exec",
+          "nodePortType" : "IO"
+          },
+        {
+          "objectType" : "InstPort",
+          "name" : "skeleton",
+          "nodePortType" : "In"
+          },
+        {
+          "objectType" : "InstPort",
+          "name" : "filepath",
+          "nodePortType" : "In"
+          },
+        {
+          "objectType" : "InstPort",
+          "name" : "separator",
+          "nodePortType" : "In",
+          "defaultValues" : {
+            "String" : ";"
+            }
+          },
+        {
+          "objectType" : "InstPort",
+          "name" : "boneIDs",
+          "nodePortType" : "In"
+          },
+        {
+          "objectType" : "InstPort",
+          "name" : "result",
+          "nodePortType" : "Out"
+          }
+        ],
+      "executable" : "fabricUtils.FileIO.GetClipPoseFromQuatCSV",
+      "presetGUID" : "B6856E0088689FC6F7C5142EB507ECAE"
+      },
+    {
+      "objectType" : "Inst",
+      "metadata" : {
+        "uiGraphPos" : "{\"x\":772.734375,\"y\":47.3628206253}"
+        },
+      "name" : "BoneNameArrayToIDArray_1",
+      "ports" : [
+        {
+          "objectType" : "InstPort",
+          "name" : "exec",
+          "nodePortType" : "IO"
+          },
+        {
+          "objectType" : "InstPort",
+          "name" : "this",
+          "nodePortType" : "In"
+          },
+        {
+          "objectType" : "InstPort",
+          "name" : "names",
+          "nodePortType" : "In"
+          },
+        {
+          "objectType" : "InstPort",
+          "name" : "result",
+          "nodePortType" : "Out"
+          }
+        ],
+      "executable" : "fabricUtils.Converters.BoneNameArrayToIDArray",
+      "presetGUID" : "978B810C036AE15FD854D39D673A46DE"
+      },
+    {
+      "objectType" : "Inst",
+      "metadata" : {
+        "uiGraphPos" : "{\"x\":597.734375,\"y\":117.862823486}"
+        },
+      "name" : "Split_1",
+      "ports" : [
+        {
+          "objectType" : "InstPort",
+          "name" : "exec",
+          "nodePortType" : "IO"
+          },
+        {
+          "objectType" : "InstPort",
+          "name" : "this",
+          "nodePortType" : "In"
+          },
+        {
+          "objectType" : "InstPort",
+          "name" : "separator",
+          "nodePortType" : "In",
+          "defaultValues" : {
+            "String" : ","
+            }
+          },
+        {
+          "objectType" : "InstPort",
+          "name" : "result",
+          "nodePortType" : "Out"
+          }
+        ],
+      "executable" : "Fabric.Exts.Util.String.Split",
+      "presetGUID" : "E09CFC151D7658D0FD0EAA6DB4FFB18B"
+      }
+    ],
+  "connections" : {
+    "character" : [
+      "SetPose_1.this",
+      "GetSkeleton_2.this"
+      ],
+    "boneNames" : [
+      "Split_1.this"
+      ],
+    "file" : [
+      "GetClipPoseFromQuatCSV_1.filepath"
+      ],
+    "separator" : [
+      "GetClipPoseFromQuatCSV_1.separator"
+      ],
+    "time" : [
+      "SetClipPoseTime.time"
+      ],
+    "SetClipPoseTime.this" : [
+      "posedCharacter"
+      ],
+    "SetPose_1.this" : [
+      "SetClipPoseTime.this"
+      ],
+    "Cache_2.value" : [
+      "SetPose_1.pose"
+      ],
+    "GetSkeleton_2.result" : [
+      "GetClipPoseFromQuatCSV_1.skeleton",
+      "BoneNameArrayToIDArray_1.this"
+      ],
+    "GetClipPoseFromQuatCSV_1.result" : [
+      "Cache_2.value"
+      ],
+    "BoneNameArrayToIDArray_1.result" : [
+      "GetClipPoseFromQuatCSV_1.boneIDs"
+      ],
+    "Split_1.result" : [
+      "BoneNameArrayToIDArray_1.names"
+      ]
+    },
+  "requiredPresets" : {
+    "fabricUtils.FileIO.LoadCharSegmentAnimationFromQuatCSV" : {
+      "objectType" : "Graph",
+      "metadata" : {
+        "uiTextColor" : "{\n  \"r\" : 20,\n  \"g\" : 20,\n  \"b\" : 20\n  }",
+        "uiNodeColor" : "{\n  \"r\" : 121,\n  \"g\" : 134,\n  \"b\" : 143\n  }",
+        "uiGraphZoom" : "{\n  \"value\" : 1.0\n  }",
+        "uiTooltip" : "Loads character animation from CSV files filled with quaternions.",
+        "uiGraphPan" : "{\n  \"x\" : -365.234375,\n  \"y\" : 118.3871765136719\n  }"
+        },
+      "title" : "LoadCharSegmentAnimationFromQuatCSV",
+      "ports" : [
+        {
+          "objectType" : "ExecPort",
+          "name" : "exec",
+          "nodePortType" : "IO",
+          "defaultValues" : {
+            "Execute" : {}
+            },
+          "execPortType" : "IO",
+          "typeSpec" : "Execute"
+          },
+        {
+          "objectType" : "ExecPort",
+          "name" : "character",
+          "nodePortType" : "Out",
+          "defaultValues" : {
+            "Character" : null
+            },
+          "execPortType" : "In"
+          },
+        {
+          "objectType" : "ExecPort",
+          "name" : "boneNames",
+          "nodePortType" : "Out",
+          "defaultValues" : {
+            "String" : ""
+            },
+          "execPortType" : "In",
+          "typeSpec" : "String"
+          },
+        {
+          "objectType" : "ExecPort",
+          "name" : "file",
+          "nodePortType" : "Out",
+          "defaultValues" : {
+            "String" : ""
+            },
+          "execPortType" : "In"
+          },
+        {
+          "objectType" : "ExecPort",
+          "name" : "separator",
+          "nodePortType" : "Out",
+          "defaultValues" : {
+            "String" : ";"
+            },
+          "execPortType" : "In",
+          "typeSpec" : "String"
+          },
+        {
+          "objectType" : "ExecPort",
+          "metadata" : {},
+          "name" : "fps",
+          "nodePortType" : "Out",
+          "defaultValues" : {
+            "Scalar" : 24
+            },
+          "execPortType" : "In",
+          "typeSpec" : "Scalar"
+          },
+        {
+          "objectType" : "ExecPort",
+          "name" : "time",
+          "nodePortType" : "Out",
+          "defaultValues" : {
+            "Float64" : 0
+            },
+          "execPortType" : "In"
+          },
+        {
+          "objectType" : "ExecPort",
+          "name" : "posedCharacter",
+          "nodePortType" : "In",
+          "defaultValues" : {
+            "Character" : null
+            },
+          "execPortType" : "Out"
+          }
+        ],
+      "extDeps" : {
+        "Characters" : "*"
+        },
+      "presetGUID" : "681B11FF175EFFC6261C873315E4AB29",
+      "nodes" : [
+        {
+          "objectType" : "Inst",
+          "metadata" : {
+            "uiGraphPos" : "{\"x\":1446.734375,\"y\":-4.13717937469}"
+            },
+          "name" : "SetClipPoseTime",
+          "ports" : [
+            {
+              "objectType" : "InstPort",
+              "name" : "exec",
+              "nodePortType" : "IO"
+              },
+            {
+              "objectType" : "InstPort",
+              "name" : "this",
+              "nodePortType" : "IO"
+              },
+            {
+              "objectType" : "InstPort",
+              "name" : "time",
+              "nodePortType" : "In"
+              }
+            ],
+          "executable" : "Fabric.Exts.Characters.Character.SetClipPoseTime",
+          "presetGUID" : "61A54402005662F78D1EB2B48DB39451"
+          },
+        {
+          "objectType" : "Inst",
+          "metadata" : {
+            "uiGraphPos" : "{\"x\":1331.734375,\"y\":-4.13717937469}"
+            },
+          "name" : "SetPose_1",
+          "ports" : [
+            {
+              "objectType" : "InstPort",
+              "name" : "exec",
+              "nodePortType" : "IO"
+              },
+            {
+              "objectType" : "InstPort",
+              "name" : "this",
+              "nodePortType" : "IO"
+              },
+            {
+              "objectType" : "InstPort",
+              "name" : "pose",
+              "nodePortType" : "In"
+              }
+            ],
+          "executable" : "Fabric.Exts.Characters.Character.SetPose",
+          "presetGUID" : "03D48EF598593C73963AF0A4F3828076"
+          },
+        {
+          "objectType" : "Inst",
+          "metadata" : {
+            "uiGraphPos" : "{\"x\":1217.734375,\"y\":-4.13717937469}"
+            },
+          "name" : "Cache_2",
+          "ports" : [
+            {
+              "objectType" : "InstPort",
+              "name" : "exec",
+              "nodePortType" : "IO"
+              },
+            {
+              "objectType" : "InstPort",
+              "name" : "value",
+              "nodePortType" : "In"
+              }
+            ],
+          "executable" : "Fabric.Core.Data.Cache",
+          "presetGUID" : "D903AFD981FE9214C69943F542D5FD60"
+          },
+        {
+          "objectType" : "Inst",
+          "metadata" : {
+            "uiGraphPos" : "{\"x\":530.734375,\"y\":-25.6371765137}"
+            },
+          "name" : "GetSkeleton_2",
+          "ports" : [
+            {
+              "objectType" : "InstPort",
+              "name" : "exec",
+              "nodePortType" : "IO"
+              },
+            {
+              "objectType" : "InstPort",
+              "name" : "this",
+              "nodePortType" : "In"
+              },
+            {
+              "objectType" : "InstPort",
+              "name" : "result",
+              "nodePortType" : "Out"
+              }
+            ],
+          "executable" : "Fabric.Exts.Characters.Func.GetSkeleton",
+          "presetGUID" : "A6403CFCD4204EBC55E5EBF8999EF98E"
+          },
+        {
+          "objectType" : "Inst",
+          "metadata" : {
+            "uiGraphPos" : "{\"x\":996.734375,\"y\":-4.13717937469}",
+            "uiCollapsedState" : "0"
+            },
+          "name" : "GetClipPoseFromQuatCSV_1",
+          "ports" : [
+            {
+              "objectType" : "InstPort",
+              "name" : "exec",
+              "nodePortType" : "IO"
+              },
+            {
+              "objectType" : "InstPort",
+              "name" : "skeleton",
+              "nodePortType" : "In"
+              },
+            {
+              "objectType" : "InstPort",
+              "name" : "filepath",
+              "nodePortType" : "In"
+              },
+            {
+              "objectType" : "InstPort",
+              "name" : "separator",
+              "nodePortType" : "In",
+              "defaultValues" : {
+                "String" : ";"
+                }
+              },
+            {
+              "objectType" : "InstPort",
+              "name" : "boneIDs",
+              "nodePortType" : "In"
+              },
+            {
+              "objectType" : "InstPort",
+              "name" : "result",
+              "nodePortType" : "Out"
+              }
+            ],
+          "executable" : "fabricUtils.FileIO.GetClipPoseFromQuatCSV",
+          "presetGUID" : "B6856E0088689FC6F7C5142EB507ECAE"
+          },
+        {
+          "objectType" : "Inst",
+          "metadata" : {
+            "uiGraphPos" : "{\"x\":772.734375,\"y\":47.3628206253}"
+            },
+          "name" : "BoneNameArrayToIDArray_1",
+          "ports" : [
+            {
+              "objectType" : "InstPort",
+              "name" : "exec",
+              "nodePortType" : "IO"
+              },
+            {
+              "objectType" : "InstPort",
+              "name" : "this",
+              "nodePortType" : "In"
+              },
+            {
+              "objectType" : "InstPort",
+              "name" : "names",
+              "nodePortType" : "In"
+              },
+            {
+              "objectType" : "InstPort",
+              "name" : "result",
+              "nodePortType" : "Out"
+              }
+            ],
+          "executable" : "fabricUtils.Converters.BoneNameArrayToIDArray",
+          "presetGUID" : "978B810C036AE15FD854D39D673A46DE"
+          },
+        {
+          "objectType" : "Inst",
+          "metadata" : {
+            "uiGraphPos" : "{\"x\":597.734375,\"y\":117.862823486}"
+            },
+          "name" : "Split_1",
+          "ports" : [
+            {
+              "objectType" : "InstPort",
+              "name" : "exec",
+              "nodePortType" : "IO"
+              },
+            {
+              "objectType" : "InstPort",
+              "name" : "this",
+              "nodePortType" : "In"
+              },
+            {
+              "objectType" : "InstPort",
+              "name" : "separator",
+              "nodePortType" : "In",
+              "defaultValues" : {
+                "String" : ","
+                }
+              },
+            {
+              "objectType" : "InstPort",
+              "name" : "result",
+              "nodePortType" : "Out"
+              }
+            ],
+          "executable" : "Fabric.Exts.Util.String.Split",
+          "presetGUID" : "E09CFC151D7658D0FD0EAA6DB4FFB18B"
+          }
+        ],
+      "connections" : {
+        "character" : [
+          "SetPose_1.this",
+          "GetSkeleton_2.this"
+          ],
+        "boneNames" : [
+          "Split_1.this"
+          ],
+        "file" : [
+          "GetClipPoseFromQuatCSV_1.filepath"
+          ],
+        "separator" : [
+          "GetClipPoseFromQuatCSV_1.separator"
+          ],
+        "time" : [
+          "SetClipPoseTime.time"
+          ],
+        "SetClipPoseTime.this" : [
+          "posedCharacter"
+          ],
+        "SetPose_1.this" : [
+          "SetClipPoseTime.this"
+          ],
+        "Cache_2.value" : [
+          "SetPose_1.pose"
+          ],
+        "GetSkeleton_2.result" : [
+          "GetClipPoseFromQuatCSV_1.skeleton",
+          "BoneNameArrayToIDArray_1.this"
+          ],
+        "GetClipPoseFromQuatCSV_1.result" : [
+          "Cache_2.value"
+          ],
+        "BoneNameArrayToIDArray_1.result" : [
+          "GetClipPoseFromQuatCSV_1.boneIDs"
+          ],
+        "Split_1.result" : [
+          "BoneNameArrayToIDArray_1.names"
+          ]
+        }
+      },
+    "Fabric.Exts.Characters.Character.SetClipPoseTime" : {
+      "objectType" : "Func",
+      "metadata" : {
+        "uiDocUrl" : "http://docs.fabric-engine.com/FabricEngine/2.3.0/HTML/KLExtensionsGuide/Characters/Character.html",
+        "uiTooltip" : "changes the time on the clip pose\n\n Supported by Character"
+        },
+      "title" : "SetClipPoseTime",
+      "ports" : [
+        {
+          "objectType" : "ExecPort",
+          "name" : "exec",
+          "nodePortType" : "IO",
+          "execPortType" : "IO",
+          "typeSpec" : "Execute"
+          },
+        {
+          "objectType" : "ExecPort",
+          "name" : "this",
+          "nodePortType" : "IO",
+          "execPortType" : "IO",
+          "typeSpec" : "Character"
+          },
+        {
+          "objectType" : "ExecPort",
+          "name" : "time",
+          "nodePortType" : "Out",
+          "execPortType" : "In",
+          "typeSpec" : "Float32"
+          }
+        ],
+      "extDeps" : {
+        "Characters" : "*"
+        },
+      "presetGUID" : "61A54402005662F78D1EB2B48DB39451",
+      "code" : "require Characters;
+
+dfgEntry {
+  this.setClipPoseTime(time);
+}
+"
+      },
+    "Fabric.Exts.Characters.Character.SetPose" : {
+      "objectType" : "Func",
+      "metadata" : {
+        "uiDocUrl" : "http://docs.fabric-engine.com/FabricEngine/2.3.0/HTML/KLExtensionsGuide/Characters/Character.html",
+        "uiTooltip" : "Sets a the pose object for this character.\n\n Supported by Character"
+        },
+      "title" : "SetPose",
+      "ports" : [
+        {
+          "objectType" : "ExecPort",
+          "name" : "exec",
+          "nodePortType" : "IO",
+          "execPortType" : "IO",
+          "typeSpec" : "Execute"
+          },
+        {
+          "objectType" : "ExecPort",
+          "name" : "this",
+          "nodePortType" : "IO",
+          "execPortType" : "IO",
+          "typeSpec" : "Character"
+          },
+        {
+          "objectType" : "ExecPort",
+          "name" : "pose",
+          "nodePortType" : "Out",
+          "execPortType" : "In",
+          "typeSpec" : "IPose"
+          }
+        ],
+      "extDeps" : {
+        "Characters" : "*"
+        },
+      "presetGUID" : "03D48EF598593C73963AF0A4F3828076",
+      "code" : "require Characters;
+
+dfgEntry {
+  this.setPose(pose);
+}
+"
+      },
+    "Fabric.Core.Data.Cache" : {
+      "objectType" : "Func",
+      "metadata" : {
+        "uiNodeColor" : "{\n  \"r\" : 214,\n  \"g\" : 191,\n  \"b\" : 103\n  }",
+        "uiAlwaysShowDaisyChainPorts" : "true",
+        "uiHeaderColor" : "{\n  \"r\" : 188,\n  \"g\" : 129,\n  \"b\" : 83\n  }"
+        },
+      "title" : "Cache",
+      "cacheRule" : "always",
+      "ports" : [
+        {
+          "objectType" : "ExecPort",
+          "name" : "exec",
+          "nodePortType" : "IO",
+          "execPortType" : "IO",
+          "typeSpec" : "Execute"
+          },
+        {
+          "objectType" : "ExecPort",
+          "name" : "value",
+          "nodePortType" : "Out",
+          "execPortType" : "In",
+          "typeSpec" : "$TYPE$"
+          }
+        ],
+      "extDeps" : {},
+      "presetGUID" : "D903AFD981FE9214C69943F542D5FD60",
+      "code" : "dfgEntry {
+}
+"
+      },
+    "Fabric.Exts.Characters.Func.GetSkeleton" : {
+      "objectType" : "Func",
+      "metadata" : {
+        "uiDocUrl" : "http://docs.fabric-engine.com/FabricEngine/2.3.0/HTML/KLExtensionsGuide/Characters/ICharacter.html",
+        "uiTooltip" : "\n\n Supported by ICharacter,Character"
+        },
+      "title" : "GetSkeleton",
+      "ports" : [
+        {
+          "objectType" : "ExecPort",
+          "name" : "exec",
+          "nodePortType" : "IO",
+          "execPortType" : "IO",
+          "typeSpec" : "Execute"
+          },
+        {
+          "objectType" : "ExecPort",
+          "name" : "this",
+          "nodePortType" : "Out",
+          "execPortType" : "In",
+          "typeSpec" : "$TYPE$"
+          },
+        {
+          "objectType" : "ExecPort",
+          "name" : "result",
+          "nodePortType" : "In",
+          "execPortType" : "Out",
+          "typeSpec" : "ISkeleton"
+          }
+        ],
+      "extDeps" : {
+        "Characters" : "*"
+        },
+      "presetGUID" : "A6403CFCD4204EBC55E5EBF8999EF98E",
+      "code" : "require Characters;
+
+dfgEntry {
+  result = this.getSkeleton();
+}
+"
+      },
+    "fabricUtils.FileIO.GetClipPoseFromQuatCSV" : {
+      "objectType" : "Func",
+      "metadata" : {
+        "uiTooltip" : "Gets pose from quaternions stored in a CSV file. Quaternions must be stored in local space.\n\nSupported types:\n  skeleton: ISkeleton\n  filepath: FilePath\n  separator: String\n  boneIDs: Index[]\n  result: ClipPose\n"
+        },
+      "title" : "GetClipPoseFromQuatCSV",
+      "ports" : [
+        {
+          "objectType" : "ExecPort",
+          "name" : "exec",
+          "nodePortType" : "IO",
+          "execPortType" : "IO",
+          "typeSpec" : "Execute"
+          },
+        {
+          "objectType" : "ExecPort",
+          "name" : "skeleton",
+          "nodePortType" : "Out",
+          "execPortType" : "In",
+          "typeSpec" : "ISkeleton"
+          },
+        {
+          "objectType" : "ExecPort",
+          "name" : "filepath",
+          "nodePortType" : "Out",
+          "execPortType" : "In",
+          "typeSpec" : "FilePath"
+          },
+        {
+          "objectType" : "ExecPort",
+          "name" : "separator",
+          "nodePortType" : "Out",
+          "execPortType" : "In",
+          "typeSpec" : "String"
+          },
+        {
+          "objectType" : "ExecPort",
+          "name" : "boneIDs",
+          "nodePortType" : "Out",
+          "execPortType" : "In",
+          "typeSpec" : "Index[]"
+          },
+        {
+          "objectType" : "ExecPort",
+          "name" : "result",
+          "nodePortType" : "In",
+          "execPortType" : "Out",
+          "typeSpec" : "ClipPose"
+          }
+        ],
+      "extDeps" : {
+        "fabricUtils" : "*"
+        },
+      "presetGUID" : "B6856E0088689FC6F7C5142EB507ECAE",
+      "code" : "require fabricUtils;
+
+dfgEntry {
+  getClipPoseFromQuatCSV(skeleton, filepath, separator, boneIDs, result);
+}
+"
+      },
+    "fabricUtils.Converters.BoneNameArrayToIDArray" : {
+      "objectType" : "Func",
+      "metadata" : {
+        "uiTooltip" : "Converts an array of bone names into an array of bone indices.\n\nSupported types:\n  this: ISkeleton\n  names: String[]\n  result: Index[]\n"
+        },
+      "title" : "BoneNameArrayToIDArray",
+      "ports" : [
+        {
+          "objectType" : "ExecPort",
+          "name" : "exec",
+          "nodePortType" : "IO",
+          "execPortType" : "IO",
+          "typeSpec" : "Execute"
+          },
+        {
+          "objectType" : "ExecPort",
+          "name" : "this",
+          "nodePortType" : "Out",
+          "execPortType" : "In",
+          "typeSpec" : "ISkeleton"
+          },
+        {
+          "objectType" : "ExecPort",
+          "name" : "names",
+          "nodePortType" : "Out",
+          "execPortType" : "In",
+          "typeSpec" : "String[]"
+          },
+        {
+          "objectType" : "ExecPort",
+          "name" : "result",
+          "nodePortType" : "In",
+          "execPortType" : "Out",
+          "typeSpec" : "Index[]"
+          }
+        ],
+      "extDeps" : {
+        "fabricUtils" : "*"
+        },
+      "presetGUID" : "978B810C036AE15FD854D39D673A46DE",
+      "code" : "require fabricUtils;
+
+dfgEntry {
+  boneNameArrayToIDArray(this, names, result);
+}
+"
+      },
+    "Fabric.Exts.Util.String.Split" : {
+      "objectType" : "Func",
+      "metadata" : {
+        "uiTooltip" : "splitting this string by a given separator\n\n Supported by String"
+        },
+      "title" : "Split",
+      "ports" : [
+        {
+          "objectType" : "ExecPort",
+          "name" : "exec",
+          "nodePortType" : "IO",
+          "execPortType" : "IO",
+          "typeSpec" : "Execute"
+          },
+        {
+          "objectType" : "ExecPort",
+          "name" : "this",
+          "nodePortType" : "Out",
+          "execPortType" : "In",
+          "typeSpec" : "String"
+          },
+        {
+          "objectType" : "ExecPort",
+          "name" : "separator",
+          "nodePortType" : "Out",
+          "execPortType" : "In",
+          "typeSpec" : "String"
+          },
+        {
+          "objectType" : "ExecPort",
+          "name" : "result",
+          "nodePortType" : "In",
+          "execPortType" : "Out",
+          "typeSpec" : "String[]"
+          }
+        ],
+      "extDeps" : {
+        "Util" : "*"
+        },
+      "presetGUID" : "E09CFC151D7658D0FD0EAA6DB4FFB18B",
+      "code" : "require Util;
+
+dfgEntry {
+  result = this.split(separator);
+}
+"
+      }
+    }
+  }

@@ -2,9 +2,9 @@
 {
   "objectType" : "Func",
   "metadata" : {
-    "uiTooltip" : "Gets pose from quaternions stored in a CSV file. Quaternions must be stored in local space.\n\nSupported types:\n  skeleton: ISkeleton\n  filepath: FilePath\n  separator: String\n  boneIDs: Index[]\n  result: ClipPose\n"
+    "uiTooltip" : "Generates an index array from a value range.\n\nSupported types:\n  from: Index\n  to: Index\n  step: Size\n  result: Index[]\n"
     },
-  "title" : "GetClipPoseFromQuatCSV",
+  "title" : "IndexArrayFromRange",
   "ports" : [
     {
       "objectType" : "ExecPort",
@@ -15,48 +15,41 @@
       },
     {
       "objectType" : "ExecPort",
-      "name" : "skeleton",
+      "name" : "from",
       "nodePortType" : "Out",
       "execPortType" : "In",
-      "typeSpec" : "ISkeleton"
+      "typeSpec" : "Index"
       },
     {
       "objectType" : "ExecPort",
-      "name" : "filepath",
+      "name" : "to",
       "nodePortType" : "Out",
       "execPortType" : "In",
-      "typeSpec" : "FilePath"
+      "typeSpec" : "Index"
       },
     {
       "objectType" : "ExecPort",
-      "name" : "separator",
+      "name" : "step",
       "nodePortType" : "Out",
       "execPortType" : "In",
-      "typeSpec" : "String"
-      },
-    {
-      "objectType" : "ExecPort",
-      "name" : "boneIDs",
-      "nodePortType" : "Out",
-      "execPortType" : "In",
-      "typeSpec" : "Index[]"
+      "typeSpec" : "Size"
       },
     {
       "objectType" : "ExecPort",
       "name" : "result",
       "nodePortType" : "In",
       "execPortType" : "Out",
-      "typeSpec" : "ClipPose"
+      "typeSpec" : "Index[]"
       }
     ],
   "extDeps" : {
     "fabricUtils" : "*"
     },
-  "presetGUID" : "B6856E0088689FC6F7C5142EB507ECAE",
+  "presetGUID" : "ADC8CF33123FD3C616454F0781F5927F",
   "code" : "require fabricUtils;
 
 dfgEntry {
-  getClipPoseFromQuatCSV(skeleton, filepath, separator, boneIDs, result);
+  indexArrayFromRange(from, to, step, result);
 }
 "
   }
