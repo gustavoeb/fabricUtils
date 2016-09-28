@@ -2,7 +2,7 @@
 {
   "objectType" : "Func",
   "metadata" : {
-    "uiTooltip" : "Gets pose from quaternions stored in a CSV file. Quaternions must be stored in local space.\n\nSupported types:\n  skeleton: ISkeleton\n  filepath: FilePath\n  separator: String\n  boneIDs: Index[]\n  result: ClipPose\n"
+    "uiTooltip" : "Gets pose from quaternions stored in a CSV file. Quaternions must be stored in local space.\n\nSupported types:\n  skeleton: ISkeleton\n  boneIDs: Index[]\n  filepath: FilePath\n  separator: String\n  fps: Scalar\n  result: ClipPose\n"
     },
   "title" : "GetClipPoseFromQuatCSV",
   "ports" : [
@@ -22,6 +22,13 @@
       },
     {
       "objectType" : "ExecPort",
+      "name" : "boneIDs",
+      "nodePortType" : "Out",
+      "execPortType" : "In",
+      "typeSpec" : "Index[]"
+      },
+    {
+      "objectType" : "ExecPort",
       "name" : "filepath",
       "nodePortType" : "Out",
       "execPortType" : "In",
@@ -36,10 +43,10 @@
       },
     {
       "objectType" : "ExecPort",
-      "name" : "boneIDs",
+      "name" : "fps",
       "nodePortType" : "Out",
       "execPortType" : "In",
-      "typeSpec" : "Index[]"
+      "typeSpec" : "Scalar"
       },
     {
       "objectType" : "ExecPort",
@@ -52,11 +59,11 @@
   "extDeps" : {
     "fabricUtils" : "*"
     },
-  "presetGUID" : "B6856E0088689FC6F7C5142EB507ECAE",
+  "presetGUID" : "EDB7DE850DD546ABF487CBE4BEEE3458",
   "code" : "require fabricUtils;
 
 dfgEntry {
-  getClipPoseFromQuatCSV(skeleton, filepath, separator, boneIDs, result);
+  getClipPoseFromQuatCSV(skeleton, boneIDs, filepath, separator, fps, result);
 }
 "
   }

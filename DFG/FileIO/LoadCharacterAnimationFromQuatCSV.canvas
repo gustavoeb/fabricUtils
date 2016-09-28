@@ -5,9 +5,9 @@
     "uiNodeColor" : "{\n  \"r\" : 121,\n  \"g\" : 134,\n  \"b\" : 143\n  }",
     "uiGraphZoom" : "{\n  \"value\" : 1.0\n  }",
     "uiTooltip" : "Loads character animation from CSV files filled with quaternions.",
-    "uiGraphPan" : "{\n  \"x\" : -524.8377685546875,\n  \"y\" : 56.90699768066406\n  }"
+    "uiGraphPan" : "{\n  \"x\" : -486.8377685546875,\n  \"y\" : 166.4070043563843\n  }"
     },
-  "title" : "LoadAnimationFromQuatCSV",
+  "title" : "LoadCharacterAnimationFromQuatCSV",
   "ports" : [
     {
       "objectType" : "ExecPort",
@@ -33,7 +33,8 @@
       "name" : "file",
       "nodePortType" : "Out",
       "defaultValues" : {
-        "String" : ""
+        "String" : "",
+        "FilePath" : null
         },
       "execPortType" : "In"
       },
@@ -49,10 +50,22 @@
       },
     {
       "objectType" : "ExecPort",
+      "metadata" : {},
+      "name" : "fps",
+      "nodePortType" : "Out",
+      "defaultValues" : {
+        "Scalar" : 24
+        },
+      "execPortType" : "In",
+      "typeSpec" : "Scalar"
+      },
+    {
+      "objectType" : "ExecPort",
       "name" : "time",
       "nodePortType" : "Out",
       "defaultValues" : {
-        "Float64" : 0
+        "Float64" : 0,
+        "Float32" : 0
         },
       "execPortType" : "In"
       },
@@ -69,7 +82,7 @@
   "extDeps" : {
     "Characters" : "*"
     },
-  "presetGUID" : "6D1ADB581962A0CAB8FE9E532FDE2A49",
+  "presetGUID" : "4D0C431246B2F7E56AEFCCE34324F5C9",
   "nodes" : [
     {
       "objectType" : "Inst",
@@ -190,6 +203,11 @@
           },
         {
           "objectType" : "InstPort",
+          "name" : "boneIDs",
+          "nodePortType" : "In"
+          },
+        {
+          "objectType" : "InstPort",
           "name" : "filepath",
           "nodePortType" : "In"
           },
@@ -203,12 +221,17 @@
           },
         {
           "objectType" : "InstPort",
+          "name" : "fps",
+          "nodePortType" : "In"
+          },
+        {
+          "objectType" : "InstPort",
           "name" : "result",
           "nodePortType" : "Out"
           }
         ],
       "executable" : "fabricUtils.FileIO.GetClipPoseFromQuatCSV",
-      "presetGUID" : "B32F96810DC7AF7551F28181923CC5A8"
+      "presetGUID" : "EDB7DE850DD546ABF487CBE4BEEE3458"
       }
     ],
   "connections" : {
@@ -221,6 +244,9 @@
       ],
     "separator" : [
       "GetClipPoseFromQuatCSV_1.separator"
+      ],
+    "fps" : [
+      "GetClipPoseFromQuatCSV_1.fps"
       ],
     "time" : [
       "SetClipPoseTime.time"
@@ -249,7 +275,7 @@
         "uiNodeColor" : "{\n  \"r\" : 121,\n  \"g\" : 134,\n  \"b\" : 143\n  }",
         "uiGraphZoom" : "{\n  \"value\" : 1.0\n  }",
         "uiTooltip" : "Loads character animation from CSV files filled with quaternions.",
-        "uiGraphPan" : "{\n  \"x\" : -524.8377685546875,\n  \"y\" : 56.90699768066406\n  }"
+        "uiGraphPan" : "{\n  \"x\" : -486.8377685546875,\n  \"y\" : 166.4070043563843\n  }"
         },
       "title" : "LoadAnimationFromQuatCSV",
       "ports" : [
@@ -277,7 +303,8 @@
           "name" : "file",
           "nodePortType" : "Out",
           "defaultValues" : {
-            "String" : ""
+            "String" : "",
+            "FilePath" : null
             },
           "execPortType" : "In"
           },
@@ -293,10 +320,22 @@
           },
         {
           "objectType" : "ExecPort",
+          "metadata" : {},
+          "name" : "fps",
+          "nodePortType" : "Out",
+          "defaultValues" : {
+            "Scalar" : 24
+            },
+          "execPortType" : "In",
+          "typeSpec" : "Scalar"
+          },
+        {
+          "objectType" : "ExecPort",
           "name" : "time",
           "nodePortType" : "Out",
           "defaultValues" : {
-            "Float64" : 0
+            "Float64" : 0,
+            "Float32" : 0
             },
           "execPortType" : "In"
           },
@@ -313,7 +352,7 @@
       "extDeps" : {
         "Characters" : "*"
         },
-      "presetGUID" : "6D1ADB581962A0CAB8FE9E532FDE2A49",
+      "presetGUID" : "4D0C431246B2F7E56AEFCCE34324F5C9",
       "nodes" : [
         {
           "objectType" : "Inst",
@@ -434,6 +473,11 @@
               },
             {
               "objectType" : "InstPort",
+              "name" : "boneIDs",
+              "nodePortType" : "In"
+              },
+            {
+              "objectType" : "InstPort",
               "name" : "filepath",
               "nodePortType" : "In"
               },
@@ -447,12 +491,17 @@
               },
             {
               "objectType" : "InstPort",
+              "name" : "fps",
+              "nodePortType" : "In"
+              },
+            {
+              "objectType" : "InstPort",
               "name" : "result",
               "nodePortType" : "Out"
               }
             ],
           "executable" : "fabricUtils.FileIO.GetClipPoseFromQuatCSV",
-          "presetGUID" : "B32F96810DC7AF7551F28181923CC5A8"
+          "presetGUID" : "EDB7DE850DD546ABF487CBE4BEEE3458"
           }
         ],
       "connections" : {
@@ -465,6 +514,9 @@
           ],
         "separator" : [
           "GetClipPoseFromQuatCSV_1.separator"
+          ],
+        "fps" : [
+          "GetClipPoseFromQuatCSV_1.fps"
           ],
         "time" : [
           "SetClipPoseTime.time"
@@ -643,7 +695,7 @@ dfgEntry {
     "fabricUtils.FileIO.GetClipPoseFromQuatCSV" : {
       "objectType" : "Func",
       "metadata" : {
-        "uiTooltip" : "Gets pose from quaternions stored in a CSV file. Quaternions must be stored in local space.\n\nSupported types:\n  skeleton: ISkeleton\n  filepath: FilePath\n  separator: String\n  result: ClipPose\n"
+        "uiTooltip" : "Gets pose from quaternions stored in a CSV file. Quaternions must be stored in local space.\n\nSupported types:\n  skeleton: ISkeleton\n  boneIDs: Index[]\n  filepath: FilePath\n  separator: String\n  fps: Scalar\n  result: ClipPose\n"
         },
       "title" : "GetClipPoseFromQuatCSV",
       "ports" : [
@@ -663,6 +715,13 @@ dfgEntry {
           },
         {
           "objectType" : "ExecPort",
+          "name" : "boneIDs",
+          "nodePortType" : "Out",
+          "execPortType" : "In",
+          "typeSpec" : "Index[]"
+          },
+        {
+          "objectType" : "ExecPort",
           "name" : "filepath",
           "nodePortType" : "Out",
           "execPortType" : "In",
@@ -677,6 +736,13 @@ dfgEntry {
           },
         {
           "objectType" : "ExecPort",
+          "name" : "fps",
+          "nodePortType" : "Out",
+          "execPortType" : "In",
+          "typeSpec" : "Scalar"
+          },
+        {
+          "objectType" : "ExecPort",
           "name" : "result",
           "nodePortType" : "In",
           "execPortType" : "Out",
@@ -686,11 +752,11 @@ dfgEntry {
       "extDeps" : {
         "fabricUtils" : "*"
         },
-      "presetGUID" : "B32F96810DC7AF7551F28181923CC5A8",
+      "presetGUID" : "EDB7DE850DD546ABF487CBE4BEEE3458",
       "code" : "require fabricUtils;
 
 dfgEntry {
-  getClipPoseFromQuatCSV(skeleton, filepath, separator, result);
+  getClipPoseFromQuatCSV(skeleton, boneIDs, filepath, separator, fps, result);
 }
 "
       }

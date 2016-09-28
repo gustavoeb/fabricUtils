@@ -7,7 +7,7 @@
     "uiTooltip" : "Writes character animation from CSV files filled with quaternions.",
     "uiGraphPan" : "{\n  \"x\" : -671.2005615234375,\n  \"y\" : -45.53307342529297\n  }"
     },
-  "title" : "WriteAnimationToQuatCSV",
+  "title" : "WriteCharacterAnimationToQuatCSV",
   "ports" : [
     {
       "objectType" : "ExecPort",
@@ -70,8 +70,10 @@
       "typeSpec" : "TextWriter"
       }
     ],
-  "extDeps" : {},
-  "presetGUID" : "DB74154110218B0ACB84847533DAC8BB",
+  "extDeps" : {
+    "Characters" : "*"
+    },
+  "presetGUID" : "59CFC098C13EE019C8BD0174764B4D2E",
   "nodes" : [
     {
       "objectType" : "Inst",
@@ -119,12 +121,17 @@
           },
         {
           "objectType" : "InstPort",
+          "name" : "globalSpace",
+          "nodePortType" : "In"
+          },
+        {
+          "objectType" : "InstPort",
           "name" : "result",
           "nodePortType" : "Out"
           }
         ],
       "executable" : "fabricUtils.Converters.PoseToXfoArray",
-      "presetGUID" : "CB3AB61504E1CE6D25612184ED51F1A5"
+      "presetGUID" : "38B5F4ABA2AFC0251221E3498E9CC336"
       },
     {
       "objectType" : "Inst",
@@ -235,7 +242,7 @@
       ]
     },
   "requiredPresets" : {
-    "fabricUtils.FileIO.WriteAnimationToQuatCSV" : {
+    "fabricUtils.FileIO.WriteCharacterAnimationToQuatCSV" : {
       "objectType" : "Graph",
       "metadata" : {
         "uiTextColor" : "{\n  \"r\" : 20,\n  \"g\" : 20,\n  \"b\" : 20\n  }",
@@ -244,7 +251,7 @@
         "uiTooltip" : "Writes character animation from CSV files filled with quaternions.",
         "uiGraphPan" : "{\n  \"x\" : -671.2005615234375,\n  \"y\" : -45.53307342529297\n  }"
         },
-      "title" : "WriteAnimationToQuatCSV",
+      "title" : "WriteCharacterAnimationToQuatCSV",
       "ports" : [
         {
           "objectType" : "ExecPort",
@@ -307,8 +314,10 @@
           "typeSpec" : "TextWriter"
           }
         ],
-      "extDeps" : {},
-      "presetGUID" : "DB74154110218B0ACB84847533DAC8BB",
+      "extDeps" : {
+        "Characters" : "*"
+        },
+      "presetGUID" : "59CFC098C13EE019C8BD0174764B4D2E",
       "nodes" : [
         {
           "objectType" : "Inst",
@@ -356,12 +365,17 @@
               },
             {
               "objectType" : "InstPort",
+              "name" : "globalSpace",
+              "nodePortType" : "In"
+              },
+            {
+              "objectType" : "InstPort",
               "name" : "result",
               "nodePortType" : "Out"
               }
             ],
           "executable" : "fabricUtils.Converters.PoseToXfoArray",
-          "presetGUID" : "CB3AB61504E1CE6D25612184ED51F1A5"
+          "presetGUID" : "38B5F4ABA2AFC0251221E3498E9CC336"
           },
         {
           "objectType" : "Inst",
@@ -516,7 +530,7 @@ dfgEntry {
     "fabricUtils.Converters.PoseToXfoArray" : {
       "objectType" : "Func",
       "metadata" : {
-        "uiTooltip" : "Converts a skeleton's pose to an array of Xfos.\n\nSupported types:\n  this: IPose\n  result: Xfo[]\n"
+        "uiTooltip" : "Converts a skeleton's pose to an array of Xfos. Returns Xfos in local and global spaces.\n\nSupported types:\n  this: IPose\n  globalSpace: Boolean\n  result: Xfo[]\n"
         },
       "title" : "PoseToXfoArray",
       "ports" : [
@@ -536,6 +550,13 @@ dfgEntry {
           },
         {
           "objectType" : "ExecPort",
+          "name" : "globalSpace",
+          "nodePortType" : "Out",
+          "execPortType" : "In",
+          "typeSpec" : "Boolean"
+          },
+        {
+          "objectType" : "ExecPort",
           "metadata" : {
             "uiColor" : "{\n  \"r\" : 249,\n  \"g\" : 157,\n  \"b\" : 28\n  }"
             },
@@ -548,11 +569,11 @@ dfgEntry {
       "extDeps" : {
         "fabricUtils" : "*"
         },
-      "presetGUID" : "CB3AB61504E1CE6D25612184ED51F1A5",
+      "presetGUID" : "38B5F4ABA2AFC0251221E3498E9CC336",
       "code" : "require fabricUtils;
 
 dfgEntry {
-  poseToXfoArray(this, result);
+  poseToXfoArray(this, globalSpace, result);
 }
 "
       },
