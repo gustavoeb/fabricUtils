@@ -5,7 +5,7 @@
     "uiNodeColor" : "{\n  \"r\" : 121,\n  \"g\" : 134,\n  \"b\" : 143\n  }",
     "uiGraphZoom" : "{\n  \"value\" : 1.0\n  }",
     "uiTooltip" : "Writes character animation from CSV files filled with quaternions.",
-    "uiGraphPan" : "{\n  \"x\" : -671.2005615234375,\n  \"y\" : -45.53307342529297\n  }"
+    "uiGraphPan" : "{\n  \"x\" : -689.2005615234375,\n  \"y\" : -173.5330810546875\n  }"
     },
   "title" : "WriteCharacterAnimationToQuatCSV",
   "ports" : [
@@ -36,6 +36,17 @@
         "String" : ""
         },
       "execPortType" : "In"
+      },
+    {
+      "objectType" : "ExecPort",
+      "metadata" : {},
+      "name" : "separator",
+      "nodePortType" : "Out",
+      "defaultValues" : {
+        "String" : ";"
+        },
+      "execPortType" : "In",
+      "typeSpec" : "String"
       },
     {
       "objectType" : "ExecPort",
@@ -73,7 +84,7 @@
   "extDeps" : {
     "Characters" : "*"
     },
-  "presetGUID" : "59CFC098C13EE019C8BD0174764B4D2E",
+  "presetGUID" : "1308A469001D81B8C2C35FD355B56571",
   "nodes" : [
     {
       "objectType" : "Inst",
@@ -219,6 +230,9 @@
     "filePath" : [
       "WriteLinePerFrame_1.filePath"
       ],
+    "separator" : [
+      "XfoArrayToQuatString_1.separator"
+      ],
     "startFrame" : [
       "WriteLinePerFrame_1.startFrame"
       ],
@@ -249,7 +263,7 @@
         "uiNodeColor" : "{\n  \"r\" : 121,\n  \"g\" : 134,\n  \"b\" : 143\n  }",
         "uiGraphZoom" : "{\n  \"value\" : 1.0\n  }",
         "uiTooltip" : "Writes character animation from CSV files filled with quaternions.",
-        "uiGraphPan" : "{\n  \"x\" : -671.2005615234375,\n  \"y\" : -45.53307342529297\n  }"
+        "uiGraphPan" : "{\n  \"x\" : -689.2005615234375,\n  \"y\" : -173.5330810546875\n  }"
         },
       "title" : "WriteCharacterAnimationToQuatCSV",
       "ports" : [
@@ -280,6 +294,17 @@
             "String" : ""
             },
           "execPortType" : "In"
+          },
+        {
+          "objectType" : "ExecPort",
+          "metadata" : {},
+          "name" : "separator",
+          "nodePortType" : "Out",
+          "defaultValues" : {
+            "String" : ";"
+            },
+          "execPortType" : "In",
+          "typeSpec" : "String"
           },
         {
           "objectType" : "ExecPort",
@@ -317,7 +342,7 @@
       "extDeps" : {
         "Characters" : "*"
         },
-      "presetGUID" : "59CFC098C13EE019C8BD0174764B4D2E",
+      "presetGUID" : "1308A469001D81B8C2C35FD355B56571",
       "nodes" : [
         {
           "objectType" : "Inst",
@@ -462,6 +487,9 @@
           ],
         "filePath" : [
           "WriteLinePerFrame_1.filePath"
+          ],
+        "separator" : [
+          "XfoArrayToQuatString_1.separator"
           ],
         "startFrame" : [
           "WriteLinePerFrame_1.startFrame"
