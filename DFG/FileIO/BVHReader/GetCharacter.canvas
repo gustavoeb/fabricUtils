@@ -1,0 +1,41 @@
+// Created by kl2dfg (processFunction)
+{
+  "objectType" : "Func",
+  "metadata" : {
+    "uiTooltip" : "Outputs the character with a skeleton and all its motion clips.\n\nSupported types:\n  this: BVHReader\n  result: Character\n"
+    },
+  "title" : "GetCharacter",
+  "ports" : [
+    {
+      "objectType" : "ExecPort",
+      "name" : "exec",
+      "nodePortType" : "IO",
+      "execPortType" : "IO",
+      "typeSpec" : "Execute"
+      },
+    {
+      "objectType" : "ExecPort",
+      "name" : "this",
+      "nodePortType" : "Out",
+      "execPortType" : "In",
+      "typeSpec" : "BVHReader"
+      },
+    {
+      "objectType" : "ExecPort",
+      "name" : "result",
+      "nodePortType" : "In",
+      "execPortType" : "Out",
+      "typeSpec" : "Character"
+      }
+    ],
+  "extDeps" : {
+    "fabricUtils" : "*"
+    },
+  "presetGUID" : "BA0245F136C565F5AD2810B4392B8DCA",
+  "code" : "require fabricUtils;
+
+dfgEntry {
+  result = this.getCharacter();
+}
+"
+  }

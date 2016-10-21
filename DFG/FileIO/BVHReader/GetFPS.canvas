@@ -1,0 +1,41 @@
+// Created by kl2dfg (processFunction)
+{
+  "objectType" : "Func",
+  "metadata" : {
+    "uiTooltip" : "Outputs the BVH's FPS.\n\nSupported types:\n  this: BVHReader\n  result: Scalar\n"
+    },
+  "title" : "GetFPS",
+  "ports" : [
+    {
+      "objectType" : "ExecPort",
+      "name" : "exec",
+      "nodePortType" : "IO",
+      "execPortType" : "IO",
+      "typeSpec" : "Execute"
+      },
+    {
+      "objectType" : "ExecPort",
+      "name" : "this",
+      "nodePortType" : "Out",
+      "execPortType" : "In",
+      "typeSpec" : "BVHReader"
+      },
+    {
+      "objectType" : "ExecPort",
+      "name" : "result",
+      "nodePortType" : "In",
+      "execPortType" : "Out",
+      "typeSpec" : "Scalar"
+      }
+    ],
+  "extDeps" : {
+    "fabricUtils" : "*"
+    },
+  "presetGUID" : "2C242FB01B1F0AD3FCBD4FD5F87A3890",
+  "code" : "require fabricUtils;
+
+dfgEntry {
+  result = this.getFPS();
+}
+"
+  }

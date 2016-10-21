@@ -1,0 +1,6 @@
+operator entry() {
+  BVHReader bvh("C:\\Users\\gusta\\desktop\\spine.bvh");
+  report(bvh.skeleton.getDesc());
+  report(bvh.clip.getDesc());
+  report(bvh.character.getDesc());
+}

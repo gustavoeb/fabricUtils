@@ -4,18 +4,21 @@
     // classes
     
     // functions
-  "Arrays/indexArrayFromRange.kl",
+    "Arrays/indexArrayFromRange.kl",
 
-	"Characters/getAllDeformedMesh.kl",
+  	"Characters/getAllDeformedMesh.kl",
 
-  "Converters/boneNameArrayToIDArray.kl",
-	"Converters/poseToXfoArray.kl",
-  "Converters/quatStringToXfoArray.kl",
-	"Converters/referencePoseToXfoArray.kl",
-	"Converters/xfoArrayToQuatString.kl",
-  "Converters/xfoArrayToPose.kl",
+    "Converters/boneNameArrayToIDArray.kl",
+  	"Converters/poseToXfoArray.kl",
+    "Converters/quatStringToXfoArray.kl",
+  	"Converters/referencePoseToXfoArray.kl",
+  	"Converters/xfoArrayToQuatString.kl",
+    "Converters/xfoArrayToPose.kl",
 
-  "FileIO/getClipPoseFromQuatCSV.kl"
+    "FileIO/getClipPoseFromQuatCSV.kl",
+    "FileIO/BVHReader.kl",
+
+    //"Kinematics/FootstepConstraintSolver.kl"
 
     // other
 

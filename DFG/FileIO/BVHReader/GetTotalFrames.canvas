@@ -1,0 +1,41 @@
+// Created by kl2dfg (processFunction)
+{
+  "objectType" : "Func",
+  "metadata" : {
+    "uiTooltip" : "Outputs total frames, as declared in the BVH file.\n\nSupported types:\n  this: BVHReader\n  result: Scalar\n"
+    },
+  "title" : "GetTotalFrames",
+  "ports" : [
+    {
+      "objectType" : "ExecPort",
+      "name" : "exec",
+      "nodePortType" : "IO",
+      "execPortType" : "IO",
+      "typeSpec" : "Execute"
+      },
+    {
+      "objectType" : "ExecPort",
+      "name" : "this",
+      "nodePortType" : "Out",
+      "execPortType" : "In",
+      "typeSpec" : "BVHReader"
+      },
+    {
+      "objectType" : "ExecPort",
+      "name" : "result",
+      "nodePortType" : "In",
+      "execPortType" : "Out",
+      "typeSpec" : "Scalar"
+      }
+    ],
+  "extDeps" : {
+    "fabricUtils" : "*"
+    },
+  "presetGUID" : "D5B610009CBF14451E5BB0EFBFE8563F",
+  "code" : "require fabricUtils;
+
+dfgEntry {
+  result = this.getTotalFrames();
+}
+"
+  }

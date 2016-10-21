@@ -1,0 +1,76 @@
+// Created by kl2dfg (processFunction)
+{
+  "objectType" : "Func",
+  "metadata" : {
+    "uiTooltip" : "Decompose BVH's public properties for Canvas use.\n\nSupported types:\n  this: BVHReader\n  filePath: FilePath\n  frames: Integer\n  timestep: Scalar\n  skeleton: Skeleton\n  clip: Clip\n  character: Character\n"
+    },
+  "title" : "Decompose",
+  "ports" : [
+    {
+      "objectType" : "ExecPort",
+      "name" : "exec",
+      "nodePortType" : "IO",
+      "execPortType" : "IO",
+      "typeSpec" : "Execute"
+      },
+    {
+      "objectType" : "ExecPort",
+      "name" : "this",
+      "nodePortType" : "Out",
+      "execPortType" : "In",
+      "typeSpec" : "BVHReader"
+      },
+    {
+      "objectType" : "ExecPort",
+      "name" : "filePath",
+      "nodePortType" : "In",
+      "execPortType" : "Out",
+      "typeSpec" : "FilePath"
+      },
+    {
+      "objectType" : "ExecPort",
+      "name" : "frames",
+      "nodePortType" : "In",
+      "execPortType" : "Out",
+      "typeSpec" : "Integer"
+      },
+    {
+      "objectType" : "ExecPort",
+      "name" : "timestep",
+      "nodePortType" : "In",
+      "execPortType" : "Out",
+      "typeSpec" : "Scalar"
+      },
+    {
+      "objectType" : "ExecPort",
+      "name" : "skeleton",
+      "nodePortType" : "In",
+      "execPortType" : "Out",
+      "typeSpec" : "Skeleton"
+      },
+    {
+      "objectType" : "ExecPort",
+      "name" : "clip",
+      "nodePortType" : "In",
+      "execPortType" : "Out",
+      "typeSpec" : "Clip"
+      },
+    {
+      "objectType" : "ExecPort",
+      "name" : "character",
+      "nodePortType" : "In",
+      "execPortType" : "Out",
+      "typeSpec" : "Character"
+      }
+    ],
+  "extDeps" : {
+    "fabricUtils" : "*"
+    },
+  "presetGUID" : "A82CD35246256848C912B806BCF356C3",
+  "code" : "require fabricUtils;
+
+dfgEntry {
+  this.decompose(filePath, frames, timestep, skeleton, clip, character);
+}
+"
+  }

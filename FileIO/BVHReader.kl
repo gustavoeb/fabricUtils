@@ -1,0 +1,287 @@
+require Animation;
+require Characters;
+require FileIO;
+require Util;
+
+object BVHReader {
+  FilePath filePath;
+  Integer frames;
+  Scalar timestep;
+  Skeleton skeleton;
+  Clip clip;
+  Character character;
+  private TextReader reader;
+  private Integer lineCounter;
+  private String[] chRotOrd;
+};
+
+/// \dfgPresetTitle BVHReader
+/// \dfgPresetFolder FileIO\BVHReader
+/// BVH reader, default constructor
+function BVHReader(FilePath filePath) {
+  this.filePath = filePath;
+  this.skeleton = Skeleton();
+  this.clip = Clip('BVHClip');
+  this.read();
+  this.setCharacter();
+}
+
+/// \dfgPresetOmit
+/// The highest level read node.
+function BVHReader.read!() {
+  this.reader = TextReader(this.filePath.string());
+  this.readHierarchy();
+  this.readMotion();
+}
+
+/// \dfgPresetOmit
+/// After reading is done and all data is stored in memory this method sets up a Character object.
+function BVHReader.setCharacter!() {
+  ClipPose cp = ClipPose(this.skeleton, this.clip);
+  this.character = Character();
+  this.character.setSkeleton(this.skeleton);
+  this.character.setPose(cp);
+}
+
+/// \dfgPresetFolder FileIO\BVHReader
+/// Outputs the character with a skeleton and all its motion clips.
+function Character BVHReader.getCharacter() {
+  return this.character;
+}
+
+/// \dfgPresetFolder FileIO\BVHReader
+/// Outputs total frames, as declared in the BVH file.
+function Scalar BVHReader.getTotalFrames() {
+  return this.frames;
+}
+
+/// \dfgPresetFolder FileIO\BVHReader
+/// Outputs the BVH's timestep.
+function Scalar BVHReader.getTimestep() {
+  return this.timestep;
+}
+
+/// \dfgPresetFolder FileIO\BVHReader
+/// Outputs the BVH's FPS.
+function Scalar BVHReader.getFPS() {
+  return 1/this.timestep;
+}
+
+/// \dfgPresetFolder FileIO\BVHReader
+/// Decompose BVH's public properties for Canvas use.
+function BVHReader.decompose(
+  out FilePath filePath,
+  out Integer frames,
+  out Scalar timestep,
+  out Skeleton skeleton,
+  out Clip clip,
+  out Character character
+  ) {
+  filePath = this.filePath;
+  frames = this.frames;
+  timestep = this.timestep;
+  skeleton = this.skeleton;
+  clip = this.clip;
+  character = this.character;
+}
+
+/// \dfgPresetOmit
+/// Checks for the Hierarchy block in the file and triggers the reading of all of its nodes.
+function BVHReader.readHierarchy!() {
+  String tok[] = this.getTokens();
+  if(tok[0] != "HIERARCHY")
+    setError('Reading BVH expected HIERARCHY node at line ' + this.lineCounter + ', but instead got: ' + tok[0]);
+
+  this.readNodes();
+}
+
+/// \dfgPresetOmit
+/// Checks for the Motion block in the file and reads all frames, storing them in the BVHReaders clip.
+function BVHReader.readMotion!() {
+  // A motion block starts with the MOTION declaration and the ammount of frames and timestep follow.
+  String tok[] = this.getTokens();
+  if(tok[0] != "MOTION")
+    setError('Reading BVH expected MOTION node at line ' + this.lineCounter + ', but instead got: ' + tok);
+  
+  tok = this.getTokens();
+  if(tok[0] != "Frames:")
+    setError('Reading BVH expected number of frames at line ' + this.lineCounter + ', but instead got: ' + tok);
+  this.frames = tok[1].toInteger();
+
+  tok = this.getTokens();
+  if(tok[1] != "Time:")
+    setError('Reading BVH expected frame time at line ' + this.lineCounter + ', but instead got: ' + tok);
+  this.timestep = tok[2].toScalar();
+
+  // We arbitrarily start at frame one to match Canvas defaults. This is not a BVH concensus.
+  Integer frame = 1;
+  // Tracksets are stored in a dictionary, so we need the names to retrieve each of them.
+  String tsn[] = this.clip.getTrackSetNames();
+  // BVH files have varying rotation orders. Here we set up a conversion table.
+  // We use the RotationOrder struct as a reference, only we do the inverse operation.
+  // Exemple: zxy becomes 1,2,0 as the X axis is in position 1, Y axis in position 2 and so on...
+  Vec3 rotIndices[];
+  rotIndices.push(Vec3(0,1,2)); // xyz
+  rotIndices.push(Vec3(2,0,1)); // yzx
+  rotIndices.push(Vec3(1,2,0)); // zxy
+  rotIndices.push(Vec3(0,2,1)); // xzy
+  rotIndices.push(Vec3(2,1,0)); // zyx
+  rotIndices.push(Vec3(1,0,2)); // yxz
+  
+  // We dont relie on the total frames information stored in the 
+  // motion block and iterate until we reach the end of file.
+  while(~this.reader.eof()) { 
+    tok = this.getTokens(); // get a new line of tokens, that should represent a new frame
+
+    if(tok.size() > 0) {
+      Scalar time = this.timestep*frame; // set current frame time
+      // based on the rotation order of this channel get the correct indices for the roots rotation
+      RotationOrder ro(this.chRotOrd[0]);
+      Integer rix = Integer(rotIndices[ro.order].x)+3;
+      Integer riy = Integer(rotIndices[ro.order].y)+3;
+      Integer riz = Integer(rotIndices[ro.order].z)+3;
+      // than get the rotation from the tokens
+      Vec3 radAng = Vec3(Math_degToRad(tok[rix].toScalar()), Math_degToRad(tok[riy].toScalar()), Math_degToRad(tok[riz].toScalar()));
+      // get root translation from tokens
+      Vec3 tr = Vec3(tok[0].toScalar(),tok[1].toScalar(),tok[2].toScalar());
+      Xfo rootXfo(tr, Quat(Euler(radAng,ro)));
+      this.clip.getTrackSet(tsn[0]).setTrackValues(time, rootXfo); // store root xfo's keyframe
+
+      for(Size i=1; i<tsn.size(); i++) { // we start at 1, for the first node (root) was already processed
+        Size j = (i+1)*3; // first 6 channels are for the root, hence we jump the first six channels
+        // We check the rotation order of each channel
+        // In BVH is common for this to be consistent across the whole file but there is no garantee.
+        ro = RotationOrder(this.chRotOrd[i]);
+        rix = Integer(rotIndices[ro.order].x)+j;
+        riy = Integer(rotIndices[ro.order].y)+j;
+        riz = Integer(rotIndices[ro.order].z)+j;
+        radAng = Vec3(Math_degToRad(tok[rix].toScalar()), Math_degToRad(tok[riy].toScalar()), Math_degToRad(tok[  riz].toScalar()));
+        this.clip.getTrackSet(tsn[i]).setTrackValues(time, Quat(Euler(radAng, ro))); // store joint rotation as quaternions
+        // Currently there is no use in storing this as Euler since the Character extension in FE will
+        // convert our Euler into a new Euler with its default RotationOrder. Ergo, original values would not be preserved.
+      }
+
+      frame = frame+1; // Next!!
+    }
+  }
+}
+
+/// \dfgPresetOmit
+/// Reads each node in the hierarchy, creating the bone hierarchy and animation channels.
+function BVHReader.readNodes!() {
+  Integer h = 0; // Node hierarchy starts at level 0
+  Integer n = -1; // Node index
+  Integer p = -1; // Parent
+  Boolean end = false;
+  String tok[];
+  String nTok[];
+  
+  while(~end) {
+    tok = this.getTokens(); // get a new line
+    // in case the line describes a new node, read it, and step up one hierarchy level
+    if(tok[0] == 'ROOT' || tok[0] == 'JOINT') {     
+
+      // add a new bone
+      Bone bone();
+      bone.name = tok[1];
+      bone.parentIndex = p;
+      n = n+1;
+
+      // after a node is declared we expect a '{'
+      nTok = this.getTokens();
+      if(nTok[0] != '{')
+        setError('Reading BVH expected { at line ' + this.lineCounter + ', but instead got: ' + nTok[0]);
+      h=h+1; // level up the hierarchy
+      p=n; // new level will use current node as parent
+      
+      // then we expect the offset info
+      nTok = this.getTokens();
+      if(nTok[0] != 'OFFSET')
+        setError('Reading BVH expected OFFSET at line ' + this.lineCounter + ', but instead got: ' + nTok);
+      Xfo refPose = Xfo(Vec3(nTok[1].toScalar(), nTok[2].toScalar(), nTok[3].toScalar()));
+      if(bone.parentIndex == -1)
+        bone.referencePose = refPose;
+      else
+        bone.referencePose = refPose * this.skeleton.getBone(bone.parentIndex).referencePose;
+      
+      // then we expect the channels info
+      nTok = this.getTokens();
+      if(nTok[0] != 'CHANNELS')
+        setError('Reading BVH expected CHANNELS at line ' + this.lineCounter + ', but instead got: ' + nTok);
+      if(nTok[1] == 6){
+        KeyframeTrackSet xfoTs(bone.name, Xfo(), TRACKSETFLAG_TR_TRACKS+TRACKSETFLAG_ORI_TRACKS);
+        this.clip.addTrackSet(xfoTs);
+        // we store the rotation order of the root for further retrieving its keyframes
+        this.chRotOrd.push(nTok[5].left(1) + nTok[6].left(1) + nTok[7].left(1));
+      }
+      else {
+        KeyframeTrackSet rotTs(bone.name, Quat(), TRACKSETFLAG_ORI_TRACKS);
+        this.clip.addTrackSet(rotTs);
+        // we store the rotation order of each joint for further retrieving their keyframes
+        // it is common to have all rotation orders the same, for the each file.
+        // but there is no garantee, so we check.
+        this.chRotOrd.push(nTok[2].left(1) + nTok[3].left(1) + nTok[4].left(1));   
+      }
+
+      // Finally we add the bone
+      this.skeleton.addBone(bone);
+    }
+
+    // in case we reach the end of a chain
+    else if(tok[0] == 'End') {
+      nTok = this.getTokens();
+      if(nTok[0] != '{')
+        setError('Reading BVH expected { at line ' + this.lineCounter + ', but instead got: ' + nTok[0]);
+      nTok = this.getTokens();
+
+      if(nTok[0] != 'OFFSET')
+        setError('Reading BVH expected OFFSET at line ' + this.lineCounter + ', but instead got: ' + nTok);
+      // STORE LENGTH
+
+      nTok = this.getTokens();
+      if(nTok[0] != '}')
+        setError('Reading BVH expected } at line ' + this.lineCounter + ', but instead got: ' + nTok[0]);
+    }
+
+    // in case we reach the end of a hierarchy level
+    else if (tok[0] == '}') {
+      h = h-1; // level down
+      p = this.skeleton.getBone(p).parentIndex; // get parent of the previous hierarchy level
+    }
+      
+    // if node hierarchy is back to zero, time to end
+    if(h == 0) {
+      end = true;
+      this.skeleton.recomputeHierarchy();
+    }
+  }
+}
+
+/// \dfgPresetOmit
+/// Reads a new line, and converts into an array of useful strings (tokens).
+function String[] BVHReader.getTokens!() {
+  String s = this.readLine();
+  String tok[] = this.createTokens(s);
+  return tok;
+}
+
+/// \dfgPresetOmit
+/// Reads a new line in the BVH file.
+function String BVHReader.readLine!() {
+  String s = this.reader.readLine();
+  this.lineCounter = this.lineCounter + 1;
+  return s;
+}
+
+/// \dfgPresetOmit
+/// Removes tabs and spaces from a string and converts it into an array of words.
+function String[] BVHReader.createTokens(in String s) {
+  String s_ = s.replaceAny('\t',' '); // replace tabs for spaces
+  String w[] = s_.split(' '); // list words separated by spaces
+  String t[]; // remove spaces and we are left with valid tokens
+  for(Size i = 0; i<w.size(); i++) {
+    if(w[i] != '')
+      t.push(w[i]);
+  }
+  return t;
+}
