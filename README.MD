@@ -9,4 +9,4 @@ Presets for loading FBX characters, drawing characters with multiple meshes and 
 Presets for converting a pose or reference pose to Xfo arrays, CSV strings, and back.
 
 ### FileIO
-Reading and writing character pose clips to CSV files. Only quaternions (no xfos) for now.
+Reading and writing character pose clips to CSV files (quaternions only). Reading of BVH files (limited to local orientation of joints, reads translation only from the root node).
