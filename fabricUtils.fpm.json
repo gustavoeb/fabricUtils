@@ -8,6 +8,7 @@
 
   	"Characters/getAllDeformedMesh.kl",
 
+    //"Converters/boneIDArrayToParentIDArray.kl",
     "Converters/boneNameArrayToIDArray.kl",
   	"Converters/poseToXfoArray.kl",
     "Converters/quatStringToXfoArray.kl",
