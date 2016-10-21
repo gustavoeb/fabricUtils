@@ -3,9 +3,9 @@
   "metadata" : {
     "uiTextColor" : "{\n  \"r\" : 20,\n  \"g\" : 20,\n  \"b\" : 20\n  }",
     "uiNodeColor" : "{\n  \"r\" : 121,\n  \"g\" : 134,\n  \"b\" : 143\n  }",
-    "uiGraphZoom" : "{\n  \"value\" : 0.7128267288208008\n  }",
+    "uiGraphZoom" : "{\n  \"value\" : 0.7555962800979614\n  }",
     "uiTooltip" : "Localizes the pose of a character based on the transforms of one of its bones.",
-    "uiGraphPan" : "{\n  \"x\" : -215.4501953125,\n  \"y\" : 282.9501342773438\n  }"
+    "uiGraphPan" : "{\n  \"x\" : -275.0171474692966,\n  \"y\" : 345.0471250455965\n  }"
     },
   "title" : "LocalizeCharacterPose",
   "ports" : [
@@ -91,7 +91,7 @@
       }
     ],
   "extDeps" : {},
-  "presetGUID" : "578F3D2C67A7124A722F7EA2B2CE466A",
+  "presetGUID" : "E5318CE80BAB8B0D2E7D3FDBAC840CD8",
   "nodes" : [
     {
       "objectType" : "Inst",
@@ -502,7 +502,7 @@
     {
       "objectType" : "Inst",
       "metadata" : {
-        "uiGraphPos" : "{\"x\":1552.01068676,\"y\":-375.019995093}",
+        "uiGraphPos" : "{\"x\":1553.33420026,\"y\":-375.019989014}",
         "uiCollapsedState" : "2"
         },
       "name" : "ToBoolean_1",
@@ -678,27 +678,6 @@
     {
       "objectType" : "Inst",
       "metadata" : {
-        "uiGraphPos" : "{\"x\":1396.61866772,\"y\":-396.716705799}"
-        },
-      "name" : "Report_1",
-      "ports" : [
-        {
-          "objectType" : "InstPort",
-          "name" : "exec",
-          "nodePortType" : "IO"
-          },
-        {
-          "objectType" : "InstPort",
-          "name" : "value",
-          "nodePortType" : "In"
-          }
-        ],
-      "executable" : "Fabric.Core.Func.Report",
-      "presetGUID" : "E9448726588111C443C34B2F3D9B0172"
-      },
-    {
-      "objectType" : "Inst",
-      "metadata" : {
         "uiGraphPos" : "{\"x\":1310.55456543,\"y\":-207.81842041}"
         },
       "name" : "If_2",
@@ -743,8 +722,8 @@
       "FindBone_2.boneName"
       ],
     "mode" : [
-      "Report_1.value",
-      "Eq_1.lhs"
+      "Eq_1.lhs",
+      "ToBoolean_1.value"
       ],
     "offset" : [
       "Mul_3.lhs"
@@ -817,9 +796,6 @@
     "Eq_1.result" : [
       "If_2.cond"
       ],
-    "Report_1.value" : [
-      "ToBoolean_1.value"
-      ],
     "If_2.result" : [
       "Inverse_1.this"
       ]
@@ -830,9 +806,9 @@
       "metadata" : {
         "uiTextColor" : "{\n  \"r\" : 20,\n  \"g\" : 20,\n  \"b\" : 20\n  }",
         "uiNodeColor" : "{\n  \"r\" : 121,\n  \"g\" : 134,\n  \"b\" : 143\n  }",
-        "uiGraphZoom" : "{\n  \"value\" : 0.7128267288208008\n  }",
+        "uiGraphZoom" : "{\n  \"value\" : 0.7555962800979614\n  }",
         "uiTooltip" : "Localizes the pose of a character based on the transforms of one of its bones.",
-        "uiGraphPan" : "{\n  \"x\" : -215.4501953125,\n  \"y\" : 282.9501342773438\n  }"
+        "uiGraphPan" : "{\n  \"x\" : -275.0171474692966,\n  \"y\" : 345.0471250455965\n  }"
         },
       "title" : "LocalizeCharacterPose",
       "ports" : [
@@ -918,7 +894,7 @@
           }
         ],
       "extDeps" : {},
-      "presetGUID" : "578F3D2C67A7124A722F7EA2B2CE466A",
+      "presetGUID" : "E5318CE80BAB8B0D2E7D3FDBAC840CD8",
       "nodes" : [
         {
           "objectType" : "Inst",
@@ -1329,7 +1305,7 @@
         {
           "objectType" : "Inst",
           "metadata" : {
-            "uiGraphPos" : "{\"x\":1552.01068676,\"y\":-375.019995093}",
+            "uiGraphPos" : "{\"x\":1553.33420026,\"y\":-375.019989014}",
             "uiCollapsedState" : "2"
             },
           "name" : "ToBoolean_1",
@@ -1505,27 +1481,6 @@
         {
           "objectType" : "Inst",
           "metadata" : {
-            "uiGraphPos" : "{\"x\":1396.61866772,\"y\":-396.716705799}"
-            },
-          "name" : "Report_1",
-          "ports" : [
-            {
-              "objectType" : "InstPort",
-              "name" : "exec",
-              "nodePortType" : "IO"
-              },
-            {
-              "objectType" : "InstPort",
-              "name" : "value",
-              "nodePortType" : "In"
-              }
-            ],
-          "executable" : "Fabric.Core.Func.Report",
-          "presetGUID" : "E9448726588111C443C34B2F3D9B0172"
-          },
-        {
-          "objectType" : "Inst",
-          "metadata" : {
             "uiGraphPos" : "{\"x\":1310.55456543,\"y\":-207.81842041}"
             },
           "name" : "If_2",
@@ -1570,8 +1525,8 @@
           "FindBone_2.boneName"
           ],
         "mode" : [
-          "Report_1.value",
-          "Eq_1.lhs"
+          "Eq_1.lhs",
+          "ToBoolean_1.value"
           ],
         "offset" : [
           "Mul_3.lhs"
@@ -1643,9 +1598,6 @@
           ],
         "Eq_1.result" : [
           "If_2.cond"
-          ],
-        "Report_1.value" : [
-          "ToBoolean_1.value"
           ],
         "If_2.result" : [
           "Inverse_1.this"
@@ -3573,38 +3525,6 @@ dfgEntry {
       "code" : "
 dfgEntry {
 	result = lhs == rhs;
-}
-"
-      },
-    "Fabric.Core.Func.Report" : {
-      "objectType" : "Func",
-      "metadata" : {
-        "uiNodeColor" : "{\n  \"r\" : 214,\n  \"g\" : 191,\n  \"b\" : 103\n  }",
-        "uiAlwaysShowDaisyChainPorts" : "true",
-        "uiHeaderColor" : "{\n  \"r\" : 188,\n  \"g\" : 129,\n  \"b\" : 83\n  }"
-        },
-      "title" : "Report",
-      "ports" : [
-        {
-          "objectType" : "ExecPort",
-          "name" : "exec",
-          "nodePortType" : "IO",
-          "execPortType" : "IO",
-          "typeSpec" : "Execute"
-          },
-        {
-          "objectType" : "ExecPort",
-          "name" : "value",
-          "nodePortType" : "Out",
-          "execPortType" : "In",
-          "typeSpec" : "$TYPE$"
-          }
-        ],
-      "extDeps" : {},
-      "presetGUID" : "E9448726588111C443C34B2F3D9B0172",
-      "code" : "
-dfgEntry {
-	report(value);
 }
 "
       }
