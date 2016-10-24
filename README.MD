@@ -10,3 +10,6 @@ Presets for converting a pose or reference pose to Xfo arrays, CSV strings, and 
 
 ### FileIO
 Reading and writing character pose clips to CSV files (quaternions only). Reading of BVH files (limited to local orientation of joints, reads translation only from the root node).
+
+### Kinematics
+Very basic retargeting. Basicly just name mapping and orientation transfers. No footskating preventing fullbody-ik techniques at the moment.

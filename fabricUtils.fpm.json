@@ -8,6 +8,7 @@
 
   	"Characters/getAllDeformedMesh.kl",
 
+    "Converters/boneIDArrayToParentIDArray.kl",
     "Converters/boneNameArrayToIDArray.kl",
   	"Converters/poseToXfoArray.kl",
     "Converters/quatStringToXfoArray.kl",
@@ -18,6 +19,7 @@
     "FileIO/getClipPoseFromQuatCSV.kl",
     "FileIO/BVHReader.kl",
 
+    "Kinematics/BipedRetargetingSolver.kl"
     //"Kinematics/FootstepConstraintSolver.kl"
 
     // other

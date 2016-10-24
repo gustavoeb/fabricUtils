@@ -1,0 +1,37 @@
+{
+	"name":"SMPL_male",
+	"worldPos": {
+		"Reference":"m_avg_root"
+	},
+	"required": {
+		"Hips":"m_avg_Pelvis",
+		"LeftUpLeg":"m_avg_L_Hip",
+		"LeftLeg":"m_avg_L_Knee",
+		"LeftFoot":"m_avg_L_Ankle",
+		"RightUpLeg":"m_avg_R_Hip",
+		"RightLeg":"m_avg_R_Knee",
+		"RightFoot":"m_avg_R_Ankle",
+		"LeftArm":"m_avg_L_Shoulder",
+		"LeftForeArm":"m_avg_L_Elbow",
+		"LeftHand":"m_avg_L_Wrist",
+		"RightArm":"m_avg_R_Shoulder",
+		"RightForeArm":"m_avg_R_Elbow",
+		"RightHand":"m_avg_R_Wrist",
+		"Head":"m_avg_Head"
+	},
+	"spine":
+	{
+		"Spine":"m_avg_Spine1",
+		"Spine1":"m_avg_Spine2",
+		"Spine2":"m_avg_Spine3"
+	},
+	"auxilary": {
+		"LeftToeBase":"m_avg_L_Foot",
+		"RightToeBase":"m_avg_R_Foot",
+		"LeftShoulder":"m_avg_L_Collar",
+		"RightShoulder":"m_avg_R_Collar",
+		"Neck":"m_avg_Neck",
+		"LeftFingerBase":"m_avg_L_Hand",
+		"RightFingerBase":"m_avg_R_Hand"
+	}
+}
