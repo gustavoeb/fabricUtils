@@ -1,0 +1,14 @@
+require Characters;
+
+/// \dfgPresetFolder Converters
+/// Converts an array of bone names into an array of bone indices.
+function Index[] boneIDArrayToParentIDArray(
+  in ISkeleton this,
+  in Index ids[]
+) {
+  Index result[];
+  for (Integer i = 0; i <= ids.size() - 1; i++) {
+    result.push(this.getBone(ids[i]).parentIndex);
+  }
+  return result;
+}
