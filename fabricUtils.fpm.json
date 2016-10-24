@@ -18,6 +18,7 @@
     "FileIO/getClipPoseFromQuatCSV.kl",
     "FileIO/BVHReader.kl",
 
+    "Kinematics/BipedRetargetingSolver.kl",
     //"Kinematics/FootstepConstraintSolver.kl"
 
     // other
