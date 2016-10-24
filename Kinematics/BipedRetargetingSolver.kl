@@ -1,0 +1,283 @@
+require FileIO;
+require JSON;
+require Characters;
+
+object BipedRetargetingSolver {
+  Boolean drawDebug;
+  Scalar scaleFactor;
+  Character inCharacter;
+  Character outCharacter;
+  FilePath inNameTemplate;
+  FilePath outNameTemplate;
+  Scalar inRefFrame;
+  Scalar outRefFrame;
+  IPose inRefPose;
+  IPose outRefPose;
+  String luWorld[];
+  String luRequired[];
+  String luSpine[];
+  String luAuxilary[];
+  JSONDictValue inWorldNames;
+  Index inWorldIds[];
+  JSONDictValue outWorldNames;
+  Index outWorldIds[];
+  Index outWorldParents[];
+  JSONDictValue inRequiredNames;
+  Index inRequiredIds[];
+  JSONDictValue outRequiredNames;
+  Index outRequiredIds[];
+  Index outRequiredParents[];
+  JSONDictValue inSpineNames;
+  Index inSpineIds[];
+  JSONDictValue outSpineNames;
+  Index outSpineIds[];
+  Index outSpineParents[];
+  JSONDictValue inAuxilaryNames;
+  Index inAuxilaryIds[];
+  JSONDictValue outAuxilaryNames;
+  Index outAuxilaryIds[];
+  Index outAuxilaryParents[];
+};
+
+/// \dfgPresetTitle BipedRetargetingSolver_Constructor
+/// \dfgPresetColor Color(49, 60, 61)
+/// \dfgPresetHeaderColor Color(42, 94, 102)
+/// \dfgPresetTextColor Color(168, 229, 240)
+/// \dfgPresetFolder Kinematics\BipedRetargtingSolver
+function BipedRetargetingSolver(
+  ) {
+
+}
+
+/// \dfgPresetTitle BipedRetargetingSolver_Init
+/// \dfgPresetColor Color(49, 60, 61)
+/// \dfgPresetHeaderColor Color(42, 94, 102)
+/// \dfgPresetTextColor Color(168, 229, 240)
+/// \dfgPresetFolder Kinematics\BipedRetargtingSolver
+function BipedRetargetingSolver.init!(
+  in ICharacter inCharacter,
+  in ICharacter outCharacter,
+  in FilePath inNameTemplate,
+  in FilePath outNameTemplate,
+  in Scalar inRefFrame,
+  in Scalar outRefFrame
+  ) {
+  report('initiating default values');
+  this.inCharacter = inCharacter;
+  this.outCharacter = outCharacter;
+  this.inNameTemplate = inNameTemplate;
+  this.outNameTemplate = outNameTemplate;
+  this.changeRefFrame(inRefFrame, outRefFrame);
+
+  report('initiating indices mapping');
+  this.fillLookups();
+  this.fillMappingNames();
+  this.fillMappingIndices();
+}
+
+/// \dfgPresetTitle BipedRetargetingSolver_Solve
+/// \dfgPresetColor Color(49, 60, 61)
+/// \dfgPresetHeaderColor Color(42, 94, 102)
+/// \dfgPresetTextColor Color(168, 229, 240)
+/// \dfgPresetFolder Kinematics\BipedRetargtingSolver
+function BipedRetargetingSolver.solve!(
+  in Boolean drawDebug,
+  in Scalar scaleFactor,
+  in ICharacter inCharacter,
+  in ICharacter outCharacter,
+  in FilePath inNameTemplate,
+  in FilePath outNameTemplate,
+  in Scalar inRefFrame,
+  in Scalar outRefFrame,
+  out IPose retargetPose
+  ) {
+  if(inNameTemplate.string() != this.inNameTemplate.string() || outNameTemplate.string() != this.outNameTemplate.string())
+    this.init(inCharacter, outCharacter, inNameTemplate, outNameTemplate, inRefFrame, outRefFrame);
+  else if(this.inCharacter.getName() != inCharacter.getName() || this.outCharacter.getName() != outCharacter.getName())
+    this.init(inCharacter, outCharacter, inNameTemplate, outNameTemplate, inRefFrame, outRefFrame);  
+  else if(inRefFrame != this.inRefFrame || outRefFrame != this.outRefFrame)
+    this.changeRefFrame(inRefFrame, outRefFrame);
+  else if(scaleFactor != this.scaleFactor)
+    this.changeRefFrame(inRefFrame, outRefFrame);
+
+  IPose inPose = this.inCharacter.getPose().clone();
+  IPose outPose = this.outCharacter.getPose().clone().reset();
+
+  this.scaleFactor = scaleFactor;
+  Xfo scaleXfo(scaleFactor, scaleFactor, scaleFactor, 0, 0, 0, 0, 0, 0);
+
+  // world xfo retargeting
+  Index inWorldXfoIds[] = this.inWorldIds.clone();
+  Index outWorldXfoIds[] = this.outWorldIds.clone();
+  inWorldXfoIds.push(this.inRequiredIds[0]);
+  outWorldXfoIds.push(this.outRequiredIds[0]);
+
+  for(Size i=0; i<inWorldXfoIds.size(); i++) {
+    Index inId = inWorldXfoIds[i];
+    Index outId = outWorldXfoIds[i];
+    
+    Xfo riXfo = this.inRefPose.getBoneXfo(inId);
+    Xfo roXfo = this.outRefPose.getBoneXfo(outId);
+    
+    Xfo offset = riXfo.inverse()*roXfo;
+    
+    Xfo ixfo = inPose.getBoneXfo(inId);
+    Xfo oxfo = outPose.getBoneXfo(outId);
+    
+    oxfo = offset*ixfo;
+    oxfo = ixfo*scaleXfo;
+
+    outPose.setBoneXfo(outId, oxfo);
+  }
+  
+  Xfo hipsXfo = outPose.getBoneXfo(outWorldXfoIds[outWorldXfoIds.size()-1]);
+
+  // orientation only retargeting
+  Index inOrientationIds[];
+  Index outOrientationIds[];
+  inOrientationIds = this.inRequiredIds + this.inSpineIds + this.inAuxilaryIds;
+  outOrientationIds = this.outRequiredIds + this.outSpineIds + this.outAuxilaryIds;
+
+  for(Size i=0; i<inOrientationIds.size(); i++) {
+    Index inId = inOrientationIds[i];
+    Index outId = outOrientationIds[i];
+    
+    Quat riXfo = this.inRefPose.getBoneXfo(inId).ori;
+    Quat roXfo = this.outRefPose.getBoneXfo(outId).ori;
+    
+    Quat offset = riXfo.inverse()*roXfo;
+    
+    Xfo ixfo = hipsXfo.inverse()*inPose.getBoneXfo(inId);
+    Xfo oxfo = outPose.getBoneXfo(outId);
+
+    oxfo.ori = offset*ixfo.ori;
+    oxfo.ori = hipsXfo.ori*oxfo.ori;
+
+    outPose.setBoneXfo(outId, oxfo);
+  }
+
+  retargetPose = outPose;
+
+}
+
+/// \dfgPresetOmit
+function BipedRetargetingSolver.changeRefFrame!(
+  in Scalar inRefFrame,
+  in Scalar outRefFrame
+  ) {
+  this.inRefFrame = inRefFrame;
+  this.outRefFrame = outRefFrame;
+  this.inRefPose = this.inCharacter.setClipPoseTime(inRefFrame).getPose().clone();
+  this.outRefPose = this.outCharacter.setClipPoseTime(outRefFrame).getPose().clone();
+}
+
+/// \dfgPresetOmit
+function BipedRetargetingSolver.fillLookups!() {
+  // prepare lookup arrays
+    // world pos. xfos
+  this.luWorld.push("Reference");
+  this.luWorld.push("LeftFootFloor");
+  this.luWorld.push("RightFootFloor");
+  this.luWorld.push("LeftHandFloor");
+  this.luWorld.push("RightHandFloor");
+    // required joints
+  this.luRequired.push("Hips");
+  this.luRequired.push("LeftUpLeg");
+  this.luRequired.push("LeftLeg");
+  this.luRequired.push("LeftFoot");
+  this.luRequired.push("RightUpLeg");
+  this.luRequired.push("RightLeg");
+  this.luRequired.push("RightFoot");
+  this.luRequired.push("LeftArm");
+  this.luRequired.push("LeftForeArm");
+  this.luRequired.push("LeftHand");
+  this.luRequired.push("RightArm");
+  this.luRequired.push("RightForeArm");
+  this.luRequired.push("RightHand");
+  this.luRequired.push("Head");
+    // spine (variable n. of joints)
+  this.luSpine.push("Spine");
+  for(Size i=1; i<10; i++) {
+    this.luSpine.push("Spine" + i);
+  }
+    // auxilary joints
+  this.luAuxilary.push("LeftToeBase");
+  this.luAuxilary.push("RightToeBase");
+  this.luAuxilary.push("LeftShoulder");
+  this.luAuxilary.push("RightShoulder");
+  this.luAuxilary.push("Neck");
+  this.luAuxilary.push("LeftFingerBase");
+  this.luAuxilary.push("RightFingerBase");
+}
+
+/// \dfgPresetOmit
+function BipedRetargetingSolver.fillMappingNames!() {
+  // read input template
+  TextReader reader = TextReader(this.inNameTemplate.string());
+  String data = reader.readAll();
+  JSONDoc inDoc();
+  inDoc.parse(data);
+  this.inWorldNames  = inDoc.root.get('worldPos');
+  this.inRequiredNames  = inDoc.root.get('required');
+  this.inSpineNames  = inDoc.root.get('spine');
+  this.inAuxilaryNames  = inDoc.root.get('auxilary');
+  
+  // read output template
+  reader = TextReader(this.outNameTemplate.string());
+  data = reader.readAll();
+  JSONDoc outDoc();
+  outDoc.parse(data);
+  this.outWorldNames  = outDoc.root.get('worldPos');
+  this.outRequiredNames  = outDoc.root.get('required');
+  this.outSpineNames  = outDoc.root.get('spine');
+  this.outAuxilaryNames  = outDoc.root.get('auxilary');
+}
+
+/// \dfgPresetOmit
+function BipedRetargetingSolver.fillMappingIndices!() {
+  this.mapNamesToIndices(this.luWorld, this.inWorldNames, this.outWorldNames, true, false, this.inWorldIds, this.outWorldIds, this.outWorldParents);
+  this.mapNamesToIndices(this.luRequired, this.inRequiredNames, this.outRequiredNames,true, true, this.inRequiredIds, this.outRequiredIds, this.outRequiredParents);
+  this.mapNamesToIndices(this.luSpine, this.inSpineNames, this.outSpineNames,false, false, this.inSpineIds, this.outSpineIds, this.outSpineParents);
+  this.mapNamesToIndices(this.luAuxilary, this.inAuxilaryNames, this.outAuxilaryNames,true, false, this.inAuxilaryIds, this.outAuxilaryIds, this.outAuxilaryParents);
+}
+
+/// \dfgPresetOmit
+function BipedRetargetingSolver.mapNamesToIndices!(
+  in String lookup[],
+  in JSONDictValue inData,
+  in JSONDictValue outData,
+  in Boolean pair,
+  in Boolean enforce,
+  out Index inIds[],
+  out Index outIds[],
+  out Index parentIds[]
+){
+  String inNames[];
+  String outNames[];
+  for(Size i=0; i<lookup.size(); i++){
+    String l = lookup[i];
+    if(pair) {
+      if(inData.has(l) && outData.has(l)) {
+        inNames.push(inData.getString(l));
+        outNames.push(outData.getString(l));
+      }
+      else if(enforce && ~inData.has(l))
+        setError(l + ' node is mandatory, but was not found in the input mapping file.');
+      else if(enforce && ~outData.has(l))
+        setError(l + ' node is mandatory, but was not found in the output mapping file.');
+    }
+    else {
+      if(inData.has(l))
+        inNames.push(inData.getString(l));
+      else if(enforce && ~inData.has(l))
+        setError(l + ' node is mandatory, but was not found in the input mapping file.');
+      if(outData.has(l))
+        outNames.push(outData.getString(l));
+      else if(enforce && ~inData.has(l))
+        setError(l + ' node is mandatory, but was not found in the input mapping file.');  
+  }
+  }
+  inIds = boneNameArrayToIDArray(this.inCharacter.skeleton,inNames);
+  outIds = boneNameArrayToIDArray(this.outCharacter.skeleton,outNames);
+  parentIds = boneIDArrayToParentIDArray(this.outCharacter.skeleton,outIds);
+}

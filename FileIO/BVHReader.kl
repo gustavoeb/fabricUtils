@@ -38,9 +38,10 @@ function BVHReader.read!() {
 /// After reading is done and all data is stored in memory this method sets up a Character object.
 function BVHReader.setCharacter!() {
   ClipPose cp = ClipPose(this.skeleton, this.clip);
-  this.character = Character();
+  this.character = Character(this.filePath.fileName());
   this.character.setSkeleton(this.skeleton);
   this.character.setPose(cp);
+  this.character.incrementVersion();
 }
 
 /// \dfgPresetFolder FileIO\BVHReader
