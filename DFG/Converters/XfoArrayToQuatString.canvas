@@ -41,11 +41,11 @@
   "extDeps" : {
     "fabricUtils" : "*"
     },
-  "presetGUID" : "F2B20303A8BC405784E35DD7AD3B5662",
+  "presetGUID" : "C1F6613453868913A9BF5B6364C6ECE3",
   "code" : "require fabricUtils;
 
 dfgEntry {
-  result = xfoArrayToQuatString(this, separator);
+  xfoArrayToQuatString(this, separator, result);
 }
 "
   }

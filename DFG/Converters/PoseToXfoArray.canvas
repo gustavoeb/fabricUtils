@@ -41,11 +41,11 @@
   "extDeps" : {
     "fabricUtils" : "*"
     },
-  "presetGUID" : "300F294CCB15C3E26EF1AA4793C44BEE",
+  "presetGUID" : "38B5F4ABA2AFC0251221E3498E9CC336",
   "code" : "require fabricUtils;
 
 dfgEntry {
-  result = poseToXfoArray(this, globalSpace);
+  poseToXfoArray(this, globalSpace, result);
 }
 "
   }

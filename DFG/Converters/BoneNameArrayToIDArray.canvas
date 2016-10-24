@@ -38,11 +38,11 @@
   "extDeps" : {
     "fabricUtils" : "*"
     },
-  "presetGUID" : "A750A14D32A93B49F08C7836E203ECAA",
+  "presetGUID" : "978B810C036AE15FD854D39D673A46DE",
   "code" : "require fabricUtils;
 
 dfgEntry {
-  result = boneNameArrayToIDArray(this, names);
+  boneNameArrayToIDArray(this, names, result);
 }
 "
   }

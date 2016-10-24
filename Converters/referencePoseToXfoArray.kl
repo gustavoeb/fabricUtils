@@ -2,12 +2,11 @@ require Characters;
 
 /// \dfgPresetFolder Converters
 /// Gets the skeleton's reference pose into an array of Xfos.
-function Xfo[] referencePoseToXfoArray(
-  in ISkeleton this
+function referencePoseToXfoArray(
+  in ISkeleton this,
+  out Xfo result[]
 ) {
-  Xfo result[];
   for(Index i=0; i<this.getNumBones(); i++) {
     result.push(this.getReferencePose(i));
   }
-  return result;
 }

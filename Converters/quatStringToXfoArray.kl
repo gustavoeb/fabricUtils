@@ -3,12 +3,12 @@ require Util;
 
 /// \dfgPresetFolder Converters
 /// Converts a string of quaternions to an array of Xfos.
-function Xfo[] quatStringToXfoArray(
+function quatStringToXfoArray(
   in String this,
   in String separator,
+  out Xfo result[]
 )
 {
-  Xfo result[];
   String quatStringArray[] = this.splitAny(separator);
 
   for(Integer i=0; i < quatStringArray.size(); i+4)
@@ -16,5 +16,4 @@ function Xfo[] quatStringToXfoArray(
     Quat quat(quatStringArray[i].toScalar(), quatStringArray[i+1].toScalar(), quatStringArray[i+2].toScalar(), quatStringArray[i+3].toScalar());
     result.push(Xfo(quat));
   }
-  return result;
 }

@@ -2,12 +2,12 @@ require Characters;
 
 /// \dfgPresetFolder Converters
 /// Converts a skeleton's pose to an array of Xfos. Returns Xfos in local and global spaces.
-function Xfo[] poseToXfoArray(
+function poseToXfoArray(
   in IPose this,
-  in Boolean globalSpace
+  in Boolean globalSpace,
+  out Xfo result[]
 )
 {
-  Xfo result[];
   Size bones = Pose(this).skeleton.getNumBones();
   Xfo tmp_array[];
 
@@ -22,6 +22,6 @@ function Xfo[] poseToXfoArray(
     }
     tmp_array.push(bone);
   }
+
   result = tmp_array;
-  return result;
 }
