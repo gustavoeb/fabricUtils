@@ -2,13 +2,14 @@ require Characters;
 
 /// \dfgPresetFolder Converters
 /// Converts an array of bone names into an array of bone indices.
-function boneNameArrayToIDArray(
+function Index[] boneNameArrayToIDArray(
   in ISkeleton this,
-  in String names[],
-  out Index result[]
+  in String names[]
 )
 {
-  for (Integer i = 0; i <= names.size() - 1; i++) {
-    result.push(this.findBone(names[i],0));
-  }
+	Index result[];
+	for (Integer i = 0; i <= names.size() - 1; i++) {
+		result.push(this.findBone(names[i],0));
+	}
+	return result;
 }
