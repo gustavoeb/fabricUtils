@@ -9,7 +9,11 @@ function Index[] boneNameArrayToIDArray(
 {
 	Index result[];
 	for (Integer i = 0; i <= names.size() - 1; i++) {
-		result.push(this.findBone(names[i],0));
+		Index ID = this.findBone(names[i],0);
+		if(ID > 4294967294)
+			setError('Bone ' + names[i] + ' was not found.');
+		else
+			result.push(ID);
 	}
 	return result;
 }
