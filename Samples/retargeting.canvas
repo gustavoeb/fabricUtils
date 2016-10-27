@@ -1,15 +1,15 @@
 {
   "objectType" : "Graph",
   "metadata" : {
-    "camera_mat44" : "{\n  \"row0\" : {\n    \"x\" : 0.3439281284809113,\n    \"y\" : 0.1035803481936455,\n    \"z\" : -0.9333533644676209,\n    \"t\" : -85.49921417236328\n    },\n  \"row1\" : {\n    \"x\" : 3.759124410862569e-06,\n    \"y\" : 0.9938256740570068,\n    \"z\" : 0.1103269532322884,\n    \"t\" : 34.42546844482422\n    },\n  \"row2\" : {\n    \"x\" : 0.9390828609466553,\n    \"y\" : -0.03793907538056374,\n    \"z\" : 0.341829389333725,\n    \"t\" : 48.51362228393555\n    },\n  \"row3\" : {\n    \"x\" : 0,\n    \"y\" : 0,\n    \"z\" : 0,\n    \"t\" : 1\n    }\n  }",
+    "camera_mat44" : "{\n  \"row0\" : {\n    \"x\" : 0.8004847764968872,\n    \"y\" : -0.2228082418441773,\n    \"z\" : 0.5574530363082886,\n    \"t\" : 70.20521545410156\n    },\n  \"row1\" : {\n    \"x\" : -2.236529184074243e-08,\n    \"y\" : 0.9283666610717773,\n    \"z\" : 0.3716354668140411,\n    \"t\" : 52.11758422851563\n    },\n  \"row2\" : {\n    \"x\" : -0.6003639101982117,\n    \"y\" : -0.2970775067806244,\n    \"z\" : 0.7432702779769898,\n    \"t\" : 93.60697937011719\n    },\n  \"row3\" : {\n    \"x\" : 0,\n    \"y\" : 0,\n    \"z\" : 0,\n    \"t\" : 1\n    }\n  }",
     "timeline_start" : "0",
     "timeline_loopMode" : "1",
-    "uiGraphZoom" : "{\n  \"value\" : 0.4478699862957001\n  }",
+    "uiGraphZoom" : "{\n  \"value\" : 0.7299699187278748\n  }",
     "timeline_simMode" : "0",
-    "camera_focalDistance" : "107.9601135253906",
-    "timeline_current" : "223",
-    "timeline_end" : "400",
-    "uiGraphPan" : "{\n  \"x\" : -205.4975425239632,\n  \"y\" : 215.1757666123295\n  }"
+    "camera_focalDistance" : "127.9958419799805",
+    "timeline_current" : "35",
+    "timeline_end" : "200",
+    "uiGraphPan" : "{\n  \"x\" : -334.9343121683605,\n  \"y\" : 136.3286827710037\n  }"
     },
   "title" : "",
   "ports" : [
@@ -123,7 +123,7 @@
           "name" : "scaleFactor",
           "nodePortType" : "In",
           "defaultValues" : {
-            "Scalar" : 18.5
+            "Scalar" : 20
             }
           },
         {
@@ -273,7 +273,7 @@
     {
       "objectType" : "Inst",
       "metadata" : {
-        "uiGraphPos" : "{\"x\":1172.8230921,\"y\":375.1355896}"
+        "uiGraphPos" : "{\"x\":1167.99793339,\"y\":395.625641584}"
         },
       "name" : "SetPose_1",
       "ports" : [
@@ -334,73 +334,8 @@
     {
       "objectType" : "Inst",
       "metadata" : {
-        "uiComment" : "In this sample we are using BVH files\nfrom the CMU library and open sourche\ncharacters from the SMPL project.\nTo download the required files visit:\nhttp://sites.google.com/a/cgspeed.com/cgspeed/motion-capture\nhttp://smpl.is.tue.mpg.de/",
-        "uiGraphPos" : "{\"x\":932.628533602,\"y\":254.423123002}",
-        "uiCommentExpanded" : "true"
-        },
-      "name" : "BipedRetargetingSolver",
-      "ports" : [
-        {
-          "objectType" : "InstPort",
-          "name" : "exec",
-          "nodePortType" : "IO"
-          },
-        {
-          "objectType" : "InstPort",
-          "name" : "drawDebug",
-          "nodePortType" : "In"
-          },
-        {
-          "objectType" : "InstPort",
-          "name" : "scaleFactor",
-          "nodePortType" : "In",
-          "defaultValues" : {
-            "Scalar" : 1
-            }
-          },
-        {
-          "objectType" : "InstPort",
-          "name" : "inCharacter",
-          "nodePortType" : "In"
-          },
-        {
-          "objectType" : "InstPort",
-          "name" : "inNameTemplate",
-          "nodePortType" : "In"
-          },
-        {
-          "objectType" : "InstPort",
-          "name" : "outCharacter",
-          "nodePortType" : "In"
-          },
-        {
-          "objectType" : "InstPort",
-          "name" : "outNameTemplate",
-          "nodePortType" : "In"
-          },
-        {
-          "objectType" : "InstPort",
-          "name" : "inRefFrame",
-          "nodePortType" : "In"
-          },
-        {
-          "objectType" : "InstPort",
-          "name" : "outRefFrame",
-          "nodePortType" : "In"
-          },
-        {
-          "objectType" : "InstPort",
-          "name" : "retargetPose",
-          "nodePortType" : "Out"
-          }
-        ],
-      "executable" : "fabricUtils.Kinematics.BipedRetargtingSolver.BipedRetargetingSolver",
-      "presetGUID" : "5BEE128DCD8CBA5159B569D2AF31778F"
-      },
-    {
-      "objectType" : "Inst",
-      "metadata" : {
-        "uiGraphPos" : "{\"x\":678.439522505,\"y\":103.514394403}"
+        "uiGraphPos" : "{\"x\":678.01809907,\"y\":154.546916962}",
+        "uiCollapsedState" : "1"
         },
       "name" : "LoadCharacterFromBVH_1",
       "ports" : [
@@ -440,6 +375,69 @@
         ],
       "executable" : "fabricUtils.FileIO.BVHReader.LoadCharacterFromBVH",
       "presetGUID" : "761E185980174E263149B02403F724D1"
+      },
+    {
+      "objectType" : "Inst",
+      "metadata" : {
+        "uiComment" : "In this sample we are using BVH files\nfrom the CMU library and open sourche\ncharacters from the SMPL project.\nTo download the required files visit:\nhttp://sites.google.com/a/cgspeed.com/cgspeed/motion-capture\nhttp://smpl.is.tue.mpg.de/",
+        "uiGraphPos" : "{\"x\":924.60566175,\"y\":240.655409098}",
+        "uiCommentExpanded" : "true"
+        },
+      "name" : "BipedRetargetingSolver_1",
+      "ports" : [
+        {
+          "objectType" : "InstPort",
+          "name" : "exec",
+          "nodePortType" : "IO"
+          },
+        {
+          "objectType" : "InstPort",
+          "name" : "drawDebug",
+          "nodePortType" : "In"
+          },
+        {
+          "objectType" : "InstPort",
+          "name" : "scaleFactor",
+          "nodePortType" : "In"
+          },
+        {
+          "objectType" : "InstPort",
+          "name" : "inCharacter",
+          "nodePortType" : "In"
+          },
+        {
+          "objectType" : "InstPort",
+          "name" : "inNameTemplate",
+          "nodePortType" : "In"
+          },
+        {
+          "objectType" : "InstPort",
+          "name" : "outCharacter",
+          "nodePortType" : "In"
+          },
+        {
+          "objectType" : "InstPort",
+          "name" : "outNameTemplate",
+          "nodePortType" : "In"
+          },
+        {
+          "objectType" : "InstPort",
+          "name" : "inRefFrame",
+          "nodePortType" : "In"
+          },
+        {
+          "objectType" : "InstPort",
+          "name" : "outRefFrame",
+          "nodePortType" : "In"
+          },
+        {
+          "objectType" : "InstPort",
+          "name" : "retargetPose",
+          "nodePortType" : "Out"
+          }
+        ],
+      "executable" : "fabricUtils.Kinematics.BipedRetargtingSolver.BipedRetargetingSolver",
+      "presetGUID" : "5BEE128DCD8CBA5159B569D2AF31778F"
       }
     ],
   "connections" : {
@@ -462,11 +460,11 @@
       "LoadCharacterFromBVH_1.file"
       ],
     "LoadFBXCharacter2_1.scaleFactor" : [
-      "BipedRetargetingSolver.scaleFactor"
+      "BipedRetargetingSolver_1.scaleFactor"
       ],
     "LoadFBXCharacter2_1.animation" : [
       "SetPose_1.this",
-      "BipedRetargetingSolver.outCharacter"
+      "BipedRetargetingSolver_1.outCharacter"
       ],
     "DrawCharacter_1.this" : [
       "exec"
@@ -475,10 +473,10 @@
       "LoadFBXCharacter2_1.filePath"
       ],
     "FileBrowser_3.result" : [
-      "BipedRetargetingSolver.outNameTemplate"
+      "BipedRetargetingSolver_1.outNameTemplate"
       ],
     "FileBrowser_4.result" : [
-      "BipedRetargetingSolver.inNameTemplate"
+      "BipedRetargetingSolver_1.inNameTemplate"
       ],
     "SetPose_1.this" : [
       "DrawCharacter_1.character"
@@ -486,11 +484,11 @@
     "FrameToTime_1.time" : [
       "LoadCharacterFromBVH_1.time"
       ],
-    "BipedRetargetingSolver.retargetPose" : [
-      "SetPose_1.pose"
-      ],
     "LoadCharacterFromBVH_1.character" : [
-      "BipedRetargetingSolver.inCharacter"
+      "BipedRetargetingSolver_1.inCharacter"
+      ],
+    "BipedRetargetingSolver_1.retargetPose" : [
+      "SetPose_1.pose"
       ]
     },
   "requiredPresets" : {
@@ -3064,392 +3062,6 @@ dfgEntry {
 }
 "
       },
-    "fabricUtils.Kinematics.BipedRetargtingSolver.BipedRetargetingSolver" : {
-      "objectType" : "Graph",
-      "metadata" : {
-        "uiTextColor" : "{\n  \"r\" : 168,\n  \"g\" : 229,\n  \"b\" : 240\n  }",
-        "uiNodeColor" : "{\n  \"r\" : 59,\n  \"g\" : 60,\n  \"b\" : 61\n  }",
-        "uiGraphZoom" : "{\n  \"value\" : 0.5480090379714966\n  }",
-        "uiTooltip" : "Retargets the current pose of a biped character based on the pose of another biped character. Mappings are defined using JSON files and MotionBuilder naming convention. The offset between character joints is defined based on the poses at a given reference frame.",
-        "uiGraphPan" : "{\n  \"x\" : -240.7455219868316,\n  \"y\" : 189.3113026456799\n  }"
-        },
-      "title" : "BipedRetargetingSolver",
-      "ports" : [
-        {
-          "objectType" : "ExecPort",
-          "name" : "exec",
-          "nodePortType" : "IO",
-          "defaultValues" : {
-            "Execute" : {}
-            },
-          "execPortType" : "IO",
-          "typeSpec" : "Execute"
-          },
-        {
-          "objectType" : "ExecPort",
-          "name" : "drawDebug",
-          "nodePortType" : "Out",
-          "defaultValues" : {
-            "Boolean" : false
-            },
-          "execPortType" : "In",
-          "typeSpec" : "Boolean"
-          },
-        {
-          "objectType" : "ExecPort",
-          "name" : "scaleFactor",
-          "nodePortType" : "Out",
-          "defaultValues" : {
-            "Scalar" : 1
-            },
-          "execPortType" : "In"
-          },
-        {
-          "objectType" : "ExecPort",
-          "name" : "inCharacter",
-          "nodePortType" : "Out",
-          "defaultValues" : {
-            "ICharacter" : null
-            },
-          "execPortType" : "In",
-          "typeSpec" : "ICharacter"
-          },
-        {
-          "objectType" : "ExecPort",
-          "name" : "inNameTemplate",
-          "nodePortType" : "Out",
-          "defaultValues" : {
-            "String" : ""
-            },
-          "execPortType" : "In"
-          },
-        {
-          "objectType" : "ExecPort",
-          "name" : "outCharacter",
-          "nodePortType" : "Out",
-          "defaultValues" : {
-            "Character" : null
-            },
-          "execPortType" : "In"
-          },
-        {
-          "objectType" : "ExecPort",
-          "name" : "outNameTemplate",
-          "nodePortType" : "Out",
-          "defaultValues" : {
-            "String" : ""
-            },
-          "execPortType" : "In"
-          },
-        {
-          "objectType" : "ExecPort",
-          "name" : "inRefFrame",
-          "nodePortType" : "Out",
-          "defaultValues" : {
-            "Scalar" : 0
-            },
-          "execPortType" : "In",
-          "typeSpec" : "Scalar"
-          },
-        {
-          "objectType" : "ExecPort",
-          "name" : "outRefFrame",
-          "nodePortType" : "Out",
-          "defaultValues" : {
-            "Scalar" : 0
-            },
-          "execPortType" : "In",
-          "typeSpec" : "Scalar"
-          },
-        {
-          "objectType" : "ExecPort",
-          "name" : "retargetPose",
-          "nodePortType" : "In",
-          "defaultValues" : {
-            "IPose" : null
-            },
-          "execPortType" : "Out"
-          }
-        ],
-      "extDeps" : {
-        "fabricUtils" : "*"
-        },
-      "presetGUID" : "5BEE128DCD8CBA5159B569D2AF31778F",
-      "nodes" : [
-        {
-          "objectType" : "Var",
-          "metadata" : {
-            "uiGraphPos" : "{\"x\":800.413125277,\"y\":132.23861742}"
-            },
-          "name" : "solver",
-          "ports" : [
-            {
-              "objectType" : "VarPort",
-              "name" : "value",
-              "nodePortType" : "IO"
-              }
-            ],
-          "dataType" : "BipedRetargetingSolver"
-          },
-        {
-          "objectType" : "Inst",
-          "metadata" : {
-            "uiGraphPos" : "{\"x\":473.980339527,\"y\":127.584055901}"
-            },
-          "name" : "BipedRetargetingSolver_Constructor_1",
-          "ports" : [
-            {
-              "objectType" : "InstPort",
-              "name" : "exec",
-              "nodePortType" : "IO"
-              },
-            {
-              "objectType" : "InstPort",
-              "name" : "result",
-              "nodePortType" : "Out"
-              }
-            ],
-          "executable" : "fabricUtils.Kinematics.BipedRetargtingSolver.BipedRetargetingSolver_Constructor",
-          "presetGUID" : "5DA31A7CEEF572CC1872C28626061AC2"
-          },
-        {
-          "objectType" : "Inst",
-          "metadata" : {
-            "uiGraphPos" : "{\"x\":917.399583817,\"y\":160.117748737}"
-            },
-          "name" : "BipedRetargetingSolver_Solve_1",
-          "ports" : [
-            {
-              "objectType" : "InstPort",
-              "name" : "exec",
-              "nodePortType" : "IO"
-              },
-            {
-              "objectType" : "InstPort",
-              "name" : "this",
-              "nodePortType" : "IO"
-              },
-            {
-              "objectType" : "InstPort",
-              "name" : "drawDebug",
-              "nodePortType" : "In"
-              },
-            {
-              "objectType" : "InstPort",
-              "name" : "scaleFactor",
-              "nodePortType" : "In"
-              },
-            {
-              "objectType" : "InstPort",
-              "name" : "inCharacter",
-              "nodePortType" : "In"
-              },
-            {
-              "objectType" : "InstPort",
-              "name" : "outCharacter",
-              "nodePortType" : "In"
-              },
-            {
-              "objectType" : "InstPort",
-              "name" : "inNameTemplate",
-              "nodePortType" : "In"
-              },
-            {
-              "objectType" : "InstPort",
-              "name" : "outNameTemplate",
-              "nodePortType" : "In"
-              },
-            {
-              "objectType" : "InstPort",
-              "name" : "inRefFrame",
-              "nodePortType" : "In"
-              },
-            {
-              "objectType" : "InstPort",
-              "name" : "outRefFrame",
-              "nodePortType" : "In"
-              },
-            {
-              "objectType" : "InstPort",
-              "name" : "retargetPose",
-              "nodePortType" : "Out"
-              }
-            ],
-          "executable" : "fabricUtils.Kinematics.BipedRetargtingSolver.BipedRetargetingSolver_Solve",
-          "presetGUID" : "27B880C6D5A791F0E845044FA61D58F7"
-          }
-        ],
-      "connections" : {
-        "drawDebug" : [
-          "BipedRetargetingSolver_Solve_1.drawDebug"
-          ],
-        "scaleFactor" : [
-          "BipedRetargetingSolver_Solve_1.scaleFactor"
-          ],
-        "inCharacter" : [
-          "BipedRetargetingSolver_Solve_1.inCharacter"
-          ],
-        "inNameTemplate" : [
-          "BipedRetargetingSolver_Solve_1.inNameTemplate"
-          ],
-        "outCharacter" : [
-          "BipedRetargetingSolver_Solve_1.outCharacter"
-          ],
-        "outNameTemplate" : [
-          "BipedRetargetingSolver_Solve_1.outNameTemplate"
-          ],
-        "inRefFrame" : [
-          "BipedRetargetingSolver_Solve_1.inRefFrame"
-          ],
-        "outRefFrame" : [
-          "BipedRetargetingSolver_Solve_1.outRefFrame"
-          ],
-        "solver.value" : [
-          "BipedRetargetingSolver_Solve_1.this"
-          ],
-        "BipedRetargetingSolver_Constructor_1.result" : [
-          "solver.value"
-          ],
-        "BipedRetargetingSolver_Solve_1.retargetPose" : [
-          "retargetPose"
-          ]
-        }
-      },
-    "fabricUtils.Kinematics.BipedRetargtingSolver.BipedRetargetingSolver_Constructor" : {
-      "objectType" : "Func",
-      "metadata" : {
-        "uiTextColor" : "{\n  \"r\" : 168,\n  \"g\" : 229,\n  \"b\" : 240\n  }",
-        "uiNodeColor" : "{\n  \"r\" : 49,\n  \"g\" : 60,\n  \"b\" : 61\n  }",
-        "uiHeaderColor" : "{\n  \"r\" : 42,\n  \"g\" : 94,\n  \"b\" : 102\n  }",
-        "uiTooltip" : "Supported types:\n  result: BipedRetargetingSolver\n"
-        },
-      "title" : "BipedRetargetingSolver_Constructor",
-      "ports" : [
-        {
-          "objectType" : "ExecPort",
-          "name" : "exec",
-          "nodePortType" : "IO",
-          "execPortType" : "IO",
-          "typeSpec" : "Execute"
-          },
-        {
-          "objectType" : "ExecPort",
-          "name" : "result",
-          "nodePortType" : "In",
-          "execPortType" : "Out",
-          "typeSpec" : "BipedRetargetingSolver"
-          }
-        ],
-      "extDeps" : {
-        "fabricUtils" : "*"
-        },
-      "presetGUID" : "5DA31A7CEEF572CC1872C28626061AC2",
-      "code" : "require fabricUtils;
-
-dfgEntry {
-  result = BipedRetargetingSolver();
-}
-"
-      },
-    "fabricUtils.Kinematics.BipedRetargtingSolver.BipedRetargetingSolver_Solve" : {
-      "objectType" : "Func",
-      "metadata" : {
-        "uiTextColor" : "{\n  \"r\" : 168,\n  \"g\" : 229,\n  \"b\" : 240\n  }",
-        "uiNodeColor" : "{\n  \"r\" : 49,\n  \"g\" : 60,\n  \"b\" : 61\n  }",
-        "uiHeaderColor" : "{\n  \"r\" : 42,\n  \"g\" : 94,\n  \"b\" : 102\n  }",
-        "uiTooltip" : "Supported types:\n  this: BipedRetargetingSolver\n  drawDebug: Boolean\n  scaleFactor: Scalar\n  inCharacter: ICharacter\n  outCharacter: ICharacter\n  inNameTemplate: FilePath\n  outNameTemplate: FilePath\n  inRefFrame: Scalar\n  outRefFrame: Scalar\n  retargetPose: IPose\n"
-        },
-      "title" : "BipedRetargetingSolver_Solve",
-      "ports" : [
-        {
-          "objectType" : "ExecPort",
-          "name" : "exec",
-          "nodePortType" : "IO",
-          "execPortType" : "IO",
-          "typeSpec" : "Execute"
-          },
-        {
-          "objectType" : "ExecPort",
-          "name" : "this",
-          "nodePortType" : "IO",
-          "execPortType" : "IO",
-          "typeSpec" : "BipedRetargetingSolver"
-          },
-        {
-          "objectType" : "ExecPort",
-          "name" : "drawDebug",
-          "nodePortType" : "Out",
-          "execPortType" : "In",
-          "typeSpec" : "Boolean"
-          },
-        {
-          "objectType" : "ExecPort",
-          "name" : "scaleFactor",
-          "nodePortType" : "Out",
-          "execPortType" : "In",
-          "typeSpec" : "Scalar"
-          },
-        {
-          "objectType" : "ExecPort",
-          "name" : "inCharacter",
-          "nodePortType" : "Out",
-          "execPortType" : "In",
-          "typeSpec" : "ICharacter"
-          },
-        {
-          "objectType" : "ExecPort",
-          "name" : "outCharacter",
-          "nodePortType" : "Out",
-          "execPortType" : "In",
-          "typeSpec" : "ICharacter"
-          },
-        {
-          "objectType" : "ExecPort",
-          "name" : "inNameTemplate",
-          "nodePortType" : "Out",
-          "execPortType" : "In",
-          "typeSpec" : "FilePath"
-          },
-        {
-          "objectType" : "ExecPort",
-          "name" : "outNameTemplate",
-          "nodePortType" : "Out",
-          "execPortType" : "In",
-          "typeSpec" : "FilePath"
-          },
-        {
-          "objectType" : "ExecPort",
-          "name" : "inRefFrame",
-          "nodePortType" : "Out",
-          "execPortType" : "In",
-          "typeSpec" : "Scalar"
-          },
-        {
-          "objectType" : "ExecPort",
-          "name" : "outRefFrame",
-          "nodePortType" : "Out",
-          "execPortType" : "In",
-          "typeSpec" : "Scalar"
-          },
-        {
-          "objectType" : "ExecPort",
-          "name" : "retargetPose",
-          "nodePortType" : "In",
-          "execPortType" : "Out",
-          "typeSpec" : "IPose"
-          }
-        ],
-      "extDeps" : {
-        "fabricUtils" : "*"
-        },
-      "presetGUID" : "27B880C6D5A791F0E845044FA61D58F7",
-      "code" : "require fabricUtils;
-
-dfgEntry {
-  this.solve(drawDebug, scaleFactor, inCharacter, outCharacter, inNameTemplate, outNameTemplate, inRefFrame, outRefFrame, retargetPose);
-}
-"
-      },
     "fabricUtils.FileIO.BVHReader.LoadCharacterFromBVH" : {
       "objectType" : "Graph",
       "metadata" : {
@@ -3900,6 +3512,392 @@ dfgEntry {
 
 dfgEntry {
   result = this.getFPS();
+}
+"
+      },
+    "fabricUtils.Kinematics.BipedRetargtingSolver.BipedRetargetingSolver" : {
+      "objectType" : "Graph",
+      "metadata" : {
+        "uiTextColor" : "{\n  \"r\" : 168,\n  \"g\" : 229,\n  \"b\" : 240\n  }",
+        "uiNodeColor" : "{\n  \"r\" : 59,\n  \"g\" : 60,\n  \"b\" : 61\n  }",
+        "uiGraphZoom" : "{\n  \"value\" : 0.9203404784202576\n  }",
+        "uiTooltip" : "Retargets the current pose of a biped character based on the pose of another biped character. Mappings are defined using JSON files and MotionBuilder naming convention. The offset between character joints is defined based on the poses at a given reference frame.",
+        "uiGraphPan" : "{\n  \"x\" : -404.3142013950837,\n  \"y\" : 94.32665315189001\n  }"
+        },
+      "title" : "BipedRetargetingSolver",
+      "ports" : [
+        {
+          "objectType" : "ExecPort",
+          "name" : "exec",
+          "nodePortType" : "IO",
+          "defaultValues" : {
+            "Execute" : {}
+            },
+          "execPortType" : "IO",
+          "typeSpec" : "Execute"
+          },
+        {
+          "objectType" : "ExecPort",
+          "name" : "drawDebug",
+          "nodePortType" : "Out",
+          "defaultValues" : {
+            "Boolean" : false
+            },
+          "execPortType" : "In",
+          "typeSpec" : "Boolean"
+          },
+        {
+          "objectType" : "ExecPort",
+          "name" : "scaleFactor",
+          "nodePortType" : "Out",
+          "defaultValues" : {
+            "Scalar" : 1
+            },
+          "execPortType" : "In"
+          },
+        {
+          "objectType" : "ExecPort",
+          "name" : "inCharacter",
+          "nodePortType" : "Out",
+          "defaultValues" : {
+            "ICharacter" : null
+            },
+          "execPortType" : "In",
+          "typeSpec" : "ICharacter"
+          },
+        {
+          "objectType" : "ExecPort",
+          "name" : "inNameTemplate",
+          "nodePortType" : "Out",
+          "defaultValues" : {
+            "String" : ""
+            },
+          "execPortType" : "In"
+          },
+        {
+          "objectType" : "ExecPort",
+          "name" : "outCharacter",
+          "nodePortType" : "Out",
+          "defaultValues" : {
+            "Character" : null
+            },
+          "execPortType" : "In"
+          },
+        {
+          "objectType" : "ExecPort",
+          "name" : "outNameTemplate",
+          "nodePortType" : "Out",
+          "defaultValues" : {
+            "String" : ""
+            },
+          "execPortType" : "In"
+          },
+        {
+          "objectType" : "ExecPort",
+          "name" : "inRefFrame",
+          "nodePortType" : "Out",
+          "defaultValues" : {
+            "Scalar" : 0
+            },
+          "execPortType" : "In",
+          "typeSpec" : "Scalar"
+          },
+        {
+          "objectType" : "ExecPort",
+          "name" : "outRefFrame",
+          "nodePortType" : "Out",
+          "defaultValues" : {
+            "Scalar" : 0
+            },
+          "execPortType" : "In",
+          "typeSpec" : "Scalar"
+          },
+        {
+          "objectType" : "ExecPort",
+          "name" : "retargetPose",
+          "nodePortType" : "In",
+          "defaultValues" : {
+            "IPose" : null
+            },
+          "execPortType" : "Out"
+          }
+        ],
+      "extDeps" : {
+        "fabricUtils" : "*"
+        },
+      "presetGUID" : "5BEE128DCD8CBA5159B569D2AF31778F",
+      "nodes" : [
+        {
+          "objectType" : "Var",
+          "metadata" : {
+            "uiGraphPos" : "{\"x\":800.413125277,\"y\":132.23861742}"
+            },
+          "name" : "solver",
+          "ports" : [
+            {
+              "objectType" : "VarPort",
+              "name" : "value",
+              "nodePortType" : "IO"
+              }
+            ],
+          "dataType" : "BipedRetargetingSolver"
+          },
+        {
+          "objectType" : "Inst",
+          "metadata" : {
+            "uiGraphPos" : "{\"x\":473.980339527,\"y\":127.584055901}"
+            },
+          "name" : "BipedRetargetingSolver_Constructor_1",
+          "ports" : [
+            {
+              "objectType" : "InstPort",
+              "name" : "exec",
+              "nodePortType" : "IO"
+              },
+            {
+              "objectType" : "InstPort",
+              "name" : "result",
+              "nodePortType" : "Out"
+              }
+            ],
+          "executable" : "fabricUtils.Kinematics.BipedRetargtingSolver.BipedRetargetingSolver_Constructor",
+          "presetGUID" : "5DA31A7CEEF572CC1872C28626061AC2"
+          },
+        {
+          "objectType" : "Inst",
+          "metadata" : {
+            "uiGraphPos" : "{\"x\":917.399583817,\"y\":160.117748737}"
+            },
+          "name" : "BipedRetargetingSolver_Solve_1",
+          "ports" : [
+            {
+              "objectType" : "InstPort",
+              "name" : "exec",
+              "nodePortType" : "IO"
+              },
+            {
+              "objectType" : "InstPort",
+              "name" : "this",
+              "nodePortType" : "IO"
+              },
+            {
+              "objectType" : "InstPort",
+              "name" : "drawDebug",
+              "nodePortType" : "In"
+              },
+            {
+              "objectType" : "InstPort",
+              "name" : "scaleFactor",
+              "nodePortType" : "In"
+              },
+            {
+              "objectType" : "InstPort",
+              "name" : "inCharacter",
+              "nodePortType" : "In"
+              },
+            {
+              "objectType" : "InstPort",
+              "name" : "outCharacter",
+              "nodePortType" : "In"
+              },
+            {
+              "objectType" : "InstPort",
+              "name" : "inNameTemplate",
+              "nodePortType" : "In"
+              },
+            {
+              "objectType" : "InstPort",
+              "name" : "outNameTemplate",
+              "nodePortType" : "In"
+              },
+            {
+              "objectType" : "InstPort",
+              "name" : "inRefFrame",
+              "nodePortType" : "In"
+              },
+            {
+              "objectType" : "InstPort",
+              "name" : "outRefFrame",
+              "nodePortType" : "In"
+              },
+            {
+              "objectType" : "InstPort",
+              "name" : "retargetPose",
+              "nodePortType" : "Out"
+              }
+            ],
+          "executable" : "fabricUtils.Kinematics.BipedRetargtingSolver.BipedRetargetingSolver_Solve",
+          "presetGUID" : "27B880C6D5A791F0E845044FA61D58F7"
+          }
+        ],
+      "connections" : {
+        "drawDebug" : [
+          "BipedRetargetingSolver_Solve_1.drawDebug"
+          ],
+        "scaleFactor" : [
+          "BipedRetargetingSolver_Solve_1.scaleFactor"
+          ],
+        "inCharacter" : [
+          "BipedRetargetingSolver_Solve_1.inCharacter"
+          ],
+        "inNameTemplate" : [
+          "BipedRetargetingSolver_Solve_1.inNameTemplate"
+          ],
+        "outCharacter" : [
+          "BipedRetargetingSolver_Solve_1.outCharacter"
+          ],
+        "outNameTemplate" : [
+          "BipedRetargetingSolver_Solve_1.outNameTemplate"
+          ],
+        "inRefFrame" : [
+          "BipedRetargetingSolver_Solve_1.inRefFrame"
+          ],
+        "outRefFrame" : [
+          "BipedRetargetingSolver_Solve_1.outRefFrame"
+          ],
+        "solver.value" : [
+          "BipedRetargetingSolver_Solve_1.this"
+          ],
+        "BipedRetargetingSolver_Constructor_1.result" : [
+          "solver.value"
+          ],
+        "BipedRetargetingSolver_Solve_1.retargetPose" : [
+          "retargetPose"
+          ]
+        }
+      },
+    "fabricUtils.Kinematics.BipedRetargtingSolver.BipedRetargetingSolver_Constructor" : {
+      "objectType" : "Func",
+      "metadata" : {
+        "uiTextColor" : "{\n  \"r\" : 168,\n  \"g\" : 229,\n  \"b\" : 240\n  }",
+        "uiNodeColor" : "{\n  \"r\" : 49,\n  \"g\" : 60,\n  \"b\" : 61\n  }",
+        "uiHeaderColor" : "{\n  \"r\" : 42,\n  \"g\" : 94,\n  \"b\" : 102\n  }",
+        "uiTooltip" : "Supported types:\n  result: BipedRetargetingSolver\n"
+        },
+      "title" : "BipedRetargetingSolver_Constructor",
+      "ports" : [
+        {
+          "objectType" : "ExecPort",
+          "name" : "exec",
+          "nodePortType" : "IO",
+          "execPortType" : "IO",
+          "typeSpec" : "Execute"
+          },
+        {
+          "objectType" : "ExecPort",
+          "name" : "result",
+          "nodePortType" : "In",
+          "execPortType" : "Out",
+          "typeSpec" : "BipedRetargetingSolver"
+          }
+        ],
+      "extDeps" : {
+        "fabricUtils" : "*"
+        },
+      "presetGUID" : "5DA31A7CEEF572CC1872C28626061AC2",
+      "code" : "require fabricUtils;
+
+dfgEntry {
+  result = BipedRetargetingSolver();
+}
+"
+      },
+    "fabricUtils.Kinematics.BipedRetargtingSolver.BipedRetargetingSolver_Solve" : {
+      "objectType" : "Func",
+      "metadata" : {
+        "uiTextColor" : "{\n  \"r\" : 168,\n  \"g\" : 229,\n  \"b\" : 240\n  }",
+        "uiNodeColor" : "{\n  \"r\" : 49,\n  \"g\" : 60,\n  \"b\" : 61\n  }",
+        "uiHeaderColor" : "{\n  \"r\" : 42,\n  \"g\" : 94,\n  \"b\" : 102\n  }",
+        "uiTooltip" : "Supported types:\n  this: BipedRetargetingSolver\n  drawDebug: Boolean\n  scaleFactor: Scalar\n  inCharacter: ICharacter\n  outCharacter: ICharacter\n  inNameTemplate: FilePath\n  outNameTemplate: FilePath\n  inRefFrame: Scalar\n  outRefFrame: Scalar\n  retargetPose: IPose\n"
+        },
+      "title" : "BipedRetargetingSolver_Solve",
+      "ports" : [
+        {
+          "objectType" : "ExecPort",
+          "name" : "exec",
+          "nodePortType" : "IO",
+          "execPortType" : "IO",
+          "typeSpec" : "Execute"
+          },
+        {
+          "objectType" : "ExecPort",
+          "name" : "this",
+          "nodePortType" : "IO",
+          "execPortType" : "IO",
+          "typeSpec" : "BipedRetargetingSolver"
+          },
+        {
+          "objectType" : "ExecPort",
+          "name" : "drawDebug",
+          "nodePortType" : "Out",
+          "execPortType" : "In",
+          "typeSpec" : "Boolean"
+          },
+        {
+          "objectType" : "ExecPort",
+          "name" : "scaleFactor",
+          "nodePortType" : "Out",
+          "execPortType" : "In",
+          "typeSpec" : "Scalar"
+          },
+        {
+          "objectType" : "ExecPort",
+          "name" : "inCharacter",
+          "nodePortType" : "Out",
+          "execPortType" : "In",
+          "typeSpec" : "ICharacter"
+          },
+        {
+          "objectType" : "ExecPort",
+          "name" : "outCharacter",
+          "nodePortType" : "Out",
+          "execPortType" : "In",
+          "typeSpec" : "ICharacter"
+          },
+        {
+          "objectType" : "ExecPort",
+          "name" : "inNameTemplate",
+          "nodePortType" : "Out",
+          "execPortType" : "In",
+          "typeSpec" : "FilePath"
+          },
+        {
+          "objectType" : "ExecPort",
+          "name" : "outNameTemplate",
+          "nodePortType" : "Out",
+          "execPortType" : "In",
+          "typeSpec" : "FilePath"
+          },
+        {
+          "objectType" : "ExecPort",
+          "name" : "inRefFrame",
+          "nodePortType" : "Out",
+          "execPortType" : "In",
+          "typeSpec" : "Scalar"
+          },
+        {
+          "objectType" : "ExecPort",
+          "name" : "outRefFrame",
+          "nodePortType" : "Out",
+          "execPortType" : "In",
+          "typeSpec" : "Scalar"
+          },
+        {
+          "objectType" : "ExecPort",
+          "name" : "retargetPose",
+          "nodePortType" : "In",
+          "execPortType" : "Out",
+          "typeSpec" : "IPose"
+          }
+        ],
+      "extDeps" : {
+        "fabricUtils" : "*"
+        },
+      "presetGUID" : "27B880C6D5A791F0E845044FA61D58F7",
+      "code" : "require fabricUtils;
+
+dfgEntry {
+  this.solve(drawDebug, scaleFactor, inCharacter, outCharacter, inNameTemplate, outNameTemplate, inRefFrame, outRefFrame, retargetPose);
 }
 "
       }
