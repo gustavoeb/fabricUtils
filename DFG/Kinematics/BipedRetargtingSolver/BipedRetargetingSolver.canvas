@@ -31,6 +31,17 @@
       },
     {
       "objectType" : "ExecPort",
+      "metadata" : {},
+      "name" : "matchSourcePos",
+      "nodePortType" : "Out",
+      "defaultValues" : {
+        "Boolean" : false
+        },
+      "execPortType" : "In",
+      "typeSpec" : "Boolean"
+      },
+    {
+      "objectType" : "ExecPort",
       "name" : "scaleFactor",
       "nodePortType" : "Out",
       "defaultValues" : {
@@ -108,12 +119,12 @@
   "extDeps" : {
     "fabricUtils" : "*"
     },
-  "presetGUID" : "5BEE128DCD8CBA5159B569D2AF31778F",
+  "presetGUID" : "10909FA21D9CCED980E03F5F11218ED2",
   "nodes" : [
     {
       "objectType" : "Var",
       "metadata" : {
-        "uiGraphPos" : "{\"x\":800.413125277,\"y\":132.23861742}"
+        "uiGraphPos" : "{\"x\":853.431135178,\"y\":365.99771595}"
         },
       "name" : "solver",
       "ports" : [
@@ -128,7 +139,7 @@
     {
       "objectType" : "Inst",
       "metadata" : {
-        "uiGraphPos" : "{\"x\":473.980339527,\"y\":127.584055901}"
+        "uiGraphPos" : "{\"x\":526.998182297,\"y\":361.343167305}"
         },
       "name" : "BipedRetargetingSolver_Constructor_1",
       "ports" : [
@@ -149,7 +160,7 @@
     {
       "objectType" : "Inst",
       "metadata" : {
-        "uiGraphPos" : "{\"x\":917.399583817,\"y\":160.117748737}"
+        "uiGraphPos" : "{\"x\":970.417585373,\"y\":393.876835823}"
         },
       "name" : "BipedRetargetingSolver_Solve_1",
       "ports" : [
@@ -166,6 +177,11 @@
         {
           "objectType" : "InstPort",
           "name" : "drawDebug",
+          "nodePortType" : "In"
+          },
+        {
+          "objectType" : "InstPort",
+          "name" : "matchSourcePos",
           "nodePortType" : "In"
           },
         {
@@ -210,12 +226,15 @@
           }
         ],
       "executable" : "fabricUtils.Kinematics.BipedRetargtingSolver.BipedRetargetingSolver_Solve",
-      "presetGUID" : "27B880C6D5A791F0E845044FA61D58F7"
+      "presetGUID" : "DC856CECB117A6DE6DF16D2E1AD4EA02"
       }
     ],
   "connections" : {
     "drawDebug" : [
       "BipedRetargetingSolver_Solve_1.drawDebug"
+      ],
+    "matchSourcePos" : [
+      "BipedRetargetingSolver_Solve_1.matchSourcePos"
       ],
     "scaleFactor" : [
       "BipedRetargetingSolver_Solve_1.scaleFactor"
@@ -273,6 +292,17 @@
         {
           "objectType" : "ExecPort",
           "name" : "drawDebug",
+          "nodePortType" : "Out",
+          "defaultValues" : {
+            "Boolean" : false
+            },
+          "execPortType" : "In",
+          "typeSpec" : "Boolean"
+          },
+        {
+          "objectType" : "ExecPort",
+          "metadata" : {},
+          "name" : "matchSourcePos",
           "nodePortType" : "Out",
           "defaultValues" : {
             "Boolean" : false
@@ -359,12 +389,12 @@
       "extDeps" : {
         "fabricUtils" : "*"
         },
-      "presetGUID" : "5BEE128DCD8CBA5159B569D2AF31778F",
+      "presetGUID" : "10909FA21D9CCED980E03F5F11218ED2",
       "nodes" : [
         {
           "objectType" : "Var",
           "metadata" : {
-            "uiGraphPos" : "{\"x\":800.413125277,\"y\":132.23861742}"
+            "uiGraphPos" : "{\"x\":853.431135178,\"y\":365.99771595}"
             },
           "name" : "solver",
           "ports" : [
@@ -379,7 +409,7 @@
         {
           "objectType" : "Inst",
           "metadata" : {
-            "uiGraphPos" : "{\"x\":473.980339527,\"y\":127.584055901}"
+            "uiGraphPos" : "{\"x\":526.998182297,\"y\":361.343167305}"
             },
           "name" : "BipedRetargetingSolver_Constructor_1",
           "ports" : [
@@ -400,7 +430,7 @@
         {
           "objectType" : "Inst",
           "metadata" : {
-            "uiGraphPos" : "{\"x\":917.399583817,\"y\":160.117748737}"
+            "uiGraphPos" : "{\"x\":970.417585373,\"y\":393.876835823}"
             },
           "name" : "BipedRetargetingSolver_Solve_1",
           "ports" : [
@@ -417,6 +447,11 @@
             {
               "objectType" : "InstPort",
               "name" : "drawDebug",
+              "nodePortType" : "In"
+              },
+            {
+              "objectType" : "InstPort",
+              "name" : "matchSourcePos",
               "nodePortType" : "In"
               },
             {
@@ -461,12 +496,15 @@
               }
             ],
           "executable" : "fabricUtils.Kinematics.BipedRetargtingSolver.BipedRetargetingSolver_Solve",
-          "presetGUID" : "27B880C6D5A791F0E845044FA61D58F7"
+          "presetGUID" : "DC856CECB117A6DE6DF16D2E1AD4EA02"
           }
         ],
       "connections" : {
         "drawDebug" : [
           "BipedRetargetingSolver_Solve_1.drawDebug"
+          ],
+        "matchSourcePos" : [
+          "BipedRetargetingSolver_Solve_1.matchSourcePos"
           ],
         "scaleFactor" : [
           "BipedRetargetingSolver_Solve_1.scaleFactor"
@@ -542,7 +580,7 @@ dfgEntry {
         "uiTextColor" : "{\n  \"r\" : 168,\n  \"g\" : 229,\n  \"b\" : 240\n  }",
         "uiNodeColor" : "{\n  \"r\" : 49,\n  \"g\" : 60,\n  \"b\" : 61\n  }",
         "uiHeaderColor" : "{\n  \"r\" : 42,\n  \"g\" : 94,\n  \"b\" : 102\n  }",
-        "uiTooltip" : "Supported types:\n  this: BipedRetargetingSolver\n  drawDebug: Boolean\n  scaleFactor: Scalar\n  inCharacter: ICharacter\n  outCharacter: ICharacter\n  inNameTemplate: FilePath\n  outNameTemplate: FilePath\n  inRefFrame: Scalar\n  outRefFrame: Scalar\n  retargetPose: IPose\n"
+        "uiTooltip" : "Supported types:\n  this: BipedRetargetingSolver\n  drawDebug: Boolean\n  matchSourcePos: Boolean\n  scaleFactor: Scalar\n  inCharacter: ICharacter\n  outCharacter: ICharacter\n  inNameTemplate: FilePath\n  outNameTemplate: FilePath\n  inRefFrame: Scalar\n  outRefFrame: Scalar\n  retargetPose: IPose\n"
         },
       "title" : "BipedRetargetingSolver_Solve",
       "ports" : [
@@ -563,6 +601,13 @@ dfgEntry {
         {
           "objectType" : "ExecPort",
           "name" : "drawDebug",
+          "nodePortType" : "Out",
+          "execPortType" : "In",
+          "typeSpec" : "Boolean"
+          },
+        {
+          "objectType" : "ExecPort",
+          "name" : "matchSourcePos",
           "nodePortType" : "Out",
           "execPortType" : "In",
           "typeSpec" : "Boolean"
@@ -627,11 +672,11 @@ dfgEntry {
       "extDeps" : {
         "fabricUtils" : "*"
         },
-      "presetGUID" : "27B880C6D5A791F0E845044FA61D58F7",
+      "presetGUID" : "DC856CECB117A6DE6DF16D2E1AD4EA02",
       "code" : "require fabricUtils;
 
 dfgEntry {
-  this.solve(drawDebug, scaleFactor, inCharacter, outCharacter, inNameTemplate, outNameTemplate, inRefFrame, outRefFrame, retargetPose);
+  this.solve(drawDebug, matchSourcePos, scaleFactor, inCharacter, outCharacter, inNameTemplate, outNameTemplate, inRefFrame, outRefFrame, retargetPose);
 }
 "
       }

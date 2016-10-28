@@ -1,15 +1,15 @@
 {
   "objectType" : "Graph",
   "metadata" : {
-    "camera_mat44" : "{\n  \"row0\" : {\n    \"x\" : 0.8004847764968872,\n    \"y\" : -0.2228082418441773,\n    \"z\" : 0.5574530363082886,\n    \"t\" : 70.20521545410156\n    },\n  \"row1\" : {\n    \"x\" : -2.236529184074243e-08,\n    \"y\" : 0.9283666610717773,\n    \"z\" : 0.3716354668140411,\n    \"t\" : 52.11758422851563\n    },\n  \"row2\" : {\n    \"x\" : -0.6003639101982117,\n    \"y\" : -0.2970775067806244,\n    \"z\" : 0.7432702779769898,\n    \"t\" : 93.60697937011719\n    },\n  \"row3\" : {\n    \"x\" : 0,\n    \"y\" : 0,\n    \"z\" : 0,\n    \"t\" : 1\n    }\n  }",
+    "camera_mat44" : "{\n  \"row0\" : {\n    \"x\" : 0.7944433093070984,\n    \"y\" : -0.0124667277559638,\n    \"z\" : 0.6082457900047302,\n    \"t\" : 36.72190093994141\n    },\n  \"row1\" : {\n    \"x\" : 2.380954242653388e-07,\n    \"y\" : 0.9996525645256043,\n    \"z\" : 0.02052230574190617,\n    \"t\" : 10.72226524353027\n    },\n  \"row2\" : {\n    \"x\" : -0.6083239316940308,\n    \"y\" : -0.01628058776259422,\n    \"z\" : 0.7943413257598877,\n    \"t\" : 41.0684928894043\n    },\n  \"row3\" : {\n    \"x\" : 0,\n    \"y\" : 0,\n    \"z\" : 0,\n    \"t\" : 1\n    }\n  }",
     "timeline_start" : "0",
     "timeline_loopMode" : "1",
-    "uiGraphZoom" : "{\n  \"value\" : 0.7299699187278748\n  }",
+    "uiGraphZoom" : "{\n  \"value\" : 0.4057934582233429\n  }",
     "timeline_simMode" : "0",
-    "camera_focalDistance" : "127.9958419799805",
-    "timeline_current" : "35",
+    "camera_focalDistance" : "43.38234329223633",
+    "timeline_current" : "0",
     "timeline_end" : "200",
-    "uiGraphPan" : "{\n  \"x\" : -334.9343121683605,\n  \"y\" : 136.3286827710037\n  }"
+    "uiGraphPan" : "{\n  \"x\" : -176.902391226696,\n  \"y\" : 221.0726216803977\n  }"
     },
   "title" : "",
   "ports" : [
@@ -123,7 +123,7 @@
           "name" : "scaleFactor",
           "nodePortType" : "In",
           "defaultValues" : {
-            "Scalar" : 20
+            "Scalar" : 1
             }
           },
         {
@@ -397,8 +397,19 @@
           },
         {
           "objectType" : "InstPort",
+          "name" : "matchSourcePos",
+          "nodePortType" : "In",
+          "defaultValues" : {
+            "Boolean" : false
+            }
+          },
+        {
+          "objectType" : "InstPort",
           "name" : "scaleFactor",
-          "nodePortType" : "In"
+          "nodePortType" : "In",
+          "defaultValues" : {
+            "Scalar" : 10
+            }
           },
         {
           "objectType" : "InstPort",
@@ -437,7 +448,7 @@
           }
         ],
       "executable" : "fabricUtils.Kinematics.BipedRetargtingSolver.BipedRetargetingSolver",
-      "presetGUID" : "5BEE128DCD8CBA5159B569D2AF31778F"
+      "presetGUID" : "10909FA21D9CCED980E03F5F11218ED2"
       }
     ],
   "connections" : {
@@ -458,9 +469,6 @@
       ],
     "FileBrowser_1.result" : [
       "LoadCharacterFromBVH_1.file"
-      ],
-    "LoadFBXCharacter2_1.scaleFactor" : [
-      "BipedRetargetingSolver_1.scaleFactor"
       ],
     "LoadFBXCharacter2_1.animation" : [
       "SetPose_1.this",
@@ -3520,9 +3528,9 @@ dfgEntry {
       "metadata" : {
         "uiTextColor" : "{\n  \"r\" : 168,\n  \"g\" : 229,\n  \"b\" : 240\n  }",
         "uiNodeColor" : "{\n  \"r\" : 59,\n  \"g\" : 60,\n  \"b\" : 61\n  }",
-        "uiGraphZoom" : "{\n  \"value\" : 0.9203404784202576\n  }",
+        "uiGraphZoom" : "{\n  \"value\" : 0.8299146890640259\n  }",
         "uiTooltip" : "Retargets the current pose of a biped character based on the pose of another biped character. Mappings are defined using JSON files and MotionBuilder naming convention. The offset between character joints is defined based on the poses at a given reference frame.",
-        "uiGraphPan" : "{\n  \"x\" : -404.3142013950837,\n  \"y\" : 94.32665315189001\n  }"
+        "uiGraphPan" : "{\n  \"x\" : -630.3634033203125,\n  \"y\" : -139.8838806152344\n  }"
         },
       "title" : "BipedRetargetingSolver",
       "ports" : [
@@ -3539,6 +3547,17 @@ dfgEntry {
         {
           "objectType" : "ExecPort",
           "name" : "drawDebug",
+          "nodePortType" : "Out",
+          "defaultValues" : {
+            "Boolean" : false
+            },
+          "execPortType" : "In",
+          "typeSpec" : "Boolean"
+          },
+        {
+          "objectType" : "ExecPort",
+          "metadata" : {},
+          "name" : "matchSourcePos",
           "nodePortType" : "Out",
           "defaultValues" : {
             "Boolean" : false
@@ -3625,12 +3644,12 @@ dfgEntry {
       "extDeps" : {
         "fabricUtils" : "*"
         },
-      "presetGUID" : "5BEE128DCD8CBA5159B569D2AF31778F",
+      "presetGUID" : "10909FA21D9CCED980E03F5F11218ED2",
       "nodes" : [
         {
           "objectType" : "Var",
           "metadata" : {
-            "uiGraphPos" : "{\"x\":800.413125277,\"y\":132.23861742}"
+            "uiGraphPos" : "{\"x\":853.431135178,\"y\":365.99771595}"
             },
           "name" : "solver",
           "ports" : [
@@ -3645,7 +3664,7 @@ dfgEntry {
         {
           "objectType" : "Inst",
           "metadata" : {
-            "uiGraphPos" : "{\"x\":473.980339527,\"y\":127.584055901}"
+            "uiGraphPos" : "{\"x\":526.998182297,\"y\":361.343167305}"
             },
           "name" : "BipedRetargetingSolver_Constructor_1",
           "ports" : [
@@ -3666,7 +3685,7 @@ dfgEntry {
         {
           "objectType" : "Inst",
           "metadata" : {
-            "uiGraphPos" : "{\"x\":917.399583817,\"y\":160.117748737}"
+            "uiGraphPos" : "{\"x\":970.417585373,\"y\":393.876835823}"
             },
           "name" : "BipedRetargetingSolver_Solve_1",
           "ports" : [
@@ -3683,6 +3702,11 @@ dfgEntry {
             {
               "objectType" : "InstPort",
               "name" : "drawDebug",
+              "nodePortType" : "In"
+              },
+            {
+              "objectType" : "InstPort",
+              "name" : "matchSourcePos",
               "nodePortType" : "In"
               },
             {
@@ -3727,12 +3751,15 @@ dfgEntry {
               }
             ],
           "executable" : "fabricUtils.Kinematics.BipedRetargtingSolver.BipedRetargetingSolver_Solve",
-          "presetGUID" : "27B880C6D5A791F0E845044FA61D58F7"
+          "presetGUID" : "DC856CECB117A6DE6DF16D2E1AD4EA02"
           }
         ],
       "connections" : {
         "drawDebug" : [
           "BipedRetargetingSolver_Solve_1.drawDebug"
+          ],
+        "matchSourcePos" : [
+          "BipedRetargetingSolver_Solve_1.matchSourcePos"
           ],
         "scaleFactor" : [
           "BipedRetargetingSolver_Solve_1.scaleFactor"
@@ -3808,7 +3835,7 @@ dfgEntry {
         "uiTextColor" : "{\n  \"r\" : 168,\n  \"g\" : 229,\n  \"b\" : 240\n  }",
         "uiNodeColor" : "{\n  \"r\" : 49,\n  \"g\" : 60,\n  \"b\" : 61\n  }",
         "uiHeaderColor" : "{\n  \"r\" : 42,\n  \"g\" : 94,\n  \"b\" : 102\n  }",
-        "uiTooltip" : "Supported types:\n  this: BipedRetargetingSolver\n  drawDebug: Boolean\n  scaleFactor: Scalar\n  inCharacter: ICharacter\n  outCharacter: ICharacter\n  inNameTemplate: FilePath\n  outNameTemplate: FilePath\n  inRefFrame: Scalar\n  outRefFrame: Scalar\n  retargetPose: IPose\n"
+        "uiTooltip" : "Supported types:\n  this: BipedRetargetingSolver\n  drawDebug: Boolean\n  matchSourcePos: Boolean\n  scaleFactor: Scalar\n  inCharacter: ICharacter\n  outCharacter: ICharacter\n  inNameTemplate: FilePath\n  outNameTemplate: FilePath\n  inRefFrame: Scalar\n  outRefFrame: Scalar\n  retargetPose: IPose\n"
         },
       "title" : "BipedRetargetingSolver_Solve",
       "ports" : [
@@ -3829,6 +3856,13 @@ dfgEntry {
         {
           "objectType" : "ExecPort",
           "name" : "drawDebug",
+          "nodePortType" : "Out",
+          "execPortType" : "In",
+          "typeSpec" : "Boolean"
+          },
+        {
+          "objectType" : "ExecPort",
+          "name" : "matchSourcePos",
           "nodePortType" : "Out",
           "execPortType" : "In",
           "typeSpec" : "Boolean"
@@ -3893,11 +3927,11 @@ dfgEntry {
       "extDeps" : {
         "fabricUtils" : "*"
         },
-      "presetGUID" : "27B880C6D5A791F0E845044FA61D58F7",
+      "presetGUID" : "DC856CECB117A6DE6DF16D2E1AD4EA02",
       "code" : "require fabricUtils;
 
 dfgEntry {
-  this.solve(drawDebug, scaleFactor, inCharacter, outCharacter, inNameTemplate, outNameTemplate, inRefFrame, outRefFrame, retargetPose);
+  this.solve(drawDebug, matchSourcePos, scaleFactor, inCharacter, outCharacter, inNameTemplate, outNameTemplate, inRefFrame, outRefFrame, retargetPose);
 }
 "
       }
@@ -3905,7 +3939,7 @@ dfgEntry {
   "args" : [
     {
       "type" : "FilePath",
-      "value" : "C:/Users/gusta/OneDrive/Academia/Doutorado/Prototipo/animacao/CMU/01/01_01.bvh",
+      "value" : "C:/Users/gusta/OneDrive/Academia/Doutorado/Prototipo/animacao/CMU/136/136_23.bvh",
       "ext" : "FileIO"
       },
     {

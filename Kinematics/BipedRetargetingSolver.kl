@@ -27,14 +27,7 @@ object BipedRetargetingSolver {
   JSONDictValue outSpineNames;
   JSONDictValue inAuxilaryNames;
   JSONDictValue outAuxilaryNames;
-  // Index inWorldIds[];
-  // Index outWorldIds[];
-  // Index inRequiredIds[];
-  // Index outRequiredIds[];
-  // Index inSpineIds[];
-  // Index outSpineIds[];
-  // Index inAuxilaryIds[];
-  // Index outAuxilaryIds[];
+
   Index inWorldToId[String];
   String inWorldToName[Index];
   Index outWorldToId[String];
@@ -177,6 +170,7 @@ function BipedRetargetingSolver.changeRefFrame!(
 /// \dfgPresetFolder Kinematics\BipedRetargtingSolver
 function BipedRetargetingSolver.solve!(
   in Boolean drawDebug,
+  in Boolean matchSourcePos,
   in Scalar scaleFactor,
   in ICharacter inCharacter,
   in ICharacter outCharacter,
@@ -202,22 +196,36 @@ function BipedRetargetingSolver.solve!(
 
   this.scaleFactor = scaleFactor;
   Xfo scaleXfo(scaleFactor, scaleFactor, scaleFactor, 0, 0, 0, 0, 0, 0);
+  
+  Scalar inHeight = this.inRefPose.getBoneXfo(this.inWorldToId['Hips']).tr.y;
+  Scalar outHeight = this.outRefPose.getBoneXfo(this.outWorldToId['Hips']).tr.y;
+  Scalar heightFactor = outHeight/inHeight;
+  Xfo sclHeight(heightFactor, heightFactor, heightFactor, 0, 0, 0, 0, 0, 0);
 
   // world xfo retargeting
   for(name in this.inWorldToId) {
     Index inId = this.inWorldToId[name];
     Index outId = this.outWorldToId[name];
     
-    Xfo riXfo = this.inRefPose.getBoneXfo(inId);
-    Xfo roXfo = this.outRefPose.getBoneXfo(outId);
-    
-    Xfo offset = riXfo.inverse()*roXfo;
-    
     Xfo ixfo = inPose.getBoneXfo(inId);
-    Xfo oxfo = outPose.getBoneXfo(outId);
-    
-    oxfo = offset*ixfo;
-    oxfo = ixfo*scaleXfo;
+    Xfo oxfo = outPose.getBoneXfo(outId);   
+
+    if(name == 'Reference')
+      oxfo = ixfo;
+    else {  
+      Xfo riXfo = this.inRefPose.getBoneXfo(inId);
+      Xfo roXfo = this.outRefPose.getBoneXfo(outId); 
+      Xfo offset = riXfo.inverse()*roXfo;
+      offset = sclHeight*offset;
+      offset.sc=Vec3(1,1,1);
+      oxfo = sclHeight*ixfo;
+      oxfo.sc=Vec3(1,1,1);
+      oxfo = scaleXfo*oxfo;
+      if(matchSourcePos) {
+        oxfo.tr.x = ixfo.tr.x;
+        oxfo.tr.z = ixfo.tr.z;
+      }
+    }
 
     outPose.setBoneXfo(outId, oxfo);
   }
