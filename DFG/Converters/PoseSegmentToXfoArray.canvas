@@ -3,9 +3,9 @@
   "metadata" : {
     "uiTextColor" : "{\n  \"r\" : 20,\n  \"g\" : 20,\n  \"b\" : 20\n  }",
     "uiNodeColor" : "{\n  \"r\" : 121,\n  \"g\" : 134,\n  \"b\" : 143\n  }",
-    "uiGraphZoom" : "{\n  \"value\" : 1.0\n  }",
+    "uiGraphZoom" : "{\n  \"value\" : 0.9954173564910889\n  }",
     "uiTooltip" : "Converts a segment of a pose, determined by coma separated bone names, into an array of Xfos.",
-    "uiGraphPan" : "{\n  \"x\" : -1613.263793945313,\n  \"y\" : -25.36573219299316\n  }"
+    "uiGraphPan" : "{\n  \"x\" : -2051.794189453125,\n  \"y\" : 228.2866821289063\n  }"
     },
   "title" : "PoseSegmentToXfoArray",
   "ports" : [
@@ -43,14 +43,24 @@
       "name" : "globalSpace",
       "nodePortType" : "Out",
       "defaultValues" : {
-        "Boolean" : false
+        "Boolean" : true
         },
       "execPortType" : "In",
       "typeSpec" : "Boolean"
       },
     {
       "objectType" : "ExecPort",
-      "name" : "result",
+      "name" : "ids",
+      "nodePortType" : "In",
+      "defaultValues" : {
+        "Index[]" : []
+        },
+      "execPortType" : "Out",
+      "typeSpec" : "Index[]"
+      },
+    {
+      "objectType" : "ExecPort",
+      "name" : "xfos",
       "nodePortType" : "In",
       "defaultValues" : {
         "Xfo[]" : []
@@ -59,12 +69,12 @@
       }
     ],
   "extDeps" : {},
-  "presetGUID" : "9AAF3E8FB81BD1FA1A87369A5E04FE5E",
+  "presetGUID" : "0A99C8D6D95CC7D2A57D017BDB893998",
   "nodes" : [
     {
       "objectType" : "Inst",
       "metadata" : {
-        "uiGraphPos" : "{\"x\":2609.34106445,\"y\":95.3657455444}"
+        "uiGraphPos" : "{\"x\":2660.26791501,\"y\":79.1124844551}"
         },
       "name" : "GetSubArray",
       "ports" : [
@@ -194,12 +204,12 @@
           }
         ],
       "executable" : "fabricUtils.Converters.BoneNameArrayToIDArray",
-      "presetGUID" : "978B810C036AE15FD854D39D673A46DE"
+      "presetGUID" : "A750A14D32A93B49F08C7836E203ECAA"
       },
     {
       "objectType" : "Inst",
       "metadata" : {
-        "uiGraphPos" : "{\"x\":2313.34101963,\"y\":43.8657269478}"
+        "uiGraphPos" : "{\"x\":2315.35027194,\"y\":34.8242889643}"
         },
       "name" : "PoseToXfoArray_1",
       "ports" : [
@@ -225,7 +235,7 @@
           }
         ],
       "executable" : "fabricUtils.Converters.PoseToXfoArray",
-      "presetGUID" : "38B5F4ABA2AFC0251221E3498E9CC336"
+      "presetGUID" : "300F294CCB15C3E26EF1AA4793C44BEE"
       },
     {
       "objectType" : "Inst",
@@ -259,8 +269,11 @@
     "globalSpace" : [
       "PoseToXfoArray_1.globalSpace"
       ],
+    "GetSubArray.indices" : [
+      "ids"
+      ],
     "GetSubArray.result" : [
-      "result"
+      "xfos"
       ],
     "PassIn_1.value" : [
       "GetPose_1.this",
@@ -288,9 +301,9 @@
       "metadata" : {
         "uiTextColor" : "{\n  \"r\" : 20,\n  \"g\" : 20,\n  \"b\" : 20\n  }",
         "uiNodeColor" : "{\n  \"r\" : 121,\n  \"g\" : 134,\n  \"b\" : 143\n  }",
-        "uiGraphZoom" : "{\n  \"value\" : 1.0\n  }",
+        "uiGraphZoom" : "{\n  \"value\" : 0.9954173564910889\n  }",
         "uiTooltip" : "Converts a segment of a pose, determined by coma separated bone names, into an array of Xfos.",
-        "uiGraphPan" : "{\n  \"x\" : -1613.263793945313,\n  \"y\" : -25.36573219299316\n  }"
+        "uiGraphPan" : "{\n  \"x\" : -2051.794189453125,\n  \"y\" : 228.2866821289063\n  }"
         },
       "title" : "PoseSegmentToXfoArray",
       "ports" : [
@@ -328,14 +341,24 @@
           "name" : "globalSpace",
           "nodePortType" : "Out",
           "defaultValues" : {
-            "Boolean" : false
+            "Boolean" : true
             },
           "execPortType" : "In",
           "typeSpec" : "Boolean"
           },
         {
           "objectType" : "ExecPort",
-          "name" : "result",
+          "name" : "ids",
+          "nodePortType" : "In",
+          "defaultValues" : {
+            "Index[]" : []
+            },
+          "execPortType" : "Out",
+          "typeSpec" : "Index[]"
+          },
+        {
+          "objectType" : "ExecPort",
+          "name" : "xfos",
           "nodePortType" : "In",
           "defaultValues" : {
             "Xfo[]" : []
@@ -344,12 +367,12 @@
           }
         ],
       "extDeps" : {},
-      "presetGUID" : "9AAF3E8FB81BD1FA1A87369A5E04FE5E",
+      "presetGUID" : "0A99C8D6D95CC7D2A57D017BDB893998",
       "nodes" : [
         {
           "objectType" : "Inst",
           "metadata" : {
-            "uiGraphPos" : "{\"x\":2609.34106445,\"y\":95.3657455444}"
+            "uiGraphPos" : "{\"x\":2660.26791501,\"y\":79.1124844551}"
             },
           "name" : "GetSubArray",
           "ports" : [
@@ -479,12 +502,12 @@
               }
             ],
           "executable" : "fabricUtils.Converters.BoneNameArrayToIDArray",
-          "presetGUID" : "978B810C036AE15FD854D39D673A46DE"
+          "presetGUID" : "A750A14D32A93B49F08C7836E203ECAA"
           },
         {
           "objectType" : "Inst",
           "metadata" : {
-            "uiGraphPos" : "{\"x\":2313.34101963,\"y\":43.8657269478}"
+            "uiGraphPos" : "{\"x\":2315.35027194,\"y\":34.8242889643}"
             },
           "name" : "PoseToXfoArray_1",
           "ports" : [
@@ -510,7 +533,7 @@
               }
             ],
           "executable" : "fabricUtils.Converters.PoseToXfoArray",
-          "presetGUID" : "38B5F4ABA2AFC0251221E3498E9CC336"
+          "presetGUID" : "300F294CCB15C3E26EF1AA4793C44BEE"
           },
         {
           "objectType" : "Inst",
@@ -544,8 +567,11 @@
         "globalSpace" : [
           "PoseToXfoArray_1.globalSpace"
           ],
+        "GetSubArray.indices" : [
+          "ids"
+          ],
         "GetSubArray.result" : [
-          "result"
+          "xfos"
           ],
         "PassIn_1.value" : [
           "GetPose_1.this",
@@ -597,7 +623,10 @@
           "name" : "indices",
           "nodePortType" : "Out",
           "defaultValues" : {
-            "Index[]" : []
+            "Index[]" : [
+              0,
+              0
+              ]
             },
           "execPortType" : "In",
           "typeSpec" : "Index[]"
@@ -775,11 +804,11 @@ dfgEntry {
       "extDeps" : {
         "fabricUtils" : "*"
         },
-      "presetGUID" : "978B810C036AE15FD854D39D673A46DE",
+      "presetGUID" : "A750A14D32A93B49F08C7836E203ECAA",
       "code" : "require fabricUtils;
 
 dfgEntry {
-  boneNameArrayToIDArray(this, names, result);
+  result = boneNameArrayToIDArray(this, names);
 }
 "
       },
@@ -825,11 +854,11 @@ dfgEntry {
       "extDeps" : {
         "fabricUtils" : "*"
         },
-      "presetGUID" : "38B5F4ABA2AFC0251221E3498E9CC336",
+      "presetGUID" : "300F294CCB15C3E26EF1AA4793C44BEE",
       "code" : "require fabricUtils;
 
 dfgEntry {
-  poseToXfoArray(this, globalSpace, result);
+  result = poseToXfoArray(this, globalSpace);
 }
 "
       },

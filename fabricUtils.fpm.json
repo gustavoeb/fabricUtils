@@ -4,6 +4,9 @@
     // classes
     
     // functions
+    "Animation/Clip.kl",
+    "Animation/KeyframeTrackSet.kl",
+
     "Arrays/indexArrayFromRange.kl",
 
   	"Characters/getAllDeformedMesh.kl",
@@ -20,7 +23,7 @@
     "FileIO/BVHReader.kl",
 
     "Kinematics/BipedRetargetingSolver.kl"
-    //"Kinematics/FootstepConstraintSolver.kl"
+    "Kinematics/FootstepConstraintSolver.kl"
 
     // other
 
