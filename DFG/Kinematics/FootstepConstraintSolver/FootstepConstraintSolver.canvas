@@ -1,0 +1,705 @@
+{
+  "objectType" : "Graph",
+  "metadata" : {
+    "uiTextColor" : "{\n  \"r\" : 168,\n  \"g\" : 229,\n  \"b\" : 240\n  }",
+    "uiNodeColor" : "{\n  \"r\" : 49,\n  \"g\" : 60,\n  \"b\" : 61\n  }",
+    "uiGraphZoom" : "{\n  \"value\" : 1.0\n  }",
+    "uiHeaderColor" : "{\n  \"r\" : 42,\n  \"g\" : 94,\n  \"b\" : 102\n  }",
+    "uiGraphPan" : "{\n  \"x\" : -1409.2197265625,\n  \"y\" : -811.901123046875\n  }"
+    },
+  "title" : "FootstepConstraintSolver",
+  "ports" : [
+    {
+      "objectType" : "ExecPort",
+      "name" : "exec",
+      "nodePortType" : "IO",
+      "defaultValues" : {
+        "Execute" : {}
+        },
+      "execPortType" : "IO",
+      "typeSpec" : "Execute"
+      },
+    {
+      "objectType" : "ExecPort",
+      "metadata" : {},
+      "name" : "drawDebug",
+      "nodePortType" : "Out",
+      "defaultValues" : {
+        "Boolean" : false
+        },
+      "execPortType" : "In",
+      "typeSpec" : "Boolean"
+      },
+    {
+      "objectType" : "ExecPort",
+      "metadata" : {},
+      "name" : "rigScale",
+      "nodePortType" : "Out",
+      "defaultValues" : {
+        "Scalar" : 0
+        },
+      "execPortType" : "In",
+      "typeSpec" : "Scalar"
+      },
+    {
+      "objectType" : "ExecPort",
+      "metadata" : {},
+      "name" : "heightTh",
+      "nodePortType" : "Out",
+      "defaultValues" : {
+        "Scalar" : 0
+        },
+      "execPortType" : "In",
+      "typeSpec" : "Scalar"
+      },
+    {
+      "objectType" : "ExecPort",
+      "metadata" : {},
+      "name" : "speedTh",
+      "nodePortType" : "Out",
+      "defaultValues" : {
+        "Scalar" : 0
+        },
+      "execPortType" : "In",
+      "typeSpec" : "Scalar"
+      },
+    {
+      "objectType" : "ExecPort",
+      "metadata" : {},
+      "name" : "ankleInPose",
+      "nodePortType" : "Out",
+      "defaultValues" : {
+        "Mat44" : {
+          "row0" : {
+            "x" : 1,
+            "y" : 0,
+            "z" : 0,
+            "t" : 0
+            },
+          "row1" : {
+            "x" : 0,
+            "y" : 1,
+            "z" : 0,
+            "t" : 0
+            },
+          "row2" : {
+            "x" : 0,
+            "y" : 0,
+            "z" : 1,
+            "t" : 0
+            },
+          "row3" : {
+            "x" : 0,
+            "y" : 0,
+            "z" : 0,
+            "t" : 1
+            }
+          }
+        },
+      "execPortType" : "In",
+      "typeSpec" : "Mat44"
+      },
+    {
+      "objectType" : "ExecPort",
+      "name" : "this",
+      "nodePortType" : "In",
+      "defaultValues" : {
+        "FootstepConstraintSolver" : null
+        },
+      "execPortType" : "Out",
+      "typeSpec" : "FootstepConstraintSolver"
+      },
+    {
+      "objectType" : "ExecPort",
+      "metadata" : {},
+      "name" : "ankleOutPose",
+      "nodePortType" : "In",
+      "defaultValues" : {
+        "Mat44" : {
+          "row0" : {
+            "x" : 1,
+            "y" : 0,
+            "z" : 0,
+            "t" : 0
+            },
+          "row1" : {
+            "x" : 0,
+            "y" : 1,
+            "z" : 0,
+            "t" : 0
+            },
+          "row2" : {
+            "x" : 0,
+            "y" : 0,
+            "z" : 1,
+            "t" : 0
+            },
+          "row3" : {
+            "x" : 0,
+            "y" : 0,
+            "z" : 0,
+            "t" : 1
+            }
+          }
+        },
+      "execPortType" : "Out",
+      "typeSpec" : "Mat44"
+      },
+    {
+      "objectType" : "ExecPort",
+      "metadata" : {},
+      "name" : "stepToggle",
+      "nodePortType" : "In",
+      "defaultValues" : {
+        "Boolean" : false
+        },
+      "execPortType" : "Out",
+      "typeSpec" : "Boolean"
+      }
+    ],
+  "extDeps" : {},
+  "presetGUID" : "6149E11167E09C67A9BE3D52AB55E4E3",
+  "nodes" : [
+    {
+      "objectType" : "Inst",
+      "metadata" : {
+        "uiGraphPos" : "{\"x\":2007.39392018,\"y\":1068.94384348}"
+        },
+      "name" : "FootstepConstraintSolver_Solve_1",
+      "ports" : [
+        {
+          "objectType" : "InstPort",
+          "name" : "exec",
+          "nodePortType" : "IO"
+          },
+        {
+          "objectType" : "InstPort",
+          "name" : "this",
+          "nodePortType" : "IO"
+          },
+        {
+          "objectType" : "InstPort",
+          "name" : "drawDebug",
+          "nodePortType" : "In"
+          },
+        {
+          "objectType" : "InstPort",
+          "name" : "rigScale",
+          "nodePortType" : "In"
+          },
+        {
+          "objectType" : "InstPort",
+          "name" : "heightTh",
+          "nodePortType" : "In"
+          },
+        {
+          "objectType" : "InstPort",
+          "name" : "speedTh",
+          "nodePortType" : "In"
+          },
+        {
+          "objectType" : "InstPort",
+          "name" : "ankleInPose",
+          "nodePortType" : "In"
+          },
+        {
+          "objectType" : "InstPort",
+          "name" : "ankleOutPose",
+          "nodePortType" : "IO"
+          },
+        {
+          "objectType" : "InstPort",
+          "name" : "stepToggle",
+          "nodePortType" : "IO"
+          }
+        ],
+      "executable" : "fabricUtils.Kinematics.FootstepConstraintSolver.FootstepConstraintSolver_Solve",
+      "presetGUID" : "8002D593B18FD889B00117DBFA5D6B76"
+      },
+    {
+      "objectType" : "Inst",
+      "metadata" : {
+        "uiGraphPos" : "{\"x\":1543.04553151,\"y\":1058.85839427}"
+        },
+      "name" : "FootstepConstraintSolver_Constructor_1",
+      "ports" : [
+        {
+          "objectType" : "InstPort",
+          "name" : "exec",
+          "nodePortType" : "IO"
+          },
+        {
+          "objectType" : "InstPort",
+          "name" : "result",
+          "nodePortType" : "Out"
+          }
+        ],
+      "executable" : "fabricUtils.Kinematics.FootstepConstraintSolver.FootstepConstraintSolver_Constructor",
+      "presetGUID" : "8AEF1C2FD5675C0A385AD257105A4A55"
+      },
+    {
+      "objectType" : "Var",
+      "metadata" : {
+        "uiGraphPos" : "{\"x\":1871.78454518,\"y\":1064.04845774}"
+        },
+      "name" : "solver",
+      "ports" : [
+        {
+          "objectType" : "VarPort",
+          "name" : "value",
+          "nodePortType" : "IO"
+          }
+        ],
+      "dataType" : "FootstepConstraintSolver"
+      }
+    ],
+  "connections" : {
+    "drawDebug" : [
+      "FootstepConstraintSolver_Solve_1.drawDebug"
+      ],
+    "rigScale" : [
+      "FootstepConstraintSolver_Solve_1.rigScale"
+      ],
+    "heightTh" : [
+      "FootstepConstraintSolver_Solve_1.heightTh"
+      ],
+    "speedTh" : [
+      "FootstepConstraintSolver_Solve_1.speedTh"
+      ],
+    "ankleInPose" : [
+      "FootstepConstraintSolver_Solve_1.ankleInPose"
+      ],
+    "FootstepConstraintSolver_Solve_1.this" : [
+      "this"
+      ],
+    "FootstepConstraintSolver_Solve_1.ankleOutPose" : [
+      "ankleOutPose"
+      ],
+    "FootstepConstraintSolver_Solve_1.stepToggle" : [
+      "stepToggle"
+      ],
+    "FootstepConstraintSolver_Constructor_1.result" : [
+      "solver.value"
+      ],
+    "solver.value" : [
+      "FootstepConstraintSolver_Solve_1.this"
+      ]
+    },
+  "requiredPresets" : {
+    "fabricUtils.Kinematics.FootstepConstraintSolver.FootstepConstraintSolver" : {
+      "objectType" : "Graph",
+      "metadata" : {
+        "uiTextColor" : "{\n  \"r\" : 168,\n  \"g\" : 229,\n  \"b\" : 240\n  }",
+        "uiNodeColor" : "{\n  \"r\" : 49,\n  \"g\" : 60,\n  \"b\" : 61\n  }",
+        "uiGraphZoom" : "{\n  \"value\" : 1.0\n  }",
+        "uiHeaderColor" : "{\n  \"r\" : 42,\n  \"g\" : 94,\n  \"b\" : 102\n  }",
+        "uiGraphPan" : "{\n  \"x\" : -1409.2197265625,\n  \"y\" : -811.901123046875\n  }"
+        },
+      "title" : "FootstepConstraintSolver",
+      "ports" : [
+        {
+          "objectType" : "ExecPort",
+          "name" : "exec",
+          "nodePortType" : "IO",
+          "defaultValues" : {
+            "Execute" : {}
+            },
+          "execPortType" : "IO",
+          "typeSpec" : "Execute"
+          },
+        {
+          "objectType" : "ExecPort",
+          "metadata" : {},
+          "name" : "drawDebug",
+          "nodePortType" : "Out",
+          "defaultValues" : {
+            "Boolean" : false
+            },
+          "execPortType" : "In",
+          "typeSpec" : "Boolean"
+          },
+        {
+          "objectType" : "ExecPort",
+          "metadata" : {},
+          "name" : "rigScale",
+          "nodePortType" : "Out",
+          "defaultValues" : {
+            "Scalar" : 0
+            },
+          "execPortType" : "In",
+          "typeSpec" : "Scalar"
+          },
+        {
+          "objectType" : "ExecPort",
+          "metadata" : {},
+          "name" : "heightTh",
+          "nodePortType" : "Out",
+          "defaultValues" : {
+            "Scalar" : 0
+            },
+          "execPortType" : "In",
+          "typeSpec" : "Scalar"
+          },
+        {
+          "objectType" : "ExecPort",
+          "metadata" : {},
+          "name" : "speedTh",
+          "nodePortType" : "Out",
+          "defaultValues" : {
+            "Scalar" : 0
+            },
+          "execPortType" : "In",
+          "typeSpec" : "Scalar"
+          },
+        {
+          "objectType" : "ExecPort",
+          "metadata" : {},
+          "name" : "ankleInPose",
+          "nodePortType" : "Out",
+          "defaultValues" : {
+            "Mat44" : {
+              "row0" : {
+                "x" : 1,
+                "y" : 0,
+                "z" : 0,
+                "t" : 0
+                },
+              "row1" : {
+                "x" : 0,
+                "y" : 1,
+                "z" : 0,
+                "t" : 0
+                },
+              "row2" : {
+                "x" : 0,
+                "y" : 0,
+                "z" : 1,
+                "t" : 0
+                },
+              "row3" : {
+                "x" : 0,
+                "y" : 0,
+                "z" : 0,
+                "t" : 1
+                }
+              }
+            },
+          "execPortType" : "In",
+          "typeSpec" : "Mat44"
+          },
+        {
+          "objectType" : "ExecPort",
+          "name" : "this",
+          "nodePortType" : "In",
+          "defaultValues" : {
+            "FootstepConstraintSolver" : null
+            },
+          "execPortType" : "Out",
+          "typeSpec" : "FootstepConstraintSolver"
+          },
+        {
+          "objectType" : "ExecPort",
+          "metadata" : {},
+          "name" : "ankleOutPose",
+          "nodePortType" : "In",
+          "defaultValues" : {
+            "Mat44" : {
+              "row0" : {
+                "x" : 1,
+                "y" : 0,
+                "z" : 0,
+                "t" : 0
+                },
+              "row1" : {
+                "x" : 0,
+                "y" : 1,
+                "z" : 0,
+                "t" : 0
+                },
+              "row2" : {
+                "x" : 0,
+                "y" : 0,
+                "z" : 1,
+                "t" : 0
+                },
+              "row3" : {
+                "x" : 0,
+                "y" : 0,
+                "z" : 0,
+                "t" : 1
+                }
+              }
+            },
+          "execPortType" : "Out",
+          "typeSpec" : "Mat44"
+          },
+        {
+          "objectType" : "ExecPort",
+          "metadata" : {},
+          "name" : "stepToggle",
+          "nodePortType" : "In",
+          "defaultValues" : {
+            "Boolean" : false
+            },
+          "execPortType" : "Out",
+          "typeSpec" : "Boolean"
+          }
+        ],
+      "extDeps" : {},
+      "presetGUID" : "6149E11167E09C67A9BE3D52AB55E4E3",
+      "nodes" : [
+        {
+          "objectType" : "Inst",
+          "metadata" : {
+            "uiGraphPos" : "{\"x\":2007.39392018,\"y\":1068.94384348}"
+            },
+          "name" : "FootstepConstraintSolver_Solve_1",
+          "ports" : [
+            {
+              "objectType" : "InstPort",
+              "name" : "exec",
+              "nodePortType" : "IO"
+              },
+            {
+              "objectType" : "InstPort",
+              "name" : "this",
+              "nodePortType" : "IO"
+              },
+            {
+              "objectType" : "InstPort",
+              "name" : "drawDebug",
+              "nodePortType" : "In"
+              },
+            {
+              "objectType" : "InstPort",
+              "name" : "rigScale",
+              "nodePortType" : "In"
+              },
+            {
+              "objectType" : "InstPort",
+              "name" : "heightTh",
+              "nodePortType" : "In"
+              },
+            {
+              "objectType" : "InstPort",
+              "name" : "speedTh",
+              "nodePortType" : "In"
+              },
+            {
+              "objectType" : "InstPort",
+              "name" : "ankleInPose",
+              "nodePortType" : "In"
+              },
+            {
+              "objectType" : "InstPort",
+              "name" : "ankleOutPose",
+              "nodePortType" : "IO"
+              },
+            {
+              "objectType" : "InstPort",
+              "name" : "stepToggle",
+              "nodePortType" : "IO"
+              }
+            ],
+          "executable" : "fabricUtils.Kinematics.FootstepConstraintSolver.FootstepConstraintSolver_Solve",
+          "presetGUID" : "8002D593B18FD889B00117DBFA5D6B76"
+          },
+        {
+          "objectType" : "Inst",
+          "metadata" : {
+            "uiGraphPos" : "{\"x\":1543.04553151,\"y\":1058.85839427}"
+            },
+          "name" : "FootstepConstraintSolver_Constructor_1",
+          "ports" : [
+            {
+              "objectType" : "InstPort",
+              "name" : "exec",
+              "nodePortType" : "IO"
+              },
+            {
+              "objectType" : "InstPort",
+              "name" : "result",
+              "nodePortType" : "Out"
+              }
+            ],
+          "executable" : "fabricUtils.Kinematics.FootstepConstraintSolver.FootstepConstraintSolver_Constructor",
+          "presetGUID" : "8AEF1C2FD5675C0A385AD257105A4A55"
+          },
+        {
+          "objectType" : "Var",
+          "metadata" : {
+            "uiGraphPos" : "{\"x\":1871.78454518,\"y\":1064.04845774}"
+            },
+          "name" : "solver",
+          "ports" : [
+            {
+              "objectType" : "VarPort",
+              "name" : "value",
+              "nodePortType" : "IO"
+              }
+            ],
+          "dataType" : "FootstepConstraintSolver"
+          }
+        ],
+      "connections" : {
+        "drawDebug" : [
+          "FootstepConstraintSolver_Solve_1.drawDebug"
+          ],
+        "rigScale" : [
+          "FootstepConstraintSolver_Solve_1.rigScale"
+          ],
+        "heightTh" : [
+          "FootstepConstraintSolver_Solve_1.heightTh"
+          ],
+        "speedTh" : [
+          "FootstepConstraintSolver_Solve_1.speedTh"
+          ],
+        "ankleInPose" : [
+          "FootstepConstraintSolver_Solve_1.ankleInPose"
+          ],
+        "FootstepConstraintSolver_Solve_1.this" : [
+          "this"
+          ],
+        "FootstepConstraintSolver_Solve_1.ankleOutPose" : [
+          "ankleOutPose"
+          ],
+        "FootstepConstraintSolver_Solve_1.stepToggle" : [
+          "stepToggle"
+          ],
+        "FootstepConstraintSolver_Constructor_1.result" : [
+          "solver.value"
+          ],
+        "solver.value" : [
+          "FootstepConstraintSolver_Solve_1.this"
+          ]
+        }
+      },
+    "fabricUtils.Kinematics.FootstepConstraintSolver.FootstepConstraintSolver_Solve" : {
+      "objectType" : "Func",
+      "metadata" : {
+        "uiTextColor" : "{\n  \"r\" : 168,\n  \"g\" : 229,\n  \"b\" : 240\n  }",
+        "uiNodeColor" : "{\n  \"r\" : 49,\n  \"g\" : 60,\n  \"b\" : 61\n  }",
+        "uiHeaderColor" : "{\n  \"r\" : 42,\n  \"g\" : 94,\n  \"b\" : 102\n  }",
+        "uiTooltip" : "Supported types:\n  this: FootstepConstraintSolver\n  drawDebug: Boolean\n  rigScale: Scalar\n  heightTh: Scalar\n  speedTh: Scalar\n  ankleInPose: Mat44\n  ankleOutPose: Mat44\n  stepToggle: Boolean\n"
+        },
+      "title" : "FootstepConstraintSolver_Solve",
+      "ports" : [
+        {
+          "objectType" : "ExecPort",
+          "name" : "exec",
+          "nodePortType" : "IO",
+          "execPortType" : "IO",
+          "typeSpec" : "Execute"
+          },
+        {
+          "objectType" : "ExecPort",
+          "name" : "this",
+          "nodePortType" : "IO",
+          "execPortType" : "IO",
+          "typeSpec" : "FootstepConstraintSolver"
+          },
+        {
+          "objectType" : "ExecPort",
+          "name" : "drawDebug",
+          "nodePortType" : "Out",
+          "execPortType" : "In",
+          "typeSpec" : "Boolean"
+          },
+        {
+          "objectType" : "ExecPort",
+          "name" : "rigScale",
+          "nodePortType" : "Out",
+          "execPortType" : "In",
+          "typeSpec" : "Scalar"
+          },
+        {
+          "objectType" : "ExecPort",
+          "name" : "heightTh",
+          "nodePortType" : "Out",
+          "execPortType" : "In",
+          "typeSpec" : "Scalar"
+          },
+        {
+          "objectType" : "ExecPort",
+          "name" : "speedTh",
+          "nodePortType" : "Out",
+          "execPortType" : "In",
+          "typeSpec" : "Scalar"
+          },
+        {
+          "objectType" : "ExecPort",
+          "metadata" : {
+            "uiColor" : "{\n  \"r\" : 249,\n  \"g\" : 157,\n  \"b\" : 28\n  }"
+            },
+          "name" : "ankleInPose",
+          "nodePortType" : "Out",
+          "execPortType" : "In",
+          "typeSpec" : "Mat44"
+          },
+        {
+          "objectType" : "ExecPort",
+          "metadata" : {
+            "uiColor" : "{\n  \"r\" : 249,\n  \"g\" : 157,\n  \"b\" : 28\n  }"
+            },
+          "name" : "ankleOutPose",
+          "nodePortType" : "IO",
+          "execPortType" : "IO",
+          "typeSpec" : "Mat44"
+          },
+        {
+          "objectType" : "ExecPort",
+          "name" : "stepToggle",
+          "nodePortType" : "IO",
+          "execPortType" : "IO",
+          "typeSpec" : "Boolean"
+          }
+        ],
+      "extDeps" : {
+        "fabricUtils" : "*"
+        },
+      "presetGUID" : "8002D593B18FD889B00117DBFA5D6B76",
+      "code" : "require fabricUtils;
+
+dfgEntry {
+  this.solve(drawDebug, rigScale, heightTh, speedTh, ankleInPose, ankleOutPose, stepToggle);
+}
+"
+      },
+    "fabricUtils.Kinematics.FootstepConstraintSolver.FootstepConstraintSolver_Constructor" : {
+      "objectType" : "Func",
+      "metadata" : {
+        "uiTextColor" : "{\n  \"r\" : 168,\n  \"g\" : 229,\n  \"b\" : 240\n  }",
+        "uiNodeColor" : "{\n  \"r\" : 49,\n  \"g\" : 60,\n  \"b\" : 61\n  }",
+        "uiHeaderColor" : "{\n  \"r\" : 42,\n  \"g\" : 94,\n  \"b\" : 102\n  }",
+        "uiTooltip" : "Detects footsteps and constraints foot xfo to ground.\n\nSupported types:\n  result: FootstepConstraintSolver\n"
+        },
+      "title" : "FootstepConstraintSolver_Constructor",
+      "ports" : [
+        {
+          "objectType" : "ExecPort",
+          "name" : "exec",
+          "nodePortType" : "IO",
+          "execPortType" : "IO",
+          "typeSpec" : "Execute"
+          },
+        {
+          "objectType" : "ExecPort",
+          "name" : "result",
+          "nodePortType" : "In",
+          "execPortType" : "Out",
+          "typeSpec" : "FootstepConstraintSolver"
+          }
+        ],
+      "extDeps" : {
+        "fabricUtils" : "*"
+        },
+      "presetGUID" : "8AEF1C2FD5675C0A385AD257105A4A55",
+      "code" : "require fabricUtils;
+
+dfgEntry {
+  result = FootstepConstraintSolver();
+}
+"
+      }
+    }
+  }

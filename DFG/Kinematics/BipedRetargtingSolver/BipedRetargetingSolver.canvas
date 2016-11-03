@@ -3,9 +3,9 @@
   "metadata" : {
     "uiTextColor" : "{\n  \"r\" : 168,\n  \"g\" : 229,\n  \"b\" : 240\n  }",
     "uiNodeColor" : "{\n  \"r\" : 59,\n  \"g\" : 60,\n  \"b\" : 61\n  }",
-    "uiGraphZoom" : "{\n  \"value\" : 0.8299146890640259\n  }",
+    "uiGraphZoom" : "{\n  \"value\" : 0.8639202117919922\n  }",
     "uiTooltip" : "Retargets the current pose of a biped character based on the pose of another biped character. Mappings are defined using JSON files and MotionBuilder naming convention. The offset between character joints is defined based on the poses at a given reference frame.",
-    "uiGraphPan" : "{\n  \"x\" : -630.3634033203125,\n  \"y\" : -139.8838806152344\n  }"
+    "uiGraphPan" : "{\n  \"x\" : -409.2927856445313,\n  \"y\" : -149.366943359375\n  }"
     },
   "title" : "BipedRetargetingSolver",
   "ports" : [
@@ -31,7 +31,6 @@
       },
     {
       "objectType" : "ExecPort",
-      "metadata" : {},
       "name" : "matchSourcePos",
       "nodePortType" : "Out",
       "defaultValues" : {
@@ -108,6 +107,16 @@
       },
     {
       "objectType" : "ExecPort",
+      "name" : "this",
+      "nodePortType" : "In",
+      "defaultValues" : {
+        "BipedRetargetingSolver" : null
+        },
+      "execPortType" : "Out",
+      "typeSpec" : "BipedRetargetingSolver"
+      },
+    {
+      "objectType" : "ExecPort",
       "name" : "retargetPose",
       "nodePortType" : "In",
       "defaultValues" : {
@@ -119,7 +128,7 @@
   "extDeps" : {
     "fabricUtils" : "*"
     },
-  "presetGUID" : "10909FA21D9CCED980E03F5F11218ED2",
+  "presetGUID" : "BAC49C86D244B634B3066723AD32577B",
   "nodes" : [
     {
       "objectType" : "Var",
@@ -263,6 +272,9 @@
     "BipedRetargetingSolver_Constructor_1.result" : [
       "solver.value"
       ],
+    "BipedRetargetingSolver_Solve_1.this" : [
+      "this"
+      ],
     "BipedRetargetingSolver_Solve_1.retargetPose" : [
       "retargetPose"
       ]
@@ -273,9 +285,9 @@
       "metadata" : {
         "uiTextColor" : "{\n  \"r\" : 168,\n  \"g\" : 229,\n  \"b\" : 240\n  }",
         "uiNodeColor" : "{\n  \"r\" : 59,\n  \"g\" : 60,\n  \"b\" : 61\n  }",
-        "uiGraphZoom" : "{\n  \"value\" : 0.8299146890640259\n  }",
+        "uiGraphZoom" : "{\n  \"value\" : 0.8639202117919922\n  }",
         "uiTooltip" : "Retargets the current pose of a biped character based on the pose of another biped character. Mappings are defined using JSON files and MotionBuilder naming convention. The offset between character joints is defined based on the poses at a given reference frame.",
-        "uiGraphPan" : "{\n  \"x\" : -630.3634033203125,\n  \"y\" : -139.8838806152344\n  }"
+        "uiGraphPan" : "{\n  \"x\" : -409.2927856445313,\n  \"y\" : -149.366943359375\n  }"
         },
       "title" : "BipedRetargetingSolver",
       "ports" : [
@@ -301,7 +313,6 @@
           },
         {
           "objectType" : "ExecPort",
-          "metadata" : {},
           "name" : "matchSourcePos",
           "nodePortType" : "Out",
           "defaultValues" : {
@@ -378,6 +389,16 @@
           },
         {
           "objectType" : "ExecPort",
+          "name" : "this",
+          "nodePortType" : "In",
+          "defaultValues" : {
+            "BipedRetargetingSolver" : null
+            },
+          "execPortType" : "Out",
+          "typeSpec" : "BipedRetargetingSolver"
+          },
+        {
+          "objectType" : "ExecPort",
           "name" : "retargetPose",
           "nodePortType" : "In",
           "defaultValues" : {
@@ -389,7 +410,7 @@
       "extDeps" : {
         "fabricUtils" : "*"
         },
-      "presetGUID" : "10909FA21D9CCED980E03F5F11218ED2",
+      "presetGUID" : "BAC49C86D244B634B3066723AD32577B",
       "nodes" : [
         {
           "objectType" : "Var",
@@ -532,6 +553,9 @@
           ],
         "BipedRetargetingSolver_Constructor_1.result" : [
           "solver.value"
+          ],
+        "BipedRetargetingSolver_Solve_1.this" : [
+          "this"
           ],
         "BipedRetargetingSolver_Solve_1.retargetPose" : [
           "retargetPose"

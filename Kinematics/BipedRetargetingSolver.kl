@@ -163,6 +163,24 @@ function BipedRetargetingSolver.changeRefFrame!(
   }
 }
 
+/// \dfgPresetColor Color(49, 60, 61)
+/// \dfgPresetHeaderColor Color(42, 94, 102)
+/// \dfgPresetTextColor Color(168, 229, 240)
+/// \dfgPresetFolder Kinematics\BipedRetargtingSolver
+function IPose BipedRetargetingSolver.getInputReferencePose() {
+  return this.inRefPose;
+}
+
+
+/// \dfgPresetColor Color(49, 60, 61)
+/// \dfgPresetHeaderColor Color(42, 94, 102)
+/// \dfgPresetTextColor Color(168, 229, 240)
+/// \dfgPresetFolder Kinematics\BipedRetargtingSolver
+function IPose BipedRetargetingSolver.getOutputReferencePose() {
+  return this.outRefPose;
+}
+
+
 /// \dfgPresetTitle BipedRetargetingSolver_Solve
 /// \dfgPresetColor Color(49, 60, 61)
 /// \dfgPresetHeaderColor Color(42, 94, 102)
