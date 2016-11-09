@@ -1,0 +1,14 @@
+// We use this file to expose Clip methods not available as DFGs as well as to implement new methods
+require Animation;
+
+/// \dfgPresetFolder Animation\Clip
+function addTrackSet(io Clip this, in ITrackSet trackSet) {
+  this.addTrackSet(trackSet);
+}
+
+/// \dfgPresetFolder Animation\Clip
+function addTrackSetArray(io Clip this, in KeyframeTrackSet trackSetArray[]) {
+  for(Size i=0; i<trackSetArray.size(); i++) {
+    this.addTrackSet(trackSetArray[i]);
+  }
+}

@@ -1,0 +1,74 @@
+require Animation;
+require JSON;
+require FileIO;
+
+/// \dfgPresetFolder FileIO
+/// Saves a clip object to a JSON file.
+function saveClipToJSON(io Clip this, in FilePath path) {
+  // store clip values
+  JSONDictValue clipValues();
+  clipValues.setString('name', this.name);
+
+  // iterate over clip's tracksets
+  JSONArrayValue sets();
+  for(setName in this.trackSets){
+    KeyframeTrackSet set = this.trackSets[setName];
+    JSONDictValue setValues();
+    setValues.setString('name', set.name);
+    setValues.setString('valueType', set.valueType);
+    setValues.setInteger('flags', set.flags);
+  
+    // iterate over trackset's tracks
+    JSONArrayValue tracks();
+    for(Size j=0; j<set.tracks.size(); j++){
+      KeyframeTrack track = set.tracks[j];
+      JSONDictValue trackValues();
+      trackValues.setString('name', track.name);
+      trackValues.setScalar('colorR', track.color.r);
+      trackValues.setScalar('colorG', track.color.g);
+      trackValues.setScalar('colorB', track.color.b);
+      trackValues.setScalar('colorA', track.color.a);
+      trackValues.setScalar('defaultValue', track.defaultValue);
+      trackValues.setInteger('defaultInterpolation', track.defaultInterpolation);
+      // iterate over keys
+      JSONArrayValue keys();
+      for(Size k=0; k<track.keys.size(); k++){
+        Keyframe key = track.keys[k];
+        JSONDictValue keyValues();
+        keyValues.setScalar('time', key.time);
+        keyValues.setScalar('value', key.value);
+        keyValues.setInteger('interpolation', key.interpolation);
+        keyValues.setScalar('inTangentX', key.inTangent.x);
+        keyValues.setScalar('inTangentY', key.inTangent.y);
+        keyValues.setScalar('outTangentX', key.outTangent.x);
+        keyValues.setScalar('outTangentY', key.outTangent.y);
+
+        // add this key to key array
+        keys.add(keyValues);
+      }
+      // set key array as a value of this track
+      trackValues.set('keys', keys);
+
+      // add this track to the array of tracks
+      tracks.add(trackValues);
+
+    }
+    // set track array as value of this trackset
+    setValues.set('tracks', tracks);
+
+    // add this trackset to the array of tracksets
+    sets.add(setValues);
+
+  }
+  // set trackset array as value of clip
+  clipValues.set('trackSets', sets);
+
+  // save to file
+  FilePath filepath = path.clone();
+  filepath = filepath.expandEnvVars();
+  JSONDoc doc();
+  doc.root.set('clip', clipValues);
+  String json = doc.write(2);
+  TextWriter writer(path.string());
+  writer.write(json);
+}

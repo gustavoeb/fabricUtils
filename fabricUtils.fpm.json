@@ -20,6 +20,7 @@
     "Converters/xfoArrayToPose.kl",
 
     "FileIO/getClipPoseFromQuatCSV.kl",
+    "FileIO/saveClipToJSON.kl",
     "FileIO/BVHReader.kl",
 
     "Kinematics/BipedRetargetingSolver.kl"

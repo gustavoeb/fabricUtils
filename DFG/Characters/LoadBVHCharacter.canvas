@@ -1,10 +1,10 @@
 {
   "objectType" : "Graph",
   "metadata" : {
-    "uiGraphZoom" : "{\n  \"value\" : 0.7049185633659363\n  }",
-    "uiGraphPan" : "{\n  \"x\" : 53.78642077285667,\n  \"y\" : 8.085334168210466\n  }"
+    "uiGraphZoom" : "{\n  \"value\" : 0.8329514861106873\n  }",
+    "uiGraphPan" : "{\n  \"x\" : 46.39987882455188,\n  \"y\" : -77.89704394254147\n  }"
     },
-  "title" : "LoadCharacterFromBVH",
+  "title" : "LoadBVHCharacter",
   "ports" : [
     {
       "objectType" : "ExecPort",
@@ -18,11 +18,11 @@
       },
     {
       "objectType" : "ExecPort",
-      "metadata" : {},
       "name" : "file",
       "nodePortType" : "Out",
       "defaultValues" : {
-        "String" : ""
+        "String" : "",
+        "FilePath" : null
         },
       "execPortType" : "In"
       },
@@ -35,24 +35,43 @@
       "nodePortType" : "Out",
       "defaultValues" : {
         "Boolean" : false,
-        "Integer" : 0
+        "Integer" : 1
         },
       "execPortType" : "In",
       "typeSpec" : "Integer"
       },
     {
       "objectType" : "ExecPort",
-      "metadata" : {},
+      "name" : "refFrame",
+      "nodePortType" : "Out",
+      "defaultValues" : {
+        "Float64" : 0
+        },
+      "execPortType" : "In",
+      "typeSpec" : "Float64"
+      },
+    {
+      "objectType" : "ExecPort",
+      "name" : "refTime",
+      "nodePortType" : "Out",
+      "defaultValues" : {
+        "Float64" : 0
+        },
+      "execPortType" : "In",
+      "typeSpec" : "Float64"
+      },
+    {
+      "objectType" : "ExecPort",
       "name" : "frame",
       "nodePortType" : "Out",
       "defaultValues" : {
-        "Float32" : 0
+        "Float32" : 0,
+        "Float64" : 0
         },
       "execPortType" : "In"
       },
     {
       "objectType" : "ExecPort",
-      "metadata" : {},
       "name" : "time",
       "nodePortType" : "Out",
       "defaultValues" : {
@@ -63,8 +82,17 @@
       },
     {
       "objectType" : "ExecPort",
-      "metadata" : {},
-      "name" : "character",
+      "name" : "bindPose",
+      "nodePortType" : "In",
+      "defaultValues" : {
+        "Character" : null
+        },
+      "execPortType" : "Out",
+      "typeSpec" : "Character"
+      },
+    {
+      "objectType" : "ExecPort",
+      "name" : "animation",
       "nodePortType" : "In",
       "defaultValues" : {
         "Character" : null
@@ -72,13 +100,15 @@
       "execPortType" : "Out"
       }
     ],
-  "extDeps" : {},
-  "presetGUID" : "761E185980174E263149B02403F724D1",
+  "extDeps" : {
+    "fabricUtils" : "*"
+    },
+  "presetGUID" : "3FA6342A12B706EB9447799B1C1B6412",
   "nodes" : [
     {
       "objectType" : "Inst",
       "metadata" : {
-        "uiGraphPos" : "{\"x\":-30.9062957764,\"y\":241.036437988}"
+        "uiGraphPos" : "{\"x\":-290.138211012,\"y\":212.409808874}"
         },
       "name" : "BVHReader_1",
       "ports" : [
@@ -104,7 +134,8 @@
     {
       "objectType" : "Inst",
       "metadata" : {
-        "uiGraphPos" : "{\"x\":430.674414158,\"y\":416.325568557}"
+        "uiGraphPos" : "{\"x\":210.906380415,\"y\":579.028823614}",
+        "uiCollapsedState" : "1"
         },
       "name" : "FrameToTime_1",
       "ports" : [
@@ -135,28 +166,7 @@
     {
       "objectType" : "Inst",
       "metadata" : {
-        "uiGraphPos" : "{\"x\":102.093704224,\"y\":241.036437988}"
-        },
-      "name" : "Cache_1",
-      "ports" : [
-        {
-          "objectType" : "InstPort",
-          "name" : "exec",
-          "nodePortType" : "IO"
-          },
-        {
-          "objectType" : "InstPort",
-          "name" : "value",
-          "nodePortType" : "In"
-          }
-        ],
-      "executable" : "Fabric.Core.Data.Cache",
-      "presetGUID" : "D903AFD981FE9214C69943F542D5FD60"
-      },
-    {
-      "objectType" : "Inst",
-      "metadata" : {
-        "uiGraphPos" : "{\"x\":216.093704224,\"y\":241.036437988}"
+        "uiGraphPos" : "{\"x\":272.034630299,\"y\":286.041438341}"
         },
       "name" : "GetCharacter_1",
       "ports" : [
@@ -182,7 +192,7 @@
     {
       "objectType" : "Inst",
       "metadata" : {
-        "uiGraphPos" : "{\"x\":716.837146044,\"y\":263.674444675}"
+        "uiGraphPos" : "{\"x\":544.189308763,\"y\":368.441272736}"
         },
       "name" : "SetClipPoseTime_1",
       "ports" : [
@@ -208,33 +218,7 @@
     {
       "objectType" : "Inst",
       "metadata" : {
-        "uiGraphPos" : "{\"x\":228.249192238,\"y\":342.89778316}"
-        },
-      "name" : "GetFPS_1",
-      "ports" : [
-        {
-          "objectType" : "InstPort",
-          "name" : "exec",
-          "nodePortType" : "IO"
-          },
-        {
-          "objectType" : "InstPort",
-          "name" : "this",
-          "nodePortType" : "In"
-          },
-        {
-          "objectType" : "InstPort",
-          "name" : "result",
-          "nodePortType" : "Out"
-          }
-        ],
-      "executable" : "fabricUtils.FileIO.BVHReader.GetFPS",
-      "presetGUID" : "2C242FB01B1F0AD3FCBD4FD5F87A3890"
-      },
-    {
-      "objectType" : "Inst",
-      "metadata" : {
-        "uiGraphPos" : "{\"x\":429.553672433,\"y\":325.165848136}",
+        "uiGraphPos" : "{\"x\":222.970375776,\"y\":528.788467169}",
         "uiCollapsedState" : "2"
         },
       "name" : "ToBoolean_1",
@@ -261,7 +245,8 @@
     {
       "objectType" : "Inst",
       "metadata" : {
-        "uiGraphPos" : "{\"x\":569.0,\"y\":320.5}"
+        "uiGraphPos" : "{\"x\":376.535134077,\"y\":554.844131231}",
+        "uiCollapsedState" : "1"
         },
       "name" : "If_1",
       "ports" : [
@@ -293,6 +278,242 @@
         ],
       "executable" : "Fabric.Core.Control.If",
       "presetGUID" : "3182A478A21643455D549E483D35F831"
+      },
+    {
+      "objectType" : "Inst",
+      "metadata" : {
+        "uiGraphPos" : "{\"x\":396.597670078,\"y\":165.747220755}"
+        },
+      "name" : "GetCharacter_2",
+      "ports" : [
+        {
+          "objectType" : "InstPort",
+          "name" : "exec",
+          "nodePortType" : "IO"
+          },
+        {
+          "objectType" : "InstPort",
+          "name" : "this",
+          "nodePortType" : "In"
+          },
+        {
+          "objectType" : "InstPort",
+          "name" : "result",
+          "nodePortType" : "Out"
+          }
+        ],
+      "executable" : "fabricUtils.FileIO.BVHReader.GetCharacter",
+      "presetGUID" : "BA0245F136C565F5AD2810B4392B8DCA"
+      },
+    {
+      "objectType" : "Inst",
+      "metadata" : {
+        "uiGraphPos" : "{\"x\":203.712105513,\"y\":437.231796026}",
+        "uiCollapsedState" : "1"
+        },
+      "name" : "FrameToTime_2",
+      "ports" : [
+        {
+          "objectType" : "InstPort",
+          "name" : "exec",
+          "nodePortType" : "IO"
+          },
+        {
+          "objectType" : "InstPort",
+          "name" : "frame",
+          "nodePortType" : "In"
+          },
+        {
+          "objectType" : "InstPort",
+          "name" : "fps",
+          "nodePortType" : "In"
+          },
+        {
+          "objectType" : "InstPort",
+          "name" : "time",
+          "nodePortType" : "Out"
+          }
+        ],
+      "executable" : "Fabric.Compounds.Math.FrameToTime",
+      "presetGUID" : "FC97B76DD3597484D4308A5490FD1853"
+      },
+    {
+      "objectType" : "Inst",
+      "metadata" : {
+        "uiGraphPos" : "{\"x\":380.019325972,\"y\":391.776595831}",
+        "uiCollapsedState" : "0"
+        },
+      "name" : "If_2",
+      "ports" : [
+        {
+          "objectType" : "InstPort",
+          "name" : "exec",
+          "nodePortType" : "IO"
+          },
+        {
+          "objectType" : "InstPort",
+          "name" : "cond",
+          "nodePortType" : "In"
+          },
+        {
+          "objectType" : "InstPort",
+          "name" : "if_true",
+          "nodePortType" : "In"
+          },
+        {
+          "objectType" : "InstPort",
+          "name" : "if_false",
+          "nodePortType" : "In"
+          },
+        {
+          "objectType" : "InstPort",
+          "name" : "result",
+          "nodePortType" : "Out"
+          }
+        ],
+      "executable" : "Fabric.Core.Control.If",
+      "presetGUID" : "3182A478A21643455D549E483D35F831"
+      },
+    {
+      "objectType" : "Inst",
+      "metadata" : {
+        "uiGraphPos" : "{\"x\":97.7868654728,\"y\":271.585305691}"
+        },
+      "name" : "Cache_1",
+      "ports" : [
+        {
+          "objectType" : "InstPort",
+          "name" : "exec",
+          "nodePortType" : "IO"
+          },
+        {
+          "objectType" : "InstPort",
+          "name" : "value",
+          "nodePortType" : "In"
+          }
+        ],
+      "executable" : "Fabric.Core.Data.Cache",
+      "presetGUID" : "D903AFD981FE9214C69943F542D5FD60"
+      },
+    {
+      "objectType" : "Inst",
+      "metadata" : {
+        "uiGraphPos" : "{\"x\":553.740530491,\"y\":179.597835302}"
+        },
+      "name" : "SetClipPoseTime_2",
+      "ports" : [
+        {
+          "objectType" : "InstPort",
+          "name" : "exec",
+          "nodePortType" : "IO"
+          },
+        {
+          "objectType" : "InstPort",
+          "name" : "this",
+          "nodePortType" : "IO"
+          },
+        {
+          "objectType" : "InstPort",
+          "name" : "time",
+          "nodePortType" : "In"
+          }
+        ],
+      "executable" : "Fabric.Exts.Characters.Character.SetClipPoseTime",
+      "presetGUID" : "61A54402005662F78D1EB2B48DB39451"
+      },
+    {
+      "objectType" : "Inst",
+      "metadata" : {
+        "uiGraphPos" : "{\"x\":101.815294266,\"y\":152.788679361}"
+        },
+      "name" : "Clone_1",
+      "ports" : [
+        {
+          "objectType" : "InstPort",
+          "name" : "exec",
+          "nodePortType" : "IO"
+          },
+        {
+          "objectType" : "InstPort",
+          "name" : "value",
+          "nodePortType" : "In"
+          },
+        {
+          "objectType" : "InstPort",
+          "name" : "clonedValue",
+          "nodePortType" : "Out"
+          }
+        ],
+      "executable" : "Fabric.Core.Data.Clone",
+      "presetGUID" : "30401D7851DEFCFA5C46EB3926DD8BAD"
+      },
+    {
+      "objectType" : "Inst",
+      "metadata" : {
+        "uiGraphPos" : "{\"x\":256.287193537,\"y\":171.938138962}"
+        },
+      "name" : "Cache_2",
+      "ports" : [
+        {
+          "objectType" : "InstPort",
+          "name" : "exec",
+          "nodePortType" : "IO"
+          },
+        {
+          "objectType" : "InstPort",
+          "name" : "value",
+          "nodePortType" : "In"
+          }
+        ],
+      "executable" : "Fabric.Core.Data.Cache",
+      "presetGUID" : "D903AFD981FE9214C69943F542D5FD60"
+      },
+    {
+      "objectType" : "Inst",
+      "metadata" : {
+        "uiGraphPos" : "{\"x\":-70.7965192795,\"y\":480.376169205}"
+        },
+      "name" : "GetFPS_1",
+      "ports" : [
+        {
+          "objectType" : "InstPort",
+          "name" : "exec",
+          "nodePortType" : "IO"
+          },
+        {
+          "objectType" : "InstPort",
+          "name" : "this",
+          "nodePortType" : "In"
+          },
+        {
+          "objectType" : "InstPort",
+          "name" : "result",
+          "nodePortType" : "Out"
+          }
+        ],
+      "executable" : "fabricUtils.FileIO.BVHReader.GetFPS",
+      "presetGUID" : "2C242FB01B1F0AD3FCBD4FD5F87A3890"
+      },
+    {
+      "objectType" : "Inst",
+      "metadata" : {
+        "uiGraphPos" : "{\"x\":52.6258544922,\"y\":561.564016938}"
+        },
+      "name" : "Cache_3",
+      "ports" : [
+        {
+          "objectType" : "InstPort",
+          "name" : "exec",
+          "nodePortType" : "IO"
+          },
+        {
+          "objectType" : "InstPort",
+          "name" : "value",
+          "nodePortType" : "In"
+          }
+        ],
+      "executable" : "Fabric.Core.Data.Cache",
+      "presetGUID" : "D903AFD981FE9214C69943F542D5FD60"
       }
     ],
   "connections" : {
@@ -302,6 +523,12 @@
     "timeMode" : [
       "ToBoolean_1.value"
       ],
+    "refFrame" : [
+      "FrameToTime_2.frame"
+      ],
+    "refTime" : [
+      "If_2.if_true"
+      ],
     "frame" : [
       "FrameToTime_1.frame"
       ],
@@ -309,39 +536,63 @@
       "If_1.if_true"
       ],
     "BVHReader_1.result" : [
-      "Cache_1.value"
+      "Cache_1.value",
+      "Clone_1.value",
+      "GetFPS_1.this"
       ],
     "FrameToTime_1.time" : [
       "If_1.if_false"
-      ],
-    "Cache_1.value" : [
-      "GetCharacter_1.this",
-      "GetFPS_1.this"
       ],
     "GetCharacter_1.result" : [
       "SetClipPoseTime_1.this"
       ],
     "SetClipPoseTime_1.this" : [
-      "character"
-      ],
-    "GetFPS_1.result" : [
-      "FrameToTime_1.fps"
+      "animation"
       ],
     "ToBoolean_1.boolean" : [
-      "If_1.cond"
+      "If_1.cond",
+      "If_2.cond"
       ],
     "If_1.result" : [
       "SetClipPoseTime_1.time"
+      ],
+    "GetCharacter_2.result" : [
+      "SetClipPoseTime_2.this"
+      ],
+    "FrameToTime_2.time" : [
+      "If_2.if_false"
+      ],
+    "If_2.result" : [
+      "SetClipPoseTime_2.time"
+      ],
+    "Cache_1.value" : [
+      "GetCharacter_1.this"
+      ],
+    "SetClipPoseTime_2.this" : [
+      "bindPose"
+      ],
+    "Clone_1.clonedValue" : [
+      "Cache_2.value"
+      ],
+    "Cache_2.value" : [
+      "GetCharacter_2.this"
+      ],
+    "GetFPS_1.result" : [
+      "Cache_3.value"
+      ],
+    "Cache_3.value" : [
+      "FrameToTime_2.fps",
+      "FrameToTime_1.fps"
       ]
     },
   "requiredPresets" : {
-    "fabricUtils.FileIO.BVHReader.LoadCharacterFromBVH" : {
+    "fabricUtils.Characters.LoadBVHCharacter" : {
       "objectType" : "Graph",
       "metadata" : {
-        "uiGraphZoom" : "{\n  \"value\" : 0.7049185633659363\n  }",
-        "uiGraphPan" : "{\n  \"x\" : 53.78642077285667,\n  \"y\" : 8.085334168210466\n  }"
+        "uiGraphZoom" : "{\n  \"value\" : 0.8329514861106873\n  }",
+        "uiGraphPan" : "{\n  \"x\" : 46.39987882455188,\n  \"y\" : -77.89704394254147\n  }"
         },
-      "title" : "LoadCharacterFromBVH",
+      "title" : "LoadBVHCharacter",
       "ports" : [
         {
           "objectType" : "ExecPort",
@@ -355,11 +606,11 @@
           },
         {
           "objectType" : "ExecPort",
-          "metadata" : {},
           "name" : "file",
           "nodePortType" : "Out",
           "defaultValues" : {
-            "String" : ""
+            "String" : "",
+            "FilePath" : null
             },
           "execPortType" : "In"
           },
@@ -372,24 +623,43 @@
           "nodePortType" : "Out",
           "defaultValues" : {
             "Boolean" : false,
-            "Integer" : 0
+            "Integer" : 1
             },
           "execPortType" : "In",
           "typeSpec" : "Integer"
           },
         {
           "objectType" : "ExecPort",
-          "metadata" : {},
+          "name" : "refFrame",
+          "nodePortType" : "Out",
+          "defaultValues" : {
+            "Float64" : 0
+            },
+          "execPortType" : "In",
+          "typeSpec" : "Float64"
+          },
+        {
+          "objectType" : "ExecPort",
+          "name" : "refTime",
+          "nodePortType" : "Out",
+          "defaultValues" : {
+            "Float64" : 0
+            },
+          "execPortType" : "In",
+          "typeSpec" : "Float64"
+          },
+        {
+          "objectType" : "ExecPort",
           "name" : "frame",
           "nodePortType" : "Out",
           "defaultValues" : {
-            "Float32" : 0
+            "Float32" : 0,
+            "Float64" : 0
             },
           "execPortType" : "In"
           },
         {
           "objectType" : "ExecPort",
-          "metadata" : {},
           "name" : "time",
           "nodePortType" : "Out",
           "defaultValues" : {
@@ -400,8 +670,17 @@
           },
         {
           "objectType" : "ExecPort",
-          "metadata" : {},
-          "name" : "character",
+          "name" : "bindPose",
+          "nodePortType" : "In",
+          "defaultValues" : {
+            "Character" : null
+            },
+          "execPortType" : "Out",
+          "typeSpec" : "Character"
+          },
+        {
+          "objectType" : "ExecPort",
+          "name" : "animation",
           "nodePortType" : "In",
           "defaultValues" : {
             "Character" : null
@@ -409,13 +688,15 @@
           "execPortType" : "Out"
           }
         ],
-      "extDeps" : {},
-      "presetGUID" : "761E185980174E263149B02403F724D1",
+      "extDeps" : {
+        "fabricUtils" : "*"
+        },
+      "presetGUID" : "3FA6342A12B706EB9447799B1C1B6412",
       "nodes" : [
         {
           "objectType" : "Inst",
           "metadata" : {
-            "uiGraphPos" : "{\"x\":-30.9062957764,\"y\":241.036437988}"
+            "uiGraphPos" : "{\"x\":-290.138211012,\"y\":212.409808874}"
             },
           "name" : "BVHReader_1",
           "ports" : [
@@ -441,7 +722,8 @@
         {
           "objectType" : "Inst",
           "metadata" : {
-            "uiGraphPos" : "{\"x\":430.674414158,\"y\":416.325568557}"
+            "uiGraphPos" : "{\"x\":210.906380415,\"y\":579.028823614}",
+            "uiCollapsedState" : "1"
             },
           "name" : "FrameToTime_1",
           "ports" : [
@@ -472,28 +754,7 @@
         {
           "objectType" : "Inst",
           "metadata" : {
-            "uiGraphPos" : "{\"x\":102.093704224,\"y\":241.036437988}"
-            },
-          "name" : "Cache_1",
-          "ports" : [
-            {
-              "objectType" : "InstPort",
-              "name" : "exec",
-              "nodePortType" : "IO"
-              },
-            {
-              "objectType" : "InstPort",
-              "name" : "value",
-              "nodePortType" : "In"
-              }
-            ],
-          "executable" : "Fabric.Core.Data.Cache",
-          "presetGUID" : "D903AFD981FE9214C69943F542D5FD60"
-          },
-        {
-          "objectType" : "Inst",
-          "metadata" : {
-            "uiGraphPos" : "{\"x\":216.093704224,\"y\":241.036437988}"
+            "uiGraphPos" : "{\"x\":272.034630299,\"y\":286.041438341}"
             },
           "name" : "GetCharacter_1",
           "ports" : [
@@ -519,7 +780,7 @@
         {
           "objectType" : "Inst",
           "metadata" : {
-            "uiGraphPos" : "{\"x\":716.837146044,\"y\":263.674444675}"
+            "uiGraphPos" : "{\"x\":544.189308763,\"y\":368.441272736}"
             },
           "name" : "SetClipPoseTime_1",
           "ports" : [
@@ -545,33 +806,7 @@
         {
           "objectType" : "Inst",
           "metadata" : {
-            "uiGraphPos" : "{\"x\":228.249192238,\"y\":342.89778316}"
-            },
-          "name" : "GetFPS_1",
-          "ports" : [
-            {
-              "objectType" : "InstPort",
-              "name" : "exec",
-              "nodePortType" : "IO"
-              },
-            {
-              "objectType" : "InstPort",
-              "name" : "this",
-              "nodePortType" : "In"
-              },
-            {
-              "objectType" : "InstPort",
-              "name" : "result",
-              "nodePortType" : "Out"
-              }
-            ],
-          "executable" : "fabricUtils.FileIO.BVHReader.GetFPS",
-          "presetGUID" : "2C242FB01B1F0AD3FCBD4FD5F87A3890"
-          },
-        {
-          "objectType" : "Inst",
-          "metadata" : {
-            "uiGraphPos" : "{\"x\":429.553672433,\"y\":325.165848136}",
+            "uiGraphPos" : "{\"x\":222.970375776,\"y\":528.788467169}",
             "uiCollapsedState" : "2"
             },
           "name" : "ToBoolean_1",
@@ -598,7 +833,8 @@
         {
           "objectType" : "Inst",
           "metadata" : {
-            "uiGraphPos" : "{\"x\":569.0,\"y\":320.5}"
+            "uiGraphPos" : "{\"x\":376.535134077,\"y\":554.844131231}",
+            "uiCollapsedState" : "1"
             },
           "name" : "If_1",
           "ports" : [
@@ -630,6 +866,242 @@
             ],
           "executable" : "Fabric.Core.Control.If",
           "presetGUID" : "3182A478A21643455D549E483D35F831"
+          },
+        {
+          "objectType" : "Inst",
+          "metadata" : {
+            "uiGraphPos" : "{\"x\":396.597670078,\"y\":165.747220755}"
+            },
+          "name" : "GetCharacter_2",
+          "ports" : [
+            {
+              "objectType" : "InstPort",
+              "name" : "exec",
+              "nodePortType" : "IO"
+              },
+            {
+              "objectType" : "InstPort",
+              "name" : "this",
+              "nodePortType" : "In"
+              },
+            {
+              "objectType" : "InstPort",
+              "name" : "result",
+              "nodePortType" : "Out"
+              }
+            ],
+          "executable" : "fabricUtils.FileIO.BVHReader.GetCharacter",
+          "presetGUID" : "BA0245F136C565F5AD2810B4392B8DCA"
+          },
+        {
+          "objectType" : "Inst",
+          "metadata" : {
+            "uiGraphPos" : "{\"x\":203.712105513,\"y\":437.231796026}",
+            "uiCollapsedState" : "1"
+            },
+          "name" : "FrameToTime_2",
+          "ports" : [
+            {
+              "objectType" : "InstPort",
+              "name" : "exec",
+              "nodePortType" : "IO"
+              },
+            {
+              "objectType" : "InstPort",
+              "name" : "frame",
+              "nodePortType" : "In"
+              },
+            {
+              "objectType" : "InstPort",
+              "name" : "fps",
+              "nodePortType" : "In"
+              },
+            {
+              "objectType" : "InstPort",
+              "name" : "time",
+              "nodePortType" : "Out"
+              }
+            ],
+          "executable" : "Fabric.Compounds.Math.FrameToTime",
+          "presetGUID" : "FC97B76DD3597484D4308A5490FD1853"
+          },
+        {
+          "objectType" : "Inst",
+          "metadata" : {
+            "uiGraphPos" : "{\"x\":380.019325972,\"y\":391.776595831}",
+            "uiCollapsedState" : "0"
+            },
+          "name" : "If_2",
+          "ports" : [
+            {
+              "objectType" : "InstPort",
+              "name" : "exec",
+              "nodePortType" : "IO"
+              },
+            {
+              "objectType" : "InstPort",
+              "name" : "cond",
+              "nodePortType" : "In"
+              },
+            {
+              "objectType" : "InstPort",
+              "name" : "if_true",
+              "nodePortType" : "In"
+              },
+            {
+              "objectType" : "InstPort",
+              "name" : "if_false",
+              "nodePortType" : "In"
+              },
+            {
+              "objectType" : "InstPort",
+              "name" : "result",
+              "nodePortType" : "Out"
+              }
+            ],
+          "executable" : "Fabric.Core.Control.If",
+          "presetGUID" : "3182A478A21643455D549E483D35F831"
+          },
+        {
+          "objectType" : "Inst",
+          "metadata" : {
+            "uiGraphPos" : "{\"x\":97.7868654728,\"y\":271.585305691}"
+            },
+          "name" : "Cache_1",
+          "ports" : [
+            {
+              "objectType" : "InstPort",
+              "name" : "exec",
+              "nodePortType" : "IO"
+              },
+            {
+              "objectType" : "InstPort",
+              "name" : "value",
+              "nodePortType" : "In"
+              }
+            ],
+          "executable" : "Fabric.Core.Data.Cache",
+          "presetGUID" : "D903AFD981FE9214C69943F542D5FD60"
+          },
+        {
+          "objectType" : "Inst",
+          "metadata" : {
+            "uiGraphPos" : "{\"x\":553.740530491,\"y\":179.597835302}"
+            },
+          "name" : "SetClipPoseTime_2",
+          "ports" : [
+            {
+              "objectType" : "InstPort",
+              "name" : "exec",
+              "nodePortType" : "IO"
+              },
+            {
+              "objectType" : "InstPort",
+              "name" : "this",
+              "nodePortType" : "IO"
+              },
+            {
+              "objectType" : "InstPort",
+              "name" : "time",
+              "nodePortType" : "In"
+              }
+            ],
+          "executable" : "Fabric.Exts.Characters.Character.SetClipPoseTime",
+          "presetGUID" : "61A54402005662F78D1EB2B48DB39451"
+          },
+        {
+          "objectType" : "Inst",
+          "metadata" : {
+            "uiGraphPos" : "{\"x\":101.815294266,\"y\":152.788679361}"
+            },
+          "name" : "Clone_1",
+          "ports" : [
+            {
+              "objectType" : "InstPort",
+              "name" : "exec",
+              "nodePortType" : "IO"
+              },
+            {
+              "objectType" : "InstPort",
+              "name" : "value",
+              "nodePortType" : "In"
+              },
+            {
+              "objectType" : "InstPort",
+              "name" : "clonedValue",
+              "nodePortType" : "Out"
+              }
+            ],
+          "executable" : "Fabric.Core.Data.Clone",
+          "presetGUID" : "30401D7851DEFCFA5C46EB3926DD8BAD"
+          },
+        {
+          "objectType" : "Inst",
+          "metadata" : {
+            "uiGraphPos" : "{\"x\":256.287193537,\"y\":171.938138962}"
+            },
+          "name" : "Cache_2",
+          "ports" : [
+            {
+              "objectType" : "InstPort",
+              "name" : "exec",
+              "nodePortType" : "IO"
+              },
+            {
+              "objectType" : "InstPort",
+              "name" : "value",
+              "nodePortType" : "In"
+              }
+            ],
+          "executable" : "Fabric.Core.Data.Cache",
+          "presetGUID" : "D903AFD981FE9214C69943F542D5FD60"
+          },
+        {
+          "objectType" : "Inst",
+          "metadata" : {
+            "uiGraphPos" : "{\"x\":-70.7965192795,\"y\":480.376169205}"
+            },
+          "name" : "GetFPS_1",
+          "ports" : [
+            {
+              "objectType" : "InstPort",
+              "name" : "exec",
+              "nodePortType" : "IO"
+              },
+            {
+              "objectType" : "InstPort",
+              "name" : "this",
+              "nodePortType" : "In"
+              },
+            {
+              "objectType" : "InstPort",
+              "name" : "result",
+              "nodePortType" : "Out"
+              }
+            ],
+          "executable" : "fabricUtils.FileIO.BVHReader.GetFPS",
+          "presetGUID" : "2C242FB01B1F0AD3FCBD4FD5F87A3890"
+          },
+        {
+          "objectType" : "Inst",
+          "metadata" : {
+            "uiGraphPos" : "{\"x\":52.6258544922,\"y\":561.564016938}"
+            },
+          "name" : "Cache_3",
+          "ports" : [
+            {
+              "objectType" : "InstPort",
+              "name" : "exec",
+              "nodePortType" : "IO"
+              },
+            {
+              "objectType" : "InstPort",
+              "name" : "value",
+              "nodePortType" : "In"
+              }
+            ],
+          "executable" : "Fabric.Core.Data.Cache",
+          "presetGUID" : "D903AFD981FE9214C69943F542D5FD60"
           }
         ],
       "connections" : {
@@ -639,6 +1111,12 @@
         "timeMode" : [
           "ToBoolean_1.value"
           ],
+        "refFrame" : [
+          "FrameToTime_2.frame"
+          ],
+        "refTime" : [
+          "If_2.if_true"
+          ],
         "frame" : [
           "FrameToTime_1.frame"
           ],
@@ -646,29 +1124,53 @@
           "If_1.if_true"
           ],
         "BVHReader_1.result" : [
-          "Cache_1.value"
+          "Cache_1.value",
+          "Clone_1.value",
+          "GetFPS_1.this"
           ],
         "FrameToTime_1.time" : [
           "If_1.if_false"
-          ],
-        "Cache_1.value" : [
-          "GetCharacter_1.this",
-          "GetFPS_1.this"
           ],
         "GetCharacter_1.result" : [
           "SetClipPoseTime_1.this"
           ],
         "SetClipPoseTime_1.this" : [
-          "character"
-          ],
-        "GetFPS_1.result" : [
-          "FrameToTime_1.fps"
+          "animation"
           ],
         "ToBoolean_1.boolean" : [
-          "If_1.cond"
+          "If_1.cond",
+          "If_2.cond"
           ],
         "If_1.result" : [
           "SetClipPoseTime_1.time"
+          ],
+        "GetCharacter_2.result" : [
+          "SetClipPoseTime_2.this"
+          ],
+        "FrameToTime_2.time" : [
+          "If_2.if_false"
+          ],
+        "If_2.result" : [
+          "SetClipPoseTime_2.time"
+          ],
+        "Cache_1.value" : [
+          "GetCharacter_1.this"
+          ],
+        "SetClipPoseTime_2.this" : [
+          "bindPose"
+          ],
+        "Clone_1.clonedValue" : [
+          "Cache_2.value"
+          ],
+        "Cache_2.value" : [
+          "GetCharacter_2.this"
+          ],
+        "GetFPS_1.result" : [
+          "Cache_3.value"
+          ],
+        "Cache_3.value" : [
+          "FrameToTime_2.fps",
+          "FrameToTime_1.fps"
           ]
         }
       },
@@ -935,37 +1437,6 @@ dfgEntry {
 }
 "
       },
-    "Fabric.Core.Data.Cache" : {
-      "objectType" : "Func",
-      "metadata" : {
-        "uiNodeColor" : "{\n  \"r\" : 214,\n  \"g\" : 191,\n  \"b\" : 103\n  }",
-        "uiAlwaysShowDaisyChainPorts" : "true",
-        "uiHeaderColor" : "{\n  \"r\" : 188,\n  \"g\" : 129,\n  \"b\" : 83\n  }"
-        },
-      "title" : "Cache",
-      "cacheRule" : "always",
-      "ports" : [
-        {
-          "objectType" : "ExecPort",
-          "name" : "exec",
-          "nodePortType" : "IO",
-          "execPortType" : "IO",
-          "typeSpec" : "Execute"
-          },
-        {
-          "objectType" : "ExecPort",
-          "name" : "value",
-          "nodePortType" : "Out",
-          "execPortType" : "In",
-          "typeSpec" : "$TYPE$"
-          }
-        ],
-      "extDeps" : {},
-      "presetGUID" : "D903AFD981FE9214C69943F542D5FD60",
-      "code" : "dfgEntry {
-}
-"
-      },
     "fabricUtils.FileIO.BVHReader.GetCharacter" : {
       "objectType" : "Func",
       "metadata" : {
@@ -1047,46 +1518,6 @@ dfgEntry {
 }
 "
       },
-    "fabricUtils.FileIO.BVHReader.GetFPS" : {
-      "objectType" : "Func",
-      "metadata" : {
-        "uiTooltip" : "Outputs the BVH's FPS.\n\nSupported types:\n  this: BVHReader\n  result: Scalar\n"
-        },
-      "title" : "GetFPS",
-      "ports" : [
-        {
-          "objectType" : "ExecPort",
-          "name" : "exec",
-          "nodePortType" : "IO",
-          "execPortType" : "IO",
-          "typeSpec" : "Execute"
-          },
-        {
-          "objectType" : "ExecPort",
-          "name" : "this",
-          "nodePortType" : "Out",
-          "execPortType" : "In",
-          "typeSpec" : "BVHReader"
-          },
-        {
-          "objectType" : "ExecPort",
-          "name" : "result",
-          "nodePortType" : "In",
-          "execPortType" : "Out",
-          "typeSpec" : "Scalar"
-          }
-        ],
-      "extDeps" : {
-        "fabricUtils" : "*"
-        },
-      "presetGUID" : "2C242FB01B1F0AD3FCBD4FD5F87A3890",
-      "code" : "require fabricUtils;
-
-dfgEntry {
-  result = this.getFPS();
-}
-"
-      },
     "Fabric.Core.Func.ToBoolean" : {
       "objectType" : "Func",
       "title" : "ToBoolean",
@@ -1165,6 +1596,114 @@ dfgEntry {
       "code" : "
 dfgEntry {
 	result = cond ? if_true : if_false;
+}
+"
+      },
+    "Fabric.Core.Data.Cache" : {
+      "objectType" : "Func",
+      "metadata" : {
+        "uiNodeColor" : "{\n  \"r\" : 214,\n  \"g\" : 191,\n  \"b\" : 103\n  }",
+        "uiAlwaysShowDaisyChainPorts" : "true",
+        "uiHeaderColor" : "{\n  \"r\" : 188,\n  \"g\" : 129,\n  \"b\" : 83\n  }"
+        },
+      "title" : "Cache",
+      "cacheRule" : "always",
+      "ports" : [
+        {
+          "objectType" : "ExecPort",
+          "name" : "exec",
+          "nodePortType" : "IO",
+          "execPortType" : "IO",
+          "typeSpec" : "Execute"
+          },
+        {
+          "objectType" : "ExecPort",
+          "name" : "value",
+          "nodePortType" : "Out",
+          "execPortType" : "In",
+          "typeSpec" : "$TYPE$"
+          }
+        ],
+      "extDeps" : {},
+      "presetGUID" : "D903AFD981FE9214C69943F542D5FD60",
+      "code" : "dfgEntry {
+}
+"
+      },
+    "Fabric.Core.Data.Clone" : {
+      "objectType" : "Func",
+      "metadata" : {
+        "uiNodeColor" : "{\n  \"r\" : 214,\n  \"g\" : 191,\n  \"b\" : 103\n  }",
+        "uiHeaderColor" : "{\n  \"r\" : 188,\n  \"g\" : 129,\n  \"b\" : 83\n  }"
+        },
+      "title" : "Clone",
+      "ports" : [
+        {
+          "objectType" : "ExecPort",
+          "name" : "exec",
+          "nodePortType" : "IO",
+          "execPortType" : "IO",
+          "typeSpec" : "Execute"
+          },
+        {
+          "objectType" : "ExecPort",
+          "name" : "value",
+          "nodePortType" : "Out",
+          "execPortType" : "In",
+          "typeSpec" : "$TYPE$"
+          },
+        {
+          "objectType" : "ExecPort",
+          "name" : "clonedValue",
+          "nodePortType" : "In",
+          "execPortType" : "Out",
+          "typeSpec" : "$TYPE$"
+          }
+        ],
+      "extDeps" : {},
+      "presetGUID" : "30401D7851DEFCFA5C46EB3926DD8BAD",
+      "code" : "dfgEntry {
+  clonedValue = value.clone();
+}
+"
+      },
+    "fabricUtils.FileIO.BVHReader.GetFPS" : {
+      "objectType" : "Func",
+      "metadata" : {
+        "uiTooltip" : "Outputs the BVH's FPS.\n\nSupported types:\n  this: BVHReader\n  result: Scalar\n"
+        },
+      "title" : "GetFPS",
+      "ports" : [
+        {
+          "objectType" : "ExecPort",
+          "name" : "exec",
+          "nodePortType" : "IO",
+          "execPortType" : "IO",
+          "typeSpec" : "Execute"
+          },
+        {
+          "objectType" : "ExecPort",
+          "name" : "this",
+          "nodePortType" : "Out",
+          "execPortType" : "In",
+          "typeSpec" : "BVHReader"
+          },
+        {
+          "objectType" : "ExecPort",
+          "name" : "result",
+          "nodePortType" : "In",
+          "execPortType" : "Out",
+          "typeSpec" : "Scalar"
+          }
+        ],
+      "extDeps" : {
+        "fabricUtils" : "*"
+        },
+      "presetGUID" : "2C242FB01B1F0AD3FCBD4FD5F87A3890",
+      "code" : "require fabricUtils;
+
+dfgEntry {
+  result = this.getFPS();
 }
 "
       }

@@ -1,0 +1,41 @@
+// Created by kl2dfg (processFunction)
+{
+  "objectType" : "Func",
+  "metadata" : {
+    "uiTooltip" : "Supported types:\n  this: Clip\n  trackSetArray: KeyframeTrackSet[]\n"
+    },
+  "title" : "AddTrackSetArray",
+  "ports" : [
+    {
+      "objectType" : "ExecPort",
+      "name" : "exec",
+      "nodePortType" : "IO",
+      "execPortType" : "IO",
+      "typeSpec" : "Execute"
+      },
+    {
+      "objectType" : "ExecPort",
+      "name" : "this",
+      "nodePortType" : "IO",
+      "execPortType" : "IO",
+      "typeSpec" : "Clip"
+      },
+    {
+      "objectType" : "ExecPort",
+      "name" : "trackSetArray",
+      "nodePortType" : "Out",
+      "execPortType" : "In",
+      "typeSpec" : "KeyframeTrackSet[]"
+      }
+    ],
+  "extDeps" : {
+    "fabricUtils" : "*"
+    },
+  "presetGUID" : "41064D31B166CDB4EF775F9C65E91F0C",
+  "code" : "require fabricUtils;
+
+dfgEntry {
+  addTrackSetArray(this, trackSetArray);
+}
+"
+  }

@@ -1,0 +1,1138 @@
+{
+  "objectType" : "Graph",
+  "metadata" : {
+    "uiTextColor" : "{\n  \"r\" : 20,\n  \"g\" : 20,\n  \"b\" : 20\n  }",
+    "uiNodeColor" : "{\n  \"r\" : 121,\n  \"g\" : 134,\n  \"b\" : 143\n  }",
+    "uiGraphZoom" : "{\n  \"value\" : 0.7574182152748108\n  }",
+    "uiTooltip" : "Stores a sequence of poses as a clip.",
+    "uiGraphPan" : "{\n  \"x\" : -1189.6515620466,\n  \"y\" : -657.7023352594576\n  }"
+    },
+  "title" : "StorePoseAsTrackSetArray",
+  "ports" : [
+    {
+      "objectType" : "ExecPort",
+      "name" : "exec",
+      "nodePortType" : "IO",
+      "defaultValues" : {
+        "Execute" : {}
+        },
+      "execPortType" : "IO",
+      "typeSpec" : "Execute"
+      },
+    {
+      "objectType" : "ExecPort",
+      "name" : "clearClip",
+      "nodePortType" : "Out",
+      "defaultValues" : {
+        "Boolean" : false
+        },
+      "execPortType" : "In"
+      },
+    {
+      "objectType" : "ExecPort",
+      "name" : "time",
+      "nodePortType" : "Out",
+      "defaultValues" : {
+        "Float64" : 0,
+        "Float32" : 0
+        },
+      "execPortType" : "In"
+      },
+    {
+      "objectType" : "ExecPort",
+      "name" : "Pose",
+      "nodePortType" : "Out",
+      "defaultValues" : {
+        "IPose" : null
+        },
+      "execPortType" : "In"
+      },
+    {
+      "objectType" : "ExecPort",
+      "metadata" : {},
+      "name" : "storeTr",
+      "nodePortType" : "Out",
+      "defaultValues" : {
+        "Boolean" : false
+        },
+      "execPortType" : "In",
+      "typeSpec" : "Boolean"
+      },
+    {
+      "objectType" : "ExecPort",
+      "metadata" : {},
+      "name" : "storeOri",
+      "nodePortType" : "Out",
+      "defaultValues" : {
+        "Boolean" : true
+        },
+      "execPortType" : "In",
+      "typeSpec" : "Boolean"
+      },
+    {
+      "objectType" : "ExecPort",
+      "metadata" : {},
+      "name" : "storeSc",
+      "nodePortType" : "Out",
+      "defaultValues" : {
+        "Boolean" : false
+        },
+      "execPortType" : "In",
+      "typeSpec" : "Boolean"
+      },
+    {
+      "objectType" : "ExecPort",
+      "name" : "trackSetArray",
+      "nodePortType" : "In",
+      "defaultValues" : {
+        "KeyframeTrackSet[]" : []
+        },
+      "execPortType" : "Out",
+      "typeSpec" : "KeyframeTrackSet[]"
+      }
+    ],
+  "extDeps" : {},
+  "presetGUID" : "7B9BA1A2A1E3CEE0686945F93F17D7EF",
+  "nodes" : [
+    {
+      "objectType" : "Inst",
+      "metadata" : {
+        "uiGraphPos" : "{\"x\":1051.89860451,\"y\":1150.85970104}"
+        },
+      "name" : "SetFlag_2",
+      "ports" : [
+        {
+          "objectType" : "InstPort",
+          "name" : "exec",
+          "nodePortType" : "IO"
+          },
+        {
+          "objectType" : "InstPort",
+          "name" : "val",
+          "nodePortType" : "IO"
+          },
+        {
+          "objectType" : "InstPort",
+          "name" : "flag",
+          "nodePortType" : "In",
+          "defaultValues" : {
+            "UInt8" : 4
+            }
+          }
+        ],
+      "executable" : "Fabric.Exts.Util.Func.SetFlag",
+      "presetGUID" : "2601FEB324D29D660D157C8BFEEDF0B6"
+      },
+    {
+      "objectType" : "Inst",
+      "metadata" : {
+        "uiGraphPos" : "{\"x\":864.04820168,\"y\":1154.07991588}"
+        },
+      "name" : "If_2",
+      "ports" : [
+        {
+          "objectType" : "InstPort",
+          "name" : "exec",
+          "nodePortType" : "IO"
+          },
+        {
+          "objectType" : "InstPort",
+          "name" : "cond",
+          "nodePortType" : "In"
+          },
+        {
+          "objectType" : "InstPort",
+          "name" : "if_true",
+          "nodePortType" : "In"
+          },
+        {
+          "objectType" : "InstPort",
+          "name" : "if_false",
+          "nodePortType" : "In"
+          },
+        {
+          "objectType" : "InstPort",
+          "name" : "result",
+          "nodePortType" : "Out"
+          }
+        ],
+      "executable" : "Fabric.Core.Control.If",
+      "presetGUID" : "3182A478A21643455D549E483D35F831"
+      },
+    {
+      "objectType" : "Inst",
+      "metadata" : {
+        "uiGraphPos" : "{\"x\":706.04832375,\"y\":1205.07991588}"
+        },
+      "name" : "SetFlag_3",
+      "ports" : [
+        {
+          "objectType" : "InstPort",
+          "name" : "exec",
+          "nodePortType" : "IO"
+          },
+        {
+          "objectType" : "InstPort",
+          "name" : "val",
+          "nodePortType" : "IO"
+          },
+        {
+          "objectType" : "InstPort",
+          "name" : "flag",
+          "nodePortType" : "In",
+          "defaultValues" : {
+            "UInt8" : 2
+            }
+          }
+        ],
+      "executable" : "Fabric.Exts.Util.Func.SetFlag",
+      "presetGUID" : "2601FEB324D29D660D157C8BFEEDF0B6"
+      },
+    {
+      "objectType" : "Inst",
+      "metadata" : {
+        "uiGraphPos" : "{\"x\":1196.04984963,\"y\":1179.07991588}"
+        },
+      "name" : "If_3",
+      "ports" : [
+        {
+          "objectType" : "InstPort",
+          "name" : "exec",
+          "nodePortType" : "IO"
+          },
+        {
+          "objectType" : "InstPort",
+          "name" : "cond",
+          "nodePortType" : "In"
+          },
+        {
+          "objectType" : "InstPort",
+          "name" : "if_true",
+          "nodePortType" : "In"
+          },
+        {
+          "objectType" : "InstPort",
+          "name" : "if_false",
+          "nodePortType" : "In"
+          },
+        {
+          "objectType" : "InstPort",
+          "name" : "result",
+          "nodePortType" : "Out"
+          }
+        ],
+      "executable" : "Fabric.Core.Control.If",
+      "presetGUID" : "3182A478A21643455D549E483D35F831"
+      },
+    {
+      "objectType" : "Inst",
+      "metadata" : {
+        "uiGraphPos" : "{\"x\":1464.04984963,\"y\":1244.07991588}"
+        },
+      "name" : "If_4",
+      "ports" : [
+        {
+          "objectType" : "InstPort",
+          "name" : "exec",
+          "nodePortType" : "IO"
+          },
+        {
+          "objectType" : "InstPort",
+          "name" : "cond",
+          "nodePortType" : "In"
+          },
+        {
+          "objectType" : "InstPort",
+          "name" : "if_true",
+          "nodePortType" : "In"
+          },
+        {
+          "objectType" : "InstPort",
+          "name" : "if_false",
+          "nodePortType" : "In"
+          },
+        {
+          "objectType" : "InstPort",
+          "name" : "result",
+          "nodePortType" : "Out"
+          }
+        ],
+      "executable" : "Fabric.Core.Control.If",
+      "presetGUID" : "3182A478A21643455D549E483D35F831"
+      },
+    {
+      "objectType" : "Inst",
+      "metadata" : {
+        "uiGraphPos" : "{\"x\":1331.04984963,\"y\":1246.07991588}"
+        },
+      "name" : "SetFlag_4",
+      "ports" : [
+        {
+          "objectType" : "InstPort",
+          "name" : "exec",
+          "nodePortType" : "IO"
+          },
+        {
+          "objectType" : "InstPort",
+          "name" : "val",
+          "nodePortType" : "IO"
+          },
+        {
+          "objectType" : "InstPort",
+          "name" : "flag",
+          "nodePortType" : "In",
+          "defaultValues" : {
+            "UInt8" : 16
+            }
+          }
+        ],
+      "executable" : "Fabric.Exts.Util.Func.SetFlag",
+      "presetGUID" : "2601FEB324D29D660D157C8BFEEDF0B6"
+      },
+    {
+      "objectType" : "Inst",
+      "metadata" : {
+        "uiGraphPos" : "{\"x\":1693.30309963,\"y\":1237.8998735}"
+        },
+      "name" : "EmptyArrayFromPose_1",
+      "ports" : [
+        {
+          "objectType" : "InstPort",
+          "name" : "exec",
+          "nodePortType" : "IO"
+          },
+        {
+          "objectType" : "InstPort",
+          "name" : "pose",
+          "nodePortType" : "In"
+          },
+        {
+          "objectType" : "InstPort",
+          "name" : "flags",
+          "nodePortType" : "In"
+          },
+        {
+          "objectType" : "InstPort",
+          "name" : "result",
+          "nodePortType" : "Out"
+          }
+        ],
+      "executable" : "fabricUtils.Animation.KeyframeTrackSet.EmptyArrayFromPose",
+      "presetGUID" : "00B7F572B1BFA62D56D01C09D480ED6A"
+      },
+    {
+      "objectType" : "Inst",
+      "metadata" : {
+        "uiGraphPos" : "{\"x\":2277.37960219,\"y\":1246.27969193}"
+        },
+      "name" : "SetPoseTrackSetArrayValues_1",
+      "ports" : [
+        {
+          "objectType" : "InstPort",
+          "name" : "exec",
+          "nodePortType" : "IO"
+          },
+        {
+          "objectType" : "InstPort",
+          "name" : "trackSetArray",
+          "nodePortType" : "IO"
+          },
+        {
+          "objectType" : "InstPort",
+          "name" : "time",
+          "nodePortType" : "In"
+          },
+        {
+          "objectType" : "InstPort",
+          "name" : "pose",
+          "nodePortType" : "In"
+          }
+        ],
+      "executable" : "fabricUtils.Animation.KeyframeTrackSet.SetPoseTrackSetArrayValues",
+      "presetGUID" : "61406DDBF9A230741DB07FB9D4986A68"
+      },
+    {
+      "objectType" : "Var",
+      "metadata" : {
+        "uiGraphPos" : "{\"x\":1929.33300686,\"y\":1238.00888228}"
+        },
+      "name" : "trackset",
+      "ports" : [
+        {
+          "objectType" : "VarPort",
+          "name" : "value",
+          "nodePortType" : "IO"
+          }
+        ],
+      "dataType" : "KeyframeTrackSet[]"
+      },
+    {
+      "objectType" : "Inst",
+      "metadata" : {
+        "uiGraphPos" : "{\"x\":2072.07031155,\"y\":1248.79647994}"
+        },
+      "name" : "If_5",
+      "ports" : [
+        {
+          "objectType" : "InstPort",
+          "name" : "exec",
+          "nodePortType" : "IO"
+          },
+        {
+          "objectType" : "InstPort",
+          "name" : "cond",
+          "nodePortType" : "In"
+          },
+        {
+          "objectType" : "InstPort",
+          "name" : "if_true",
+          "nodePortType" : "In"
+          },
+        {
+          "objectType" : "InstPort",
+          "name" : "if_false",
+          "nodePortType" : "In"
+          },
+        {
+          "objectType" : "InstPort",
+          "name" : "result",
+          "nodePortType" : "Out"
+          }
+        ],
+      "executable" : "Fabric.Core.Control.If",
+      "presetGUID" : "3182A478A21643455D549E483D35F831"
+      },
+    {
+      "objectType" : "Get",
+      "metadata" : {
+        "uiGraphPos" : "{\"x\":1911.54663086,\"y\":1323.09905434}"
+        },
+      "name" : "get_2",
+      "ports" : [
+        {
+          "objectType" : "GetPort",
+          "name" : "value",
+          "nodePortType" : "Out"
+          }
+        ],
+      "varPath" : "trackset"
+      }
+    ],
+  "connections" : {
+    "clearClip" : [
+      "If_5.cond"
+      ],
+    "time" : [
+      "SetPoseTrackSetArrayValues_1.time"
+      ],
+    "Pose" : [
+      "EmptyArrayFromPose_1.pose",
+      "SetPoseTrackSetArrayValues_1.pose"
+      ],
+    "storeTr" : [
+      "If_2.cond"
+      ],
+    "storeOri" : [
+      "If_3.cond"
+      ],
+    "storeSc" : [
+      "If_4.cond"
+      ],
+    "SetFlag_2.val" : [
+      "If_3.if_true"
+      ],
+    "If_2.result" : [
+      "SetFlag_2.val",
+      "If_3.if_false"
+      ],
+    "SetFlag_3.val" : [
+      "If_2.if_true"
+      ],
+    "If_3.result" : [
+      "SetFlag_4.val",
+      "If_4.if_false"
+      ],
+    "If_4.result" : [
+      "EmptyArrayFromPose_1.flags"
+      ],
+    "SetFlag_4.val" : [
+      "If_4.if_true"
+      ],
+    "EmptyArrayFromPose_1.result" : [
+      "trackset.value"
+      ],
+    "SetPoseTrackSetArrayValues_1.trackSetArray" : [
+      "trackSetArray"
+      ],
+    "trackset.value" : [
+      "If_5.if_true"
+      ],
+    "If_5.result" : [
+      "SetPoseTrackSetArrayValues_1.trackSetArray"
+      ],
+    "get_2.value" : [
+      "If_5.if_false"
+      ]
+    },
+  "requiredPresets" : {
+    "fabricUtils.Animation.StorePoseAsTrackSetArray" : {
+      "objectType" : "Graph",
+      "metadata" : {
+        "uiTextColor" : "{\n  \"r\" : 20,\n  \"g\" : 20,\n  \"b\" : 20\n  }",
+        "uiNodeColor" : "{\n  \"r\" : 121,\n  \"g\" : 134,\n  \"b\" : 143\n  }",
+        "uiGraphZoom" : "{\n  \"value\" : 0.7574182152748108\n  }",
+        "uiTooltip" : "Stores a sequence of poses as a clip.",
+        "uiGraphPan" : "{\n  \"x\" : -1189.6515620466,\n  \"y\" : -657.7023352594576\n  }"
+        },
+      "title" : "StorePoseAsTrackSetArray",
+      "ports" : [
+        {
+          "objectType" : "ExecPort",
+          "name" : "exec",
+          "nodePortType" : "IO",
+          "defaultValues" : {
+            "Execute" : {}
+            },
+          "execPortType" : "IO",
+          "typeSpec" : "Execute"
+          },
+        {
+          "objectType" : "ExecPort",
+          "name" : "clearClip",
+          "nodePortType" : "Out",
+          "defaultValues" : {
+            "Boolean" : false
+            },
+          "execPortType" : "In"
+          },
+        {
+          "objectType" : "ExecPort",
+          "name" : "time",
+          "nodePortType" : "Out",
+          "defaultValues" : {
+            "Float64" : 0,
+            "Float32" : 0
+            },
+          "execPortType" : "In"
+          },
+        {
+          "objectType" : "ExecPort",
+          "name" : "Pose",
+          "nodePortType" : "Out",
+          "defaultValues" : {
+            "IPose" : null
+            },
+          "execPortType" : "In"
+          },
+        {
+          "objectType" : "ExecPort",
+          "metadata" : {},
+          "name" : "storeTr",
+          "nodePortType" : "Out",
+          "defaultValues" : {
+            "Boolean" : false
+            },
+          "execPortType" : "In",
+          "typeSpec" : "Boolean"
+          },
+        {
+          "objectType" : "ExecPort",
+          "metadata" : {},
+          "name" : "storeOri",
+          "nodePortType" : "Out",
+          "defaultValues" : {
+            "Boolean" : true
+            },
+          "execPortType" : "In",
+          "typeSpec" : "Boolean"
+          },
+        {
+          "objectType" : "ExecPort",
+          "metadata" : {},
+          "name" : "storeSc",
+          "nodePortType" : "Out",
+          "defaultValues" : {
+            "Boolean" : false
+            },
+          "execPortType" : "In",
+          "typeSpec" : "Boolean"
+          },
+        {
+          "objectType" : "ExecPort",
+          "name" : "trackSetArray",
+          "nodePortType" : "In",
+          "defaultValues" : {
+            "KeyframeTrackSet[]" : []
+            },
+          "execPortType" : "Out",
+          "typeSpec" : "KeyframeTrackSet[]"
+          }
+        ],
+      "extDeps" : {},
+      "presetGUID" : "7B9BA1A2A1E3CEE0686945F93F17D7EF",
+      "nodes" : [
+        {
+          "objectType" : "Inst",
+          "metadata" : {
+            "uiGraphPos" : "{\"x\":1051.89860451,\"y\":1150.85970104}"
+            },
+          "name" : "SetFlag_2",
+          "ports" : [
+            {
+              "objectType" : "InstPort",
+              "name" : "exec",
+              "nodePortType" : "IO"
+              },
+            {
+              "objectType" : "InstPort",
+              "name" : "val",
+              "nodePortType" : "IO"
+              },
+            {
+              "objectType" : "InstPort",
+              "name" : "flag",
+              "nodePortType" : "In",
+              "defaultValues" : {
+                "UInt8" : 4
+                }
+              }
+            ],
+          "executable" : "Fabric.Exts.Util.Func.SetFlag",
+          "presetGUID" : "2601FEB324D29D660D157C8BFEEDF0B6"
+          },
+        {
+          "objectType" : "Inst",
+          "metadata" : {
+            "uiGraphPos" : "{\"x\":864.04820168,\"y\":1154.07991588}"
+            },
+          "name" : "If_2",
+          "ports" : [
+            {
+              "objectType" : "InstPort",
+              "name" : "exec",
+              "nodePortType" : "IO"
+              },
+            {
+              "objectType" : "InstPort",
+              "name" : "cond",
+              "nodePortType" : "In"
+              },
+            {
+              "objectType" : "InstPort",
+              "name" : "if_true",
+              "nodePortType" : "In"
+              },
+            {
+              "objectType" : "InstPort",
+              "name" : "if_false",
+              "nodePortType" : "In"
+              },
+            {
+              "objectType" : "InstPort",
+              "name" : "result",
+              "nodePortType" : "Out"
+              }
+            ],
+          "executable" : "Fabric.Core.Control.If",
+          "presetGUID" : "3182A478A21643455D549E483D35F831"
+          },
+        {
+          "objectType" : "Inst",
+          "metadata" : {
+            "uiGraphPos" : "{\"x\":706.04832375,\"y\":1205.07991588}"
+            },
+          "name" : "SetFlag_3",
+          "ports" : [
+            {
+              "objectType" : "InstPort",
+              "name" : "exec",
+              "nodePortType" : "IO"
+              },
+            {
+              "objectType" : "InstPort",
+              "name" : "val",
+              "nodePortType" : "IO"
+              },
+            {
+              "objectType" : "InstPort",
+              "name" : "flag",
+              "nodePortType" : "In",
+              "defaultValues" : {
+                "UInt8" : 2
+                }
+              }
+            ],
+          "executable" : "Fabric.Exts.Util.Func.SetFlag",
+          "presetGUID" : "2601FEB324D29D660D157C8BFEEDF0B6"
+          },
+        {
+          "objectType" : "Inst",
+          "metadata" : {
+            "uiGraphPos" : "{\"x\":1196.04984963,\"y\":1179.07991588}"
+            },
+          "name" : "If_3",
+          "ports" : [
+            {
+              "objectType" : "InstPort",
+              "name" : "exec",
+              "nodePortType" : "IO"
+              },
+            {
+              "objectType" : "InstPort",
+              "name" : "cond",
+              "nodePortType" : "In"
+              },
+            {
+              "objectType" : "InstPort",
+              "name" : "if_true",
+              "nodePortType" : "In"
+              },
+            {
+              "objectType" : "InstPort",
+              "name" : "if_false",
+              "nodePortType" : "In"
+              },
+            {
+              "objectType" : "InstPort",
+              "name" : "result",
+              "nodePortType" : "Out"
+              }
+            ],
+          "executable" : "Fabric.Core.Control.If",
+          "presetGUID" : "3182A478A21643455D549E483D35F831"
+          },
+        {
+          "objectType" : "Inst",
+          "metadata" : {
+            "uiGraphPos" : "{\"x\":1464.04984963,\"y\":1244.07991588}"
+            },
+          "name" : "If_4",
+          "ports" : [
+            {
+              "objectType" : "InstPort",
+              "name" : "exec",
+              "nodePortType" : "IO"
+              },
+            {
+              "objectType" : "InstPort",
+              "name" : "cond",
+              "nodePortType" : "In"
+              },
+            {
+              "objectType" : "InstPort",
+              "name" : "if_true",
+              "nodePortType" : "In"
+              },
+            {
+              "objectType" : "InstPort",
+              "name" : "if_false",
+              "nodePortType" : "In"
+              },
+            {
+              "objectType" : "InstPort",
+              "name" : "result",
+              "nodePortType" : "Out"
+              }
+            ],
+          "executable" : "Fabric.Core.Control.If",
+          "presetGUID" : "3182A478A21643455D549E483D35F831"
+          },
+        {
+          "objectType" : "Inst",
+          "metadata" : {
+            "uiGraphPos" : "{\"x\":1331.04984963,\"y\":1246.07991588}"
+            },
+          "name" : "SetFlag_4",
+          "ports" : [
+            {
+              "objectType" : "InstPort",
+              "name" : "exec",
+              "nodePortType" : "IO"
+              },
+            {
+              "objectType" : "InstPort",
+              "name" : "val",
+              "nodePortType" : "IO"
+              },
+            {
+              "objectType" : "InstPort",
+              "name" : "flag",
+              "nodePortType" : "In",
+              "defaultValues" : {
+                "UInt8" : 16
+                }
+              }
+            ],
+          "executable" : "Fabric.Exts.Util.Func.SetFlag",
+          "presetGUID" : "2601FEB324D29D660D157C8BFEEDF0B6"
+          },
+        {
+          "objectType" : "Inst",
+          "metadata" : {
+            "uiGraphPos" : "{\"x\":1693.30309963,\"y\":1237.8998735}"
+            },
+          "name" : "EmptyArrayFromPose_1",
+          "ports" : [
+            {
+              "objectType" : "InstPort",
+              "name" : "exec",
+              "nodePortType" : "IO"
+              },
+            {
+              "objectType" : "InstPort",
+              "name" : "pose",
+              "nodePortType" : "In"
+              },
+            {
+              "objectType" : "InstPort",
+              "name" : "flags",
+              "nodePortType" : "In"
+              },
+            {
+              "objectType" : "InstPort",
+              "name" : "result",
+              "nodePortType" : "Out"
+              }
+            ],
+          "executable" : "fabricUtils.Animation.KeyframeTrackSet.EmptyArrayFromPose",
+          "presetGUID" : "00B7F572B1BFA62D56D01C09D480ED6A"
+          },
+        {
+          "objectType" : "Inst",
+          "metadata" : {
+            "uiGraphPos" : "{\"x\":2277.37960219,\"y\":1246.27969193}"
+            },
+          "name" : "SetPoseTrackSetArrayValues_1",
+          "ports" : [
+            {
+              "objectType" : "InstPort",
+              "name" : "exec",
+              "nodePortType" : "IO"
+              },
+            {
+              "objectType" : "InstPort",
+              "name" : "trackSetArray",
+              "nodePortType" : "IO"
+              },
+            {
+              "objectType" : "InstPort",
+              "name" : "time",
+              "nodePortType" : "In"
+              },
+            {
+              "objectType" : "InstPort",
+              "name" : "pose",
+              "nodePortType" : "In"
+              }
+            ],
+          "executable" : "fabricUtils.Animation.KeyframeTrackSet.SetPoseTrackSetArrayValues",
+          "presetGUID" : "61406DDBF9A230741DB07FB9D4986A68"
+          },
+        {
+          "objectType" : "Var",
+          "metadata" : {
+            "uiGraphPos" : "{\"x\":1929.33300686,\"y\":1238.00888228}"
+            },
+          "name" : "trackset",
+          "ports" : [
+            {
+              "objectType" : "VarPort",
+              "name" : "value",
+              "nodePortType" : "IO"
+              }
+            ],
+          "dataType" : "KeyframeTrackSet[]"
+          },
+        {
+          "objectType" : "Inst",
+          "metadata" : {
+            "uiGraphPos" : "{\"x\":2072.07031155,\"y\":1248.79647994}"
+            },
+          "name" : "If_5",
+          "ports" : [
+            {
+              "objectType" : "InstPort",
+              "name" : "exec",
+              "nodePortType" : "IO"
+              },
+            {
+              "objectType" : "InstPort",
+              "name" : "cond",
+              "nodePortType" : "In"
+              },
+            {
+              "objectType" : "InstPort",
+              "name" : "if_true",
+              "nodePortType" : "In"
+              },
+            {
+              "objectType" : "InstPort",
+              "name" : "if_false",
+              "nodePortType" : "In"
+              },
+            {
+              "objectType" : "InstPort",
+              "name" : "result",
+              "nodePortType" : "Out"
+              }
+            ],
+          "executable" : "Fabric.Core.Control.If",
+          "presetGUID" : "3182A478A21643455D549E483D35F831"
+          },
+        {
+          "objectType" : "Get",
+          "metadata" : {
+            "uiGraphPos" : "{\"x\":1911.54663086,\"y\":1323.09905434}"
+            },
+          "name" : "get_2",
+          "ports" : [
+            {
+              "objectType" : "GetPort",
+              "name" : "value",
+              "nodePortType" : "Out"
+              }
+            ],
+          "varPath" : "trackset"
+          }
+        ],
+      "connections" : {
+        "clearClip" : [
+          "If_5.cond"
+          ],
+        "time" : [
+          "SetPoseTrackSetArrayValues_1.time"
+          ],
+        "Pose" : [
+          "EmptyArrayFromPose_1.pose",
+          "SetPoseTrackSetArrayValues_1.pose"
+          ],
+        "storeTr" : [
+          "If_2.cond"
+          ],
+        "storeOri" : [
+          "If_3.cond"
+          ],
+        "storeSc" : [
+          "If_4.cond"
+          ],
+        "SetFlag_2.val" : [
+          "If_3.if_true"
+          ],
+        "If_2.result" : [
+          "SetFlag_2.val",
+          "If_3.if_false"
+          ],
+        "SetFlag_3.val" : [
+          "If_2.if_true"
+          ],
+        "If_3.result" : [
+          "SetFlag_4.val",
+          "If_4.if_false"
+          ],
+        "If_4.result" : [
+          "EmptyArrayFromPose_1.flags"
+          ],
+        "SetFlag_4.val" : [
+          "If_4.if_true"
+          ],
+        "EmptyArrayFromPose_1.result" : [
+          "trackset.value"
+          ],
+        "SetPoseTrackSetArrayValues_1.trackSetArray" : [
+          "trackSetArray"
+          ],
+        "trackset.value" : [
+          "If_5.if_true"
+          ],
+        "If_5.result" : [
+          "SetPoseTrackSetArrayValues_1.trackSetArray"
+          ],
+        "get_2.value" : [
+          "If_5.if_false"
+          ]
+        }
+      },
+    "Fabric.Exts.Util.Func.SetFlag" : {
+      "objectType" : "Func",
+      "metadata" : {
+        "uiTooltip" : "sets a given UInt8 flag as part of the UInt8 bit mask"
+        },
+      "title" : "SetFlag",
+      "ports" : [
+        {
+          "objectType" : "ExecPort",
+          "name" : "exec",
+          "nodePortType" : "IO",
+          "execPortType" : "IO",
+          "typeSpec" : "Execute"
+          },
+        {
+          "objectType" : "ExecPort",
+          "name" : "val",
+          "nodePortType" : "IO",
+          "execPortType" : "IO",
+          "typeSpec" : "UInt8"
+          },
+        {
+          "objectType" : "ExecPort",
+          "name" : "flag",
+          "nodePortType" : "Out",
+          "execPortType" : "In",
+          "typeSpec" : "UInt8"
+          }
+        ],
+      "extDeps" : {
+        "Util" : "*"
+        },
+      "presetGUID" : "2601FEB324D29D660D157C8BFEEDF0B6",
+      "code" : "require Util;
+
+dfgEntry {
+  setFlag(val, flag);
+}
+"
+      },
+    "Fabric.Core.Control.If" : {
+      "objectType" : "Func",
+      "title" : "If",
+      "ports" : [
+        {
+          "objectType" : "ExecPort",
+          "name" : "exec",
+          "nodePortType" : "IO",
+          "execPortType" : "IO",
+          "typeSpec" : "Execute"
+          },
+        {
+          "objectType" : "ExecPort",
+          "name" : "cond",
+          "nodePortType" : "Out",
+          "execPortType" : "In",
+          "typeSpec" : "Boolean"
+          },
+        {
+          "objectType" : "ExecPort",
+          "name" : "if_true",
+          "nodePortType" : "Out",
+          "execPortType" : "In",
+          "typeSpec" : "$TYPE$"
+          },
+        {
+          "objectType" : "ExecPort",
+          "name" : "if_false",
+          "nodePortType" : "Out",
+          "execPortType" : "In",
+          "typeSpec" : "$TYPE$"
+          },
+        {
+          "objectType" : "ExecPort",
+          "name" : "result",
+          "nodePortType" : "In",
+          "execPortType" : "Out",
+          "typeSpec" : "$TYPE$"
+          }
+        ],
+      "extDeps" : {},
+      "presetGUID" : "3182A478A21643455D549E483D35F831",
+      "code" : "
+dfgEntry {
+	result = cond ? if_true : if_false;
+}
+"
+      },
+    "fabricUtils.Animation.KeyframeTrackSet.EmptyArrayFromPose" : {
+      "objectType" : "Func",
+      "metadata" : {
+        "uiTooltip" : "Supported types:\n  pose: IPose\n  flags: Integer\n  result: KeyframeTrackSet[]\n"
+        },
+      "title" : "EmptyArrayFromPose",
+      "ports" : [
+        {
+          "objectType" : "ExecPort",
+          "name" : "exec",
+          "nodePortType" : "IO",
+          "execPortType" : "IO",
+          "typeSpec" : "Execute"
+          },
+        {
+          "objectType" : "ExecPort",
+          "name" : "pose",
+          "nodePortType" : "Out",
+          "execPortType" : "In",
+          "typeSpec" : "IPose"
+          },
+        {
+          "objectType" : "ExecPort",
+          "name" : "flags",
+          "nodePortType" : "Out",
+          "execPortType" : "In",
+          "typeSpec" : "Integer"
+          },
+        {
+          "objectType" : "ExecPort",
+          "name" : "result",
+          "nodePortType" : "In",
+          "execPortType" : "Out",
+          "typeSpec" : "KeyframeTrackSet[]"
+          }
+        ],
+      "extDeps" : {
+        "fabricUtils" : "*"
+        },
+      "presetGUID" : "00B7F572B1BFA62D56D01C09D480ED6A",
+      "code" : "require fabricUtils;
+
+dfgEntry {
+  result = emptyArrayFromPose(pose, flags);
+}
+"
+      },
+    "fabricUtils.Animation.KeyframeTrackSet.SetPoseTrackSetArrayValues" : {
+      "objectType" : "Func",
+      "metadata" : {
+        "uiTooltip" : "Supported types:\n  trackSetArray: KeyframeTrackSet[]\n  time: Scalar\n  pose: IPose\n"
+        },
+      "title" : "SetPoseTrackSetArrayValues",
+      "ports" : [
+        {
+          "objectType" : "ExecPort",
+          "name" : "exec",
+          "nodePortType" : "IO",
+          "execPortType" : "IO",
+          "typeSpec" : "Execute"
+          },
+        {
+          "objectType" : "ExecPort",
+          "name" : "trackSetArray",
+          "nodePortType" : "IO",
+          "execPortType" : "IO",
+          "typeSpec" : "KeyframeTrackSet[]"
+          },
+        {
+          "objectType" : "ExecPort",
+          "name" : "time",
+          "nodePortType" : "Out",
+          "execPortType" : "In",
+          "typeSpec" : "Scalar"
+          },
+        {
+          "objectType" : "ExecPort",
+          "name" : "pose",
+          "nodePortType" : "Out",
+          "execPortType" : "In",
+          "typeSpec" : "IPose"
+          }
+        ],
+      "extDeps" : {
+        "fabricUtils" : "*"
+        },
+      "presetGUID" : "61406DDBF9A230741DB07FB9D4986A68",
+      "code" : "require fabricUtils;
+
+dfgEntry {
+  setPoseTrackSetArrayValues(trackSetArray, time, pose);
+}
+"
+      }
+    }
+  }
