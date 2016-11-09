@@ -1,0 +1,48 @@
+// Created by kl2dfg (processFunction)
+{
+  "objectType" : "Func",
+  "metadata" : {
+    "uiTooltip" : "Supported types:\n  trackSetArray: KeyframeTrackSet[]\n  time: Scalar\n  pose: IPose\n"
+    },
+  "title" : "SetPoseTrackSetArrayValues",
+  "ports" : [
+    {
+      "objectType" : "ExecPort",
+      "name" : "exec",
+      "nodePortType" : "IO",
+      "execPortType" : "IO",
+      "typeSpec" : "Execute"
+      },
+    {
+      "objectType" : "ExecPort",
+      "name" : "trackSetArray",
+      "nodePortType" : "IO",
+      "execPortType" : "IO",
+      "typeSpec" : "KeyframeTrackSet[]"
+      },
+    {
+      "objectType" : "ExecPort",
+      "name" : "time",
+      "nodePortType" : "Out",
+      "execPortType" : "In",
+      "typeSpec" : "Scalar"
+      },
+    {
+      "objectType" : "ExecPort",
+      "name" : "pose",
+      "nodePortType" : "Out",
+      "execPortType" : "In",
+      "typeSpec" : "IPose"
+      }
+    ],
+  "extDeps" : {
+    "fabricUtils" : "*"
+    },
+  "presetGUID" : "61406DDBF9A230741DB07FB9D4986A68",
+  "code" : "require fabricUtils;
+
+dfgEntry {
+  setPoseTrackSetArrayValues(trackSetArray, time, pose);
+}
+"
+  }

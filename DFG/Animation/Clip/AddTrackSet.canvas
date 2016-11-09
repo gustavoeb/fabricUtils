@@ -1,0 +1,41 @@
+// Created by kl2dfg (processFunction)
+{
+  "objectType" : "Func",
+  "metadata" : {
+    "uiTooltip" : "Supported types:\n  this: Clip\n  trackSet: ITrackSet\n"
+    },
+  "title" : "AddTrackSet",
+  "ports" : [
+    {
+      "objectType" : "ExecPort",
+      "name" : "exec",
+      "nodePortType" : "IO",
+      "execPortType" : "IO",
+      "typeSpec" : "Execute"
+      },
+    {
+      "objectType" : "ExecPort",
+      "name" : "this",
+      "nodePortType" : "IO",
+      "execPortType" : "IO",
+      "typeSpec" : "Clip"
+      },
+    {
+      "objectType" : "ExecPort",
+      "name" : "trackSet",
+      "nodePortType" : "Out",
+      "execPortType" : "In",
+      "typeSpec" : "ITrackSet"
+      }
+    ],
+  "extDeps" : {
+    "fabricUtils" : "*"
+    },
+  "presetGUID" : "FB1035625D578ABB17A75FF199770419",
+  "code" : "require fabricUtils;
+
+dfgEntry {
+  addTrackSet(this, trackSet);
+}
+"
+  }

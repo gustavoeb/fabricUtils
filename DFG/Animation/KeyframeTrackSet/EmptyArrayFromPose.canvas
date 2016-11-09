@@ -1,0 +1,48 @@
+// Created by kl2dfg (processFunction)
+{
+  "objectType" : "Func",
+  "metadata" : {
+    "uiTooltip" : "Supported types:\n  pose: IPose\n  flags: Integer\n  result: KeyframeTrackSet[]\n"
+    },
+  "title" : "EmptyArrayFromPose",
+  "ports" : [
+    {
+      "objectType" : "ExecPort",
+      "name" : "exec",
+      "nodePortType" : "IO",
+      "execPortType" : "IO",
+      "typeSpec" : "Execute"
+      },
+    {
+      "objectType" : "ExecPort",
+      "name" : "pose",
+      "nodePortType" : "Out",
+      "execPortType" : "In",
+      "typeSpec" : "IPose"
+      },
+    {
+      "objectType" : "ExecPort",
+      "name" : "flags",
+      "nodePortType" : "Out",
+      "execPortType" : "In",
+      "typeSpec" : "Integer"
+      },
+    {
+      "objectType" : "ExecPort",
+      "name" : "result",
+      "nodePortType" : "In",
+      "execPortType" : "Out",
+      "typeSpec" : "KeyframeTrackSet[]"
+      }
+    ],
+  "extDeps" : {
+    "fabricUtils" : "*"
+    },
+  "presetGUID" : "00B7F572B1BFA62D56D01C09D480ED6A",
+  "code" : "require fabricUtils;
+
+dfgEntry {
+  result = emptyArrayFromPose(pose, flags);
+}
+"
+  }
