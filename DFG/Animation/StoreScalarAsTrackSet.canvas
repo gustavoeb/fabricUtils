@@ -5,7 +5,7 @@
     "uiNodeColor" : "{\n  \"r\" : 121,\n  \"g\" : 134,\n  \"b\" : 143\n  }",
     "uiGraphZoom" : "{\n  \"value\" : 0.9092409014701843\n  }",
     "uiTooltip" : "Stores a sequence of Scalar values as a trackset.",
-    "uiGraphPan" : "{\n  \"x\" : -1370.046753398859,\n  \"y\" : -536.3470072782948\n  }"
+    "uiGraphPan" : "{\n  \"x\" : -1372.046752929688,\n  \"y\" : -742.3469848632813\n  }"
     },
   "title" : "StoreScalarAsTrackSet",
   "ports" : [
@@ -68,12 +68,12 @@
       }
     ],
   "extDeps" : {},
-  "presetGUID" : "682FEC6C5F356817006A5C67F87CAB7E",
+  "presetGUID" : "1721A967F82AEEBB2B42A5E61BF87731",
   "nodes" : [
     {
       "objectType" : "Var",
       "metadata" : {
-        "uiGraphPos" : "{\"x\":1800.90991211,\"y\":1024.85864258}"
+        "uiGraphPos" : "{\"x\":1833.90351689,\"y\":867.584594011}"
         },
       "name" : "track",
       "ports" : [
@@ -210,6 +210,21 @@
         ],
       "executable" : "Fabric.Exts.Animation.KeyframeTrackSet.SetTrackValues",
       "presetGUID" : "93241DDE6F88B529858AE81734F35AD4"
+      },
+    {
+      "objectType" : "Get",
+      "metadata" : {
+        "uiGraphPos" : "{\"x\":1794.95539212,\"y\":1039.71048558}"
+        },
+      "name" : "get",
+      "ports" : [
+        {
+          "objectType" : "GetPort",
+          "name" : "value",
+          "nodePortType" : "Out"
+          }
+        ],
+      "varPath" : "track"
       }
     ],
   "connections" : {
@@ -225,9 +240,6 @@
     "value" : [
       "SetTrackValues_1.value"
       ],
-    "track.value" : [
-      "If_1.if_false"
-      ],
     "If_1.result" : [
       "set_2.value"
       ],
@@ -235,11 +247,14 @@
       "SetTrackValues_1.this"
       ],
     "KeyframeTrackSet_1.result" : [
-      "track.value",
-      "If_1.if_true"
+      "If_1.if_true",
+      "track.value"
       ],
     "SetTrackValues_1.this" : [
       "trackSet"
+      ],
+    "get.value" : [
+      "If_1.if_false"
       ]
     },
   "requiredPresets" : {
@@ -250,7 +265,7 @@
         "uiNodeColor" : "{\n  \"r\" : 121,\n  \"g\" : 134,\n  \"b\" : 143\n  }",
         "uiGraphZoom" : "{\n  \"value\" : 0.9092409014701843\n  }",
         "uiTooltip" : "Stores a sequence of Scalar values as a trackset.",
-        "uiGraphPan" : "{\n  \"x\" : -1370.046753398859,\n  \"y\" : -536.3470072782948\n  }"
+        "uiGraphPan" : "{\n  \"x\" : -1372.046752929688,\n  \"y\" : -742.3469848632813\n  }"
         },
       "title" : "StoreScalarAsTrackSet",
       "ports" : [
@@ -313,12 +328,12 @@
           }
         ],
       "extDeps" : {},
-      "presetGUID" : "682FEC6C5F356817006A5C67F87CAB7E",
+      "presetGUID" : "1721A967F82AEEBB2B42A5E61BF87731",
       "nodes" : [
         {
           "objectType" : "Var",
           "metadata" : {
-            "uiGraphPos" : "{\"x\":1800.90991211,\"y\":1024.85864258}"
+            "uiGraphPos" : "{\"x\":1833.90351689,\"y\":867.584594011}"
             },
           "name" : "track",
           "ports" : [
@@ -455,6 +470,21 @@
             ],
           "executable" : "Fabric.Exts.Animation.KeyframeTrackSet.SetTrackValues",
           "presetGUID" : "93241DDE6F88B529858AE81734F35AD4"
+          },
+        {
+          "objectType" : "Get",
+          "metadata" : {
+            "uiGraphPos" : "{\"x\":1794.95539212,\"y\":1039.71048558}"
+            },
+          "name" : "get",
+          "ports" : [
+            {
+              "objectType" : "GetPort",
+              "name" : "value",
+              "nodePortType" : "Out"
+              }
+            ],
+          "varPath" : "track"
           }
         ],
       "connections" : {
@@ -470,9 +500,6 @@
         "value" : [
           "SetTrackValues_1.value"
           ],
-        "track.value" : [
-          "If_1.if_false"
-          ],
         "If_1.result" : [
           "set_2.value"
           ],
@@ -480,11 +507,14 @@
           "SetTrackValues_1.this"
           ],
         "KeyframeTrackSet_1.result" : [
-          "track.value",
-          "If_1.if_true"
+          "If_1.if_true",
+          "track.value"
           ],
         "SetTrackValues_1.this" : [
           "trackSet"
+          ],
+        "get.value" : [
+          "If_1.if_false"
           ]
         }
       },

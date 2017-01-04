@@ -1,8 +1,8 @@
 {
   "objectType" : "Graph",
   "metadata" : {
-    "uiGraphZoom" : "{\n  \"value\" : 0.8329514861106873\n  }",
-    "uiGraphPan" : "{\n  \"x\" : 46.39987882455188,\n  \"y\" : -77.89704394254147\n  }"
+    "uiGraphZoom" : "{\n  \"value\" : 0.6787102222442627\n  }",
+    "uiGraphPan" : "{\n  \"x\" : 100.6287689208984,\n  \"y\" : 102.621208190918\n  }"
     },
   "title" : "LoadBVHCharacter",
   "ports" : [
@@ -82,7 +82,19 @@
       },
     {
       "objectType" : "ExecPort",
+      "metadata" : {},
       "name" : "bindPose",
+      "nodePortType" : "In",
+      "defaultValues" : {
+        "Character" : null
+        },
+      "execPortType" : "Out",
+      "typeSpec" : "Character"
+      },
+    {
+      "objectType" : "ExecPort",
+      "metadata" : {},
+      "name" : "refPose",
       "nodePortType" : "In",
       "defaultValues" : {
         "Character" : null
@@ -103,12 +115,12 @@
   "extDeps" : {
     "fabricUtils" : "*"
     },
-  "presetGUID" : "3FA6342A12B706EB9447799B1C1B6412",
+  "presetGUID" : "8519A08A775A8C7740D90BA865ACFB7C",
   "nodes" : [
     {
       "objectType" : "Inst",
       "metadata" : {
-        "uiGraphPos" : "{\"x\":-290.138211012,\"y\":212.409808874}"
+        "uiGraphPos" : "{\"x\":-309.15455246,\"y\":210.947015762}"
         },
       "name" : "BVHReader_1",
       "ports" : [
@@ -424,32 +436,6 @@
     {
       "objectType" : "Inst",
       "metadata" : {
-        "uiGraphPos" : "{\"x\":101.815294266,\"y\":152.788679361}"
-        },
-      "name" : "Clone_1",
-      "ports" : [
-        {
-          "objectType" : "InstPort",
-          "name" : "exec",
-          "nodePortType" : "IO"
-          },
-        {
-          "objectType" : "InstPort",
-          "name" : "value",
-          "nodePortType" : "In"
-          },
-        {
-          "objectType" : "InstPort",
-          "name" : "clonedValue",
-          "nodePortType" : "Out"
-          }
-        ],
-      "executable" : "Fabric.Core.Data.Clone",
-      "presetGUID" : "30401D7851DEFCFA5C46EB3926DD8BAD"
-      },
-    {
-      "objectType" : "Inst",
-      "metadata" : {
         "uiGraphPos" : "{\"x\":256.287193537,\"y\":171.938138962}"
         },
       "name" : "Cache_2",
@@ -514,6 +500,105 @@
         ],
       "executable" : "Fabric.Core.Data.Cache",
       "presetGUID" : "D903AFD981FE9214C69943F542D5FD60"
+      },
+    {
+      "objectType" : "Inst",
+      "metadata" : {
+        "uiGraphPos" : "{\"x\":116.508018494,\"y\":154.950912476}"
+        },
+      "name" : "Copy_1",
+      "ports" : [
+        {
+          "objectType" : "InstPort",
+          "name" : "exec",
+          "nodePortType" : "IO"
+          },
+        {
+          "objectType" : "InstPort",
+          "name" : "value",
+          "nodePortType" : "In"
+          },
+        {
+          "objectType" : "InstPort",
+          "name" : "result",
+          "nodePortType" : "Out"
+          }
+        ],
+      "executable" : "Fabric.Core.Func.Copy",
+      "presetGUID" : "C3E84342DB046C048BABD41DF1B5E3ED"
+      },
+    {
+      "objectType" : "Inst",
+      "metadata" : {
+        "uiGraphPos" : "{\"x\":121.364372373,\"y\":53.5998836756}"
+        },
+      "name" : "Copy_2",
+      "ports" : [
+        {
+          "objectType" : "InstPort",
+          "name" : "exec",
+          "nodePortType" : "IO"
+          },
+        {
+          "objectType" : "InstPort",
+          "name" : "value",
+          "nodePortType" : "In"
+          },
+        {
+          "objectType" : "InstPort",
+          "name" : "result",
+          "nodePortType" : "Out"
+          }
+        ],
+      "executable" : "Fabric.Core.Func.Copy",
+      "presetGUID" : "C3E84342DB046C048BABD41DF1B5E3ED"
+      },
+    {
+      "objectType" : "Inst",
+      "metadata" : {
+        "uiGraphPos" : "{\"x\":253.968839884,\"y\":86.01429426670001}"
+        },
+      "name" : "Cache_4",
+      "ports" : [
+        {
+          "objectType" : "InstPort",
+          "name" : "exec",
+          "nodePortType" : "IO"
+          },
+        {
+          "objectType" : "InstPort",
+          "name" : "value",
+          "nodePortType" : "In"
+          }
+        ],
+      "executable" : "Fabric.Core.Data.Cache",
+      "presetGUID" : "D903AFD981FE9214C69943F542D5FD60"
+      },
+    {
+      "objectType" : "Inst",
+      "metadata" : {
+        "uiGraphPos" : "{\"x\":436.668152809,\"y\":63.9135770798}"
+        },
+      "name" : "GetCharacter_3",
+      "ports" : [
+        {
+          "objectType" : "InstPort",
+          "name" : "exec",
+          "nodePortType" : "IO"
+          },
+        {
+          "objectType" : "InstPort",
+          "name" : "this",
+          "nodePortType" : "In"
+          },
+        {
+          "objectType" : "InstPort",
+          "name" : "result",
+          "nodePortType" : "Out"
+          }
+        ],
+      "executable" : "fabricUtils.FileIO.BVHReader.GetCharacter",
+      "presetGUID" : "BA0245F136C565F5AD2810B4392B8DCA"
       }
     ],
   "connections" : {
@@ -537,8 +622,9 @@
       ],
     "BVHReader_1.result" : [
       "Cache_1.value",
-      "Clone_1.value",
-      "GetFPS_1.this"
+      "GetFPS_1.this",
+      "Copy_1.value",
+      "Copy_2.value"
       ],
     "FrameToTime_1.time" : [
       "If_1.if_false"
@@ -569,10 +655,7 @@
       "GetCharacter_1.this"
       ],
     "SetClipPoseTime_2.this" : [
-      "bindPose"
-      ],
-    "Clone_1.clonedValue" : [
-      "Cache_2.value"
+      "refPose"
       ],
     "Cache_2.value" : [
       "GetCharacter_2.this"
@@ -583,14 +666,26 @@
     "Cache_3.value" : [
       "FrameToTime_2.fps",
       "FrameToTime_1.fps"
+      ],
+    "Copy_1.result" : [
+      "Cache_2.value"
+      ],
+    "Copy_2.result" : [
+      "Cache_4.value"
+      ],
+    "Cache_4.value" : [
+      "GetCharacter_3.this"
+      ],
+    "GetCharacter_3.result" : [
+      "bindPose"
       ]
     },
   "requiredPresets" : {
     "fabricUtils.Characters.LoadBVHCharacter" : {
       "objectType" : "Graph",
       "metadata" : {
-        "uiGraphZoom" : "{\n  \"value\" : 0.8329514861106873\n  }",
-        "uiGraphPan" : "{\n  \"x\" : 46.39987882455188,\n  \"y\" : -77.89704394254147\n  }"
+        "uiGraphZoom" : "{\n  \"value\" : 0.6787102222442627\n  }",
+        "uiGraphPan" : "{\n  \"x\" : 100.6287689208984,\n  \"y\" : 102.621208190918\n  }"
         },
       "title" : "LoadBVHCharacter",
       "ports" : [
@@ -670,7 +765,19 @@
           },
         {
           "objectType" : "ExecPort",
+          "metadata" : {},
           "name" : "bindPose",
+          "nodePortType" : "In",
+          "defaultValues" : {
+            "Character" : null
+            },
+          "execPortType" : "Out",
+          "typeSpec" : "Character"
+          },
+        {
+          "objectType" : "ExecPort",
+          "metadata" : {},
+          "name" : "refPose",
           "nodePortType" : "In",
           "defaultValues" : {
             "Character" : null
@@ -691,12 +798,12 @@
       "extDeps" : {
         "fabricUtils" : "*"
         },
-      "presetGUID" : "3FA6342A12B706EB9447799B1C1B6412",
+      "presetGUID" : "8519A08A775A8C7740D90BA865ACFB7C",
       "nodes" : [
         {
           "objectType" : "Inst",
           "metadata" : {
-            "uiGraphPos" : "{\"x\":-290.138211012,\"y\":212.409808874}"
+            "uiGraphPos" : "{\"x\":-309.15455246,\"y\":210.947015762}"
             },
           "name" : "BVHReader_1",
           "ports" : [
@@ -1012,32 +1119,6 @@
         {
           "objectType" : "Inst",
           "metadata" : {
-            "uiGraphPos" : "{\"x\":101.815294266,\"y\":152.788679361}"
-            },
-          "name" : "Clone_1",
-          "ports" : [
-            {
-              "objectType" : "InstPort",
-              "name" : "exec",
-              "nodePortType" : "IO"
-              },
-            {
-              "objectType" : "InstPort",
-              "name" : "value",
-              "nodePortType" : "In"
-              },
-            {
-              "objectType" : "InstPort",
-              "name" : "clonedValue",
-              "nodePortType" : "Out"
-              }
-            ],
-          "executable" : "Fabric.Core.Data.Clone",
-          "presetGUID" : "30401D7851DEFCFA5C46EB3926DD8BAD"
-          },
-        {
-          "objectType" : "Inst",
-          "metadata" : {
             "uiGraphPos" : "{\"x\":256.287193537,\"y\":171.938138962}"
             },
           "name" : "Cache_2",
@@ -1102,6 +1183,105 @@
             ],
           "executable" : "Fabric.Core.Data.Cache",
           "presetGUID" : "D903AFD981FE9214C69943F542D5FD60"
+          },
+        {
+          "objectType" : "Inst",
+          "metadata" : {
+            "uiGraphPos" : "{\"x\":116.508018494,\"y\":154.950912476}"
+            },
+          "name" : "Copy_1",
+          "ports" : [
+            {
+              "objectType" : "InstPort",
+              "name" : "exec",
+              "nodePortType" : "IO"
+              },
+            {
+              "objectType" : "InstPort",
+              "name" : "value",
+              "nodePortType" : "In"
+              },
+            {
+              "objectType" : "InstPort",
+              "name" : "result",
+              "nodePortType" : "Out"
+              }
+            ],
+          "executable" : "Fabric.Core.Func.Copy",
+          "presetGUID" : "C3E84342DB046C048BABD41DF1B5E3ED"
+          },
+        {
+          "objectType" : "Inst",
+          "metadata" : {
+            "uiGraphPos" : "{\"x\":121.364372373,\"y\":53.5998836756}"
+            },
+          "name" : "Copy_2",
+          "ports" : [
+            {
+              "objectType" : "InstPort",
+              "name" : "exec",
+              "nodePortType" : "IO"
+              },
+            {
+              "objectType" : "InstPort",
+              "name" : "value",
+              "nodePortType" : "In"
+              },
+            {
+              "objectType" : "InstPort",
+              "name" : "result",
+              "nodePortType" : "Out"
+              }
+            ],
+          "executable" : "Fabric.Core.Func.Copy",
+          "presetGUID" : "C3E84342DB046C048BABD41DF1B5E3ED"
+          },
+        {
+          "objectType" : "Inst",
+          "metadata" : {
+            "uiGraphPos" : "{\"x\":253.968839884,\"y\":86.01429426670001}"
+            },
+          "name" : "Cache_4",
+          "ports" : [
+            {
+              "objectType" : "InstPort",
+              "name" : "exec",
+              "nodePortType" : "IO"
+              },
+            {
+              "objectType" : "InstPort",
+              "name" : "value",
+              "nodePortType" : "In"
+              }
+            ],
+          "executable" : "Fabric.Core.Data.Cache",
+          "presetGUID" : "D903AFD981FE9214C69943F542D5FD60"
+          },
+        {
+          "objectType" : "Inst",
+          "metadata" : {
+            "uiGraphPos" : "{\"x\":436.668152809,\"y\":63.9135770798}"
+            },
+          "name" : "GetCharacter_3",
+          "ports" : [
+            {
+              "objectType" : "InstPort",
+              "name" : "exec",
+              "nodePortType" : "IO"
+              },
+            {
+              "objectType" : "InstPort",
+              "name" : "this",
+              "nodePortType" : "In"
+              },
+            {
+              "objectType" : "InstPort",
+              "name" : "result",
+              "nodePortType" : "Out"
+              }
+            ],
+          "executable" : "fabricUtils.FileIO.BVHReader.GetCharacter",
+          "presetGUID" : "BA0245F136C565F5AD2810B4392B8DCA"
           }
         ],
       "connections" : {
@@ -1125,8 +1305,9 @@
           ],
         "BVHReader_1.result" : [
           "Cache_1.value",
-          "Clone_1.value",
-          "GetFPS_1.this"
+          "GetFPS_1.this",
+          "Copy_1.value",
+          "Copy_2.value"
           ],
         "FrameToTime_1.time" : [
           "If_1.if_false"
@@ -1157,10 +1338,7 @@
           "GetCharacter_1.this"
           ],
         "SetClipPoseTime_2.this" : [
-          "bindPose"
-          ],
-        "Clone_1.clonedValue" : [
-          "Cache_2.value"
+          "refPose"
           ],
         "Cache_2.value" : [
           "GetCharacter_2.this"
@@ -1171,6 +1349,18 @@
         "Cache_3.value" : [
           "FrameToTime_2.fps",
           "FrameToTime_1.fps"
+          ],
+        "Copy_1.result" : [
+          "Cache_2.value"
+          ],
+        "Copy_2.result" : [
+          "Cache_4.value"
+          ],
+        "Cache_4.value" : [
+          "GetCharacter_3.this"
+          ],
+        "GetCharacter_3.result" : [
+          "bindPose"
           ]
         }
       },
@@ -1630,43 +1820,6 @@ dfgEntry {
 }
 "
       },
-    "Fabric.Core.Data.Clone" : {
-      "objectType" : "Func",
-      "metadata" : {
-        "uiNodeColor" : "{\n  \"r\" : 214,\n  \"g\" : 191,\n  \"b\" : 103\n  }",
-        "uiHeaderColor" : "{\n  \"r\" : 188,\n  \"g\" : 129,\n  \"b\" : 83\n  }"
-        },
-      "title" : "Clone",
-      "ports" : [
-        {
-          "objectType" : "ExecPort",
-          "name" : "exec",
-          "nodePortType" : "IO",
-          "execPortType" : "IO",
-          "typeSpec" : "Execute"
-          },
-        {
-          "objectType" : "ExecPort",
-          "name" : "value",
-          "nodePortType" : "Out",
-          "execPortType" : "In",
-          "typeSpec" : "$TYPE$"
-          },
-        {
-          "objectType" : "ExecPort",
-          "name" : "clonedValue",
-          "nodePortType" : "In",
-          "execPortType" : "Out",
-          "typeSpec" : "$TYPE$"
-          }
-        ],
-      "extDeps" : {},
-      "presetGUID" : "30401D7851DEFCFA5C46EB3926DD8BAD",
-      "code" : "dfgEntry {
-  clonedValue = value.clone();
-}
-"
-      },
     "fabricUtils.FileIO.BVHReader.GetFPS" : {
       "objectType" : "Func",
       "metadata" : {
@@ -1704,6 +1857,44 @@ dfgEntry {
 
 dfgEntry {
   result = this.getFPS();
+}
+"
+      },
+    "Fabric.Core.Func.Copy" : {
+      "objectType" : "Func",
+      "metadata" : {
+        "uiNodeColor" : "{\n  \"r\" : 214,\n  \"g\" : 191,\n  \"b\" : 103\n  }",
+        "uiHeaderColor" : "{\n  \"r\" : 188,\n  \"g\" : 129,\n  \"b\" : 83\n  }"
+        },
+      "title" : "Copy",
+      "ports" : [
+        {
+          "objectType" : "ExecPort",
+          "name" : "exec",
+          "nodePortType" : "IO",
+          "execPortType" : "IO",
+          "typeSpec" : "Execute"
+          },
+        {
+          "objectType" : "ExecPort",
+          "name" : "value",
+          "nodePortType" : "Out",
+          "execPortType" : "In",
+          "typeSpec" : "$TYPE$"
+          },
+        {
+          "objectType" : "ExecPort",
+          "name" : "result",
+          "nodePortType" : "In",
+          "execPortType" : "Out",
+          "typeSpec" : "$TYPE$"
+          }
+        ],
+      "extDeps" : {},
+      "presetGUID" : "C3E84342DB046C048BABD41DF1B5E3ED",
+      "code" : "
+dfgEntry {
+	result = value;
 }
 "
       }

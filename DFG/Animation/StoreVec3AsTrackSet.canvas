@@ -3,9 +3,9 @@
   "metadata" : {
     "uiTextColor" : "{\n  \"r\" : 20,\n  \"g\" : 20,\n  \"b\" : 20\n  }",
     "uiNodeColor" : "{\n  \"r\" : 121,\n  \"g\" : 134,\n  \"b\" : 143\n  }",
-    "uiGraphZoom" : "{\n  \"value\" : 0.6687362790107727\n  }",
+    "uiGraphZoom" : "{\n  \"value\" : 0.9005208015441895\n  }",
     "uiTooltip" : "Stores a sequence of Vec3 as a trackset.",
-    "uiGraphPan" : "{\n  \"x\" : -890.5187377929688,\n  \"y\" : -199.1392364501953\n  }"
+    "uiGraphPan" : "{\n  \"x\" : -1418.205200195313,\n  \"y\" : -523.2680053710938\n  }"
     },
   "title" : "StoreVec3AsTrackSet",
   "ports" : [
@@ -71,7 +71,7 @@
       }
     ],
   "extDeps" : {},
-  "presetGUID" : "D37EEE11D99687FECE9E001F2DFC75BD",
+  "presetGUID" : "B357B8DB25C40475C14D9312EB3642A6",
   "nodes" : [
     {
       "objectType" : "Inst",
@@ -146,7 +146,7 @@
     {
       "objectType" : "Var",
       "metadata" : {
-        "uiGraphPos" : "{\"x\":1733.71990967,\"y\":790.788417816}"
+        "uiGraphPos" : "{\"x\":1733.7199707,\"y\":631.991577744}"
         },
       "name" : "track",
       "ports" : [
@@ -211,6 +211,21 @@
           }
         ],
       "varPath" : "track"
+      },
+    {
+      "objectType" : "Get",
+      "metadata" : {
+        "uiGraphPos" : "{\"x\":1602.63393996,\"y\":911.992264879}"
+        },
+      "name" : "get",
+      "ports" : [
+        {
+          "objectType" : "GetPort",
+          "name" : "value",
+          "nodePortType" : "Out"
+          }
+        ],
+      "varPath" : "track"
       }
     ],
   "connections" : {
@@ -233,14 +248,14 @@
     "SetVec3TrackSetValues_1.this" : [
       "trackSet"
       ],
-    "track.value" : [
-      "If_1.if_false"
-      ],
     "If_1.result" : [
       "set_2.value"
       ],
     "set_2.value" : [
       "SetVec3TrackSetValues_1.this"
+      ],
+    "get.value" : [
+      "If_1.if_false"
       ]
     },
   "requiredPresets" : {
@@ -249,9 +264,9 @@
       "metadata" : {
         "uiTextColor" : "{\n  \"r\" : 20,\n  \"g\" : 20,\n  \"b\" : 20\n  }",
         "uiNodeColor" : "{\n  \"r\" : 121,\n  \"g\" : 134,\n  \"b\" : 143\n  }",
-        "uiGraphZoom" : "{\n  \"value\" : 0.6687362790107727\n  }",
+        "uiGraphZoom" : "{\n  \"value\" : 0.9005208015441895\n  }",
         "uiTooltip" : "Stores a sequence of Vec3 as a trackset.",
-        "uiGraphPan" : "{\n  \"x\" : -890.5187377929688,\n  \"y\" : -199.1392364501953\n  }"
+        "uiGraphPan" : "{\n  \"x\" : -1418.205200195313,\n  \"y\" : -523.2680053710938\n  }"
         },
       "title" : "StoreVec3AsTrackSet",
       "ports" : [
@@ -317,7 +332,7 @@
           }
         ],
       "extDeps" : {},
-      "presetGUID" : "D37EEE11D99687FECE9E001F2DFC75BD",
+      "presetGUID" : "B357B8DB25C40475C14D9312EB3642A6",
       "nodes" : [
         {
           "objectType" : "Inst",
@@ -392,7 +407,7 @@
         {
           "objectType" : "Var",
           "metadata" : {
-            "uiGraphPos" : "{\"x\":1733.71990967,\"y\":790.788417816}"
+            "uiGraphPos" : "{\"x\":1733.7199707,\"y\":631.991577744}"
             },
           "name" : "track",
           "ports" : [
@@ -457,6 +472,21 @@
               }
             ],
           "varPath" : "track"
+          },
+        {
+          "objectType" : "Get",
+          "metadata" : {
+            "uiGraphPos" : "{\"x\":1602.63393996,\"y\":911.992264879}"
+            },
+          "name" : "get",
+          "ports" : [
+            {
+              "objectType" : "GetPort",
+              "name" : "value",
+              "nodePortType" : "Out"
+              }
+            ],
+          "varPath" : "track"
           }
         ],
       "connections" : {
@@ -479,14 +509,14 @@
         "SetVec3TrackSetValues_1.this" : [
           "trackSet"
           ],
-        "track.value" : [
-          "If_1.if_false"
-          ],
         "If_1.result" : [
           "set_2.value"
           ],
         "set_2.value" : [
           "SetVec3TrackSetValues_1.this"
+          ],
+        "get.value" : [
+          "If_1.if_false"
           ]
         }
       },

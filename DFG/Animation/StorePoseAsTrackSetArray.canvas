@@ -3,9 +3,9 @@
   "metadata" : {
     "uiTextColor" : "{\n  \"r\" : 20,\n  \"g\" : 20,\n  \"b\" : 20\n  }",
     "uiNodeColor" : "{\n  \"r\" : 121,\n  \"g\" : 134,\n  \"b\" : 143\n  }",
-    "uiGraphZoom" : "{\n  \"value\" : 0.7574182152748108\n  }",
+    "uiGraphZoom" : "{\n  \"value\" : 0.7038168907165527\n  }",
     "uiTooltip" : "Stores a sequence of poses as a clip.",
-    "uiGraphPan" : "{\n  \"x\" : -1189.6515620466,\n  \"y\" : -657.7023352594576\n  }"
+    "uiGraphPan" : "{\n  \"x\" : -1263.552612304688,\n  \"y\" : -563.8599243164063\n  }"
     },
   "title" : "StorePoseAsTrackSetArray",
   "ports" : [
@@ -49,7 +49,6 @@
       },
     {
       "objectType" : "ExecPort",
-      "metadata" : {},
       "name" : "storeTr",
       "nodePortType" : "Out",
       "defaultValues" : {
@@ -60,7 +59,6 @@
       },
     {
       "objectType" : "ExecPort",
-      "metadata" : {},
       "name" : "storeOri",
       "nodePortType" : "Out",
       "defaultValues" : {
@@ -71,7 +69,6 @@
       },
     {
       "objectType" : "ExecPort",
-      "metadata" : {},
       "name" : "storeSc",
       "nodePortType" : "Out",
       "defaultValues" : {
@@ -92,7 +89,7 @@
       }
     ],
   "extDeps" : {},
-  "presetGUID" : "7B9BA1A2A1E3CEE0686945F93F17D7EF",
+  "presetGUID" : "99BBCB6F197DED8908F1ABE0C5D9C8AE",
   "nodes" : [
     {
       "objectType" : "Inst",
@@ -292,7 +289,7 @@
     {
       "objectType" : "Inst",
       "metadata" : {
-        "uiGraphPos" : "{\"x\":1693.30309963,\"y\":1237.8998735}"
+        "uiGraphPos" : "{\"x\":1596.63295341,\"y\":1239.30093312}"
         },
       "name" : "EmptyArrayFromPose_1",
       "ports" : [
@@ -323,7 +320,7 @@
     {
       "objectType" : "Inst",
       "metadata" : {
-        "uiGraphPos" : "{\"x\":2277.37960219,\"y\":1246.27969193}"
+        "uiGraphPos" : "{\"x\":2455.2742641,\"y\":1275.92888939}"
         },
       "name" : "SetPoseTrackSetArrayValues_1",
       "ports" : [
@@ -354,7 +351,7 @@
     {
       "objectType" : "Var",
       "metadata" : {
-        "uiGraphPos" : "{\"x\":1929.33300686,\"y\":1238.00888228}"
+        "uiGraphPos" : "{\"x\":1911.66140509,\"y\":1117.75920343}"
         },
       "name" : "trackset",
       "ports" : [
@@ -403,11 +400,26 @@
       "presetGUID" : "3182A478A21643455D549E483D35F831"
       },
     {
+      "objectType" : "Set",
+      "metadata" : {
+        "uiGraphPos" : "{\"x\":2235.65023589,\"y\":1255.9974699}"
+        },
+      "name" : "set",
+      "ports" : [
+        {
+          "objectType" : "SetPort",
+          "name" : "value",
+          "nodePortType" : "IO"
+          }
+        ],
+      "varPath" : "trackset"
+      },
+    {
       "objectType" : "Get",
       "metadata" : {
-        "uiGraphPos" : "{\"x\":1911.54663086,\"y\":1323.09905434}"
+        "uiGraphPos" : "{\"x\":1920.3282057,\"y\":1338.38922083}"
         },
-      "name" : "get_2",
+      "name" : "get",
       "ports" : [
         {
           "objectType" : "GetPort",
@@ -459,18 +471,19 @@
       "If_4.if_true"
       ],
     "EmptyArrayFromPose_1.result" : [
-      "trackset.value"
+      "trackset.value",
+      "If_5.if_true"
       ],
     "SetPoseTrackSetArrayValues_1.trackSetArray" : [
       "trackSetArray"
       ],
-    "trackset.value" : [
-      "If_5.if_true"
-      ],
     "If_5.result" : [
+      "set.value"
+      ],
+    "set.value" : [
       "SetPoseTrackSetArrayValues_1.trackSetArray"
       ],
-    "get_2.value" : [
+    "get.value" : [
       "If_5.if_false"
       ]
     },
@@ -480,9 +493,9 @@
       "metadata" : {
         "uiTextColor" : "{\n  \"r\" : 20,\n  \"g\" : 20,\n  \"b\" : 20\n  }",
         "uiNodeColor" : "{\n  \"r\" : 121,\n  \"g\" : 134,\n  \"b\" : 143\n  }",
-        "uiGraphZoom" : "{\n  \"value\" : 0.7574182152748108\n  }",
+        "uiGraphZoom" : "{\n  \"value\" : 0.7038168907165527\n  }",
         "uiTooltip" : "Stores a sequence of poses as a clip.",
-        "uiGraphPan" : "{\n  \"x\" : -1189.6515620466,\n  \"y\" : -657.7023352594576\n  }"
+        "uiGraphPan" : "{\n  \"x\" : -1263.552612304688,\n  \"y\" : -563.8599243164063\n  }"
         },
       "title" : "StorePoseAsTrackSetArray",
       "ports" : [
@@ -526,7 +539,6 @@
           },
         {
           "objectType" : "ExecPort",
-          "metadata" : {},
           "name" : "storeTr",
           "nodePortType" : "Out",
           "defaultValues" : {
@@ -537,7 +549,6 @@
           },
         {
           "objectType" : "ExecPort",
-          "metadata" : {},
           "name" : "storeOri",
           "nodePortType" : "Out",
           "defaultValues" : {
@@ -548,7 +559,6 @@
           },
         {
           "objectType" : "ExecPort",
-          "metadata" : {},
           "name" : "storeSc",
           "nodePortType" : "Out",
           "defaultValues" : {
@@ -569,7 +579,7 @@
           }
         ],
       "extDeps" : {},
-      "presetGUID" : "7B9BA1A2A1E3CEE0686945F93F17D7EF",
+      "presetGUID" : "99BBCB6F197DED8908F1ABE0C5D9C8AE",
       "nodes" : [
         {
           "objectType" : "Inst",
@@ -769,7 +779,7 @@
         {
           "objectType" : "Inst",
           "metadata" : {
-            "uiGraphPos" : "{\"x\":1693.30309963,\"y\":1237.8998735}"
+            "uiGraphPos" : "{\"x\":1596.63295341,\"y\":1239.30093312}"
             },
           "name" : "EmptyArrayFromPose_1",
           "ports" : [
@@ -800,7 +810,7 @@
         {
           "objectType" : "Inst",
           "metadata" : {
-            "uiGraphPos" : "{\"x\":2277.37960219,\"y\":1246.27969193}"
+            "uiGraphPos" : "{\"x\":2455.2742641,\"y\":1275.92888939}"
             },
           "name" : "SetPoseTrackSetArrayValues_1",
           "ports" : [
@@ -831,7 +841,7 @@
         {
           "objectType" : "Var",
           "metadata" : {
-            "uiGraphPos" : "{\"x\":1929.33300686,\"y\":1238.00888228}"
+            "uiGraphPos" : "{\"x\":1911.66140509,\"y\":1117.75920343}"
             },
           "name" : "trackset",
           "ports" : [
@@ -880,11 +890,26 @@
           "presetGUID" : "3182A478A21643455D549E483D35F831"
           },
         {
+          "objectType" : "Set",
+          "metadata" : {
+            "uiGraphPos" : "{\"x\":2235.65023589,\"y\":1255.9974699}"
+            },
+          "name" : "set",
+          "ports" : [
+            {
+              "objectType" : "SetPort",
+              "name" : "value",
+              "nodePortType" : "IO"
+              }
+            ],
+          "varPath" : "trackset"
+          },
+        {
           "objectType" : "Get",
           "metadata" : {
-            "uiGraphPos" : "{\"x\":1911.54663086,\"y\":1323.09905434}"
+            "uiGraphPos" : "{\"x\":1920.3282057,\"y\":1338.38922083}"
             },
-          "name" : "get_2",
+          "name" : "get",
           "ports" : [
             {
               "objectType" : "GetPort",
@@ -936,18 +961,19 @@
           "If_4.if_true"
           ],
         "EmptyArrayFromPose_1.result" : [
-          "trackset.value"
+          "trackset.value",
+          "If_5.if_true"
           ],
         "SetPoseTrackSetArrayValues_1.trackSetArray" : [
           "trackSetArray"
           ],
-        "trackset.value" : [
-          "If_5.if_true"
-          ],
         "If_5.result" : [
+          "set.value"
+          ],
+        "set.value" : [
           "SetPoseTrackSetArrayValues_1.trackSetArray"
           ],
-        "get_2.value" : [
+        "get.value" : [
           "If_5.if_false"
           ]
         }
