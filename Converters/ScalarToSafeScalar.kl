@@ -1,0 +1,12 @@
+require Math;
+
+/// \dfgPresetFolder Converters
+/// Returns a new Vec3 with NaNs removed.
+function Scalar ScalarToSafeSacalar(in Scalar this) {
+  Scalar result();
+  if(this.isNaN())
+    result = 0.0;
+  else
+  	result = this;
+  return result;
+}
