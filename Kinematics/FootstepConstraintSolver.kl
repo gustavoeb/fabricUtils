@@ -7,6 +7,7 @@ object FootstepConstraintSolver : KrakenSolver {
   Vec3 trCurr;
   Xfo stepPose;
   Boolean stepToggle;
+  Scalar softToggle;
 };
 
 /// \dfgPresetTitle FootstepConstraintSolver_Constructor
@@ -95,6 +96,89 @@ function FootstepConstraintSolver.solve!(
     }
     else {
       this.handle.removeDebugShape('footstepPos');
+    }
+
+    Vec3 heightMark;
+    heightMark.x = Xfo(ankleInPose).tr.x;
+    heightMark.y = heightTh;
+    heightMark.z = Xfo(ankleInPose).tr.z;
+    drawLine(this.handle.rootTransform, 'heightMark', ankleInPose.translation(), heightMark, Color(0.0, 1.0, 0.0));
+  }
+}
+
+/// \dfgPresetTitle FootstepConstraintSolver_FuzzySolve
+/// \dfgPresetColor Color(49, 60, 61)
+/// \dfgPresetHeaderColor Color(42, 94, 102)
+/// \dfgPresetTextColor Color(168, 229, 240)
+/// \dfgPresetFolder Kinematics\FootstepConstraintSolver
+function FootstepConstraintSolver.fuzzySolve!(
+  in Boolean drawDebug,
+  in Scalar rigScale,
+  in Scalar timeStep,
+  in Scalar heightTh,
+  in Scalar speedTh,
+  in Scalar timeTh,
+  in Mat44 ankleInPose,
+  io Mat44 ankleOutPose,
+  io Boolean stepToggle)
+{
+  this.drawDebug = drawDebug;
+
+  Vec3 anklePrevPos = this.trPrev.clone();
+  Vec3 ankleCurrPos = ankleInPose.translation();
+  // report('prevPos: ' + anklePrevPos + '; currentPos: ' + ankleCurrPos);
+
+  Scalar ankleSpeed;
+  if (this.stepToggle == true) { ankleSpeed = ankleCurrPos.distanceTo(this.stepPose.tr); }
+  else { ankleSpeed = ankleCurrPos.distanceTo(anklePrevPos); }
+  Scalar ankleHeight = ankleCurrPos.y;
+
+  Scalar fzSpeedTh = Math_min(1/pow((-1*ankleSpeed*1.0/speedTh),2),1);
+  Scalar fzHeightTh = Math_min(1/pow((-1*ankleHeight*1.0/heightTh),2),1);
+  this.softToggle = Math_min(ScalarToSafeSacalar(this.softToggle.linearInterpolate(Scalar(Integer(this.stepToggle)),timeStep/timeTh)),1);
+  Scalar fzTh = (fzHeightTh+fzSpeedTh+this.softToggle)/3;
+
+  if (fzTh>0.5) {
+    if (this.stepToggle == true) {
+      this.trPrev = this.stepPose.clone().tr;
+    }
+    else {
+      this.stepPose = Xfo(ankleInPose);
+      this.stepToggle = true;
+    }
+    ankleOutPose = this.stepPose.toMat44();
+    //report('constrained at: ' + this.stepPose);
+  }
+  else {
+    this.trPrev = Xfo(ankleInPose).tr;
+    ankleOutPose = ankleInPose;
+    this.stepToggle = false;
+    // report('unconstrained');
+  }
+
+  stepToggle = this.stepToggle;
+
+  // ==========
+  // Debugging
+  // ==========
+  this.setDebug(drawDebug);
+  if(this.drawDebug){
+    report('speed threshold: ' + fzSpeedTh);
+    report('height treshold: ' + fzHeightTh);
+    report('continuity treshold: ' + this.softToggle);
+    report('avarage: ' + fzTh);
+
+    if(!this.handle)
+      this.handle = DrawingHandle();
+
+    if (this.stepToggle) {
+      Vec3 debugpoints[];
+      debugpoints.push(this.stepPose.tr);
+      drawPoints(this.handle.rootTransform, 'footstepPos', debugpoints, Color(1.0, 0.0, 0.0), 1.0);
+    }
+    else {
+      this.handle.removeDebugShape('footstepPos');
+      this.handle.clear();
     }
 
     Vec3 heightMark;

@@ -4,7 +4,7 @@
     "uiTextColor" : "{\n  \"r\" : 20,\n  \"g\" : 20,\n  \"b\" : 20\n  }",
     "uiNodeColor" : "{\n  \"r\" : 121,\n  \"g\" : 134,\n  \"b\" : 143\n  }",
     "uiGraphZoom" : "{\n  \"value\" : 0.7406265139579773\n  }",
-    "uiGraphPan" : "{\n  \"x\" : -1661.789184570313,\n  \"y\" : 21.19684600830078\n  }"
+    "uiGraphPan" : "{\n  \"x\" : -1940.789184570313,\n  \"y\" : 161.1968536376953\n  }"
     },
   "title" : "globalXfoToBidemensionalPlane",
   "ports" : [
@@ -48,6 +48,21 @@
       },
     {
       "objectType" : "ExecPort",
+      "metadata" : {},
+      "name" : "frontVec",
+      "nodePortType" : "Out",
+      "defaultValues" : {
+        "Vec3" : {
+          "x" : -1,
+          "y" : 0,
+          "z" : 0
+          }
+        },
+      "execPortType" : "In",
+      "typeSpec" : "Vec3"
+      },
+    {
+      "objectType" : "ExecPort",
       "name" : "result",
       "nodePortType" : "In",
       "defaultValues" : {
@@ -76,7 +91,7 @@
       }
     ],
   "extDeps" : {},
-  "presetGUID" : "6017BE3F21E35AC6F5C6449E36FFF302",
+  "presetGUID" : "F0AFD3D0FD8B4FF4A4E312870AAC4B49",
   "nodes" : [
     {
       "objectType" : "Inst",
@@ -518,6 +533,9 @@
     "globalXfo" : [
       "Mul_1.lhs"
       ],
+    "frontVec" : [
+      "RotateVector_1.v"
+      ],
     "Mul_1.result" : [
       "DecomposeXfo_1.value"
       ],
@@ -572,7 +590,7 @@
         "uiTextColor" : "{\n  \"r\" : 20,\n  \"g\" : 20,\n  \"b\" : 20\n  }",
         "uiNodeColor" : "{\n  \"r\" : 121,\n  \"g\" : 134,\n  \"b\" : 143\n  }",
         "uiGraphZoom" : "{\n  \"value\" : 0.7406265139579773\n  }",
-        "uiGraphPan" : "{\n  \"x\" : -1661.789184570313,\n  \"y\" : 21.19684600830078\n  }"
+        "uiGraphPan" : "{\n  \"x\" : -1940.789184570313,\n  \"y\" : 161.1968536376953\n  }"
         },
       "title" : "globalXfoToBidemensionalPlane",
       "ports" : [
@@ -616,6 +634,21 @@
           },
         {
           "objectType" : "ExecPort",
+          "metadata" : {},
+          "name" : "frontVec",
+          "nodePortType" : "Out",
+          "defaultValues" : {
+            "Vec3" : {
+              "x" : -1,
+              "y" : 0,
+              "z" : 0
+              }
+            },
+          "execPortType" : "In",
+          "typeSpec" : "Vec3"
+          },
+        {
+          "objectType" : "ExecPort",
           "name" : "result",
           "nodePortType" : "In",
           "defaultValues" : {
@@ -644,7 +677,7 @@
           }
         ],
       "extDeps" : {},
-      "presetGUID" : "6017BE3F21E35AC6F5C6449E36FFF302",
+      "presetGUID" : "F0AFD3D0FD8B4FF4A4E312870AAC4B49",
       "nodes" : [
         {
           "objectType" : "Inst",
@@ -1085,6 +1118,9 @@
       "connections" : {
         "globalXfo" : [
           "Mul_1.lhs"
+          ],
+        "frontVec" : [
+          "RotateVector_1.v"
           ],
         "Mul_1.result" : [
           "DecomposeXfo_1.value"

@@ -2,7 +2,7 @@
   "objectType" : "Graph",
   "metadata" : {
     "uiGraphZoom" : "{\n  \"value\" : 0.9400274157524109\n  }",
-    "uiGraphPan" : "{\n  \"x\" : -858.7704467773438,\n  \"y\" : 185.8662719726563\n  }"
+    "uiGraphPan" : "{\n  \"x\" : -1001.770446777344,\n  \"y\" : 291.8662719726563\n  }"
     },
   "title" : "DrawMeshArray",
   "ports" : [
@@ -48,10 +48,40 @@
         "DrawingHandle" : null
         },
       "execPortType" : "Out"
+      },
+    {
+      "objectType" : "ExecPort",
+      "metadata" : {},
+      "name" : "offset",
+      "nodePortType" : "Out",
+      "defaultValues" : {
+        "Xfo" : {
+          "ori" : {
+            "v" : {
+              "x" : 0,
+              "y" : 0,
+              "z" : 0
+              },
+            "w" : 1
+            },
+          "tr" : {
+            "x" : 0,
+            "y" : 0,
+            "z" : 0
+            },
+          "sc" : {
+            "x" : 1,
+            "y" : 1,
+            "z" : 1
+            }
+          }
+        },
+      "execPortType" : "In",
+      "typeSpec" : "Xfo"
       }
     ],
   "extDeps" : {},
-  "presetGUID" : "DCF604F9BDF2080AA8A92B302A65EE3D",
+  "presetGUID" : "3D8FD28BEE86D34E6EE56AD8D22A31E1",
   "nodes" : [
     {
       "objectType" : "Inst",
@@ -157,20 +187,87 @@
         ],
       "executable" : "Fabric.Exts.InlineDrawing.DrawingHandle.EmptyDrawingHandle",
       "presetGUID" : "2440020BA6A1CAB1CEB690A198F99C70"
+      },
+    {
+      "objectType" : "Inst",
+      "metadata" : {
+        "uiGraphPos" : "{\"x\":1295.4630357,\"y\":141.627516031}"
+        },
+      "name" : "Size_1",
+      "ports" : [
+        {
+          "objectType" : "InstPort",
+          "name" : "exec",
+          "nodePortType" : "IO"
+          },
+        {
+          "objectType" : "InstPort",
+          "name" : "array",
+          "nodePortType" : "In"
+          },
+        {
+          "objectType" : "InstPort",
+          "name" : "count",
+          "nodePortType" : "Out"
+          }
+        ],
+      "executable" : "Fabric.Core.Array.Size",
+      "presetGUID" : "5B186A97C79ACF32526EC844AD805421"
+      },
+    {
+      "objectType" : "Inst",
+      "metadata" : {
+        "uiGraphPos" : "{\"x\":1427.37373857,\"y\":154.393080026}"
+        },
+      "name" : "Fill_1",
+      "ports" : [
+        {
+          "objectType" : "InstPort",
+          "name" : "exec",
+          "nodePortType" : "IO"
+          },
+        {
+          "objectType" : "InstPort",
+          "name" : "element",
+          "nodePortType" : "In"
+          },
+        {
+          "objectType" : "InstPort",
+          "name" : "count",
+          "nodePortType" : "In"
+          },
+        {
+          "objectType" : "InstPort",
+          "name" : "array",
+          "nodePortType" : "Out"
+          }
+        ],
+      "executable" : "Fabric.Core.Array.Fill",
+      "presetGUID" : "323379311384B0227037BF839A4A49C9"
       }
     ],
   "connections" : {
     "result" : [
-      "DrawPolygonMeshArray_1.masters"
+      "DrawPolygonMeshArray_1.masters",
+      "Size_1.array"
       ],
     "color" : [
       "DrawPolygonMeshArray_1.color"
+      ],
+    "offset" : [
+      "Fill_1.element"
       ],
     "DrawPolygonMeshArray_1.this" : [
       "this"
       ],
     "EmptyDrawingHandle.handle" : [
       "DrawPolygonMeshArray_1.this"
+      ],
+    "Size_1.count" : [
+      "Fill_1.count"
+      ],
+    "Fill_1.array" : [
+      "DrawPolygonMeshArray_1.transforms"
       ]
     },
   "requiredPresets" : {
@@ -178,7 +275,7 @@
       "objectType" : "Graph",
       "metadata" : {
         "uiGraphZoom" : "{\n  \"value\" : 0.9400274157524109\n  }",
-        "uiGraphPan" : "{\n  \"x\" : -858.7704467773438,\n  \"y\" : 185.8662719726563\n  }"
+        "uiGraphPan" : "{\n  \"x\" : -1001.770446777344,\n  \"y\" : 291.8662719726563\n  }"
         },
       "title" : "DrawMeshArray",
       "ports" : [
@@ -224,10 +321,40 @@
             "DrawingHandle" : null
             },
           "execPortType" : "Out"
+          },
+        {
+          "objectType" : "ExecPort",
+          "metadata" : {},
+          "name" : "offset",
+          "nodePortType" : "Out",
+          "defaultValues" : {
+            "Xfo" : {
+              "ori" : {
+                "v" : {
+                  "x" : 0,
+                  "y" : 0,
+                  "z" : 0
+                  },
+                "w" : 1
+                },
+              "tr" : {
+                "x" : 0,
+                "y" : 0,
+                "z" : 0
+                },
+              "sc" : {
+                "x" : 1,
+                "y" : 1,
+                "z" : 1
+                }
+              }
+            },
+          "execPortType" : "In",
+          "typeSpec" : "Xfo"
           }
         ],
       "extDeps" : {},
-      "presetGUID" : "DCF604F9BDF2080AA8A92B302A65EE3D",
+      "presetGUID" : "3D8FD28BEE86D34E6EE56AD8D22A31E1",
       "nodes" : [
         {
           "objectType" : "Inst",
@@ -333,20 +460,87 @@
             ],
           "executable" : "Fabric.Exts.InlineDrawing.DrawingHandle.EmptyDrawingHandle",
           "presetGUID" : "2440020BA6A1CAB1CEB690A198F99C70"
+          },
+        {
+          "objectType" : "Inst",
+          "metadata" : {
+            "uiGraphPos" : "{\"x\":1295.4630357,\"y\":141.627516031}"
+            },
+          "name" : "Size_1",
+          "ports" : [
+            {
+              "objectType" : "InstPort",
+              "name" : "exec",
+              "nodePortType" : "IO"
+              },
+            {
+              "objectType" : "InstPort",
+              "name" : "array",
+              "nodePortType" : "In"
+              },
+            {
+              "objectType" : "InstPort",
+              "name" : "count",
+              "nodePortType" : "Out"
+              }
+            ],
+          "executable" : "Fabric.Core.Array.Size",
+          "presetGUID" : "5B186A97C79ACF32526EC844AD805421"
+          },
+        {
+          "objectType" : "Inst",
+          "metadata" : {
+            "uiGraphPos" : "{\"x\":1427.37373857,\"y\":154.393080026}"
+            },
+          "name" : "Fill_1",
+          "ports" : [
+            {
+              "objectType" : "InstPort",
+              "name" : "exec",
+              "nodePortType" : "IO"
+              },
+            {
+              "objectType" : "InstPort",
+              "name" : "element",
+              "nodePortType" : "In"
+              },
+            {
+              "objectType" : "InstPort",
+              "name" : "count",
+              "nodePortType" : "In"
+              },
+            {
+              "objectType" : "InstPort",
+              "name" : "array",
+              "nodePortType" : "Out"
+              }
+            ],
+          "executable" : "Fabric.Core.Array.Fill",
+          "presetGUID" : "323379311384B0227037BF839A4A49C9"
           }
         ],
       "connections" : {
         "result" : [
-          "DrawPolygonMeshArray_1.masters"
+          "DrawPolygonMeshArray_1.masters",
+          "Size_1.array"
           ],
         "color" : [
           "DrawPolygonMeshArray_1.color"
+          ],
+        "offset" : [
+          "Fill_1.element"
           ],
         "DrawPolygonMeshArray_1.this" : [
           "this"
           ],
         "EmptyDrawingHandle.handle" : [
           "DrawPolygonMeshArray_1.this"
+          ],
+        "Size_1.count" : [
+          "Fill_1.count"
+          ],
+        "Fill_1.array" : [
+          "DrawPolygonMeshArray_1.transforms"
           ]
         }
       },
@@ -647,6 +841,83 @@ dfgEntry {
 
 dfgEntry {
   this.clear();
+}
+"
+      },
+    "Fabric.Core.Array.Size" : {
+      "objectType" : "Func",
+      "title" : "Size[]",
+      "ports" : [
+        {
+          "objectType" : "ExecPort",
+          "name" : "exec",
+          "nodePortType" : "IO",
+          "execPortType" : "IO",
+          "typeSpec" : "Execute"
+          },
+        {
+          "objectType" : "ExecPort",
+          "name" : "array",
+          "nodePortType" : "Out",
+          "execPortType" : "In",
+          "typeSpec" : "$TYPE$"
+          },
+        {
+          "objectType" : "ExecPort",
+          "name" : "count",
+          "nodePortType" : "In",
+          "execPortType" : "Out",
+          "typeSpec" : "UInt32"
+          }
+        ],
+      "extDeps" : {},
+      "presetGUID" : "5B186A97C79ACF32526EC844AD805421",
+      "code" : "
+dfgEntry {
+	count = array.size();
+}
+"
+      },
+    "Fabric.Core.Array.Fill" : {
+      "objectType" : "Func",
+      "title" : "Fill[]",
+      "ports" : [
+        {
+          "objectType" : "ExecPort",
+          "name" : "exec",
+          "nodePortType" : "IO",
+          "execPortType" : "IO",
+          "typeSpec" : "Execute"
+          },
+        {
+          "objectType" : "ExecPort",
+          "name" : "element",
+          "nodePortType" : "Out",
+          "execPortType" : "In",
+          "typeSpec" : "$TYPE$"
+          },
+        {
+          "objectType" : "ExecPort",
+          "name" : "count",
+          "nodePortType" : "Out",
+          "execPortType" : "In",
+          "typeSpec" : "SInt32"
+          },
+        {
+          "objectType" : "ExecPort",
+          "name" : "array",
+          "nodePortType" : "In",
+          "execPortType" : "Out",
+          "typeSpec" : "$TYPE$[]"
+          }
+        ],
+      "extDeps" : {},
+      "presetGUID" : "323379311384B0227037BF839A4A49C9",
+      "code" : "
+dfgEntry {
+	array.resize(count);
+  for(Size i=0;i<count;i++)
+    array[i] = element;
 }
 "
       }

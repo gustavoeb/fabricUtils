@@ -16,6 +16,8 @@
   	"Converters/poseToXfoArray.kl",
     "Converters/quatStringToXfoArray.kl",
   	"Converters/referencePoseToXfoArray.kl",
+    "Converters/ScalarToSafeScalar.kl",
+    "Converters/Vec3ToSafeVec3.kl",
   	"Converters/xfoArrayToQuatString.kl",
     "Converters/xfoArrayToPose.kl",
 
