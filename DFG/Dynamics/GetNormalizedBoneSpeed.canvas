@@ -3,11 +3,11 @@
   "metadata" : {
     "uiTextColor" : "{\n  \"r\" : 20,\n  \"g\" : 20,\n  \"b\" : 20\n  }",
     "uiNodeColor" : "{\n  \"r\" : 121,\n  \"g\" : 134,\n  \"b\" : 143\n  }",
-    "uiGraphZoom" : "{\n  \"value\" : 0.7828114628791809\n  }",
-    "uiTooltip" : "Gets the COG velocity normalized by character height. Assumes height is in the Y axis.",
-    "uiGraphPan" : "{\n  \"x\" : -930.7563836247118,\n  \"y\" : -193.3739069053222\n  }"
+    "uiGraphZoom" : "{\n  \"value\" : 0.8557879328727722\n  }",
+    "uiTooltip" : "Gets the speed of a bone normalized by character height. Assumes height is in the Y axis. Height is infered from the COG Bone in its refPose.",
+    "uiGraphPan" : "{\n  \"x\" : -903.5388726986985,\n  \"y\" : -250.973418763095\n  }"
     },
-  "title" : "GetNormalizedCOGVelocity",
+  "title" : "GetNormalizedBoneSpeed",
   "ports" : [
     {
       "objectType" : "ExecPort",
@@ -49,16 +49,13 @@
       },
     {
       "objectType" : "ExecPort",
-      "metadata" : {
-        "uiCombo" : "(\"Global\", \"Local\")"
-        },
-      "name" : "space",
+      "name" : "boneId",
       "nodePortType" : "Out",
       "defaultValues" : {
-        "Integer" : 1
+        "Index" : 0
         },
       "execPortType" : "In",
-      "typeSpec" : "Integer"
+      "typeSpec" : "Index"
       },
     {
       "objectType" : "ExecPort",
@@ -72,19 +69,7 @@
       },
     {
       "objectType" : "ExecPort",
-      "name" : "velocity",
-      "nodePortType" : "In",
-      "defaultValues" : {
-        "Vec3" : {
-          "x" : 0,
-          "y" : 0,
-          "z" : 0
-          }
-        },
-      "execPortType" : "Out"
-      },
-    {
-      "objectType" : "ExecPort",
+      "metadata" : {},
       "name" : "speed",
       "nodePortType" : "In",
       "defaultValues" : {
@@ -92,44 +77,15 @@
         },
       "execPortType" : "Out",
       "typeSpec" : "Scalar"
-      },
-    {
-      "objectType" : "ExecPort",
-      "name" : "delta",
-      "nodePortType" : "In",
-      "defaultValues" : {
-        "Xfo" : {
-          "ori" : {
-            "v" : {
-              "x" : 0,
-              "y" : 0,
-              "z" : 0
-              },
-            "w" : 1
-            },
-          "tr" : {
-            "x" : 0,
-            "y" : 0,
-            "z" : 0
-            },
-          "sc" : {
-            "x" : 1,
-            "y" : 1,
-            "z" : 1
-            }
-          }
-        },
-      "execPortType" : "Out",
-      "typeSpec" : "Xfo"
       }
     ],
   "extDeps" : {},
-  "presetGUID" : "BE076C1C8C69A3C60BC631B2BB6DC847",
+  "presetGUID" : "3F65799F0C5B2D4CA22995533533728A",
   "nodes" : [
     {
       "objectType" : "Inst",
       "metadata" : {
-        "uiGraphPos" : "{\"x\":2103.68316126,\"y\":691.988270283}"
+        "uiGraphPos" : "{\"x\":2082.51367188,\"y\":678.757446289}"
         },
       "name" : "Div_1",
       "ports" : [
@@ -163,7 +119,7 @@
     {
       "objectType" : "Inst",
       "metadata" : {
-        "uiGraphPos" : "{\"x\":1290.20069361,\"y\":651.789839268}"
+        "uiGraphPos" : "{\"x\":1237.74131203,\"y\":843.071056366}"
         },
       "name" : "GetBoneXfo_1",
       "ports" : [
@@ -197,7 +153,7 @@
     {
       "objectType" : "Inst",
       "metadata" : {
-        "uiGraphPos" : "{\"x\":1451.43671286,\"y\":673.779891014}"
+        "uiGraphPos" : "{\"x\":1817.51367188,\"y\":741.257446289}"
         },
       "name" : "DecomposeXfo_1",
       "ports" : [
@@ -233,7 +189,7 @@
     {
       "objectType" : "Inst",
       "metadata" : {
-        "uiGraphPos" : "{\"x\":1633.1259048,\"y\":682.695378661}"
+        "uiGraphPos" : "{\"x\":1949.51367188,\"y\":741.257446289}"
         },
       "name" : "DecomposeVec3_1",
       "ports" : [
@@ -269,64 +225,7 @@
     {
       "objectType" : "Inst",
       "metadata" : {
-        "uiGraphPos" : "{\"x\":1956.92852259,\"y\":616.10234499}"
-        },
-      "name" : "SetUnit_1",
-      "ports" : [
-        {
-          "objectType" : "InstPort",
-          "name" : "exec",
-          "nodePortType" : "IO"
-          },
-        {
-          "objectType" : "InstPort",
-          "name" : "this",
-          "nodePortType" : "IO"
-          },
-        {
-          "objectType" : "InstPort",
-          "name" : "result",
-          "nodePortType" : "Out"
-          }
-        ],
-      "executable" : "Fabric.Exts.Math.Func.SetUnit",
-      "presetGUID" : "56C49589F4C5AD7306A25A1924E9D334"
-      },
-    {
-      "objectType" : "Inst",
-      "metadata" : {
-        "uiGraphPos" : "{\"x\":2225.99248743,\"y\":609.940907001}"
-        },
-      "name" : "MultiplyScalar_1",
-      "ports" : [
-        {
-          "objectType" : "InstPort",
-          "name" : "exec",
-          "nodePortType" : "IO"
-          },
-        {
-          "objectType" : "InstPort",
-          "name" : "this",
-          "nodePortType" : "In"
-          },
-        {
-          "objectType" : "InstPort",
-          "name" : "other",
-          "nodePortType" : "In"
-          },
-        {
-          "objectType" : "InstPort",
-          "name" : "result",
-          "nodePortType" : "Out"
-          }
-        ],
-      "executable" : "Fabric.Exts.Math.Func.MultiplyScalar",
-      "presetGUID" : "8EC64304FD2D82AEC7EBB545E4A9709B"
-      },
-    {
-      "objectType" : "Inst",
-      "metadata" : {
-        "uiGraphPos" : "{\"x\":1310.74787521,\"y\":470.848251343}"
+        "uiGraphPos" : "{\"x\":1228.65708351,\"y\":633.546031952}"
         },
       "name" : "GetBoneXfo_2",
       "ports" : [
@@ -357,9 +256,71 @@
     {
       "objectType" : "Inst",
       "metadata" : {
-        "uiGraphPos" : "{\"x\":1476.43037605,\"y\":543.925160885}"
+        "uiGraphPos" : "{\"x\":1233.02488136,\"y\":735.354625702}"
         },
-      "name" : "DeltaXfo_2",
+      "name" : "GetBoneXfo_3",
+      "ports" : [
+        {
+          "objectType" : "InstPort",
+          "name" : "exec",
+          "nodePortType" : "IO"
+          },
+        {
+          "objectType" : "InstPort",
+          "name" : "this",
+          "nodePortType" : "IO"
+          },
+        {
+          "objectType" : "InstPort",
+          "name" : "index",
+          "nodePortType" : "In"
+          },
+        {
+          "objectType" : "InstPort",
+          "name" : "result",
+          "nodePortType" : "Out"
+          }
+        ],
+      "executable" : "Fabric.Exts.Characters.Func.GetBoneXfo",
+      "presetGUID" : "7D655895D6198CE9CD72765843D152CA"
+      },
+    {
+      "objectType" : "Inst",
+      "metadata" : {
+        "uiGraphPos" : "{\"x\":1817.51367188,\"y\":616.257446289}"
+        },
+      "name" : "DistanceTo_1",
+      "ports" : [
+        {
+          "objectType" : "InstPort",
+          "name" : "exec",
+          "nodePortType" : "IO"
+          },
+        {
+          "objectType" : "InstPort",
+          "name" : "this",
+          "nodePortType" : "In"
+          },
+        {
+          "objectType" : "InstPort",
+          "name" : "other",
+          "nodePortType" : "In"
+          },
+        {
+          "objectType" : "InstPort",
+          "name" : "result",
+          "nodePortType" : "Out"
+          }
+        ],
+      "executable" : "Fabric.Exts.Math.Func.DistanceTo",
+      "presetGUID" : "AE45E7F47FFB5A678EEA4D1D87E5488E"
+      },
+    {
+      "objectType" : "Inst",
+      "metadata" : {
+        "uiGraphPos" : "{\"x\":1949.51367188,\"y\":616.257446289}"
+        },
+      "name" : "DeltaScalar_1",
       "ports" : [
         {
           "objectType" : "InstPort",
@@ -382,15 +343,15 @@
           "nodePortType" : "Out"
           }
         ],
-      "executable" : "fabricUtils.Simulation.DeltaXfo",
-      "presetGUID" : "D49BFEC8434DB56E76447C84355C7630"
+      "executable" : "Fabric.Compounds.Simulate.Delta.DeltaScalar",
+      "presetGUID" : "E2AFD3D547785DD9A1DE6B8D2385A274"
       },
     {
       "objectType" : "Inst",
       "metadata" : {
-        "uiGraphPos" : "{\"x\":1632.22199893,\"y\":532.126660585}"
+        "uiGraphPos" : "{\"x\":1238.43857765,\"y\":535.311656952}"
         },
-      "name" : "DecomposeXfo_2",
+      "name" : "GetBoneXfo_4",
       "ports" : [
         {
           "objectType" : "InstPort",
@@ -399,121 +360,16 @@
           },
         {
           "objectType" : "InstPort",
-          "name" : "value",
-          "nodePortType" : "In"
-          },
-        {
-          "objectType" : "InstPort",
-          "name" : "ori",
-          "nodePortType" : "Out"
-          },
-        {
-          "objectType" : "InstPort",
-          "name" : "tr",
-          "nodePortType" : "Out"
-          },
-        {
-          "objectType" : "InstPort",
-          "name" : "sc",
-          "nodePortType" : "Out"
-          }
-        ],
-      "executable" : "Fabric.Exts.Math.Xfo.DecomposeXfo",
-      "presetGUID" : "B107519BBF556653A095030A4CC02DBC"
-      },
-    {
-      "objectType" : "Inst",
-      "metadata" : {
-        "uiGraphPos" : "{\"x\":1614.71069956,\"y\":415.360825777}"
-        },
-      "name" : "DeltaVec3_1",
-      "ports" : [
-        {
-          "objectType" : "InstPort",
-          "name" : "exec",
+          "name" : "this",
           "nodePortType" : "IO"
           },
         {
           "objectType" : "InstPort",
-          "name" : "value",
-          "nodePortType" : "In"
-          },
-        {
-          "objectType" : "InstPort",
-          "name" : "reset",
-          "nodePortType" : "In"
-          },
-        {
-          "objectType" : "InstPort",
-          "name" : "delta",
-          "nodePortType" : "Out"
-          }
-        ],
-      "executable" : "Fabric.Compounds.Simulate.Delta.DeltaVec3",
-      "presetGUID" : "A24BE7D00B701EBAD8A06B3C36922286"
-      },
-    {
-      "objectType" : "Inst",
-      "metadata" : {
-        "uiGraphPos" : "{\"x\":1494.51513052,\"y\":416.88247776}"
-        },
-      "name" : "DecomposeXfo_3",
-      "ports" : [
-        {
-          "objectType" : "InstPort",
-          "name" : "exec",
-          "nodePortType" : "IO"
-          },
-        {
-          "objectType" : "InstPort",
-          "name" : "value",
-          "nodePortType" : "In"
-          },
-        {
-          "objectType" : "InstPort",
-          "name" : "ori",
-          "nodePortType" : "Out"
-          },
-        {
-          "objectType" : "InstPort",
-          "name" : "tr",
-          "nodePortType" : "Out"
-          },
-        {
-          "objectType" : "InstPort",
-          "name" : "sc",
-          "nodePortType" : "Out"
-          }
-        ],
-      "executable" : "Fabric.Exts.Math.Xfo.DecomposeXfo",
-      "presetGUID" : "B107519BBF556653A095030A4CC02DBC"
-      },
-    {
-      "objectType" : "Inst",
-      "metadata" : {
-        "uiGraphPos" : "{\"x\":1757.7289288,\"y\":468.611948729}"
-        },
-      "name" : "If_1",
-      "ports" : [
-        {
-          "objectType" : "InstPort",
-          "name" : "exec",
-          "nodePortType" : "IO"
-          },
-        {
-          "objectType" : "InstPort",
-          "name" : "cond",
-          "nodePortType" : "In"
-          },
-        {
-          "objectType" : "InstPort",
-          "name" : "if_true",
-          "nodePortType" : "In"
-          },
-        {
-          "objectType" : "InstPort",
-          "name" : "if_false",
-          "nodePortType" : "In"
+          "name" : "index",
+          "nodePortType" : "In",
+          "defaultValues" : {
+            "Index" : 1
+            }
           },
         {
           "objectType" : "InstPort",
@@ -521,41 +377,15 @@
           "nodePortType" : "Out"
           }
         ],
-      "executable" : "Fabric.Core.Control.If",
-      "presetGUID" : "3182A478A21643455D549E483D35F831"
+      "executable" : "Fabric.Exts.Characters.Func.GetBoneXfo",
+      "presetGUID" : "7D655895D6198CE9CD72765843D152CA"
       },
     {
       "objectType" : "Inst",
       "metadata" : {
-        "uiGraphPos" : "{\"x\":1607.10426354,\"y\":334.72364378}"
+        "uiGraphPos" : "{\"x\":1407.33071101,\"y\":511.445320964}"
         },
-      "name" : "ToBoolean_1",
-      "ports" : [
-        {
-          "objectType" : "InstPort",
-          "name" : "exec",
-          "nodePortType" : "IO"
-          },
-        {
-          "objectType" : "InstPort",
-          "name" : "value",
-          "nodePortType" : "In"
-          },
-        {
-          "objectType" : "InstPort",
-          "name" : "boolean",
-          "nodePortType" : "Out"
-          }
-        ],
-      "executable" : "Fabric.Core.Func.ToBoolean",
-      "presetGUID" : "E3F4150E373A9F4000F8FE5216942051"
-      },
-    {
-      "objectType" : "Inst",
-      "metadata" : {
-        "uiGraphPos" : "{\"x\":1785.11380315,\"y\":608.586664438}"
-        },
-      "name" : "Vec3ToSafeVec3_1",
+      "name" : "Inverse_1",
       "ports" : [
         {
           "objectType" : "InstPort",
@@ -573,15 +403,15 @@
           "nodePortType" : "Out"
           }
         ],
-      "executable" : "fabricUtils.Converters.Vec3ToSafeVec3",
-      "presetGUID" : "097A2395CA52C3542F4378B459C0C6B3"
+      "executable" : "Fabric.Exts.Math.Func.Inverse",
+      "presetGUID" : "B8922E10BA9ED2EB40A0009C880C5928"
       },
     {
       "objectType" : "Inst",
       "metadata" : {
-        "uiGraphPos" : "{\"x\":2389.13432312,\"y\":512.734255552}"
+        "uiGraphPos" : "{\"x\":1553.19142878,\"y\":545.271065593}"
         },
-      "name" : "Vec3ToSafeVec3_2",
+      "name" : "Mul_1",
       "ports" : [
         {
           "objectType" : "InstPort",
@@ -590,7 +420,12 @@
           },
         {
           "objectType" : "InstPort",
-          "name" : "this",
+          "name" : "lhs",
+          "nodePortType" : "In"
+          },
+        {
+          "objectType" : "InstPort",
+          "name" : "rhs",
           "nodePortType" : "In"
           },
         {
@@ -599,33 +434,67 @@
           "nodePortType" : "Out"
           }
         ],
-      "executable" : "fabricUtils.Converters.Vec3ToSafeVec3",
-      "presetGUID" : "097A2395CA52C3542F4378B459C0C6B3"
+      "executable" : "Fabric.Core.Math.Mul",
+      "presetGUID" : "CC951B43BB879483B46EFF7965692350"
+      },
+    {
+      "objectType" : "Inst",
+      "metadata" : {
+        "uiGraphPos" : "{\"x\":1684.23009872,\"y\":534.8817043300001}"
+        },
+      "name" : "Mul_2",
+      "ports" : [
+        {
+          "objectType" : "InstPort",
+          "name" : "exec",
+          "nodePortType" : "IO"
+          },
+        {
+          "objectType" : "InstPort",
+          "name" : "lhs",
+          "nodePortType" : "In"
+          },
+        {
+          "objectType" : "InstPort",
+          "name" : "rhs",
+          "nodePortType" : "In"
+          },
+        {
+          "objectType" : "InstPort",
+          "name" : "result",
+          "nodePortType" : "Out"
+          }
+        ],
+      "executable" : "Fabric.Core.Math.Mul",
+      "presetGUID" : "CC951B43BB879483B46EFF7965692350"
       }
     ],
   "connections" : {
     "Pose" : [
-      "GetBoneXfo_2.this"
+      "GetBoneXfo_2.this",
+      "GetBoneXfo_3.this"
       ],
     "refPose" : [
-      "GetBoneXfo_1.this"
+      "GetBoneXfo_1.this",
+      "GetBoneXfo_4.this"
       ],
     "cogBoneID" : [
       "GetBoneXfo_1.index",
       "GetBoneXfo_2.index"
       ],
-    "space" : [
-      "ToBoolean_1.value"
+    "boneId" : [
+      "GetBoneXfo_3.index",
+      "GetBoneXfo_4.index"
       ],
     "reset" : [
-      "DeltaVec3_1.reset"
+      "DeltaScalar_1.reset"
       ],
     "Div_1.result" : [
-      "speed",
-      "MultiplyScalar_1.other"
+      "speed"
       ],
     "GetBoneXfo_1.result" : [
-      "DecomposeXfo_1.value"
+      "DecomposeXfo_1.value",
+      "Inverse_1.this"
       ],
     "DecomposeXfo_1.tr" : [
       "DecomposeVec3_1.value"
@@ -633,55 +502,42 @@
     "DecomposeVec3_1.y" : [
       "Div_1.rhs"
       ],
-    "SetUnit_1.this" : [
-      "MultiplyScalar_1.this"
+    "GetBoneXfo_2.result" : [
+      "Mul_2.lhs"
       ],
-    "SetUnit_1.result" : [
+    "GetBoneXfo_3.result" : [
+      "DistanceTo_1.other"
+      ],
+    "DistanceTo_1.result" : [
+      "DeltaScalar_1.value"
+      ],
+    "DeltaScalar_1.delta" : [
       "Div_1.lhs"
       ],
-    "MultiplyScalar_1.result" : [
-      "Vec3ToSafeVec3_2.this"
+    "GetBoneXfo_4.result" : [
+      "Mul_1.rhs"
       ],
-    "GetBoneXfo_2.result" : [
-      "DeltaXfo_2.value",
-      "DecomposeXfo_3.value"
+    "Inverse_1.result" : [
+      "Mul_1.lhs"
       ],
-    "DeltaXfo_2.delta" : [
-      "DecomposeXfo_2.value"
+    "Mul_1.result" : [
+      "Mul_2.rhs"
       ],
-    "DecomposeXfo_2.tr" : [
-      "If_1.if_true"
-      ],
-    "DeltaVec3_1.delta" : [
-      "If_1.if_false"
-      ],
-    "DecomposeXfo_3.tr" : [
-      "DeltaVec3_1.value"
-      ],
-    "If_1.result" : [
-      "Vec3ToSafeVec3_1.this"
-      ],
-    "ToBoolean_1.boolean" : [
-      "If_1.cond"
-      ],
-    "Vec3ToSafeVec3_1.result" : [
-      "SetUnit_1.this"
-      ],
-    "Vec3ToSafeVec3_2.result" : [
-      "velocity"
+    "Mul_2.result" : [
+      "DistanceTo_1.this"
       ]
     },
   "requiredPresets" : {
-    "fabricUtils.Dynamics.GetNormalizedCOGVelocity" : {
+    "fabricUtils.Dynamics.GetNormalizedBoneSpeed" : {
       "objectType" : "Graph",
       "metadata" : {
         "uiTextColor" : "{\n  \"r\" : 20,\n  \"g\" : 20,\n  \"b\" : 20\n  }",
         "uiNodeColor" : "{\n  \"r\" : 121,\n  \"g\" : 134,\n  \"b\" : 143\n  }",
-        "uiGraphZoom" : "{\n  \"value\" : 0.7828114628791809\n  }",
-        "uiTooltip" : "Gets the COG velocity normalized by character height. Assumes height is in the Y axis.",
-        "uiGraphPan" : "{\n  \"x\" : -930.7563836247118,\n  \"y\" : -193.3739069053222\n  }"
+        "uiGraphZoom" : "{\n  \"value\" : 0.8557879328727722\n  }",
+        "uiTooltip" : "Gets the speed of a bone normalized by character height. Assumes height is in the Y axis. Height is infered from the COG Bone in its refPose.",
+        "uiGraphPan" : "{\n  \"x\" : -903.5388726986985,\n  \"y\" : -250.973418763095\n  }"
         },
-      "title" : "GetNormalizedCOGVelocity",
+      "title" : "GetNormalizedBoneSpeed",
       "ports" : [
         {
           "objectType" : "ExecPort",
@@ -723,16 +579,13 @@
           },
         {
           "objectType" : "ExecPort",
-          "metadata" : {
-            "uiCombo" : "(\"Global\", \"Local\")"
-            },
-          "name" : "space",
+          "name" : "boneId",
           "nodePortType" : "Out",
           "defaultValues" : {
-            "Integer" : 1
+            "Index" : 0
             },
           "execPortType" : "In",
-          "typeSpec" : "Integer"
+          "typeSpec" : "Index"
           },
         {
           "objectType" : "ExecPort",
@@ -746,19 +599,7 @@
           },
         {
           "objectType" : "ExecPort",
-          "name" : "velocity",
-          "nodePortType" : "In",
-          "defaultValues" : {
-            "Vec3" : {
-              "x" : 0,
-              "y" : 0,
-              "z" : 0
-              }
-            },
-          "execPortType" : "Out"
-          },
-        {
-          "objectType" : "ExecPort",
+          "metadata" : {},
           "name" : "speed",
           "nodePortType" : "In",
           "defaultValues" : {
@@ -766,44 +607,15 @@
             },
           "execPortType" : "Out",
           "typeSpec" : "Scalar"
-          },
-        {
-          "objectType" : "ExecPort",
-          "name" : "delta",
-          "nodePortType" : "In",
-          "defaultValues" : {
-            "Xfo" : {
-              "ori" : {
-                "v" : {
-                  "x" : 0,
-                  "y" : 0,
-                  "z" : 0
-                  },
-                "w" : 1
-                },
-              "tr" : {
-                "x" : 0,
-                "y" : 0,
-                "z" : 0
-                },
-              "sc" : {
-                "x" : 1,
-                "y" : 1,
-                "z" : 1
-                }
-              }
-            },
-          "execPortType" : "Out",
-          "typeSpec" : "Xfo"
           }
         ],
       "extDeps" : {},
-      "presetGUID" : "BE076C1C8C69A3C60BC631B2BB6DC847",
+      "presetGUID" : "3F65799F0C5B2D4CA22995533533728A",
       "nodes" : [
         {
           "objectType" : "Inst",
           "metadata" : {
-            "uiGraphPos" : "{\"x\":2103.68316126,\"y\":691.988270283}"
+            "uiGraphPos" : "{\"x\":2082.51367188,\"y\":678.757446289}"
             },
           "name" : "Div_1",
           "ports" : [
@@ -837,7 +649,7 @@
         {
           "objectType" : "Inst",
           "metadata" : {
-            "uiGraphPos" : "{\"x\":1290.20069361,\"y\":651.789839268}"
+            "uiGraphPos" : "{\"x\":1237.74131203,\"y\":843.071056366}"
             },
           "name" : "GetBoneXfo_1",
           "ports" : [
@@ -871,7 +683,7 @@
         {
           "objectType" : "Inst",
           "metadata" : {
-            "uiGraphPos" : "{\"x\":1451.43671286,\"y\":673.779891014}"
+            "uiGraphPos" : "{\"x\":1817.51367188,\"y\":741.257446289}"
             },
           "name" : "DecomposeXfo_1",
           "ports" : [
@@ -907,7 +719,7 @@
         {
           "objectType" : "Inst",
           "metadata" : {
-            "uiGraphPos" : "{\"x\":1633.1259048,\"y\":682.695378661}"
+            "uiGraphPos" : "{\"x\":1949.51367188,\"y\":741.257446289}"
             },
           "name" : "DecomposeVec3_1",
           "ports" : [
@@ -943,64 +755,7 @@
         {
           "objectType" : "Inst",
           "metadata" : {
-            "uiGraphPos" : "{\"x\":1956.92852259,\"y\":616.10234499}"
-            },
-          "name" : "SetUnit_1",
-          "ports" : [
-            {
-              "objectType" : "InstPort",
-              "name" : "exec",
-              "nodePortType" : "IO"
-              },
-            {
-              "objectType" : "InstPort",
-              "name" : "this",
-              "nodePortType" : "IO"
-              },
-            {
-              "objectType" : "InstPort",
-              "name" : "result",
-              "nodePortType" : "Out"
-              }
-            ],
-          "executable" : "Fabric.Exts.Math.Func.SetUnit",
-          "presetGUID" : "56C49589F4C5AD7306A25A1924E9D334"
-          },
-        {
-          "objectType" : "Inst",
-          "metadata" : {
-            "uiGraphPos" : "{\"x\":2225.99248743,\"y\":609.940907001}"
-            },
-          "name" : "MultiplyScalar_1",
-          "ports" : [
-            {
-              "objectType" : "InstPort",
-              "name" : "exec",
-              "nodePortType" : "IO"
-              },
-            {
-              "objectType" : "InstPort",
-              "name" : "this",
-              "nodePortType" : "In"
-              },
-            {
-              "objectType" : "InstPort",
-              "name" : "other",
-              "nodePortType" : "In"
-              },
-            {
-              "objectType" : "InstPort",
-              "name" : "result",
-              "nodePortType" : "Out"
-              }
-            ],
-          "executable" : "Fabric.Exts.Math.Func.MultiplyScalar",
-          "presetGUID" : "8EC64304FD2D82AEC7EBB545E4A9709B"
-          },
-        {
-          "objectType" : "Inst",
-          "metadata" : {
-            "uiGraphPos" : "{\"x\":1310.74787521,\"y\":470.848251343}"
+            "uiGraphPos" : "{\"x\":1228.65708351,\"y\":633.546031952}"
             },
           "name" : "GetBoneXfo_2",
           "ports" : [
@@ -1031,9 +786,71 @@
         {
           "objectType" : "Inst",
           "metadata" : {
-            "uiGraphPos" : "{\"x\":1476.43037605,\"y\":543.925160885}"
+            "uiGraphPos" : "{\"x\":1233.02488136,\"y\":735.354625702}"
             },
-          "name" : "DeltaXfo_2",
+          "name" : "GetBoneXfo_3",
+          "ports" : [
+            {
+              "objectType" : "InstPort",
+              "name" : "exec",
+              "nodePortType" : "IO"
+              },
+            {
+              "objectType" : "InstPort",
+              "name" : "this",
+              "nodePortType" : "IO"
+              },
+            {
+              "objectType" : "InstPort",
+              "name" : "index",
+              "nodePortType" : "In"
+              },
+            {
+              "objectType" : "InstPort",
+              "name" : "result",
+              "nodePortType" : "Out"
+              }
+            ],
+          "executable" : "Fabric.Exts.Characters.Func.GetBoneXfo",
+          "presetGUID" : "7D655895D6198CE9CD72765843D152CA"
+          },
+        {
+          "objectType" : "Inst",
+          "metadata" : {
+            "uiGraphPos" : "{\"x\":1817.51367188,\"y\":616.257446289}"
+            },
+          "name" : "DistanceTo_1",
+          "ports" : [
+            {
+              "objectType" : "InstPort",
+              "name" : "exec",
+              "nodePortType" : "IO"
+              },
+            {
+              "objectType" : "InstPort",
+              "name" : "this",
+              "nodePortType" : "In"
+              },
+            {
+              "objectType" : "InstPort",
+              "name" : "other",
+              "nodePortType" : "In"
+              },
+            {
+              "objectType" : "InstPort",
+              "name" : "result",
+              "nodePortType" : "Out"
+              }
+            ],
+          "executable" : "Fabric.Exts.Math.Func.DistanceTo",
+          "presetGUID" : "AE45E7F47FFB5A678EEA4D1D87E5488E"
+          },
+        {
+          "objectType" : "Inst",
+          "metadata" : {
+            "uiGraphPos" : "{\"x\":1949.51367188,\"y\":616.257446289}"
+            },
+          "name" : "DeltaScalar_1",
           "ports" : [
             {
               "objectType" : "InstPort",
@@ -1056,15 +873,15 @@
               "nodePortType" : "Out"
               }
             ],
-          "executable" : "fabricUtils.Simulation.DeltaXfo",
-          "presetGUID" : "D49BFEC8434DB56E76447C84355C7630"
+          "executable" : "Fabric.Compounds.Simulate.Delta.DeltaScalar",
+          "presetGUID" : "E2AFD3D547785DD9A1DE6B8D2385A274"
           },
         {
           "objectType" : "Inst",
           "metadata" : {
-            "uiGraphPos" : "{\"x\":1632.22199893,\"y\":532.126660585}"
+            "uiGraphPos" : "{\"x\":1238.43857765,\"y\":535.311656952}"
             },
-          "name" : "DecomposeXfo_2",
+          "name" : "GetBoneXfo_4",
           "ports" : [
             {
               "objectType" : "InstPort",
@@ -1073,121 +890,16 @@
               },
             {
               "objectType" : "InstPort",
-              "name" : "value",
-              "nodePortType" : "In"
-              },
-            {
-              "objectType" : "InstPort",
-              "name" : "ori",
-              "nodePortType" : "Out"
-              },
-            {
-              "objectType" : "InstPort",
-              "name" : "tr",
-              "nodePortType" : "Out"
-              },
-            {
-              "objectType" : "InstPort",
-              "name" : "sc",
-              "nodePortType" : "Out"
-              }
-            ],
-          "executable" : "Fabric.Exts.Math.Xfo.DecomposeXfo",
-          "presetGUID" : "B107519BBF556653A095030A4CC02DBC"
-          },
-        {
-          "objectType" : "Inst",
-          "metadata" : {
-            "uiGraphPos" : "{\"x\":1614.71069956,\"y\":415.360825777}"
-            },
-          "name" : "DeltaVec3_1",
-          "ports" : [
-            {
-              "objectType" : "InstPort",
-              "name" : "exec",
+              "name" : "this",
               "nodePortType" : "IO"
               },
             {
               "objectType" : "InstPort",
-              "name" : "value",
-              "nodePortType" : "In"
-              },
-            {
-              "objectType" : "InstPort",
-              "name" : "reset",
-              "nodePortType" : "In"
-              },
-            {
-              "objectType" : "InstPort",
-              "name" : "delta",
-              "nodePortType" : "Out"
-              }
-            ],
-          "executable" : "Fabric.Compounds.Simulate.Delta.DeltaVec3",
-          "presetGUID" : "A24BE7D00B701EBAD8A06B3C36922286"
-          },
-        {
-          "objectType" : "Inst",
-          "metadata" : {
-            "uiGraphPos" : "{\"x\":1494.51513052,\"y\":416.88247776}"
-            },
-          "name" : "DecomposeXfo_3",
-          "ports" : [
-            {
-              "objectType" : "InstPort",
-              "name" : "exec",
-              "nodePortType" : "IO"
-              },
-            {
-              "objectType" : "InstPort",
-              "name" : "value",
-              "nodePortType" : "In"
-              },
-            {
-              "objectType" : "InstPort",
-              "name" : "ori",
-              "nodePortType" : "Out"
-              },
-            {
-              "objectType" : "InstPort",
-              "name" : "tr",
-              "nodePortType" : "Out"
-              },
-            {
-              "objectType" : "InstPort",
-              "name" : "sc",
-              "nodePortType" : "Out"
-              }
-            ],
-          "executable" : "Fabric.Exts.Math.Xfo.DecomposeXfo",
-          "presetGUID" : "B107519BBF556653A095030A4CC02DBC"
-          },
-        {
-          "objectType" : "Inst",
-          "metadata" : {
-            "uiGraphPos" : "{\"x\":1757.7289288,\"y\":468.611948729}"
-            },
-          "name" : "If_1",
-          "ports" : [
-            {
-              "objectType" : "InstPort",
-              "name" : "exec",
-              "nodePortType" : "IO"
-              },
-            {
-              "objectType" : "InstPort",
-              "name" : "cond",
-              "nodePortType" : "In"
-              },
-            {
-              "objectType" : "InstPort",
-              "name" : "if_true",
-              "nodePortType" : "In"
-              },
-            {
-              "objectType" : "InstPort",
-              "name" : "if_false",
-              "nodePortType" : "In"
+              "name" : "index",
+              "nodePortType" : "In",
+              "defaultValues" : {
+                "Index" : 1
+                }
               },
             {
               "objectType" : "InstPort",
@@ -1195,41 +907,15 @@
               "nodePortType" : "Out"
               }
             ],
-          "executable" : "Fabric.Core.Control.If",
-          "presetGUID" : "3182A478A21643455D549E483D35F831"
+          "executable" : "Fabric.Exts.Characters.Func.GetBoneXfo",
+          "presetGUID" : "7D655895D6198CE9CD72765843D152CA"
           },
         {
           "objectType" : "Inst",
           "metadata" : {
-            "uiGraphPos" : "{\"x\":1607.10426354,\"y\":334.72364378}"
+            "uiGraphPos" : "{\"x\":1407.33071101,\"y\":511.445320964}"
             },
-          "name" : "ToBoolean_1",
-          "ports" : [
-            {
-              "objectType" : "InstPort",
-              "name" : "exec",
-              "nodePortType" : "IO"
-              },
-            {
-              "objectType" : "InstPort",
-              "name" : "value",
-              "nodePortType" : "In"
-              },
-            {
-              "objectType" : "InstPort",
-              "name" : "boolean",
-              "nodePortType" : "Out"
-              }
-            ],
-          "executable" : "Fabric.Core.Func.ToBoolean",
-          "presetGUID" : "E3F4150E373A9F4000F8FE5216942051"
-          },
-        {
-          "objectType" : "Inst",
-          "metadata" : {
-            "uiGraphPos" : "{\"x\":1785.11380315,\"y\":608.586664438}"
-            },
-          "name" : "Vec3ToSafeVec3_1",
+          "name" : "Inverse_1",
           "ports" : [
             {
               "objectType" : "InstPort",
@@ -1247,15 +933,15 @@
               "nodePortType" : "Out"
               }
             ],
-          "executable" : "fabricUtils.Converters.Vec3ToSafeVec3",
-          "presetGUID" : "097A2395CA52C3542F4378B459C0C6B3"
+          "executable" : "Fabric.Exts.Math.Func.Inverse",
+          "presetGUID" : "B8922E10BA9ED2EB40A0009C880C5928"
           },
         {
           "objectType" : "Inst",
           "metadata" : {
-            "uiGraphPos" : "{\"x\":2389.13432312,\"y\":512.734255552}"
+            "uiGraphPos" : "{\"x\":1553.19142878,\"y\":545.271065593}"
             },
-          "name" : "Vec3ToSafeVec3_2",
+          "name" : "Mul_1",
           "ports" : [
             {
               "objectType" : "InstPort",
@@ -1264,7 +950,12 @@
               },
             {
               "objectType" : "InstPort",
-              "name" : "this",
+              "name" : "lhs",
+              "nodePortType" : "In"
+              },
+            {
+              "objectType" : "InstPort",
+              "name" : "rhs",
               "nodePortType" : "In"
               },
             {
@@ -1273,33 +964,67 @@
               "nodePortType" : "Out"
               }
             ],
-          "executable" : "fabricUtils.Converters.Vec3ToSafeVec3",
-          "presetGUID" : "097A2395CA52C3542F4378B459C0C6B3"
+          "executable" : "Fabric.Core.Math.Mul",
+          "presetGUID" : "CC951B43BB879483B46EFF7965692350"
+          },
+        {
+          "objectType" : "Inst",
+          "metadata" : {
+            "uiGraphPos" : "{\"x\":1684.23009872,\"y\":534.8817043300001}"
+            },
+          "name" : "Mul_2",
+          "ports" : [
+            {
+              "objectType" : "InstPort",
+              "name" : "exec",
+              "nodePortType" : "IO"
+              },
+            {
+              "objectType" : "InstPort",
+              "name" : "lhs",
+              "nodePortType" : "In"
+              },
+            {
+              "objectType" : "InstPort",
+              "name" : "rhs",
+              "nodePortType" : "In"
+              },
+            {
+              "objectType" : "InstPort",
+              "name" : "result",
+              "nodePortType" : "Out"
+              }
+            ],
+          "executable" : "Fabric.Core.Math.Mul",
+          "presetGUID" : "CC951B43BB879483B46EFF7965692350"
           }
         ],
       "connections" : {
         "Pose" : [
-          "GetBoneXfo_2.this"
+          "GetBoneXfo_2.this",
+          "GetBoneXfo_3.this"
           ],
         "refPose" : [
-          "GetBoneXfo_1.this"
+          "GetBoneXfo_1.this",
+          "GetBoneXfo_4.this"
           ],
         "cogBoneID" : [
           "GetBoneXfo_1.index",
           "GetBoneXfo_2.index"
           ],
-        "space" : [
-          "ToBoolean_1.value"
+        "boneId" : [
+          "GetBoneXfo_3.index",
+          "GetBoneXfo_4.index"
           ],
         "reset" : [
-          "DeltaVec3_1.reset"
+          "DeltaScalar_1.reset"
           ],
         "Div_1.result" : [
-          "speed",
-          "MultiplyScalar_1.other"
+          "speed"
           ],
         "GetBoneXfo_1.result" : [
-          "DecomposeXfo_1.value"
+          "DecomposeXfo_1.value",
+          "Inverse_1.this"
           ],
         "DecomposeXfo_1.tr" : [
           "DecomposeVec3_1.value"
@@ -1307,42 +1032,29 @@
         "DecomposeVec3_1.y" : [
           "Div_1.rhs"
           ],
-        "SetUnit_1.this" : [
-          "MultiplyScalar_1.this"
+        "GetBoneXfo_2.result" : [
+          "Mul_2.lhs"
           ],
-        "SetUnit_1.result" : [
+        "GetBoneXfo_3.result" : [
+          "DistanceTo_1.other"
+          ],
+        "DistanceTo_1.result" : [
+          "DeltaScalar_1.value"
+          ],
+        "DeltaScalar_1.delta" : [
           "Div_1.lhs"
           ],
-        "MultiplyScalar_1.result" : [
-          "Vec3ToSafeVec3_2.this"
+        "GetBoneXfo_4.result" : [
+          "Mul_1.rhs"
           ],
-        "GetBoneXfo_2.result" : [
-          "DeltaXfo_2.value",
-          "DecomposeXfo_3.value"
+        "Inverse_1.result" : [
+          "Mul_1.lhs"
           ],
-        "DeltaXfo_2.delta" : [
-          "DecomposeXfo_2.value"
+        "Mul_1.result" : [
+          "Mul_2.rhs"
           ],
-        "DecomposeXfo_2.tr" : [
-          "If_1.if_true"
-          ],
-        "DeltaVec3_1.delta" : [
-          "If_1.if_false"
-          ],
-        "DecomposeXfo_3.tr" : [
-          "DeltaVec3_1.value"
-          ],
-        "If_1.result" : [
-          "Vec3ToSafeVec3_1.this"
-          ],
-        "ToBoolean_1.boolean" : [
-          "If_1.cond"
-          ],
-        "Vec3ToSafeVec3_1.result" : [
-          "SetUnit_1.this"
-          ],
-        "Vec3ToSafeVec3_2.result" : [
-          "velocity"
+        "Mul_2.result" : [
+          "DistanceTo_1.this"
           ]
         }
       },
@@ -1596,56 +1308,14 @@ dfgEntry {
 }
 "
       },
-    "Fabric.Exts.Math.Func.SetUnit" : {
+    "Fabric.Exts.Math.Func.DistanceTo" : {
       "objectType" : "Func",
       "metadata" : {
         "uiNodeColor" : "{\n  \"r\" : 99,\n  \"g\" : 129,\n  \"b\" : 92\n  }",
         "uiDocUrl" : "http://docs.fabric-engine.com/FabricEngine/2.3.0/HTML/KLExtensionsGuide/Math/Vec2.html",
-        "uiTooltip" : "Sets this vector to its unit vector\nand returns its previous length\n\n Supported by Vec2,Vec3,Vec4,Quat"
+        "uiTooltip" : "Returns the distance of this vector to another one\n\n Supported by Vec2,Vec3,Vec4,Xfo"
         },
-      "title" : "SetUnit",
-      "ports" : [
-        {
-          "objectType" : "ExecPort",
-          "name" : "exec",
-          "nodePortType" : "IO",
-          "execPortType" : "IO",
-          "typeSpec" : "Execute"
-          },
-        {
-          "objectType" : "ExecPort",
-          "name" : "this",
-          "nodePortType" : "IO",
-          "execPortType" : "IO",
-          "typeSpec" : "$TYPE$"
-          },
-        {
-          "objectType" : "ExecPort",
-          "name" : "result",
-          "nodePortType" : "In",
-          "execPortType" : "Out",
-          "typeSpec" : "Scalar"
-          }
-        ],
-      "extDeps" : {
-        "Math" : "*"
-        },
-      "presetGUID" : "56C49589F4C5AD7306A25A1924E9D334",
-      "code" : "require Math;
-
-dfgEntry {
-  result = this.setUnit();
-}
-"
-      },
-    "Fabric.Exts.Math.Func.MultiplyScalar" : {
-      "objectType" : "Func",
-      "metadata" : {
-        "uiNodeColor" : "{\n  \"r\" : 99,\n  \"g\" : 129,\n  \"b\" : 92\n  }",
-        "uiDocUrl" : "http://docs.fabric-engine.com/FabricEngine/2.3.0/HTML/KLExtensionsGuide/Math/RGB.html",
-        "uiTooltip" : "Returns the product of this RGB color and a scalar\n\n Supported by RGB,RGBA,ARGB,Color,Vec2,Vec3,Vec4,Mat22,Mat33,Mat44,Quat"
-        },
-      "title" : "MultiplyScalar",
+      "title" : "DistanceTo",
       "ports" : [
         {
           "objectType" : "ExecPort",
@@ -1665,437 +1335,48 @@ dfgEntry {
           "objectType" : "ExecPort",
           "name" : "other",
           "nodePortType" : "Out",
-          "defaultValues" : {
-            "Scalar" : 1
-            },
+          "execPortType" : "In",
+          "typeSpec" : "$TYPE$"
+          },
+        {
+          "objectType" : "ExecPort",
+          "name" : "result",
+          "nodePortType" : "In",
+          "execPortType" : "Out",
+          "typeSpec" : "Scalar"
+          }
+        ],
+      "extDeps" : {
+        "Math" : "*"
+        },
+      "presetGUID" : "AE45E7F47FFB5A678EEA4D1D87E5488E",
+      "code" : "require Math;
+
+dfgEntry {
+  result = this.distanceTo(other);
+}
+"
+      },
+    "Fabric.Compounds.Simulate.Delta.DeltaScalar" : {
+      "objectType" : "Graph",
+      "title" : "DeltaScalar",
+      "ports" : [
+        {
+          "objectType" : "ExecPort",
+          "name" : "exec",
+          "nodePortType" : "IO",
+          "execPortType" : "IO",
+          "typeSpec" : "Execute"
+          },
+        {
+          "objectType" : "ExecPort",
+          "name" : "value",
+          "nodePortType" : "Out",
           "execPortType" : "In",
           "typeSpec" : "Scalar"
           },
         {
           "objectType" : "ExecPort",
-          "name" : "result",
-          "nodePortType" : "In",
-          "execPortType" : "Out",
-          "typeSpec" : "$TYPE$"
-          }
-        ],
-      "extDeps" : {
-        "Math" : "*"
-        },
-      "presetGUID" : "8EC64304FD2D82AEC7EBB545E4A9709B",
-      "code" : "require Math;
-
-dfgEntry {
-  result = this.multiplyScalar(other);
-}
-"
-      },
-    "fabricUtils.Simulation.DeltaXfo" : {
-      "objectType" : "Graph",
-      "metadata" : {
-        "uiTextColor" : "{\n  \"r\" : 20,\n  \"g\" : 20,\n  \"b\" : 20\n  }",
-        "uiNodeColor" : "{\n  \"r\" : 121,\n  \"g\" : 134,\n  \"b\" : 143\n  }",
-        "uiGraphZoom" : "{\n  \"value\" : 1.0\n  }",
-        "uiGraphPan" : "{\n  \"x\" : -424.0,\n  \"y\" : 68.0\n  }"
-        },
-      "title" : "DeltaXfo",
-      "ports" : [
-        {
-          "objectType" : "ExecPort",
-          "name" : "exec",
-          "nodePortType" : "IO",
-          "defaultValues" : {
-            "Execute" : {}
-            },
-          "execPortType" : "IO",
-          "typeSpec" : "Execute"
-          },
-        {
-          "objectType" : "ExecPort",
-          "name" : "value",
-          "nodePortType" : "Out",
-          "defaultValues" : {
-            "Xfo" : {
-              "ori" : {
-                "v" : {
-                  "x" : 0,
-                  "y" : 0,
-                  "z" : 0
-                  },
-                "w" : 1
-                },
-              "tr" : {
-                "x" : 0,
-                "y" : 0,
-                "z" : 0
-                },
-              "sc" : {
-                "x" : 1,
-                "y" : 1,
-                "z" : 1
-                }
-              }
-            },
-          "execPortType" : "In",
-          "typeSpec" : "Xfo"
-          },
-        {
-          "objectType" : "ExecPort",
-          "name" : "reset",
-          "nodePortType" : "Out",
-          "defaultValues" : {
-            "Boolean" : false
-            },
-          "execPortType" : "In",
-          "typeSpec" : "Boolean"
-          },
-        {
-          "objectType" : "ExecPort",
-          "name" : "delta",
-          "nodePortType" : "In",
-          "defaultValues" : {
-            "Xfo" : {
-              "ori" : {
-                "v" : {
-                  "x" : 0,
-                  "y" : 0,
-                  "z" : 0
-                  },
-                "w" : 1
-                },
-              "tr" : {
-                "x" : 0,
-                "y" : 0,
-                "z" : 0
-                },
-              "sc" : {
-                "x" : 1,
-                "y" : 1,
-                "z" : 1
-                }
-              }
-            },
-          "execPortType" : "Out",
-          "typeSpec" : "Xfo"
-          }
-        ],
-      "extDeps" : {},
-      "presetGUID" : "D49BFEC8434DB56E76447C84355C7630",
-      "nodes" : [
-        {
-          "objectType" : "Inst",
-          "metadata" : {
-            "uiGraphPos" : "{\"x\": 1065, \"y\": 156}"
-            },
-          "name" : "If",
-          "ports" : [
-            {
-              "objectType" : "InstPort",
-              "name" : "exec",
-              "nodePortType" : "IO"
-              },
-            {
-              "objectType" : "InstPort",
-              "name" : "cond",
-              "nodePortType" : "In"
-              },
-            {
-              "objectType" : "InstPort",
-              "name" : "if_true",
-              "nodePortType" : "In"
-              },
-            {
-              "objectType" : "InstPort",
-              "name" : "if_false",
-              "nodePortType" : "In"
-              },
-            {
-              "objectType" : "InstPort",
-              "name" : "result",
-              "nodePortType" : "Out"
-              }
-            ],
-          "executable" : "Fabric.Core.Control.If",
-          "presetGUID" : "3182A478A21643455D549E483D35F831"
-          },
-        {
-          "objectType" : "Set",
-          "metadata" : {
-            "uiGraphPos" : "{\"x\":518.0,\"y\":327.0}"
-            },
-          "name" : "set",
-          "ports" : [
-            {
-              "objectType" : "SetPort",
-              "name" : "value",
-              "nodePortType" : "IO"
-              }
-            ],
-          "varPath" : "valueVar"
-          },
-        {
-          "objectType" : "Get",
-          "metadata" : {
-            "uiGraphPos" : "{\"x\":497.0,\"y\":248.0}"
-            },
-          "name" : "get",
-          "ports" : [
-            {
-              "objectType" : "GetPort",
-              "name" : "value",
-              "nodePortType" : "Out"
-              }
-            ],
-          "varPath" : "valueVar"
-          },
-        {
-          "objectType" : "Var",
-          "metadata" : {
-            "uiGraphPos" : "{\"x\":862.0,\"y\":46.0}"
-            },
-          "name" : "valueVar",
-          "ports" : [
-            {
-              "objectType" : "VarPort",
-              "name" : "value",
-              "nodePortType" : "IO"
-              }
-            ],
-          "dataType" : "Xfo"
-          },
-        {
-          "objectType" : "Inst",
-          "metadata" : {
-            "uiGraphPos" : "{\"x\":777.0,\"y\":279.0}"
-            },
-          "name" : "Mul_1",
-          "ports" : [
-            {
-              "objectType" : "InstPort",
-              "name" : "exec",
-              "nodePortType" : "IO"
-              },
-            {
-              "objectType" : "InstPort",
-              "name" : "lhs",
-              "nodePortType" : "In"
-              },
-            {
-              "objectType" : "InstPort",
-              "name" : "rhs",
-              "nodePortType" : "In"
-              },
-            {
-              "objectType" : "InstPort",
-              "name" : "result",
-              "nodePortType" : "Out"
-              }
-            ],
-          "executable" : "Fabric.Core.Math.Mul",
-          "presetGUID" : "CC951B43BB879483B46EFF7965692350"
-          },
-        {
-          "objectType" : "Inst",
-          "metadata" : {
-            "uiGraphPos" : "{\"x\":648.0,\"y\":233.0}"
-            },
-          "name" : "Inverse_1",
-          "ports" : [
-            {
-              "objectType" : "InstPort",
-              "name" : "exec",
-              "nodePortType" : "IO"
-              },
-            {
-              "objectType" : "InstPort",
-              "name" : "this",
-              "nodePortType" : "In"
-              },
-            {
-              "objectType" : "InstPort",
-              "name" : "result",
-              "nodePortType" : "Out"
-              }
-            ],
-          "executable" : "Fabric.Exts.Math.Func.Inverse",
-          "presetGUID" : "B8922E10BA9ED2EB40A0009C880C5928"
-          }
-        ],
-      "connections" : {
-        "value" : [
-          "set.value"
-          ],
-        "reset" : [
-          "If.cond"
-          ],
-        "If.result" : [
-          "delta"
-          ],
-        "set.value" : [
-          "Mul_1.rhs"
-          ],
-        "get.value" : [
-          "Inverse_1.this"
-          ],
-        "Mul_1.result" : [
-          "If.if_false"
-          ],
-        "Inverse_1.result" : [
-          "Mul_1.lhs"
-          ]
-        }
-      },
-    "Fabric.Core.Control.If" : {
-      "objectType" : "Func",
-      "title" : "If",
-      "ports" : [
-        {
-          "objectType" : "ExecPort",
-          "name" : "exec",
-          "nodePortType" : "IO",
-          "execPortType" : "IO",
-          "typeSpec" : "Execute"
-          },
-        {
-          "objectType" : "ExecPort",
-          "name" : "cond",
-          "nodePortType" : "Out",
-          "execPortType" : "In",
-          "typeSpec" : "Boolean"
-          },
-        {
-          "objectType" : "ExecPort",
-          "name" : "if_true",
-          "nodePortType" : "Out",
-          "execPortType" : "In",
-          "typeSpec" : "$TYPE$"
-          },
-        {
-          "objectType" : "ExecPort",
-          "name" : "if_false",
-          "nodePortType" : "Out",
-          "execPortType" : "In",
-          "typeSpec" : "$TYPE$"
-          },
-        {
-          "objectType" : "ExecPort",
-          "name" : "result",
-          "nodePortType" : "In",
-          "execPortType" : "Out",
-          "typeSpec" : "$TYPE$"
-          }
-        ],
-      "extDeps" : {},
-      "presetGUID" : "3182A478A21643455D549E483D35F831",
-      "code" : "
-dfgEntry {
-	result = cond ? if_true : if_false;
-}
-"
-      },
-    "Fabric.Core.Math.Mul" : {
-      "objectType" : "Func",
-      "title" : "Mul",
-      "ports" : [
-        {
-          "objectType" : "ExecPort",
-          "name" : "exec",
-          "nodePortType" : "IO",
-          "execPortType" : "IO",
-          "typeSpec" : "Execute"
-          },
-        {
-          "objectType" : "ExecPort",
-          "name" : "lhs",
-          "nodePortType" : "Out",
-          "execPortType" : "In",
-          "typeSpec" : "$TYPE$"
-          },
-        {
-          "objectType" : "ExecPort",
-          "name" : "rhs",
-          "nodePortType" : "Out",
-          "execPortType" : "In",
-          "typeSpec" : "$TYPE$"
-          },
-        {
-          "objectType" : "ExecPort",
-          "name" : "result",
-          "nodePortType" : "In",
-          "execPortType" : "Out",
-          "typeSpec" : "$TYPE$"
-          }
-        ],
-      "extDeps" : {},
-      "presetGUID" : "CC951B43BB879483B46EFF7965692350",
-      "code" : "
-dfgEntry {
-	result = lhs * rhs;
-}
-"
-      },
-    "Fabric.Exts.Math.Func.Inverse" : {
-      "objectType" : "Func",
-      "metadata" : {
-        "uiNodeColor" : "{\n  \"r\" : 99,\n  \"g\" : 129,\n  \"b\" : 92\n  }",
-        "uiDocUrl" : "http://docs.fabric-engine.com/FabricEngine/2.3.0/HTML/KLExtensionsGuide/Math/Vec2.html",
-        "uiTooltip" : "Returns the inversed version of this vector\n\n Supported by Vec2,Vec2_d,Vec2_i,Vec3,Vec3_d,Vec3_i,Vec4,Vec4_d,Vec4_i,Mat22,Mat22_d,Mat22_i,Mat33,Mat33_d,Mat33_i,Mat44,Mat44_d,Mat44_i,Quat,Quat_d,Quat_i,Xfo"
-        },
-      "title" : "Inverse",
-      "ports" : [
-        {
-          "objectType" : "ExecPort",
-          "name" : "exec",
-          "nodePortType" : "IO",
-          "execPortType" : "IO",
-          "typeSpec" : "Execute"
-          },
-        {
-          "objectType" : "ExecPort",
-          "name" : "this",
-          "nodePortType" : "Out",
-          "execPortType" : "In",
-          "typeSpec" : "$TYPE$"
-          },
-        {
-          "objectType" : "ExecPort",
-          "name" : "result",
-          "nodePortType" : "In",
-          "execPortType" : "Out",
-          "typeSpec" : "$TYPE$"
-          }
-        ],
-      "extDeps" : {
-        "Math" : "*"
-        },
-      "presetGUID" : "B8922E10BA9ED2EB40A0009C880C5928",
-      "code" : "require Math;
-
-dfgEntry {
-  result = this.inverse();
-}
-"
-      },
-    "Fabric.Compounds.Simulate.Delta.DeltaVec3" : {
-      "objectType" : "Graph",
-      "title" : "DeltaVec3",
-      "ports" : [
-        {
-          "objectType" : "ExecPort",
-          "name" : "exec",
-          "nodePortType" : "IO",
-          "execPortType" : "IO",
-          "typeSpec" : "Execute"
-          },
-        {
-          "objectType" : "ExecPort",
-          "name" : "value",
-          "nodePortType" : "Out",
-          "execPortType" : "In",
-          "typeSpec" : "Vec3"
-          },
-        {
-          "objectType" : "ExecPort",
           "name" : "reset",
           "nodePortType" : "Out",
           "execPortType" : "In",
@@ -2106,11 +1387,11 @@ dfgEntry {
           "name" : "delta",
           "nodePortType" : "In",
           "execPortType" : "Out",
-          "typeSpec" : "Vec3"
+          "typeSpec" : "Scalar"
           }
         ],
       "extDeps" : {},
-      "presetGUID" : "A24BE7D00B701EBAD8A06B3C36922286",
+      "presetGUID" : "E2AFD3D547785DD9A1DE6B8D2385A274",
       "nodes" : [
         {
           "objectType" : "Var",
@@ -2125,7 +1406,7 @@ dfgEntry {
               "nodePortType" : "IO"
               }
             ],
-          "dataType" : "Vec3"
+          "dataType" : "Scalar"
           },
         {
           "objectType" : "Inst",
@@ -2275,6 +1556,54 @@ dfgEntry {
           ]
         }
       },
+    "Fabric.Core.Control.If" : {
+      "objectType" : "Func",
+      "title" : "If",
+      "ports" : [
+        {
+          "objectType" : "ExecPort",
+          "name" : "exec",
+          "nodePortType" : "IO",
+          "execPortType" : "IO",
+          "typeSpec" : "Execute"
+          },
+        {
+          "objectType" : "ExecPort",
+          "name" : "cond",
+          "nodePortType" : "Out",
+          "execPortType" : "In",
+          "typeSpec" : "Boolean"
+          },
+        {
+          "objectType" : "ExecPort",
+          "name" : "if_true",
+          "nodePortType" : "Out",
+          "execPortType" : "In",
+          "typeSpec" : "$TYPE$"
+          },
+        {
+          "objectType" : "ExecPort",
+          "name" : "if_false",
+          "nodePortType" : "Out",
+          "execPortType" : "In",
+          "typeSpec" : "$TYPE$"
+          },
+        {
+          "objectType" : "ExecPort",
+          "name" : "result",
+          "nodePortType" : "In",
+          "execPortType" : "Out",
+          "typeSpec" : "$TYPE$"
+          }
+        ],
+      "extDeps" : {},
+      "presetGUID" : "3182A478A21643455D549E483D35F831",
+      "code" : "
+dfgEntry {
+	result = cond ? if_true : if_false;
+}
+"
+      },
     "Fabric.Core.Math.Sub" : {
       "objectType" : "Func",
       "title" : "Sub",
@@ -2350,9 +1679,14 @@ dfgEntry {
 }
 "
       },
-    "Fabric.Core.Func.ToBoolean" : {
+    "Fabric.Exts.Math.Func.Inverse" : {
       "objectType" : "Func",
-      "title" : "ToBoolean",
+      "metadata" : {
+        "uiNodeColor" : "{\n  \"r\" : 99,\n  \"g\" : 129,\n  \"b\" : 92\n  }",
+        "uiDocUrl" : "http://docs.fabric-engine.com/FabricEngine/2.3.0/HTML/KLExtensionsGuide/Math/Vec2.html",
+        "uiTooltip" : "Returns the inversed version of this vector\n\n Supported by Vec2,Vec2_d,Vec2_i,Vec3,Vec3_d,Vec3_i,Vec4,Vec4_d,Vec4_i,Mat22,Mat22_d,Mat22_i,Mat33,Mat33_d,Mat33_i,Mat44,Mat44_d,Mat44_i,Quat,Quat_d,Quat_i,Xfo"
+        },
+      "title" : "Inverse",
       "ports" : [
         {
           "objectType" : "ExecPort",
@@ -2363,32 +1697,33 @@ dfgEntry {
           },
         {
           "objectType" : "ExecPort",
-          "name" : "value",
+          "name" : "this",
           "nodePortType" : "Out",
           "execPortType" : "In",
           "typeSpec" : "$TYPE$"
           },
         {
           "objectType" : "ExecPort",
-          "name" : "boolean",
+          "name" : "result",
           "nodePortType" : "In",
           "execPortType" : "Out",
-          "typeSpec" : "Boolean"
+          "typeSpec" : "$TYPE$"
           }
         ],
-      "extDeps" : {},
-      "presetGUID" : "E3F4150E373A9F4000F8FE5216942051",
-      "code" : "dfgEntry {
-  boolean = Boolean(value);
+      "extDeps" : {
+        "Math" : "*"
+        },
+      "presetGUID" : "B8922E10BA9ED2EB40A0009C880C5928",
+      "code" : "require Math;
+
+dfgEntry {
+  result = this.inverse();
 }
 "
       },
-    "fabricUtils.Converters.Vec3ToSafeVec3" : {
+    "Fabric.Core.Math.Mul" : {
       "objectType" : "Func",
-      "metadata" : {
-        "uiTooltip" : "Returns a new Vec3 with NaNs removed.\n\nSupported types:\n  this: Vec3\n  result: Vec3\n"
-        },
-      "title" : "Vec3ToSafeVec3",
+      "title" : "Mul",
       "ports" : [
         {
           "objectType" : "ExecPort",
@@ -2399,33 +1734,31 @@ dfgEntry {
           },
         {
           "objectType" : "ExecPort",
-          "metadata" : {
-            "uiColor" : "{\n  \"r\" : 255,\n  \"g\" : 242,\n  \"b\" : 0\n  }"
-            },
-          "name" : "this",
+          "name" : "lhs",
           "nodePortType" : "Out",
           "execPortType" : "In",
-          "typeSpec" : "Vec3"
+          "typeSpec" : "$TYPE$"
           },
         {
           "objectType" : "ExecPort",
-          "metadata" : {
-            "uiColor" : "{\n  \"r\" : 255,\n  \"g\" : 242,\n  \"b\" : 0\n  }"
-            },
+          "name" : "rhs",
+          "nodePortType" : "Out",
+          "execPortType" : "In",
+          "typeSpec" : "$TYPE$"
+          },
+        {
+          "objectType" : "ExecPort",
           "name" : "result",
           "nodePortType" : "In",
           "execPortType" : "Out",
-          "typeSpec" : "Vec3"
+          "typeSpec" : "$TYPE$"
           }
         ],
-      "extDeps" : {
-        "fabricUtils" : "*"
-        },
-      "presetGUID" : "097A2395CA52C3542F4378B459C0C6B3",
-      "code" : "require fabricUtils;
-
+      "extDeps" : {},
+      "presetGUID" : "CC951B43BB879483B46EFF7965692350",
+      "code" : "
 dfgEntry {
-  result = Vec3ToSafeVec3(this);
+	result = lhs * rhs;
 }
 "
       }

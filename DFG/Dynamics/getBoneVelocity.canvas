@@ -7,7 +7,7 @@
     "uiTooltip" : "Gets the velocity of a bone in local and global spaces.",
     "uiGraphPan" : "{\n  \"x\" : -679.7648742115634,\n  \"y\" : -198.670785262344\n  }"
     },
-  "title" : "getBoneVelocity",
+  "title" : "GetBoneVelocity",
   "ports" : [
     {
       "objectType" : "ExecPort",
@@ -465,7 +465,7 @@
       ]
     },
   "requiredPresets" : {
-    "fabricUtils.Dynamics.getBoneVelocity" : {
+    "fabricUtils.Dynamics.GetBoneVelocity" : {
       "objectType" : "Graph",
       "metadata" : {
         "uiTextColor" : "{\n  \"r\" : 20,\n  \"g\" : 20,\n  \"b\" : 20\n  }",
@@ -474,7 +474,7 @@
         "uiTooltip" : "Gets the velocity of a bone in local and global spaces.",
         "uiGraphPan" : "{\n  \"x\" : -679.7648742115634,\n  \"y\" : -198.670785262344\n  }"
         },
-      "title" : "getBoneVelocity",
+      "title" : "GetBoneVelocity",
       "ports" : [
         {
           "objectType" : "ExecPort",
