@@ -7,6 +7,11 @@ function KeyframeTrackSet emptyVec3KeyframeTrackSet(in String name, in Vec3 defa
 }
 
 /// \dfgPresetFolder Animation\KeyframeTrackSet
+function KeyframeTrackSet emptyQuatKeyframeTrackSet(in String name, in Quat defaultValue, in Integer flags) {
+  return KeyframeTrackSet(name, defaultValue, flags);
+}
+
+/// \dfgPresetFolder Animation\KeyframeTrackSet
 function setVec3TrackSetValues(io KeyframeTrackSet this, in Scalar time, in Vec3 value) {
   this.setTrackValues(time,value);
 }
