@@ -12,7 +12,7 @@ object BVHReader {
   Character character;
   private TextReader reader;
   private Integer lineCounter;
-  private String[] chRotOrd;
+  String[] chRotOrd;
 };
 
 /// \dfgPresetTitle BVHReader
@@ -122,13 +122,43 @@ function BVHReader.readMotion!() {
   // We use the RotationOrder struct as a reference, only we do the inverse operation.
   // Exemple: zxy becomes 1,2,0 as the X axis is in position 1, Y axis in position 2 and so on...
   Vec3 rotIndices[];
-  rotIndices.push(Vec3(0,1,2)); // xyz
-  rotIndices.push(Vec3(2,0,1)); // yzx
-  rotIndices.push(Vec3(1,2,0)); // zxy
-  rotIndices.push(Vec3(0,2,1)); // xzy
-  rotIndices.push(Vec3(2,1,0)); // zyx
-  rotIndices.push(Vec3(1,0,2)); // yxz
-  
+  // This is the rotation order for Fabric Engine version <= 2.3.1
+  // rotIndices.push(Vec3(0,1,2)); // xyz
+  // rotIndices.push(Vec3(2,0,1)); // yzx
+  // rotIndices.push(Vec3(1,2,0)); // zxy
+  // rotIndices.push(Vec3(0,2,1)); // xzy
+  // rotIndices.push(Vec3(2,1,0)); // zyx
+  // rotIndices.push(Vec3(1,0,2)); // yxz
+
+  // This is the roration order for Fabric Engine version >= 2.4
+  rotIndices.push(Vec3(2,1,0)); // zyx, previously 4
+  rotIndices.push(Vec3(0,2,1)); // xzy, previously 3
+  rotIndices.push(Vec3(1,0,2)); // yxz, previously 5
+  rotIndices.push(Vec3(2,0,1)); // yzx, previously 1
+  rotIndices.push(Vec3(0,1,2)); // xyz, previously 0
+  rotIndices.push(Vec3(1,2,0)); // zxy, previously 2
+
+  // In Fabric Engine 2.4 the RotationBehavior is not backwards anylonger,
+  // but in BVH it is, so we convert it back. If you need to work with
+  // Fabric version <= 2.3.1 comment the following lines:
+  Integer rotInverse[];
+  rotInverse.push(4);
+  rotInverse.push(3);
+  rotInverse.push(5);
+  rotInverse.push(1);
+  rotInverse.push(0);
+  rotInverse.push(2);
+
+  // If you need to work with Fabric Engine version <= 2.3.1
+  // uncomment the following lines:
+  // Integer rotInverse[];
+  // rotInverse.push(1);
+  // rotInverse.push(2);
+  // rotInverse.push(3);
+  // rotInverse.push(4);
+  // rotInverse.push(5);
+  // rotInverse.push(6);
+
   // We dont relie on the total frames information stored in the 
   // motion block and iterate until we reach the end of file.
   while(~this.reader.eof()) { 
@@ -145,7 +175,9 @@ function BVHReader.readMotion!() {
       Vec3 radAng = Vec3(Math_degToRad(tok[rix].toScalar()), Math_degToRad(tok[riy].toScalar()), Math_degToRad(tok[riz].toScalar()));
       // get root translation from tokens
       Vec3 tr = Vec3(tok[0].toScalar(),tok[1].toScalar(),tok[2].toScalar());
-      Xfo rootXfo(tr, Quat(Euler(radAng,ro)));
+      RotationOrder inverseRot;
+      inverseRot.order = rotInverse[ro.order];
+      Xfo rootXfo(tr, Quat(Euler(radAng,inverseRot)));
       this.clip.getTrackSet(tsn[0]).setTrackValues(time, rootXfo); // store root xfo's keyframe
 
       for(Size i=1; i<tsn.size(); i++) { // we start at 1, for the first node (root) was already processed
@@ -156,8 +188,9 @@ function BVHReader.readMotion!() {
         rix = Integer(rotIndices[ro.order].x)+j;
         riy = Integer(rotIndices[ro.order].y)+j;
         riz = Integer(rotIndices[ro.order].z)+j;
-        radAng = Vec3(Math_degToRad(tok[rix].toScalar()), Math_degToRad(tok[riy].toScalar()), Math_degToRad(tok[  riz].toScalar()));
-        this.clip.getTrackSet(tsn[i]).setTrackValues(time, Quat(Euler(radAng, ro))); // store joint rotation as quaternions
+        radAng = Vec3(Math_degToRad(tok[rix].toScalar()), Math_degToRad(tok[riy].toScalar()), Math_degToRad(tok[riz].toScalar()));
+        inverseRot.order = rotInverse[ro.order];
+        this.clip.getTrackSet(tsn[i]).setTrackValues(time, Quat(Euler(radAng, inverseRot))); // store joint rotation as quaternions
         // Currently there is no use in storing this as Euler since the Character extension in FE will
         // convert our Euler into a new Euler with its default RotationOrder. Ergo, original values would not be preserved.
       }

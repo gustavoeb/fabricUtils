@@ -3,9 +3,9 @@
   "metadata" : {
     "uiTextColor" : "{\n  \"r\" : 20,\n  \"g\" : 20,\n  \"b\" : 20\n  }",
     "uiNodeColor" : "{\n  \"r\" : 121,\n  \"g\" : 134,\n  \"b\" : 143\n  }",
-    "uiGraphZoom" : "{\n  \"value\" : 0.7828114628791809\n  }",
+    "uiGraphZoom" : "{\n  \"value\" : 0.849875807762146\n  }",
     "uiTooltip" : "Gets the COG velocity normalized by character height. Assumes height is in the Y axis.",
-    "uiGraphPan" : "{\n  \"x\" : -930.7563836247118,\n  \"y\" : -193.3739069053222\n  }"
+    "uiGraphPan" : "{\n  \"x\" : -1078.397583007813,\n  \"y\" : -202.0115661621094\n  }"
     },
   "title" : "GetNormalizedCOGVelocity",
   "ports" : [
@@ -72,6 +72,23 @@
       },
     {
       "objectType" : "ExecPort",
+      "name" : "angVel",
+      "nodePortType" : "In",
+      "defaultValues" : {
+        "Quat" : {
+          "v" : {
+            "x" : 0,
+            "y" : 0,
+            "z" : 0
+            },
+          "w" : 1
+          }
+        },
+      "execPortType" : "Out",
+      "typeSpec" : "Quat"
+      },
+    {
+      "objectType" : "ExecPort",
       "name" : "velocity",
       "nodePortType" : "In",
       "defaultValues" : {
@@ -124,7 +141,7 @@
       }
     ],
   "extDeps" : {},
-  "presetGUID" : "BE076C1C8C69A3C60BC631B2BB6DC847",
+  "presetGUID" : "A38A15DFA26052FFE1E99A6395D2B18C",
   "nodes" : [
     {
       "objectType" : "Inst",
@@ -326,7 +343,7 @@
     {
       "objectType" : "Inst",
       "metadata" : {
-        "uiGraphPos" : "{\"x\":1310.74787521,\"y\":470.848251343}"
+        "uiGraphPos" : "{\"x\":1303.68811035,\"y\":450.845384479}"
         },
       "name" : "GetBoneXfo_2",
       "ports" : [
@@ -424,7 +441,7 @@
     {
       "objectType" : "Inst",
       "metadata" : {
-        "uiGraphPos" : "{\"x\":1614.71069956,\"y\":415.360825777}"
+        "uiGraphPos" : "{\"x\":1607.65087891,\"y\":395.357957721}"
         },
       "name" : "DeltaVec3_1",
       "ports" : [
@@ -455,7 +472,7 @@
     {
       "objectType" : "Inst",
       "metadata" : {
-        "uiGraphPos" : "{\"x\":1494.51513052,\"y\":416.88247776}"
+        "uiGraphPos" : "{\"x\":1487.45532227,\"y\":396.879594684}"
         },
       "name" : "DecomposeXfo_3",
       "ports" : [
@@ -491,7 +508,7 @@
     {
       "objectType" : "Inst",
       "metadata" : {
-        "uiGraphPos" : "{\"x\":1757.7289288,\"y\":468.611948729}"
+        "uiGraphPos" : "{\"x\":1750.66906738,\"y\":448.609056354}"
         },
       "name" : "If_1",
       "ports" : [
@@ -527,7 +544,7 @@
     {
       "objectType" : "Inst",
       "metadata" : {
-        "uiGraphPos" : "{\"x\":1607.10426354,\"y\":334.72364378}"
+        "uiGraphPos" : "{\"x\":1600.04443359,\"y\":314.72075069}"
         },
       "name" : "ToBoolean_1",
       "ports" : [
@@ -647,7 +664,11 @@
       "DecomposeXfo_3.value"
       ],
     "DeltaXfo_2.delta" : [
-      "DecomposeXfo_2.value"
+      "DecomposeXfo_2.value",
+      "delta"
+      ],
+    "DecomposeXfo_2.ori" : [
+      "angVel"
       ],
     "DecomposeXfo_2.tr" : [
       "If_1.if_true"
@@ -677,9 +698,9 @@
       "metadata" : {
         "uiTextColor" : "{\n  \"r\" : 20,\n  \"g\" : 20,\n  \"b\" : 20\n  }",
         "uiNodeColor" : "{\n  \"r\" : 121,\n  \"g\" : 134,\n  \"b\" : 143\n  }",
-        "uiGraphZoom" : "{\n  \"value\" : 0.7828114628791809\n  }",
+        "uiGraphZoom" : "{\n  \"value\" : 0.849875807762146\n  }",
         "uiTooltip" : "Gets the COG velocity normalized by character height. Assumes height is in the Y axis.",
-        "uiGraphPan" : "{\n  \"x\" : -930.7563836247118,\n  \"y\" : -193.3739069053222\n  }"
+        "uiGraphPan" : "{\n  \"x\" : -1078.397583007813,\n  \"y\" : -202.0115661621094\n  }"
         },
       "title" : "GetNormalizedCOGVelocity",
       "ports" : [
@@ -746,6 +767,23 @@
           },
         {
           "objectType" : "ExecPort",
+          "name" : "angVel",
+          "nodePortType" : "In",
+          "defaultValues" : {
+            "Quat" : {
+              "v" : {
+                "x" : 0,
+                "y" : 0,
+                "z" : 0
+                },
+              "w" : 1
+              }
+            },
+          "execPortType" : "Out",
+          "typeSpec" : "Quat"
+          },
+        {
+          "objectType" : "ExecPort",
           "name" : "velocity",
           "nodePortType" : "In",
           "defaultValues" : {
@@ -798,7 +836,7 @@
           }
         ],
       "extDeps" : {},
-      "presetGUID" : "BE076C1C8C69A3C60BC631B2BB6DC847",
+      "presetGUID" : "A38A15DFA26052FFE1E99A6395D2B18C",
       "nodes" : [
         {
           "objectType" : "Inst",
@@ -1000,7 +1038,7 @@
         {
           "objectType" : "Inst",
           "metadata" : {
-            "uiGraphPos" : "{\"x\":1310.74787521,\"y\":470.848251343}"
+            "uiGraphPos" : "{\"x\":1303.68811035,\"y\":450.845384479}"
             },
           "name" : "GetBoneXfo_2",
           "ports" : [
@@ -1098,7 +1136,7 @@
         {
           "objectType" : "Inst",
           "metadata" : {
-            "uiGraphPos" : "{\"x\":1614.71069956,\"y\":415.360825777}"
+            "uiGraphPos" : "{\"x\":1607.65087891,\"y\":395.357957721}"
             },
           "name" : "DeltaVec3_1",
           "ports" : [
@@ -1129,7 +1167,7 @@
         {
           "objectType" : "Inst",
           "metadata" : {
-            "uiGraphPos" : "{\"x\":1494.51513052,\"y\":416.88247776}"
+            "uiGraphPos" : "{\"x\":1487.45532227,\"y\":396.879594684}"
             },
           "name" : "DecomposeXfo_3",
           "ports" : [
@@ -1165,7 +1203,7 @@
         {
           "objectType" : "Inst",
           "metadata" : {
-            "uiGraphPos" : "{\"x\":1757.7289288,\"y\":468.611948729}"
+            "uiGraphPos" : "{\"x\":1750.66906738,\"y\":448.609056354}"
             },
           "name" : "If_1",
           "ports" : [
@@ -1201,7 +1239,7 @@
         {
           "objectType" : "Inst",
           "metadata" : {
-            "uiGraphPos" : "{\"x\":1607.10426354,\"y\":334.72364378}"
+            "uiGraphPos" : "{\"x\":1600.04443359,\"y\":314.72075069}"
             },
           "name" : "ToBoolean_1",
           "ports" : [
@@ -1321,7 +1359,11 @@
           "DecomposeXfo_3.value"
           ],
         "DeltaXfo_2.delta" : [
-          "DecomposeXfo_2.value"
+          "DecomposeXfo_2.value",
+          "delta"
+          ],
+        "DecomposeXfo_2.ori" : [
+          "angVel"
           ],
         "DecomposeXfo_2.tr" : [
           "If_1.if_true"
