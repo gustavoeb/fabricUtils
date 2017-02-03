@@ -2,9 +2,9 @@
 {
   "objectType" : "Func",
   "metadata" : {
-    "uiTooltip" : "Converts an array of bone names into an array of bone indices.\n\nSupported types:\n  this: ISkeleton\n  ids: Integer[]\n  result: Integer[]\n"
+    "uiTooltip" : "Converts an array of xfos into an array of scalar values.\n\nSupported types:\n  this: Vec3\n  result: Scalar[]\n"
     },
-  "title" : "BoneIDArrayToParentIDArray",
+  "title" : "Vec3ToScalarArray",
   "ports" : [
     {
       "objectType" : "ExecPort",
@@ -15,34 +15,30 @@
       },
     {
       "objectType" : "ExecPort",
+      "metadata" : {
+        "uiColor" : "{\n  \"r\" : 255,\n  \"g\" : 242,\n  \"b\" : 0\n  }"
+        },
       "name" : "this",
       "nodePortType" : "Out",
       "execPortType" : "In",
-      "typeSpec" : "ISkeleton"
-      },
-    {
-      "objectType" : "ExecPort",
-      "name" : "ids",
-      "nodePortType" : "Out",
-      "execPortType" : "In",
-      "typeSpec" : "Integer[]"
+      "typeSpec" : "Vec3"
       },
     {
       "objectType" : "ExecPort",
       "name" : "result",
       "nodePortType" : "In",
       "execPortType" : "Out",
-      "typeSpec" : "Integer[]"
+      "typeSpec" : "Scalar[]"
       }
     ],
   "extDeps" : {
     "fabricUtils" : "*"
     },
-  "presetGUID" : "B2DE27F6317B82539CA7027DBE81FE79",
+  "presetGUID" : "0B644E1B49F97F434FD6CEE416CE8918",
   "code" : "require fabricUtils;
 
 dfgEntry {
-  result = boneIDArrayToParentIDArray(this, ids);
+  result = vec3ToScalarArray(this);
 }
 "
   }

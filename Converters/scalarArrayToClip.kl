@@ -1,0 +1,33 @@
+/// \dfgPresetFolder Converters
+function Clip scalarArrayToClip(Scalar this[], Pose pose, Integer activeBones[]) {
+  Skeleton charSkel = pose.skeleton;
+  Clip clip();
+
+  Integer boneRange[];
+  boneRange = activeBones;
+  if(activeBones.size() == 0) {
+      indexArrayFromRange(0, charSkel.getNumBones(), 1, boneRange);
+      boneRange;
+}
+  // Build clip and tracks
+  for (Size i=0; i < boneRange.size(); i++) {
+    String boneName = charSkel.getBone(boneRange[i]).name;
+    KeyframeTrackSet sampleSet(boneName, Quat(), TRACKSETFLAG_ORI_TRACKS);
+    clip.addTrackSet(sampleSet);
+  }
+  
+  // At every 4 scalaras a quaternion
+  for(Integer i=0; i < this.size(); i=i+4) // each bone has a 4 dimensional vector (Quat)
+  {
+    String boneName = charSkel.getBone(boneRange[i/4]).name;
+    Quat quat(this[i], this[i+1], this[i+2], this[i+3]);
+    clip.getTrackSet(boneName).setTrackValues(0.0, quat); 
+  }
+  return clip;
+}
+
+/// \dfgPresetOmit
+function Clip scalarArrayToClip(Scalar this[], Pose pose) {
+  Integer activeBones[];
+  return scalarArrayToClip(this, pose, activeBones);
+}

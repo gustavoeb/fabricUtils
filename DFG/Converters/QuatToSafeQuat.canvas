@@ -2,9 +2,9 @@
 {
   "objectType" : "Func",
   "metadata" : {
-    "uiTooltip" : "Converts an array of bone names into an array of bone indices.\n\nSupported types:\n  this: ISkeleton\n  ids: Integer[]\n  result: Integer[]\n"
+    "uiTooltip" : "Returns a new Vec3 with NaNs removed.\n\nSupported types:\n  this: Quat\n  result: Quat\n"
     },
-  "title" : "BoneIDArrayToParentIDArray",
+  "title" : "QuatToSafeQuat",
   "ports" : [
     {
       "objectType" : "ExecPort",
@@ -15,34 +15,33 @@
       },
     {
       "objectType" : "ExecPort",
+      "metadata" : {
+        "uiColor" : "{\n  \"r\" : 0,\n  \"g\" : 191,\n  \"b\" : 232\n  }"
+        },
       "name" : "this",
       "nodePortType" : "Out",
       "execPortType" : "In",
-      "typeSpec" : "ISkeleton"
+      "typeSpec" : "Quat"
       },
     {
       "objectType" : "ExecPort",
-      "name" : "ids",
-      "nodePortType" : "Out",
-      "execPortType" : "In",
-      "typeSpec" : "Integer[]"
-      },
-    {
-      "objectType" : "ExecPort",
+      "metadata" : {
+        "uiColor" : "{\n  \"r\" : 0,\n  \"g\" : 191,\n  \"b\" : 232\n  }"
+        },
       "name" : "result",
       "nodePortType" : "In",
       "execPortType" : "Out",
-      "typeSpec" : "Integer[]"
+      "typeSpec" : "Quat"
       }
     ],
   "extDeps" : {
     "fabricUtils" : "*"
     },
-  "presetGUID" : "B2DE27F6317B82539CA7027DBE81FE79",
+  "presetGUID" : "3BA00BCD286808C813FCA24BA35B037E",
   "code" : "require fabricUtils;
 
 dfgEntry {
-  result = boneIDArrayToParentIDArray(this, ids);
+  result = QuatToSafeQuat(this);
 }
 "
   }

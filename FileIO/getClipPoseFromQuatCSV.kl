@@ -5,7 +5,7 @@ require Characters;
 /// Gets pose from quaternions stored in a CSV file. Quaternions must be stored in local space.
 function getClipPoseFromQuatCSV(
   in ISkeleton skeleton,
-  in Index boneIDs[],
+  in Integer boneIDs[],
   in FilePath filepath,
   in String separator,
   in Scalar fps,
@@ -19,9 +19,9 @@ function getClipPoseFromQuatCSV(
   Scalar timestep = 1/fps;
   
   // If a set of bone indices are not given we assume we are loading animation of all bones
-  Index activeBones[];
+  Integer activeBones[];
   if (boneIDs.size() <= 0) {
-    indexArrayFromRange(Index(0), Index(charSkel.getNumBones()), Size(1), activeBones);
+    indexArrayFromRange(Integer(0), Integer(charSkel.getNumBones()), Integer(1), activeBones);
   }
   else {
     activeBones = boneIDs;

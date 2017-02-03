@@ -43,14 +43,15 @@
       "defaultValues" : {
         "Index[]" : [
           0
-          ]
+          ],
+        "Integer[]" : []
         },
       "execPortType" : "In",
-      "typeSpec" : "Index[]"
+      "typeSpec" : "Integer[]"
       }
     ],
   "extDeps" : {},
-  "presetGUID" : "06F77D3BEAE0712AD5940B8CEE4948BC",
+  "presetGUID" : "5D04B522B641DACB0C77A6192BCC4DBD",
   "code" : "dfgEntry {
   Integer index = 0;
   for (Integer i = 0; i <= indices.size() - 1; i++) {
@@ -59,68 +60,5 @@
   }
 }
 ",
-  "requiredPresets" : {
-    "fabricUtils.Arrays.SetSubArray" : {
-      "objectType" : "Func",
-      "metadata" : {
-        "uiTextColor" : "{\n  \"r\" : 20,\n  \"g\" : 20,\n  \"b\" : 20\n  }",
-        "uiNodeColor" : "{\n  \"r\" : 121,\n  \"g\" : 134,\n  \"b\" : 143\n  }"
-        },
-      "title" : "SetSubArray",
-      "ports" : [
-        {
-          "objectType" : "ExecPort",
-          "name" : "exec",
-          "nodePortType" : "IO",
-          "defaultValues" : {
-            "Execute" : {}
-            },
-          "execPortType" : "IO",
-          "typeSpec" : "Execute"
-          },
-        {
-          "objectType" : "ExecPort",
-          "name" : "array",
-          "nodePortType" : "IO",
-          "defaultValues" : {
-            "Xfo[]" : []
-            },
-          "execPortType" : "IO",
-          "typeSpec" : "$TYPE$"
-          },
-        {
-          "objectType" : "ExecPort",
-          "name" : "values",
-          "nodePortType" : "Out",
-          "defaultValues" : {
-            "Xfo[]" : []
-            },
-          "execPortType" : "In",
-          "typeSpec" : "$TYPE$"
-          },
-        {
-          "objectType" : "ExecPort",
-          "name" : "indices",
-          "nodePortType" : "Out",
-          "defaultValues" : {
-            "Index[]" : [
-              0
-              ]
-            },
-          "execPortType" : "In",
-          "typeSpec" : "Index[]"
-          }
-        ],
-      "extDeps" : {},
-      "presetGUID" : "06F77D3BEAE0712AD5940B8CEE4948BC",
-      "code" : "dfgEntry {
-  Integer index = 0;
-  for (Integer i = 0; i <= indices.size() - 1; i++) {
-    index = indices[i];
-    array[index] = values[i];
-  }
-}
-"
-      }
-    }
+  "requiredPresets" : {}
   }

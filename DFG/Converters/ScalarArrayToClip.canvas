@@ -2,9 +2,9 @@
 {
   "objectType" : "Func",
   "metadata" : {
-    "uiTooltip" : "Converts an array of bone names into an array of bone indices.\n\nSupported types:\n  this: ISkeleton\n  ids: Integer[]\n  result: Integer[]\n"
+    "uiTooltip" : "Supported types:\n  this: Scalar[]\n  pose: Pose\n  activeBones: Integer[]\n  result: Clip\n"
     },
-  "title" : "BoneIDArrayToParentIDArray",
+  "title" : "ScalarArrayToClip",
   "ports" : [
     {
       "objectType" : "ExecPort",
@@ -18,11 +18,18 @@
       "name" : "this",
       "nodePortType" : "Out",
       "execPortType" : "In",
-      "typeSpec" : "ISkeleton"
+      "typeSpec" : "Scalar[]"
       },
     {
       "objectType" : "ExecPort",
-      "name" : "ids",
+      "name" : "pose",
+      "nodePortType" : "Out",
+      "execPortType" : "In",
+      "typeSpec" : "Pose"
+      },
+    {
+      "objectType" : "ExecPort",
+      "name" : "activeBones",
       "nodePortType" : "Out",
       "execPortType" : "In",
       "typeSpec" : "Integer[]"
@@ -32,17 +39,17 @@
       "name" : "result",
       "nodePortType" : "In",
       "execPortType" : "Out",
-      "typeSpec" : "Integer[]"
+      "typeSpec" : "Clip"
       }
     ],
   "extDeps" : {
     "fabricUtils" : "*"
     },
-  "presetGUID" : "B2DE27F6317B82539CA7027DBE81FE79",
+  "presetGUID" : "0DF9781A78E0B09E2B6C1A4A15F71EEA",
   "code" : "require fabricUtils;
 
 dfgEntry {
-  result = boneIDArrayToParentIDArray(this, ids);
+  result = scalarArrayToClip(this, pose, activeBones);
 }
 "
   }

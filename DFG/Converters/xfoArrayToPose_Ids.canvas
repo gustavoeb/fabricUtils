@@ -2,9 +2,9 @@
 {
   "objectType" : "Func",
   "metadata" : {
-    "uiTooltip" : "Converts an array of bone names into an array of bone indices.\n\nSupported types:\n  this: ISkeleton\n  ids: Integer[]\n  result: Integer[]\n"
+    "uiTooltip" : "Sets the xfos on a pose using an xfo array.\n\nSupported types:\n  this: IPose\n  xfos: Xfo[]\n  boneIds: Integer[]\n"
     },
-  "title" : "BoneIDArrayToParentIDArray",
+  "title" : "xfoArrayToPose_Ids",
   "ports" : [
     {
       "objectType" : "ExecPort",
@@ -16,33 +16,36 @@
     {
       "objectType" : "ExecPort",
       "name" : "this",
-      "nodePortType" : "Out",
-      "execPortType" : "In",
-      "typeSpec" : "ISkeleton"
+      "nodePortType" : "IO",
+      "execPortType" : "IO",
+      "typeSpec" : "IPose"
       },
     {
       "objectType" : "ExecPort",
-      "name" : "ids",
+      "metadata" : {
+        "uiColor" : "{\n  \"r\" : 249,\n  \"g\" : 157,\n  \"b\" : 28\n  }"
+        },
+      "name" : "xfos",
       "nodePortType" : "Out",
       "execPortType" : "In",
-      "typeSpec" : "Integer[]"
+      "typeSpec" : "Xfo[]"
       },
     {
       "objectType" : "ExecPort",
-      "name" : "result",
-      "nodePortType" : "In",
-      "execPortType" : "Out",
+      "name" : "boneIds",
+      "nodePortType" : "Out",
+      "execPortType" : "In",
       "typeSpec" : "Integer[]"
       }
     ],
   "extDeps" : {
     "fabricUtils" : "*"
     },
-  "presetGUID" : "B2DE27F6317B82539CA7027DBE81FE79",
+  "presetGUID" : "AB4CFADB805863F92B2E4E312D319B11",
   "code" : "require fabricUtils;
 
 dfgEntry {
-  result = boneIDArrayToParentIDArray(this, ids);
+  xfoArrayToPose(this, xfos, boneIds);
 }
 "
   }

@@ -2,7 +2,7 @@
 {
   "objectType" : "Func",
   "metadata" : {
-    "uiTooltip" : "Converts an array of bone names into an array of bone indices.\n\nSupported types:\n  this: ISkeleton\n  names: String[]\n  result: Index[]\n"
+    "uiTooltip" : "Converts an array of bone names into an array of bone indices.\n\nSupported types:\n  this: ISkeleton\n  names: String[]\n  result: Integer[]\n"
     },
   "title" : "BoneNameArrayToIDArray",
   "ports" : [
@@ -32,13 +32,13 @@
       "name" : "result",
       "nodePortType" : "In",
       "execPortType" : "Out",
-      "typeSpec" : "Index[]"
+      "typeSpec" : "Integer[]"
       }
     ],
   "extDeps" : {
     "fabricUtils" : "*"
     },
-  "presetGUID" : "A750A14D32A93B49F08C7836E203ECAA",
+  "presetGUID" : "93BEF7A03DB91AD6DD3534F825EF9B9F",
   "code" : "require fabricUtils;
 
 dfgEntry {

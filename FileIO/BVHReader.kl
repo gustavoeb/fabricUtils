@@ -12,7 +12,7 @@ object BVHReader {
   Character character;
   private TextReader reader;
   private Integer lineCounter;
-  String[] chRotOrd;
+  private String[] chRotOrd;
 };
 
 /// \dfgPresetTitle BVHReader

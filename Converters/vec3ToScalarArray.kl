@@ -1,0 +1,16 @@
+require Math;
+
+/// \dfgPresetFolder Converters
+/// Converts an array of xfos into an array of scalar values.
+function Scalar[] vec3ToScalarArray(
+in Vec3 this,
+)
+{
+  Scalar result[];
+
+  result.push(this.x);
+  result.push(this.y);
+  result.push(this.z);
+  
+  return result;
+}

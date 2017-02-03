@@ -2,9 +2,9 @@
 {
   "objectType" : "Func",
   "metadata" : {
-    "uiTooltip" : "Converts an array of bone names into an array of bone indices.\n\nSupported types:\n  this: ISkeleton\n  ids: Integer[]\n  result: Integer[]\n"
+    "uiTooltip" : "Supported types:\n  name: String\n  defaultValue: Quat\n  flags: Integer\n  result: KeyframeTrackSet\n"
     },
-  "title" : "BoneIDArrayToParentIDArray",
+  "title" : "EmptyQuatKeyframeTrackSet",
   "ports" : [
     {
       "objectType" : "ExecPort",
@@ -15,34 +15,44 @@
       },
     {
       "objectType" : "ExecPort",
-      "name" : "this",
+      "name" : "name",
       "nodePortType" : "Out",
       "execPortType" : "In",
-      "typeSpec" : "ISkeleton"
+      "typeSpec" : "String"
       },
     {
       "objectType" : "ExecPort",
-      "name" : "ids",
+      "metadata" : {
+        "uiColor" : "{\n  \"r\" : 0,\n  \"g\" : 191,\n  \"b\" : 232\n  }"
+        },
+      "name" : "defaultValue",
       "nodePortType" : "Out",
       "execPortType" : "In",
-      "typeSpec" : "Integer[]"
+      "typeSpec" : "Quat"
+      },
+    {
+      "objectType" : "ExecPort",
+      "name" : "flags",
+      "nodePortType" : "Out",
+      "execPortType" : "In",
+      "typeSpec" : "Integer"
       },
     {
       "objectType" : "ExecPort",
       "name" : "result",
       "nodePortType" : "In",
       "execPortType" : "Out",
-      "typeSpec" : "Integer[]"
+      "typeSpec" : "KeyframeTrackSet"
       }
     ],
   "extDeps" : {
     "fabricUtils" : "*"
     },
-  "presetGUID" : "B2DE27F6317B82539CA7027DBE81FE79",
+  "presetGUID" : "79C97466E21700B3E218DCEA39B18E2D",
   "code" : "require fabricUtils;
 
 dfgEntry {
-  result = boneIDArrayToParentIDArray(this, ids);
+  result = emptyQuatKeyframeTrackSet(name, defaultValue, flags);
 }
 "
   }

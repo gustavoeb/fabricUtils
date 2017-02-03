@@ -2,9 +2,9 @@
 {
   "objectType" : "Func",
   "metadata" : {
-    "uiTooltip" : "Gets pose from quaternions stored in a CSV file. Quaternions must be stored in local space.\n\nSupported types:\n  skeleton: ISkeleton\n  boneIDs: Integer[]\n  filepath: FilePath\n  separator: String\n  fps: Scalar\n  result: ClipPose\n"
+    "uiTooltip" : "Converts an array of xfos into an array of scalar values.\n\nSupported types:\n  this: Xfo[]\n  ori: Boolean\n  tr: Boolean\n  sc: Boolean\n  result: Scalar[]\n"
     },
-  "title" : "GetClipPoseFromQuatCSV",
+  "title" : "XfoArrayToScalarArray",
   "ports" : [
     {
       "objectType" : "ExecPort",
@@ -15,55 +15,51 @@
       },
     {
       "objectType" : "ExecPort",
-      "name" : "skeleton",
+      "metadata" : {
+        "uiColor" : "{\n  \"r\" : 249,\n  \"g\" : 157,\n  \"b\" : 28\n  }"
+        },
+      "name" : "this",
       "nodePortType" : "Out",
       "execPortType" : "In",
-      "typeSpec" : "ISkeleton"
+      "typeSpec" : "Xfo[]"
       },
     {
       "objectType" : "ExecPort",
-      "name" : "boneIDs",
+      "name" : "ori",
       "nodePortType" : "Out",
       "execPortType" : "In",
-      "typeSpec" : "Integer[]"
+      "typeSpec" : "Boolean"
       },
     {
       "objectType" : "ExecPort",
-      "name" : "filepath",
+      "name" : "tr",
       "nodePortType" : "Out",
       "execPortType" : "In",
-      "typeSpec" : "FilePath"
+      "typeSpec" : "Boolean"
       },
     {
       "objectType" : "ExecPort",
-      "name" : "separator",
+      "name" : "sc",
       "nodePortType" : "Out",
       "execPortType" : "In",
-      "typeSpec" : "String"
-      },
-    {
-      "objectType" : "ExecPort",
-      "name" : "fps",
-      "nodePortType" : "Out",
-      "execPortType" : "In",
-      "typeSpec" : "Scalar"
+      "typeSpec" : "Boolean"
       },
     {
       "objectType" : "ExecPort",
       "name" : "result",
       "nodePortType" : "In",
       "execPortType" : "Out",
-      "typeSpec" : "ClipPose"
+      "typeSpec" : "Scalar[]"
       }
     ],
   "extDeps" : {
     "fabricUtils" : "*"
     },
-  "presetGUID" : "5352E55F7A13C5B16C4CD30E763DFAAB",
+  "presetGUID" : "7316BAE2742839B7453AD53315CD6168",
   "code" : "require fabricUtils;
 
 dfgEntry {
-  getClipPoseFromQuatCSV(skeleton, boneIDs, filepath, separator, fps, result);
+  result = xfoArrayToScalarArray(this, ori, tr, sc);
 }
 "
   }

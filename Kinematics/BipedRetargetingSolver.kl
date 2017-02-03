@@ -28,18 +28,18 @@ object BipedRetargetingSolver {
   JSONDictValue inAuxilaryNames;
   JSONDictValue outAuxilaryNames;
 
-  Index inWorldToId[String];
-  String inWorldToName[Index];
-  Index outWorldToId[String];
-  String outWorldToName[Index];
-  Index inBoneToId[String];
-  String inBoneToName[Index];
-  Index outBoneToId[String];
-  String outBoneToName[Index];
-  Index inSpineToId[String];
-  String inSpineToName[Index];
-  Index outSpineToId[String];
-  String outSpineToName[Index];
+  Integer inWorldToId[String];
+  String inWorldToName[Integer];
+  Integer outWorldToId[String];
+  String outWorldToName[Integer];
+  Integer inBoneToId[String];
+  String inBoneToName[Integer];
+  Integer outBoneToId[String];
+  String outBoneToName[Integer];
+  Integer inSpineToId[String];
+  String inSpineToName[Integer];
+  Integer outSpineToId[String];
+  String outSpineToName[Integer];
 
   Xfo offsetToInput[];
   Boolean validFlags[];
@@ -97,8 +97,8 @@ function BipedRetargetingSolver.changeRefFrame!(
   this.offsetToInput.resize(this.outCharacter.skeleton.getNumBones());
   // first world offsets
   for(name in this.inWorldToId) {
-    Index inId = this.inWorldToId[name];
-    Index outId = this.outWorldToId[name];
+    Integer inId = this.inWorldToId[name];
+    Integer outId = this.outWorldToId[name];
     
     Xfo riXfo = this.inRefPose.getBoneXfo(inId);
     Xfo roXfo = this.outRefPose.getBoneXfo(outId);
@@ -108,10 +108,10 @@ function BipedRetargetingSolver.changeRefFrame!(
   // then spine offsets
   for(name in this.inSpineToId) {
     // Get mapped bone's id and parent
-    Index id = this.outSpineToId[name];
-    Index parent = Pose(this.outRefPose).skeleton.getBone(id).parentIndex;
-    Index inputId = this.inSpineToId[name];
-    Index inParentId = Pose(this.inRefPose).skeleton.getBone(inputId).parentIndex;
+    Integer id = this.outSpineToId[name];
+    Integer parent = Pose(this.outRefPose).skeleton.getBone(id).parentIndex;
+    Integer inputId = this.inSpineToId[name];
+    Integer inParentId = Pose(this.inRefPose).skeleton.getBone(inputId).parentIndex;
     
     // Get mapped bone's local xfo
     Xfo inRefLocalXfo();
@@ -136,10 +136,10 @@ function BipedRetargetingSolver.changeRefFrame!(
   // then all the other bones' offsets
   for(name in this.inBoneToId) {
     // Get mapped bone's id and parent
-    Index id = this.outBoneToId[name];
-    Index parent = Pose(this.outRefPose).skeleton.getBone(id).parentIndex;
-    Index inputId = this.inBoneToId[name];
-    Index inParentId = Pose(this.inRefPose).skeleton.getBone(inputId).parentIndex;
+    Integer id = this.outBoneToId[name];
+    Integer parent = Pose(this.outRefPose).skeleton.getBone(id).parentIndex;
+    Integer inputId = this.inBoneToId[name];
+    Integer inParentId = Pose(this.inRefPose).skeleton.getBone(inputId).parentIndex;
     
     // Get mapped bone's local xfo
     Xfo inRefLocalXfo();
@@ -222,8 +222,8 @@ function BipedRetargetingSolver.solve!(
 
   // world xfo retargeting
   for(name in this.inWorldToId) {
-    Index inId = this.inWorldToId[name];
-    Index outId = this.outWorldToId[name];
+    Integer inId = this.inWorldToId[name];
+    Integer outId = this.outWorldToId[name];
     
     Xfo ixfo = inPose.getBoneXfo(inId);
     Xfo oxfo = outPose.getBoneXfo(outId);   
@@ -266,9 +266,9 @@ function BipedRetargetingSolver.solve!(
 
 /// \dfgPresetOmit
 function BipedRetargetingSolver.updateBoneOri!(
-  in Index id,
-  in Index inBoneToId[String],
-  in String outBoneToName[Index],
+  in Integer id,
+  in Integer inBoneToId[String],
+  in String outBoneToName[Integer],
   io IPose outPose
   ){
   
@@ -276,7 +276,7 @@ function BipedRetargetingSolver.updateBoneOri!(
   IPose inPose = this.inCharacter.getPose();
   
   if(~this.validFlags[id]) {
-    Index parent = Pose(outPose).skeleton.getBone(id).parentIndex;
+    Integer parent = Pose(outPose).skeleton.getBone(id).parentIndex;
     if(parent > -1 && parent < 4294967295){
       if(~this.validFlags[parent]) {
         this.updateBoneOri(parent, inBoneToId, outBoneToName, outPose);
@@ -285,8 +285,8 @@ function BipedRetargetingSolver.updateBoneOri!(
         
     if(outBoneToName.has(id)) {
       // Get mapped bone's id and parent
-      Index inputId = inBoneToId[outBoneToName[id]];
-      Index inParentId = Pose(inPose).skeleton.getBone(inputId).parentIndex;
+      Integer inputId = inBoneToId[outBoneToName[id]];
+      Integer inParentId = Pose(inPose).skeleton.getBone(inputId).parentIndex;
       
       // Get mapped bone's local xfo
       Xfo inRefLocalXfo();
@@ -397,14 +397,14 @@ function BipedRetargetingSolver.fillMappingIndices!() {
   this.outSpineToName.clear();
 
   // create temporary dicts for required and auxilar bones
-  Index inRequiredToId[String];
-  String inRequiredToName[Index];
-  Index outRequiredToId[String];
-  String outRequiredToName[Index];
-  Index inAuxilaryToId[String];
-  String inAuxilaryToName[Index];
-  Index outAuxilaryToId[String];
-  String outAuxilaryToName[Index];
+  Integer inRequiredToId[String];
+  String inRequiredToName[Integer];
+  Integer outRequiredToId[String];
+  String outRequiredToName[Integer];
+  Integer inAuxilaryToId[String];
+  String inAuxilaryToName[Integer];
+  Integer outAuxilaryToId[String];
+  String outAuxilaryToName[Integer];
 
   // fill name to indices, and indices to name dictionaries
   this.mapNamesToIndices(this.luWorld, this.inWorldNames, this.outWorldNames, this.inWorldToId, this.inWorldToName, this.outWorldToId, this.outWorldToName, true, false);
@@ -414,22 +414,22 @@ function BipedRetargetingSolver.fillMappingIndices!() {
 
   // concatenate required and auxilary bones
   for(name in inRequiredToId) {
-    Index id = inRequiredToId[name];
+    Integer id = inRequiredToId[name];
     this.inBoneToId.set(name, id);
     this.inBoneToName.set(id, name);
   }
   for(name in inAuxilaryToId) {
-    Index id = inAuxilaryToId[name];
+    Integer id = inAuxilaryToId[name];
     this.inBoneToId[name] = id;
     this.inBoneToName[id] = name;
   }
   for(name in outRequiredToId) {
-    Index id = outRequiredToId[name];
+    Integer id = outRequiredToId[name];
     this.outBoneToId[name] = id;
     this.outBoneToName[id] = name;
   }
   for(name in outAuxilaryToId) {
-    Index id = outAuxilaryToId[name];
+    Integer id = outAuxilaryToId[name];
     this.outBoneToId[name] = id;
     this.outBoneToName[id] = name;
   }
@@ -450,10 +450,10 @@ function BipedRetargetingSolver.mapNamesToIndices!(
   in String lookup[],
   in JSONDictValue inData,
   in JSONDictValue outData,
-  out Index inToId[String],
-  out String inToName[Index],
-  out Index outToId[String],
-  out String outToName[Index],
+  out Integer inToId[String],
+  out String inToName[Integer],
+  out Integer outToId[String],
+  out String outToName[Integer],
   in Boolean pair,
   in Boolean enforce,
   ){
@@ -466,10 +466,10 @@ function BipedRetargetingSolver.mapNamesToIndices!(
         inNames.push(inData.getString(l));
         outNames.push(outData.getString(l));
 
-        Index inId = this.inCharacter.skeleton.findBone(inData.getString(l));
+        Integer inId = this.inCharacter.skeleton.findBone(inData.getString(l));
         inToId.set(l, inId);
         inToName.set(inId, l);
-        Index outId = this.outCharacter.skeleton.findBone(outData.getString(l));
+        Integer outId = this.outCharacter.skeleton.findBone(outData.getString(l));
         outToId.set(l, outId);
         outToName.set(outId, l);
       }
@@ -482,7 +482,7 @@ function BipedRetargetingSolver.mapNamesToIndices!(
       if(inData.has(l)) {
         inNames.push(inData.getString(l));
 
-        Index inId = this.inCharacter.skeleton.findBone(inData.getString(l));
+        Integer inId = this.inCharacter.skeleton.findBone(inData.getString(l));
         inToId.set(l, inId);
         inToName.set(inId, l);
       }
@@ -491,7 +491,7 @@ function BipedRetargetingSolver.mapNamesToIndices!(
       if(outData.has(l)){
         outNames.push(outData.getString(l));
 
-        Index outId = this.outCharacter.skeleton.findBone(outData.getString(l));
+        Integer outId = this.outCharacter.skeleton.findBone(outData.getString(l));
         outToId.set(l, outId);
         outToName.set(outId, l);
       }
@@ -499,8 +499,8 @@ function BipedRetargetingSolver.mapNamesToIndices!(
         setError(l + ' node is mandatory, but was not found in the input mapping file.');  
   }
   }
-  Index inIds[] = boneNameArrayToIDArray(this.inCharacter.skeleton,inNames);
-  Index outIds[] = boneNameArrayToIDArray(this.outCharacter.skeleton,outNames);
+  Integer inIds[] = boneNameArrayToIDArray(this.inCharacter.skeleton,inNames);
+  Integer outIds[] = boneNameArrayToIDArray(this.outCharacter.skeleton,outNames);
 
   // for(Size i=0; i<inIds.size(); i++) {
   //   inToId.set(inNames[i], inIds[i]);
