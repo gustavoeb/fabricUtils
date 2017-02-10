@@ -1,8 +1,8 @@
 {
   "objectType" : "Graph",
   "metadata" : {
-    "uiGraphZoom" : "{\n  \"value\" : 0.9232585430145264\n  }",
-    "uiGraphPan" : "{\n  \"x\" : -489.1880586325715,\n  \"y\" : -625.0369946443389\n  }"
+    "uiGraphZoom" : "{\n  \"value\" : 0.7178962826728821\n  }",
+    "uiGraphPan" : "{\n  \"x\" : -471.4117431640625,\n  \"y\" : -424.9558715820313\n  }"
     },
   "title" : "DrawCharacterBones",
   "ports" : [
@@ -38,7 +38,6 @@
       },
     {
       "objectType" : "ExecPort",
-      "metadata" : {},
       "name" : "offset",
       "nodePortType" : "Out",
       "defaultValues" : {
@@ -77,7 +76,7 @@
       }
     ],
   "extDeps" : {},
-  "presetGUID" : "FF8174EA60A7165EE0E3689545D4A8DC",
+  "presetGUID" : "65299BFEF624E77EEF009ED7D815D929",
   "nodes" : [
     {
       "objectType" : "Inst",
@@ -103,7 +102,7 @@
     {
       "objectType" : "Inst",
       "metadata" : {
-        "uiGraphPos" : "{\"x\":756.5964355470001,\"y\":1015.57220459}",
+        "uiGraphPos" : "{\"x\":755.51331532,\"y\":1015.57220459}",
         "uiCollapsedState" : "0"
         },
       "name" : "SetBoneTopo",
@@ -161,7 +160,7 @@
         "code" : "dfgEntry {
   for(Size i=0; i<skeleton.getNumBones(); i++) {
     PolygonMesh mesh = PolygonMesh();  
-    mesh.drawBone(Xfo(), skeleton.getBone(i).length, skeleton.getBone(i).radius, true);
+    mesh.drawBone(Quat(), skeleton.getBone(i).length, 0.2, true);
     boneTopo.push(mesh);
   }
 }"
@@ -246,7 +245,7 @@
     {
       "objectType" : "Inst",
       "metadata" : {
-        "uiGraphPos" : "{\"x\":770.425231934,\"y\":1234.97753906}"
+        "uiGraphPos" : "{\"x\":722.001950741,\"y\":1308.95052052}"
         },
       "name" : "PoseToXfoArray_1",
       "ports" : [
@@ -332,7 +331,7 @@
     {
       "objectType" : "Inst",
       "metadata" : {
-        "uiGraphPos" : "{\"x\":944.425231934,\"y\":1180.97753906}"
+        "uiGraphPos" : "{\"x\":946.591472387,\"y\":1167.97997427}"
         },
       "name" : "Mul_1",
       "ports" : [
@@ -363,7 +362,7 @@
     {
       "objectType" : "Inst",
       "metadata" : {
-        "uiGraphPos" : "{\"x\":608.425231934,\"y\":1180.97753906}"
+        "uiGraphPos" : "{\"x\":580.2638584380001,\"y\":1134.40428376}"
         },
       "name" : "GetNumBones_1",
       "ports" : [
@@ -385,6 +384,77 @@
         ],
       "executable" : "Fabric.Exts.Characters.Func.GetNumBones",
       "presetGUID" : "6D31127A1895765A7354CBE12A723CE3"
+      },
+    {
+      "objectType" : "Inst",
+      "metadata" : {
+        "uiGraphPos" : "{\"x\":749.365801811,\"y\":1226.26757812}"
+        },
+      "name" : "SetBoneXfo",
+      "ports" : [
+        {
+          "objectType" : "InstPort",
+          "name" : "exec",
+          "nodePortType" : "IO"
+          },
+        {
+          "objectType" : "InstPort",
+          "name" : "pose",
+          "nodePortType" : "In"
+          },
+        {
+          "objectType" : "InstPort",
+          "name" : "xfos",
+          "nodePortType" : "Out"
+          }
+        ],
+      "definition" : {
+        "objectType" : "Func",
+        "title" : "SetBoneXfo",
+        "ports" : [
+          {
+            "objectType" : "ExecPort",
+            "name" : "exec",
+            "nodePortType" : "IO",
+            "execPortType" : "IO",
+            "typeSpec" : "Execute"
+            },
+          {
+            "objectType" : "ExecPort",
+            "name" : "pose",
+            "nodePortType" : "Out",
+            "execPortType" : "In",
+            "typeSpec" : "IPose"
+            },
+          {
+            "objectType" : "ExecPort",
+            "name" : "xfos",
+            "nodePortType" : "In",
+            "execPortType" : "Out",
+            "typeSpec" : "Xfo[]"
+            }
+          ],
+        "extDeps" : {},
+        "code" : "dfgEntry {
+  Skeleton skeleton = Pose(pose).skeleton;
+  for(Integer i=0; i<skeleton.getNumBones(); i++) {
+    Xfo xfo = Pose(pose).getBoneXfo(i);
+    if(skeleton.getBone(i).childIndices.size() > 0) {
+      Xfo child = Pose(pose).getBoneXfo(skeleton.getBone(i).childIndices[0]);
+      Vec3 direction = xfo.subtractTranslation(child);
+      Quat orientation();
+      orientation.setFrom2Vectors(Vec3(-1.0,0.0,0.0), direction.unit_safe(), true);
+      xfo.ori = orientation;
+    }
+    else if(skeleton.getBone(i).childIndices.size() == 0) {
+      Xfo orientation = xfo * skeleton.getReferenceLocalPose(i) ;
+      xfo.ori = orientation.ori;
+    }
+    xfos.push(xfo);
+  }
+}
+"
+        }
       }
     ],
   "connections" : {
@@ -393,7 +463,8 @@
       "GetNumBones_1.this"
       ],
     "animPose" : [
-      "PoseToXfoArray_1.this"
+      "PoseToXfoArray_1.this",
+      "SetBoneXfo.pose"
       ],
     "offset" : [
       "Fill_1.element"
@@ -407,9 +478,6 @@
     "DrawPolygonMeshArray_1.instance" : [
       "drawThis"
       ],
-    "PoseToXfoArray_1.result" : [
-      "Mul_1.rhs"
-      ],
     "Cache_3.value" : [
       "DrawPolygonMeshArray_1.masters"
       ],
@@ -421,6 +489,9 @@
       ],
     "GetNumBones_1.result" : [
       "Fill_1.count"
+      ],
+    "SetBoneXfo.xfos" : [
+      "Mul_1.rhs"
       ]
     },
   "requiredPresets" : {

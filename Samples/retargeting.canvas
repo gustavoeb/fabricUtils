@@ -1,15 +1,15 @@
 {
   "objectType" : "Graph",
   "metadata" : {
-    "camera_mat44" : "{\n  \"row0\" : {\n    \"x\" : -0.7127953171730042,\n    \"y\" : 0.1114602610468864,\n    \"z\" : 0.6935592889785767,\n    \"t\" : 98.00796508789063\n    },\n  \"row1\" : {\n    \"x\" : 9.431520311409258e-07,\n    \"y\" : 0.9871507883071899,\n    \"z\" : -0.1589642763137817,\n    \"t\" : -0.618316650390625\n    },\n  \"row2\" : {\n    \"x\" : -0.7023605704307556,\n    \"y\" : -0.1131148487329483,\n    \"z\" : -0.7038635015487671,\n    \"t\" : -78.19231414794922\n    },\n  \"row3\" : {\n    \"x\" : 0,\n    \"y\" : 0,\n    \"z\" : 0,\n    \"t\" : 1\n    }\n  }",
+    "camera_mat44" : "{\n  \"row0\" : {\n    \"x\" : -0.6986077427864075,\n    \"y\" : -0.09315243363380432,\n    \"z\" : 0.7105001211166382,\n    \"t\" : 23.04114532470703\n    },\n  \"row1\" : {\n    \"x\" : 9.729759540277883e-07,\n    \"y\" : 0.9913412928581238,\n    \"z\" : 0.1302383542060852,\n    \"t\" : 8.120038032531738\n    },\n  \"row2\" : {\n    \"x\" : -0.7164750695228577,\n    \"y\" : 0.09083075076341629,\n    \"z\" : -0.6927814483642578,\n    \"t\" : -21.37925148010254\n    },\n  \"row3\" : {\n    \"x\" : 0,\n    \"y\" : 0,\n    \"z\" : 0,\n    \"t\" : 1\n    }\n  }",
     "timeline_start" : "0",
     "timeline_loopMode" : "1",
-    "uiGraphZoom" : "{\n  \"value\" : 0.7246720194816589\n  }",
+    "uiGraphZoom" : "{\n  \"value\" : 0.1927885711193085\n  }",
     "timeline_simMode" : "0",
-    "camera_focalDistance" : "127.4006500244141",
+    "camera_focalDistance" : "33.84902954101563",
     "timeline_current" : "0",
     "timeline_end" : "96",
-    "uiGraphPan" : "{\n  \"x\" : -360.730519944759,\n  \"y\" : 149.8739568428807\n  }"
+    "uiGraphPan" : "{\n  \"x\" : -81.90644177105651,\n  \"y\" : 276.4548028737381\n  }"
     },
   "title" : "",
   "ports" : [
@@ -480,7 +480,7 @@
         "objectType" : "Graph",
         "metadata" : {
           "uiGraphZoom" : "{\n  \"value\" : 0.8024988174438477\n  }",
-          "uiGraphPan" : "{\n  \"x\" : -1435.142456054688,\n  \"y\" : -313.1346435546875\n  }"
+          "uiGraphPan" : "{\n  \"x\" : -1341.142456054688,\n  \"y\" : -511.1346435546875\n  }"
           },
         "title" : "DetectStepAndConstraintFoot",
         "ports" : [
@@ -784,13 +784,14 @@
                   },
                 {
                   "objectType" : "ExecPort",
+                  "metadata" : {},
                   "name" : "ids",
                   "nodePortType" : "In",
                   "defaultValues" : {
                     "Index[]" : []
                     },
                   "execPortType" : "Out",
-                  "typeSpec" : "Index[]"
+                  "typeSpec" : "Integer[]"
                   },
                 {
                   "objectType" : "ExecPort",
@@ -833,7 +834,7 @@
                       }
                     ],
                   "executable" : "fabricUtils.Arrays.GetSubArray",
-                  "presetGUID" : "3EB01AA8D84195FFCC36D66B9DDBB5BE"
+                  "presetGUID" : "EF6FA4DE9B0619B24F6BC223F43DC310"
                   },
                 {
                   "objectType" : "Inst",
@@ -937,7 +938,7 @@
                       }
                     ],
                   "executable" : "fabricUtils.Converters.BoneNameArrayToIDArray",
-                  "presetGUID" : "A750A14D32A93B49F08C7836E203ECAA"
+                  "presetGUID" : "93BEF7A03DB91AD6DD3534F825EF9B9F"
                   },
                 {
                   "objectType" : "Inst",
@@ -1179,7 +1180,7 @@
                 }
               ],
             "executable" : "fabricUtils.Arrays.GetSubArray",
-            "presetGUID" : "3EB01AA8D84195FFCC36D66B9DDBB5BE"
+            "presetGUID" : "EF6FA4DE9B0619B24F6BC223F43DC310"
             },
           {
             "objectType" : "Inst",
@@ -1273,7 +1274,7 @@
                 }
               ],
             "executable" : "fabricUtils.Arrays.SetSubArray",
-            "presetGUID" : "06F77D3BEAE0712AD5940B8CEE4948BC"
+            "presetGUID" : "5D04B522B641DACB0C77A6192BCC4DBD"
             },
           {
             "objectType" : "Inst",
@@ -1372,7 +1373,7 @@
                 }
               ],
             "executable" : "fabricUtils.Arrays.GetSubArray",
-            "presetGUID" : "3EB01AA8D84195FFCC36D66B9DDBB5BE"
+            "presetGUID" : "EF6FA4DE9B0619B24F6BC223F43DC310"
             },
           {
             "objectType" : "Inst",
@@ -1786,7 +1787,7 @@
         "objectType" : "Graph",
         "metadata" : {
           "uiGraphZoom" : "{\n  \"value\" : 0.8024988174438477\n  }",
-          "uiGraphPan" : "{\n  \"x\" : -1435.142456054688,\n  \"y\" : -313.1346435546875\n  }"
+          "uiGraphPan" : "{\n  \"x\" : -959.1424560546875,\n  \"y\" : -379.1346435546875\n  }"
           },
         "title" : "DetectStepAndConstraintFoot",
         "ports" : [
@@ -2090,13 +2091,14 @@
                   },
                 {
                   "objectType" : "ExecPort",
+                  "metadata" : {},
                   "name" : "ids",
                   "nodePortType" : "In",
                   "defaultValues" : {
                     "Index[]" : []
                     },
                   "execPortType" : "Out",
-                  "typeSpec" : "Index[]"
+                  "typeSpec" : "Integer[]"
                   },
                 {
                   "objectType" : "ExecPort",
@@ -2139,7 +2141,7 @@
                       }
                     ],
                   "executable" : "fabricUtils.Arrays.GetSubArray",
-                  "presetGUID" : "3EB01AA8D84195FFCC36D66B9DDBB5BE"
+                  "presetGUID" : "EF6FA4DE9B0619B24F6BC223F43DC310"
                   },
                 {
                   "objectType" : "Inst",
@@ -2243,7 +2245,7 @@
                       }
                     ],
                   "executable" : "fabricUtils.Converters.BoneNameArrayToIDArray",
-                  "presetGUID" : "A750A14D32A93B49F08C7836E203ECAA"
+                  "presetGUID" : "93BEF7A03DB91AD6DD3534F825EF9B9F"
                   },
                 {
                   "objectType" : "Inst",
@@ -2485,7 +2487,7 @@
                 }
               ],
             "executable" : "fabricUtils.Arrays.GetSubArray",
-            "presetGUID" : "3EB01AA8D84195FFCC36D66B9DDBB5BE"
+            "presetGUID" : "EF6FA4DE9B0619B24F6BC223F43DC310"
             },
           {
             "objectType" : "Inst",
@@ -2579,7 +2581,7 @@
                 }
               ],
             "executable" : "fabricUtils.Arrays.SetSubArray",
-            "presetGUID" : "06F77D3BEAE0712AD5940B8CEE4948BC"
+            "presetGUID" : "5D04B522B641DACB0C77A6192BCC4DBD"
             },
           {
             "objectType" : "Inst",
@@ -2678,7 +2680,7 @@
                 }
               ],
             "executable" : "fabricUtils.Arrays.GetSubArray",
-            "presetGUID" : "3EB01AA8D84195FFCC36D66B9DDBB5BE"
+            "presetGUID" : "EF6FA4DE9B0619B24F6BC223F43DC310"
             },
           {
             "objectType" : "Inst",
@@ -3199,7 +3201,6 @@
             },
           {
             "objectType" : "ExecPort",
-            "metadata" : {},
             "name" : "bindPose",
             "nodePortType" : "In",
             "execPortType" : "Out",
@@ -3207,7 +3208,6 @@
             },
           {
             "objectType" : "ExecPort",
-            "metadata" : {},
             "name" : "refPose",
             "nodePortType" : "In",
             "defaultValues" : {
@@ -3939,7 +3939,7 @@
       "objectType" : "Graph",
       "metadata" : {
         "uiTextColor" : "{\n  \"r\" : 20,\n  \"g\" : 20,\n  \"b\" : 20\n  }",
-        "uiNodeColor" : "{\n  \"r\" : 121,\n  \"g\" : 134,\n  \"b\" : 143\n  }",
+        "uiNodeColor" : "{\n  \"r\" : 170,\n  \"g\" : 130,\n  \"b\" : 100\n  }",
         "uiGraphZoom" : "{\n  \"value\" : 1.0\n  }",
         "uiGraphPan" : "{\n  \"x\" : 177.25,\n  \"y\" : -128.5\n  }"
         },
@@ -4118,7 +4118,7 @@
     "Fabric.Exts.FileIO.Func.String" : {
       "objectType" : "Func",
       "metadata" : {
-        "uiDocUrl" : "http://docs.fabric-engine.com/FabricEngine/2.3.0/HTML/KLExtensionsGuide/FileIO/FileTime.html",
+        "uiDocUrl" : "http://docs.fabric-engine.com/FabricEngine/2.4.0/HTML/KLExtensionsGuide/FileIO/FileTime.html",
         "uiTooltip" : "returns the time as a string, in the format \"YYYY-MM-DD HH-MM-SS\"\n\n Supported by FileTime,FilePath"
         },
       "title" : "String",
@@ -4159,7 +4159,7 @@ dfgEntry {
     "Fabric.Exts.FileIO.FilePath.ExpandEnvVars" : {
       "objectType" : "Func",
       "metadata" : {
-        "uiDocUrl" : "http://docs.fabric-engine.com/FabricEngine/2.3.0/HTML/KLExtensionsGuide/FileIO/FilePath.html",
+        "uiDocUrl" : "http://docs.fabric-engine.com/FabricEngine/2.4.0/HTML/KLExtensionsGuide/FileIO/FilePath.html",
         "uiTooltip" : "expands all contained env vars in the FilePath. Env vars have to be specified as ${VARIABLE}\n\n\n Supported by FilePath"
         },
       "title" : "ExpandEnvVars",
@@ -5032,7 +5032,7 @@ dfgEntry {
     "Fabric.Exts.FileIO.FilePath.FilePath" : {
       "objectType" : "Func",
       "metadata" : {
-        "uiDocUrl" : "http://docs.fabric-engine.com/FabricEngine/2.3.0/HTML/KLExtensionsGuide/FileIO/FilePath.html",
+        "uiDocUrl" : "http://docs.fabric-engine.com/FabricEngine/2.4.0/HTML/KLExtensionsGuide/FileIO/FilePath.html",
         "uiTooltip" : "standard constructor from string\n\n Supported by FilePath"
         },
       "title" : "FilePath",
@@ -5073,7 +5073,7 @@ dfgEntry {
     "Fabric.Exts.FbxHelpers.FbxCharacter.FbxCharacter" : {
       "objectType" : "Func",
       "metadata" : {
-        "uiDocUrl" : "http://docs.fabric-engine.com/FabricEngine/2.3.0/HTML/KLExtensionsGuide/FbxHelpers/FbxCharacter.html",
+        "uiDocUrl" : "http://docs.fabric-engine.com/FabricEngine/2.4.0/HTML/KLExtensionsGuide/FbxHelpers/FbxCharacter.html",
         "uiTooltip" : "Constructor taking a file path to load the fbx file on disk\n\n Supported by FbxCharacter"
         },
       "title" : "FbxCharacter",
@@ -5114,7 +5114,7 @@ dfgEntry {
     "Fabric.Exts.FbxHelpers.FbxCharacter.ToCharacter" : {
       "objectType" : "Func",
       "metadata" : {
-        "uiDocUrl" : "http://docs.fabric-engine.com/FabricEngine/2.3.0/HTML/KLExtensionsGuide/FbxHelpers/FbxCharacter.html",
+        "uiDocUrl" : "http://docs.fabric-engine.com/FabricEngine/2.4.0/HTML/KLExtensionsGuide/FbxHelpers/FbxCharacter.html",
         "uiTooltip" : "returns this FBXCharacter as a character\n\n Supported by FbxCharacter"
         },
       "title" : "ToCharacter",
@@ -5186,7 +5186,7 @@ dfgEntry {
     "Fabric.Exts.FbxHelpers.Func.GetFilePath" : {
       "objectType" : "Func",
       "metadata" : {
-        "uiDocUrl" : "http://docs.fabric-engine.com/FabricEngine/2.3.0/HTML/KLExtensionsGuide/FbxHelpers/FbxCharacter.html",
+        "uiDocUrl" : "http://docs.fabric-engine.com/FabricEngine/2.4.0/HTML/KLExtensionsGuide/FbxHelpers/FbxCharacter.html",
         "uiTooltip" : "Returns the file path of the fbx file.\n\n Supported by FbxCharacter,FbxClip"
         },
       "title" : "GetFilePath",
@@ -5227,7 +5227,7 @@ dfgEntry {
     "Fabric.Exts.FbxHelpers.FbxCharacter.SetupFromAnimatedPose" : {
       "objectType" : "Func",
       "metadata" : {
-        "uiDocUrl" : "http://docs.fabric-engine.com/FabricEngine/2.3.0/HTML/KLExtensionsGuide/FbxHelpers/FbxCharacter.html",
+        "uiDocUrl" : "http://docs.fabric-engine.com/FabricEngine/2.4.0/HTML/KLExtensionsGuide/FbxHelpers/FbxCharacter.html",
         "uiTooltip" : "sets up the FBXCharacter with a animated pose\n\n Supported by FbxCharacter"
         },
       "title" : "SetupFromAnimatedPose",
@@ -5278,7 +5278,7 @@ dfgEntry {
     "Fabric.Exts.Characters.Character.SetClipPoseTime" : {
       "objectType" : "Func",
       "metadata" : {
-        "uiDocUrl" : "http://docs.fabric-engine.com/FabricEngine/2.3.0/HTML/KLExtensionsGuide/Characters/Character.html",
+        "uiDocUrl" : "http://docs.fabric-engine.com/FabricEngine/2.4.0/HTML/KLExtensionsGuide/Characters/Character.html",
         "uiTooltip" : "changes the time on the clip pose\n\n Supported by Character"
         },
       "title" : "SetClipPoseTime",
@@ -5423,7 +5423,7 @@ dfgEntry {
     "Fabric.Exts.Characters.Func.GetSkeleton" : {
       "objectType" : "Func",
       "metadata" : {
-        "uiDocUrl" : "http://docs.fabric-engine.com/FabricEngine/2.3.0/HTML/KLExtensionsGuide/Characters/ICharacter.html",
+        "uiDocUrl" : "http://docs.fabric-engine.com/FabricEngine/2.4.0/HTML/KLExtensionsGuide/Characters/ICharacter.html",
         "uiTooltip" : "\n\n Supported by ICharacter,Character"
         },
       "title" : "GetSkeleton",
@@ -5507,7 +5507,7 @@ dfgEntry {
     "Fabric.Exts.Characters.Func.GetPose" : {
       "objectType" : "Func",
       "metadata" : {
-        "uiDocUrl" : "http://docs.fabric-engine.com/FabricEngine/2.3.0/HTML/KLExtensionsGuide/Characters/ICharacter.html",
+        "uiDocUrl" : "http://docs.fabric-engine.com/FabricEngine/2.4.0/HTML/KLExtensionsGuide/Characters/ICharacter.html",
         "uiTooltip" : "\n\n Supported by ICharacter,Character"
         },
       "title" : "GetPose",
@@ -5548,7 +5548,7 @@ dfgEntry {
     "Fabric.Exts.Characters.Character.SetPose" : {
       "objectType" : "Func",
       "metadata" : {
-        "uiDocUrl" : "http://docs.fabric-engine.com/FabricEngine/2.3.0/HTML/KLExtensionsGuide/Characters/Character.html",
+        "uiDocUrl" : "http://docs.fabric-engine.com/FabricEngine/2.4.0/HTML/KLExtensionsGuide/Characters/Character.html",
         "uiTooltip" : "Sets a the pose object for this character.\n\n Supported by Character"
         },
       "title" : "SetPose",
@@ -6801,7 +6801,7 @@ dfgEntry {
       "objectType" : "Func",
       "metadata" : {
         "uiNodeColor" : "{\n  \"r\" : 99,\n  \"g\" : 129,\n  \"b\" : 92\n  }",
-        "uiDocUrl" : "http://docs.fabric-engine.com/FabricEngine/2.3.0/HTML/KLExtensionsGuide/Math/Xfo.html"
+        "uiDocUrl" : "http://docs.fabric-engine.com/FabricEngine/2.4.0/HTML/KLExtensionsGuide/Math/Xfo.html"
         },
       "title" : "Xfo ->",
       "ports" : [
@@ -6917,10 +6917,11 @@ dfgEntry {
           "name" : "indices",
           "nodePortType" : "Out",
           "defaultValues" : {
-            "Index[]" : []
+            "Index[]" : [],
+            "Integer[]" : []
             },
           "execPortType" : "In",
-          "typeSpec" : "Index[]"
+          "typeSpec" : "Integer[]"
           },
         {
           "objectType" : "ExecPort",
@@ -6934,7 +6935,7 @@ dfgEntry {
           }
         ],
       "extDeps" : {},
-      "presetGUID" : "3EB01AA8D84195FFCC36D66B9DDBB5BE",
+      "presetGUID" : "EF6FA4DE9B0619B24F6BC223F43DC310",
       "code" : "dfgEntry {
   Integer index = 0;
   for (Integer i = 0; i <= indices.size() - 1; i++) {
@@ -6947,7 +6948,7 @@ dfgEntry {
     "fabricUtils.Converters.BoneNameArrayToIDArray" : {
       "objectType" : "Func",
       "metadata" : {
-        "uiTooltip" : "Converts an array of bone names into an array of bone indices.\n\nSupported types:\n  this: ISkeleton\n  names: String[]\n  result: Index[]\n"
+        "uiTooltip" : "Converts an array of bone names into an array of bone indices.\n\nSupported types:\n  this: ISkeleton\n  names: String[]\n  result: Integer[]\n"
         },
       "title" : "BoneNameArrayToIDArray",
       "ports" : [
@@ -6977,13 +6978,13 @@ dfgEntry {
           "name" : "result",
           "nodePortType" : "In",
           "execPortType" : "Out",
-          "typeSpec" : "Index[]"
+          "typeSpec" : "Integer[]"
           }
         ],
       "extDeps" : {
         "fabricUtils" : "*"
         },
-      "presetGUID" : "A750A14D32A93B49F08C7836E203ECAA",
+      "presetGUID" : "93BEF7A03DB91AD6DD3534F825EF9B9F",
       "code" : "require fabricUtils;
 
 dfgEntry {
@@ -7086,7 +7087,7 @@ dfgEntry {
       "objectType" : "Func",
       "metadata" : {
         "uiNodeColor" : "{\n  \"r\" : 99,\n  \"g\" : 129,\n  \"b\" : 92\n  }",
-        "uiDocUrl" : "http://docs.fabric-engine.com/FabricEngine/2.3.0/HTML/KLExtensionsGuide/Math/Xfo.html",
+        "uiDocUrl" : "http://docs.fabric-engine.com/FabricEngine/2.4.0/HTML/KLExtensionsGuide/Math/Xfo.html",
         "uiTooltip" : "Returns this xfo as a Mat44\n\n Supported by Xfo"
         },
       "title" : "ToMat44",
@@ -7209,14 +7210,15 @@ dfgEntry {
           "defaultValues" : {
             "Index[]" : [
               0
-              ]
+              ],
+            "Integer[]" : []
             },
           "execPortType" : "In",
-          "typeSpec" : "Index[]"
+          "typeSpec" : "Integer[]"
           }
         ],
       "extDeps" : {},
-      "presetGUID" : "06F77D3BEAE0712AD5940B8CEE4948BC",
+      "presetGUID" : "5D04B522B641DACB0C77A6192BCC4DBD",
       "code" : "dfgEntry {
   Integer index = 0;
   for (Integer i = 0; i <= indices.size() - 1; i++) {
@@ -7230,7 +7232,7 @@ dfgEntry {
       "objectType" : "Func",
       "metadata" : {
         "uiNodeColor" : "{\n  \"r\" : 99,\n  \"g\" : 129,\n  \"b\" : 92\n  }",
-        "uiDocUrl" : "http://docs.fabric-engine.com/FabricEngine/2.3.0/HTML/KLExtensionsGuide/Math/Vec2.html",
+        "uiDocUrl" : "http://docs.fabric-engine.com/FabricEngine/2.4.0/HTML/KLExtensionsGuide/Math/Vec2.html",
         "uiTooltip" : "Returns the inversed version of this vector\n\n Supported by Vec2,Vec2_d,Vec2_i,Vec3,Vec3_d,Vec3_i,Vec4,Vec4_d,Vec4_i,Mat22,Mat22_d,Mat22_i,Mat33,Mat33_d,Mat33_i,Mat44,Mat44_d,Mat44_i,Quat,Quat_d,Quat_i,Xfo"
         },
       "title" : "Inverse",
@@ -7313,7 +7315,7 @@ dfgEntry {
       "objectType" : "Func",
       "metadata" : {
         "uiNodeColor" : "{\n  \"r\" : 99,\n  \"g\" : 129,\n  \"b\" : 92\n  }",
-        "uiDocUrl" : "http://docs.fabric-engine.com/FabricEngine/2.3.0/HTML/KLExtensionsGuide/Math/Xfo.html",
+        "uiDocUrl" : "http://docs.fabric-engine.com/FabricEngine/2.4.0/HTML/KLExtensionsGuide/Math/Xfo.html",
         "uiTooltip" : "Sets this transform from a given Mat44\n\n Supported by Xfo"
         },
       "title" : "SetFromMat44",
@@ -8201,7 +8203,8 @@ dfgEntry {
       "code" : "require InlineDrawing;
 
 dfgEntry {
-  this.drawPolygonMeshArray(name, color, specular, specFactor, masters, transforms, indices, wireFrame, doubleSided, dummyResult, instance);
+  if(this)
+    this.drawPolygonMeshArray(name, color, specular, specFactor, masters, transforms, indices, wireFrame, doubleSided, dummyResult, instance);
 }
 "
       },
@@ -8329,7 +8332,7 @@ dfgEntry {
     "Fabric.Exts.InlineDrawing.DrawingHandle.Clear" : {
       "objectType" : "Func",
       "metadata" : {
-        "uiDocUrl" : "http://docs.fabric-engine.com/FabricEngine/2.3.0/HTML/KLExtensionsGuide/InlineDrawing/DrawingHandle.html",
+        "uiDocUrl" : "http://docs.fabric-engine.com/FabricEngine/2.4.0/HTML/KLExtensionsGuide/InlineDrawing/DrawingHandle.html",
         "uiTooltip" : "removes all contents from the DrawingHandle\n\n Supported by DrawingHandle"
         },
       "title" : "Clear",
@@ -8913,7 +8916,7 @@ dfgEntry {
     "Fabric.Exts.InlineDrawing.DrawingHandle.DrawAxesInstances" : {
       "objectType" : "Func",
       "metadata" : {
-        "uiDocUrl" : "http://docs.fabric-engine.com/FabricEngine/2.3.0/HTML/KLExtensionsGuide/InlineDrawing/DrawingHandle.html",
+        "uiDocUrl" : "http://docs.fabric-engine.com/FabricEngine/2.4.0/HTML/KLExtensionsGuide/InlineDrawing/DrawingHandle.html",
         "uiTooltip" : "helper function to draw axes at given transforms\n\n Supported by DrawingHandle"
         },
       "title" : "DrawAxesInstances",
@@ -8975,7 +8978,7 @@ dfgEntry {
       "code" : "require InlineDrawing;
 
 dfgEntry {
-  this.drawAxesInstances(name, transforms, dummyResult, instance);
+  if(this) this.drawAxesInstances(name, transforms, dummyResult, instance);
 }
 "
       },
@@ -8983,7 +8986,7 @@ dfgEntry {
       "objectType" : "Func",
       "metadata" : {
         "uiNodeColor" : "{\n  \"r\" : 99,\n  \"g\" : 129,\n  \"b\" : 92\n  }",
-        "uiDocUrl" : "http://docs.fabric-engine.com/FabricEngine/2.3.0/HTML/KLExtensionsGuide/Math/Xfo.html"
+        "uiDocUrl" : "http://docs.fabric-engine.com/FabricEngine/2.4.0/HTML/KLExtensionsGuide/Math/Xfo.html"
         },
       "title" : "Xfo[] ->",
       "ports" : [
@@ -9090,7 +9093,7 @@ dfgEntry {
       "objectType" : "Func",
       "metadata" : {
         "uiNodeColor" : "{\n  \"r\" : 99,\n  \"g\" : 129,\n  \"b\" : 92\n  }",
-        "uiDocUrl" : "http://docs.fabric-engine.com/FabricEngine/2.3.0/HTML/KLExtensionsGuide/Math/Xfo.html"
+        "uiDocUrl" : "http://docs.fabric-engine.com/FabricEngine/2.4.0/HTML/KLExtensionsGuide/Math/Xfo.html"
         },
       "title" : "-> Xfo[]",
       "ports" : [
@@ -9207,7 +9210,7 @@ dfgEntry {
       "objectType" : "Func",
       "metadata" : {
         "uiNodeColor" : "{\n  \"r\" : 99,\n  \"g\" : 129,\n  \"b\" : 92\n  }",
-        "uiDocUrl" : "http://docs.fabric-engine.com/FabricEngine/2.3.0/HTML/KLExtensionsGuide/Math/RGB.html",
+        "uiDocUrl" : "http://docs.fabric-engine.com/FabricEngine/2.4.0/HTML/KLExtensionsGuide/Math/RGB.html",
         "uiTooltip" : "Returns the product of this RGB color and a scalar\n\n Supported by RGB,RGBA,ARGB,Color,Vec2,Vec3,Vec4,Mat22,Mat33,Mat44,Quat"
         },
       "title" : "MultiplyScalar[]",

@@ -4,6 +4,42 @@
 		"selected_items":
 		[
 			[
+				"gran",
+				"grandpa"
+			],
+			[
+				"paren",
+				"parent"
+			],
+			[
+				"par",
+				"parent"
+			],
+			[
+				"new",
+				"newOrient"
+			],
+			[
+				"grand",
+				"grandpa"
+			],
+			[
+				"pare",
+				"parent"
+			],
+			[
+				"gra",
+				"granpaId"
+			],
+			[
+				"gr",
+				"grandPaId"
+			],
+			[
+				"refe",
+				"referencePose"
+			],
+			[
 				"track",
 				"trackValues"
 			],
@@ -195,6 +231,14 @@
 	},
 	"buffers":
 	[
+		{
+			"file": "/C/Users/gusta/OneDrive/Software/Portateis/FabricEngine-2.4.0-Windows-x86_64/Exts/Builtin/Characters/Skeleton.kl",
+			"settings":
+			{
+				"buffer_size": 8721,
+				"line_ending": "Windows"
+			}
+		}
 	],
 	"build_system": "",
 	"build_system_choices":
@@ -203,17 +247,17 @@
 	"build_varint": "",
 	"command_palette":
 	{
-		"height": 392.0,
-		"last_filter": "packa",
+		"height": 357.0,
+		"last_filter": "kl",
 		"selected_items":
 		[
 			[
-				"packa",
-				"Package Control: List Packages"
-			],
-			[
 				"kl",
 				"Set Syntax: KL"
+			],
+			[
+				"packa",
+				"Package Control: List Packages"
 			],
 			[
 				"mat",
@@ -236,7 +280,7 @@
 				"Set Syntax: MATLAB"
 			]
 		],
-		"width": 432.0
+		"width": 414.0
 	},
 	"console":
 	{
@@ -256,19 +300,32 @@
 	},
 	"expanded_folders":
 	[
-		"/C/Users/gusta/OneDrive/Software/Portateis/MyFabricExts/fabricUtils"
+		"/C/Users/gusta/OneDrive/Software/Portateis/MyFabricExts/fabricUtils",
+		"/C/Users/gusta/OneDrive/Software/Portateis/MyFabricExts/fabricUtils/FileIO"
 	],
 	"file_history":
 	[
+		"/C/Users/gusta/OneDrive/Academia/Doutorado/Prototipo/matlab/motionMap/collectData.m",
+		"/C/Users/gusta/OneDrive/Software/Portateis/FabricEngine-2.4.0-Windows-x86_64/Exts/Builtin/Characters/Skeleton.kl",
+		"/C/Users/gusta/OneDrive/Academia/Doutorado/Prototipo/animacao/CMU/01/01_01.bvh",
+		"/C/Users/gusta/OneDrive/Software/Portateis/MyFabricExts/fabricUtils/FileIO/BVHReader.kl",
+		"/C/Users/gusta/OneDrive/Academia/Doutorado/Prototipo/txt/nets/deepPose/xmean.txt",
+		"/C/Users/gusta/OneDrive/Academia/Doutorado/Prototipo/txt/nets/deepPose/b1.txt",
+		"/C/Users/gusta/OneDrive/Academia/Doutorado/Prototipo/txt/nets/deepPose/w1.txt",
+		"/C/Users/gusta/OneDrive/Academia/Doutorado/Prototipo/python/batchProcess_locoClips_unlabeled.py",
+		"/C/Users/gusta/OneDrive/Academia/Doutorado/Prototipo/python/batchProcess_locoClips_unlabeled1.py",
+		"/C/Users/gusta/OneDrive/Software/Portateis/FabricEngine-2.4.0-Windows-x86_64/Exts/Builtin/Characters/Pose.kl",
+		"/C/Users/gusta/OneDrive/Software/Portateis/FabricEngine-2.4.0-Windows-x86_64/Exts/Builtin/Characters/ClipPose.kl",
+		"/C/Users/gusta/OneDrive/Software/Portateis/FabricEngine-2.4.0-Windows-x86_64/Exts/Builtin/Animation/Clip.kl",
+		"/C/Users/gusta/OneDrive/Software/Portateis/FabricEngine-2.4.0-Windows-x86_64/Exts/Builtin/Characters/Character.kl",
+		"/C/Users/gusta/Downloads/cgkit-2.0.0-py2k/cgkit-2.0.0/cgkit/bvh.py",
+		"/C/Users/gusta/OneDrive/Software/Portateis/FabricEngine-2.4.0-Windows-x86_64/Exts/Builtin/FbxHelpers/FbxCharacter.kl",
 		"/C/Users/gusta/OneDrive/Software/Portateis/MyFabricExts/fabricUtils/Converters/scalarArrayToClip.kl",
 		"/C/Users/gusta/OneDrive/Software/Portateis/MyFabricExts/fabricUtils/fabricUtils.fpm.json",
 		"/C/Users/gusta/OneDrive/Software/Portateis/MyFabricExts/fabricUtils/Converters/scalarArrayToXfoArray.kl",
 		"/C/Users/gusta/OneDrive/Academia/Doutorado/Prototipo/animacao/CMU_json/06/06_01.json",
 		"/C/Users/gusta/OneDrive/Academia/Doutorado/Prototipo/matlab/motionMap/netPose1b.m",
 		"/C/Users/gusta/OneDrive/Software/Portateis/MyFabricExts/fabricUtils/Arrays/indexArrayFromRange.kl",
-		"/C/Users/gusta/OneDrive/Software/Portateis/FabricEngine-2.4.0-Windows-x86_64/Exts/Builtin/Characters/Skeleton.kl",
-		"/C/Users/gusta/OneDrive/Software/Portateis/FabricEngine-2.4.0-Windows-x86_64/Exts/Builtin/Characters/Character.kl",
-		"/C/Users/gusta/OneDrive/Academia/Doutorado/Prototipo/matlab/motionMap/collectData.m",
 		"/C/Users/gusta/OneDrive/Software/Portateis/MyFabricExts/fabricUtils/Converters/boneNameArrayToIDArray.kl",
 		"/C/Users/gusta/OneDrive/Software/Portateis/MyFabricExts/fabricUtils/Kinematics/FootstepConstraintSolver.kl",
 		"/C/Users/gusta/OneDrive/Software/Portateis/MyFabricExts/fabricUtils/Kinematics/BipedRetargetingSolver.kl",
@@ -283,7 +340,6 @@
 		"/C/Users/gusta/OneDrive/Software/Portateis/MyFabricExts/fabricUtils/Converters/xfoArrayToScalarArray.kl",
 		"/C/Users/gusta/OneDrive/Software/Portateis/MyFabricExts/fabricUtils/Converters/xfoArraytoScalarArray.kl",
 		"/C/Users/gusta/OneDrive/Academia/Doutorado/Prototipo/matlab/motionMap/deepSketch5.m",
-		"/C/Users/gusta/OneDrive/Software/Portateis/MyFabricExts/fabricUtils/FileIO/BVHReader.kl",
 		"/C/Users/gusta/OneDrive/Software/Portateis/FabricEngine-2.4.0-Windows-x86_64/Exts/Builtin/Math/RotationOrder.kl",
 		"/C/Users/gusta/OneDrive/Software/Portateis/FabricEngine-2.3.1-Windows-x86_64/Exts/Builtin/Math/RotationOrder.kl",
 		"/C/Users/gusta/Desktop/test.json",
@@ -376,18 +432,7 @@
 		"/C/Users/gusta/OneDrive/Software/Portateis/Kraken-develop/extras/launcher_scripts/windows/kraken_launcher.bat",
 		"/C/Users/gusta/OneDrive/Academia/Doutorado/Prototipo/kl/extractFeaturesFromFBX_v2.kl",
 		"/C/Users/gusta/OneDrive/Academia/Doutorado/Prototipo/animacao/dlabMotionLibrary/timelines/Antonio_Caminhada_dbn-test.json",
-		"/C/Users/gusta/OneDrive/Academia/Doutorado/Prototipo/animacao/dlabMotionLibrary/timelines/Jonathan_Caminhada_dbn-test.json",
-		"/C/Users/gusta/OneDrive/Academia/Doutorado/Prototipo/animacao/dlabMotionLibrary/timelines/Francisco_Caminhada_dbn-test.json",
-		"/C/Users/gusta/OneDrive/Software/Portateis/Kraken-develop/setup.py",
-		"/C/Users/gusta/Desktop/classificacao-atorA.json",
-		"/C/Users/gusta/Desktop/jonathan-nn.txt",
-		"/C/Users/gusta/OneDrive/Academia/Doutorado/Prototipo/matlab/v2/TestDBN.m",
-		"/C/Users/gusta/OneDrive/Academia/Doutorado/Prototipo/animacao/dlabMotionLibrary/timelines/Antonio_Caminhada_dbn-train.json",
-		"/C/Users/gusta/OneDrive/Academia/Doutorado/Prototipo/matlab/bnt/BNT/inference/online/@jtree_2TBN_inf_engine/jtree_2TBN_inf_engine.m",
-		"/C/Users/gusta/OneDrive/Academia/Doutorado/Prototipo/animacao/dlabMotionLibrary/timelines/Francisco_Caminhada_dbn-train.json",
-		"/C/Users/gusta/OneDrive/Academia/Doutorado/Prototipo/rascunho.m",
-		"/C/Users/gusta/OneDrive/Academia/Doutorado/Prototipo/animacao/dlabMotionLibrary/timelines/Francisco_Caminhada_dbn.json",
-		"/C/Users/gusta/OneDrive/Academia/Doutorado/Prototipo/animacao/dlabMotionLibrary/timelines/Francisco_Caminhada-original.json"
+		"/C/Users/gusta/OneDrive/Academia/Doutorado/Prototipo/animacao/dlabMotionLibrary/timelines/Jonathan_Caminhada_dbn-test.json"
 	],
 	"find":
 	{
@@ -413,6 +458,20 @@
 		"case_sensitive": false,
 		"find_history":
 		[
+			"'",
+			",",
+			"quat",
+			"referenceLocalPoses",
+			"refPose.tr.",
+			"recomputeHierarchy",
+			"recomput",
+			"incre",
+			"evalua",
+			"incremen",
+			"evaluate",
+			"evaluate!",
+			"length",
+			"motion",
 			"activeBones",
 			"scalarArray",
 			"indexArrayFromRange",
@@ -526,21 +585,7 @@
 			"I",
 			"i",
 			"I",
-			"i",
-			"I",
-			"i",
-			"I",
-			"i",
-			"I",
-			"i",
-			"I",
-			"i",
-			"I",
-			"i",
-			"in",
-			"this.",
-			"outOrientationIds",
-			"inOrientationIds"
+			"i"
 		],
 		"highlight": true,
 		"in_selection": false,
@@ -565,8 +610,39 @@
 	"groups":
 	[
 		{
+			"selected": 0,
 			"sheets":
 			[
+				{
+					"buffer": 0,
+					"file": "/C/Users/gusta/OneDrive/Software/Portateis/FabricEngine-2.4.0-Windows-x86_64/Exts/Builtin/Characters/Skeleton.kl",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 8721,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								0,
+								0
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/User/Sublime-KL-1.1/KL.tmLanguage",
+							"tab_size": 2,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 378.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 0,
+					"type": "text"
+				}
 			]
 		}
 	],

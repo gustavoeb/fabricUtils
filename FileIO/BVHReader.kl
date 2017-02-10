@@ -12,7 +12,7 @@ object BVHReader {
   Character character;
   private TextReader reader;
   private Integer lineCounter;
-  private String[] chRotOrd;
+  String[] chRotOrd;
 };
 
 /// \dfgPresetTitle BVHReader
@@ -213,10 +213,14 @@ function BVHReader.readNodes!() {
   while(~end) {
     tok = this.getTokens(); // get a new line
     // in case the line describes a new node, read it, and step up one hierarchy level
+    
+    // declare bone in this scope for further use
+    Bone bone();
+
     if(tok[0] == 'ROOT' || tok[0] == 'JOINT') {     
 
-      // add a new bone
-      Bone bone();
+      // set bone anew
+      bone = Bone();
       bone.name = tok[1];
       bone.parentIndex = p;
       n = n+1;
@@ -232,11 +236,20 @@ function BVHReader.readNodes!() {
       nTok = this.getTokens();
       if(nTok[0] != 'OFFSET')
         setError('Reading BVH expected OFFSET at line ' + this.lineCounter + ', but instead got: ' + nTok);
-      Xfo refPose = Xfo(Vec3(nTok[1].toScalar(), nTok[2].toScalar(), nTok[3].toScalar()));
+      Vec3 offset = Vec3(nTok[1].toScalar(), nTok[2].toScalar(), nTok[3].toScalar());
+      Xfo refPose = Xfo(offset);
       if(bone.parentIndex == -1)
         bone.referencePose = refPose;
-      else
-        bone.referencePose = refPose * this.skeleton.getBone(bone.parentIndex).referencePose;
+      else{
+        // if bone is a chain set length
+        if(this.skeleton.bones[bone.parentIndex].childIndices.size() == 0)
+          this.skeleton.bones[bone.parentIndex].length = offset.length();
+        // if bone is a hub length should be zero
+        else
+          this.skeleton.bones[bone.parentIndex].length = 0;
+        // then set xfo
+        bone.referencePose = this.skeleton.bones[bone.parentIndex].referencePose * refPose;
+      }
       
       // then we expect the channels info
       nTok = this.getTokens();
@@ -268,9 +281,19 @@ function BVHReader.readNodes!() {
         setError('Reading BVH expected { at line ' + this.lineCounter + ', but instead got: ' + nTok[0]);
       nTok = this.getTokens();
 
-      if(nTok[0] != 'OFFSET')
+      if(nTok[0] != 'OFFSET') {
         setError('Reading BVH expected OFFSET at line ' + this.lineCounter + ', but instead got: ' + nTok);
-      // STORE LENGTH
+      }
+      else {
+        Vec3 offset = Vec3(nTok[1].toScalar(), nTok[2].toScalar(), nTok[3].toScalar());
+        this.skeleton.bones[n].length = offset.length();
+        Quat quat();
+        if(~offset.equal(Vec3()))
+          quat.setFrom2Vectors(Vec3(1.0,0.0,0.0), offset.unit_safe(), true);
+        //Xfo orientation(quat);
+        //orientation = this.skeleton.bones[n].referencePose * orientation;
+        this.skeleton.bones[n].referencePose.ori = quat;
+      }
 
       nTok = this.getTokens();
       if(nTok[0] != '}')
