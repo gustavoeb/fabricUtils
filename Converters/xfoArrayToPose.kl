@@ -1,6 +1,6 @@
 require Characters;
 
-/// \dfgPresetFolder Converters
+/// \dfgPresetFolder Converters/Xfo
 /// Sets the xfos on a pose using an xfo array.
 function xfoArrayToPose(
   io IPose this,

@@ -1,6 +1,6 @@
 require Math;
 
-/// \dfgPresetFolder Converters
+/// \dfgPresetFolder Converters/Quat
 /// Converts an array of xfos into an array of scalar values.
 function Scalar[] quatToScalarArray(
 in Quat this,

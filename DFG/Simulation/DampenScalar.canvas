@@ -719,7 +719,7 @@ dfgEntry {
       "code" : "require fabricUtils;
 
 dfgEntry {
-  result = ScalarToSafeSacalar(this);
+  result = scalarToSafeSacalar(this);
 }
 "
       }

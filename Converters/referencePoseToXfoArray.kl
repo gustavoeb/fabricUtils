@@ -1,6 +1,6 @@
 require Characters;
 
-/// \dfgPresetFolder Converters
+/// \dfgPresetFolder Converters/Pose
 /// Gets the skeleton's reference pose into an array of Xfos.
 function Xfo[] referencePoseToXfoArray(
   in ISkeleton this

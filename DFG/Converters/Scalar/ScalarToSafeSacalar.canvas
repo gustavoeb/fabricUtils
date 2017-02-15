@@ -31,11 +31,11 @@
   "extDeps" : {
     "fabricUtils" : "*"
     },
-  "presetGUID" : "5F5A68353319F096CC78E25169C4A869",
+  "presetGUID" : "7E9FE60C4BC1C7879C50A58DD38CAB79",
   "code" : "require fabricUtils;
 
 dfgEntry {
-  result = ScalarToSafeSacalar(this);
+  result = scalarToSafeSacalar(this);
 }
 "
   }

@@ -1,6 +1,6 @@
 require Math;
 
-/// \dfgPresetFolder Converters
+/// \dfgPresetFolder Converters/Scalar
 /// Converts an array of scalar values into an array of xfos.
 function Xfo[] scalarArrayToXfoArray(
 in Scalar this[],

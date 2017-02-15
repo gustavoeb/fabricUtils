@@ -813,7 +813,7 @@ dfgEntry {
       "code" : "require fabricUtils;
 
 dfgEntry {
-  result = QuatToSafeQuat(this);
+  result = quatToSafeQuat(this);
 }
 "
       }

@@ -1,0 +1,390 @@
+{
+  "objectType" : "Graph",
+  "metadata" : {
+    "uiGraphZoom" : "{\n  \"value\" : 1.0\n  }",
+    "uiGraphPan" : "{\n  \"x\" : 136.4725103378296,\n  \"y\" : -595.4384155273438\n  }"
+    },
+  "title" : "FilterArrayByBoneName",
+  "ports" : [
+    {
+      "objectType" : "ExecPort",
+      "name" : "exec",
+      "nodePortType" : "IO",
+      "defaultValues" : {
+        "Execute" : {}
+        },
+      "execPortType" : "IO",
+      "typeSpec" : "Execute"
+      },
+    {
+      "objectType" : "ExecPort",
+      "name" : "array",
+      "nodePortType" : "Out",
+      "defaultValues" : {
+        "Xfo[]" : []
+        },
+      "execPortType" : "In",
+      "typeSpec" : "$TYPE$"
+      },
+    {
+      "objectType" : "ExecPort",
+      "name" : "skeleton",
+      "nodePortType" : "Out",
+      "defaultValues" : {
+        "ISkeleton" : null
+        },
+      "execPortType" : "In"
+      },
+    {
+      "objectType" : "ExecPort",
+      "name" : "names",
+      "nodePortType" : "Out",
+      "defaultValues" : {
+        "String" : "Spine,Spine1,Neck,Neck1,Head"
+        },
+      "execPortType" : "In",
+      "typeSpec" : "String"
+      },
+    {
+      "objectType" : "ExecPort",
+      "name" : "result",
+      "nodePortType" : "In",
+      "defaultValues" : {
+        "Xfo[]" : []
+        },
+      "execPortType" : "Out",
+      "typeSpec" : "$TYPE$"
+      }
+    ],
+  "extDeps" : {},
+  "presetGUID" : "1594FEF4D6C8F8DDE17D8F86111B742E",
+  "nodes" : [
+    {
+      "objectType" : "Inst",
+      "metadata" : {
+        "uiGraphPos" : "{\"x\":141.166409016,\"y\":859.04016161}"
+        },
+      "name" : "BoneNameArrayToIDArray_1",
+      "ports" : [
+        {
+          "objectType" : "InstPort",
+          "name" : "exec",
+          "nodePortType" : "IO"
+          },
+        {
+          "objectType" : "InstPort",
+          "name" : "this",
+          "nodePortType" : "In"
+          },
+        {
+          "objectType" : "InstPort",
+          "name" : "names",
+          "nodePortType" : "In"
+          },
+        {
+          "objectType" : "InstPort",
+          "name" : "result",
+          "nodePortType" : "Out"
+          }
+        ],
+      "executable" : "fabricUtils.Converters.BoneNameArrayToIDArray",
+      "presetGUID" : "93BEF7A03DB91AD6DD3534F825EF9B9F"
+      },
+    {
+      "objectType" : "Inst",
+      "metadata" : {
+        "uiGraphPos" : "{\"x\":509.479146481,\"y\":809.8366699220001}"
+        },
+      "name" : "GetSubArray_1",
+      "ports" : [
+        {
+          "objectType" : "InstPort",
+          "name" : "exec",
+          "nodePortType" : "IO"
+          },
+        {
+          "objectType" : "InstPort",
+          "name" : "array",
+          "nodePortType" : "In"
+          },
+        {
+          "objectType" : "InstPort",
+          "name" : "indices",
+          "nodePortType" : "In"
+          },
+        {
+          "objectType" : "InstPort",
+          "name" : "result",
+          "nodePortType" : "Out"
+          }
+        ],
+      "executable" : "fabricUtils.Arrays.GetSubArray",
+      "presetGUID" : "EF6FA4DE9B0619B24F6BC223F43DC310"
+      },
+    {
+      "objectType" : "Inst",
+      "metadata" : {
+        "uiGraphPos" : "{\"x\":390.086692333,\"y\":876.047960281}"
+        },
+      "name" : "Cache_2",
+      "ports" : [
+        {
+          "objectType" : "InstPort",
+          "name" : "exec",
+          "nodePortType" : "IO"
+          },
+        {
+          "objectType" : "InstPort",
+          "name" : "value",
+          "nodePortType" : "In"
+          }
+        ],
+      "executable" : "Fabric.Core.Data.Cache",
+      "presetGUID" : "D903AFD981FE9214C69943F542D5FD60"
+      },
+    {
+      "objectType" : "Inst",
+      "metadata" : {
+        "uiGraphPos" : "{\"x\":-29.4241763353,\"y\":849.482575536}"
+        },
+      "name" : "Split_1",
+      "ports" : [
+        {
+          "objectType" : "InstPort",
+          "name" : "exec",
+          "nodePortType" : "IO"
+          },
+        {
+          "objectType" : "InstPort",
+          "name" : "this",
+          "nodePortType" : "In",
+          "defaultValues" : {
+            "String" : "Spine,Spine1,Neck,Neck1,Head"
+            }
+          },
+        {
+          "objectType" : "InstPort",
+          "name" : "separator",
+          "nodePortType" : "In",
+          "defaultValues" : {
+            "String" : ","
+            }
+          },
+        {
+          "objectType" : "InstPort",
+          "name" : "result",
+          "nodePortType" : "Out"
+          }
+        ],
+      "executable" : "Fabric.Exts.Util.String.Split",
+      "presetGUID" : "E09CFC151D7658D0FD0EAA6DB4FFB18B"
+      }
+    ],
+  "connections" : {
+    "array" : [
+      "GetSubArray_1.array"
+      ],
+    "skeleton" : [
+      "BoneNameArrayToIDArray_1.this"
+      ],
+    "names" : [
+      "Split_1.this"
+      ],
+    "BoneNameArrayToIDArray_1.result" : [
+      "Cache_2.value"
+      ],
+    "GetSubArray_1.result" : [
+      "result"
+      ],
+    "Cache_2.value" : [
+      "GetSubArray_1.indices"
+      ],
+    "Split_1.result" : [
+      "BoneNameArrayToIDArray_1.names"
+      ]
+    },
+  "requiredPresets" : {
+    "fabricUtils.Converters.BoneNameArrayToIDArray" : {
+      "objectType" : "Func",
+      "metadata" : {
+        "uiTooltip" : "Converts an array of bone names into an array of bone indices.\n\nSupported types:\n  this: ISkeleton\n  names: String[]\n  result: Integer[]\n"
+        },
+      "title" : "BoneNameArrayToIDArray",
+      "ports" : [
+        {
+          "objectType" : "ExecPort",
+          "name" : "exec",
+          "nodePortType" : "IO",
+          "execPortType" : "IO",
+          "typeSpec" : "Execute"
+          },
+        {
+          "objectType" : "ExecPort",
+          "name" : "this",
+          "nodePortType" : "Out",
+          "execPortType" : "In",
+          "typeSpec" : "ISkeleton"
+          },
+        {
+          "objectType" : "ExecPort",
+          "name" : "names",
+          "nodePortType" : "Out",
+          "execPortType" : "In",
+          "typeSpec" : "String[]"
+          },
+        {
+          "objectType" : "ExecPort",
+          "name" : "result",
+          "nodePortType" : "In",
+          "execPortType" : "Out",
+          "typeSpec" : "Integer[]"
+          }
+        ],
+      "extDeps" : {
+        "fabricUtils" : "*"
+        },
+      "presetGUID" : "93BEF7A03DB91AD6DD3534F825EF9B9F",
+      "code" : "require fabricUtils;
+
+dfgEntry {
+  result = boneNameArrayToIDArray(this, names);
+}
+"
+      },
+    "fabricUtils.Arrays.GetSubArray" : {
+      "objectType" : "Func",
+      "title" : "GetSubArray",
+      "ports" : [
+        {
+          "objectType" : "ExecPort",
+          "name" : "exec",
+          "nodePortType" : "IO",
+          "defaultValues" : {
+            "Execute" : {}
+            },
+          "execPortType" : "IO",
+          "typeSpec" : "Execute"
+          },
+        {
+          "objectType" : "ExecPort",
+          "name" : "array",
+          "nodePortType" : "Out",
+          "defaultValues" : {
+            "Xfo[]" : []
+            },
+          "execPortType" : "In",
+          "typeSpec" : "$TYPE$"
+          },
+        {
+          "objectType" : "ExecPort",
+          "name" : "indices",
+          "nodePortType" : "Out",
+          "defaultValues" : {
+            "Index[]" : [],
+            "Integer[]" : []
+            },
+          "execPortType" : "In",
+          "typeSpec" : "Integer[]"
+          },
+        {
+          "objectType" : "ExecPort",
+          "name" : "result",
+          "nodePortType" : "In",
+          "defaultValues" : {
+            "Xfo[]" : []
+            },
+          "execPortType" : "Out",
+          "typeSpec" : "$TYPE$"
+          }
+        ],
+      "extDeps" : {},
+      "presetGUID" : "EF6FA4DE9B0619B24F6BC223F43DC310",
+      "code" : "dfgEntry {
+  Integer index = 0;
+  for (Integer i = 0; i <= indices.size() - 1; i++) {
+    index = indices[i];
+    result.push(array[index]);
+  }
+}
+"
+      },
+    "Fabric.Core.Data.Cache" : {
+      "objectType" : "Func",
+      "metadata" : {
+        "uiNodeColor" : "{\n  \"r\" : 214,\n  \"g\" : 191,\n  \"b\" : 103\n  }",
+        "uiAlwaysShowDaisyChainPorts" : "true",
+        "uiHeaderColor" : "{\n  \"r\" : 188,\n  \"g\" : 129,\n  \"b\" : 83\n  }"
+        },
+      "title" : "Cache",
+      "cacheRule" : "always",
+      "ports" : [
+        {
+          "objectType" : "ExecPort",
+          "name" : "exec",
+          "nodePortType" : "IO",
+          "execPortType" : "IO",
+          "typeSpec" : "Execute"
+          },
+        {
+          "objectType" : "ExecPort",
+          "name" : "value",
+          "nodePortType" : "Out",
+          "execPortType" : "In",
+          "typeSpec" : "$TYPE$"
+          }
+        ],
+      "extDeps" : {},
+      "presetGUID" : "D903AFD981FE9214C69943F542D5FD60",
+      "code" : "dfgEntry {
+}
+"
+      },
+    "Fabric.Exts.Util.String.Split" : {
+      "objectType" : "Func",
+      "metadata" : {
+        "uiTooltip" : "splitting this string by a given separator\n\n Supported by String"
+        },
+      "title" : "Split",
+      "ports" : [
+        {
+          "objectType" : "ExecPort",
+          "name" : "exec",
+          "nodePortType" : "IO",
+          "execPortType" : "IO",
+          "typeSpec" : "Execute"
+          },
+        {
+          "objectType" : "ExecPort",
+          "name" : "this",
+          "nodePortType" : "Out",
+          "execPortType" : "In",
+          "typeSpec" : "String"
+          },
+        {
+          "objectType" : "ExecPort",
+          "name" : "separator",
+          "nodePortType" : "Out",
+          "execPortType" : "In",
+          "typeSpec" : "String"
+          },
+        {
+          "objectType" : "ExecPort",
+          "name" : "result",
+          "nodePortType" : "In",
+          "execPortType" : "Out",
+          "typeSpec" : "String[]"
+          }
+        ],
+      "extDeps" : {
+        "Util" : "*"
+        },
+      "presetGUID" : "E09CFC151D7658D0FD0EAA6DB4FFB18B",
+      "code" : "require Util;
+
+dfgEntry {
+  result = this.split(separator);
+}
+"
+      }
+    }
+  }

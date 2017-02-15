@@ -1,6 +1,6 @@
 require Characters;
 
-/// \dfgPresetFolder Converters
+/// \dfgPresetFolder Converters/Bone
 /// Converts an array of bone names into an array of bone indices.
 function Integer[] boneIDArrayToParentIDArray(
   in ISkeleton this,

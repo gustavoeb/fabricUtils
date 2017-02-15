@@ -1,4 +1,4 @@
-/// \dfgPresetFolder Converters
+/// \dfgPresetFolder Converters/Scalar
 function Clip scalarArrayToClip(Scalar this[], Pose pose, Integer activeBones[]) {
   Skeleton charSkel = pose.skeleton;
   Clip clip();

@@ -1,6 +1,6 @@
 require Math;
 
-/// \dfgPresetFolder Converters
+/// \dfgPresetFolder Converters/Vec3
 /// Converts an array of xfos into an array of scalar values.
 function Scalar[] vec3ToScalarArray(
 in Vec3 this,

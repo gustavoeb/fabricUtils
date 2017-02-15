@@ -2,9 +2,9 @@
 {
   "objectType" : "Func",
   "metadata" : {
-    "uiTooltip" : "Returns a new Vec3 with NaNs removed.\n\nSupported types:\n  this: Quat\n  result: Quat\n"
+    "uiTooltip" : "Converts a skeleton's pose to an array of Xfos. Returns Xfos in local and global spaces.\n\nSupported types:\n  this: IPose\n  globalSpace: Boolean\n  result: Xfo[String]\n"
     },
-  "title" : "QuatToSafeQuat",
+  "title" : "PoseToXfoNamedArray",
   "ports" : [
     {
       "objectType" : "ExecPort",
@@ -15,33 +15,37 @@
       },
     {
       "objectType" : "ExecPort",
-      "metadata" : {
-        "uiColor" : "{\n  \"r\" : 0,\n  \"g\" : 191,\n  \"b\" : 232\n  }"
-        },
       "name" : "this",
       "nodePortType" : "Out",
       "execPortType" : "In",
-      "typeSpec" : "Quat"
+      "typeSpec" : "IPose"
+      },
+    {
+      "objectType" : "ExecPort",
+      "name" : "globalSpace",
+      "nodePortType" : "Out",
+      "execPortType" : "In",
+      "typeSpec" : "Boolean"
       },
     {
       "objectType" : "ExecPort",
       "metadata" : {
-        "uiColor" : "{\n  \"r\" : 0,\n  \"g\" : 191,\n  \"b\" : 232\n  }"
+        "uiColor" : "{\n  \"r\" : 249,\n  \"g\" : 157,\n  \"b\" : 28\n  }"
         },
       "name" : "result",
       "nodePortType" : "In",
       "execPortType" : "Out",
-      "typeSpec" : "Quat"
+      "typeSpec" : "Xfo[String]"
       }
     ],
   "extDeps" : {
     "fabricUtils" : "*"
     },
-  "presetGUID" : "3BA00BCD286808C813FCA24BA35B037E",
+  "presetGUID" : "CB0587FAF1E7A980A904878E18442E39",
   "code" : "require fabricUtils;
 
 dfgEntry {
-  result = QuatToSafeQuat(this);
+  result = poseToXfoNamedArray(this, globalSpace);
 }
 "
   }
