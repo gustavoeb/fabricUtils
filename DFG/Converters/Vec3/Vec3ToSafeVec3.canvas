@@ -1,4 +1,3 @@
-// Created by kl2dfg (processFunction)
 {
   "objectType" : "Func",
   "metadata" : {
@@ -43,5 +42,6 @@
 dfgEntry {
   result = Vec3ToSafeVec3(this);
 }
-"
+",
+  "requiredPresets" : {}
   }
