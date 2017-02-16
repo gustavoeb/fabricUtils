@@ -1,0 +1,46 @@
+{
+  "version": "0.0.3",
+  "code": [
+    // classes
+    
+    // functions
+    "Animation/Clip.kl",
+    "Animation/KeyframeTrackSet.kl",
+
+    "Arrays/indexArrayFromRange.kl",
+
+  	"Characters/getAllDeformedMesh.kl",
+
+    "Converters/boneIDArrayToParentIDArray.kl",
+    "Converters/boneNameArrayToIDArray.kl",
+  	"Converters/poseToXfoArray.kl",
+    "Converters/poseToNamedXfoArray.kl",
+    "Converters/quatStringToXfoArray.kl",
+    "Converters/quatToSafeQuat.kl",
+    "Converters/quatToScalarArray.kl",
+  	"Converters/referencePoseToXfoArray.kl",
+    "Converters/scalarArrayToClip.kl",
+    "Converters/scalarArrayToXfoArray.kl",
+    "Converters/scalarToSafeScalar.kl",
+    "Converters/vec3ToSafeVec3.kl",
+    "Converters/vec3ToScalarArray.kl",
+    "Converters/xfoArrayToPose.kl",
+    "Converters/xfoArrayToQuatString.kl",
+    "Converters/xfoArrayToScalarArray.kl",
+
+    "FileIO/getClipPoseFromQuatCSV.kl",
+    "FileIO/saveClipToJSON.kl",
+    "FileIO/BVHReader.kl",
+
+    "Kinematics/BipedRetargetingSolver.kl"
+    "Kinematics/FootstepConstraintSolver.kl"
+
+    // other
+
+    ],
+    
+  "dfgPresets": {
+    "dir": "DFG",
+    "presetPath": "fabricUtils"
+    }
+}
