@@ -3,8 +3,15 @@
   "metadata" : {
     "uiTextColor" : "{\n  \"r\" : 20,\n  \"g\" : 20,\n  \"b\" : 20\n  }",
     "uiNodeColor" : "{\n  \"r\" : 121,\n  \"g\" : 134,\n  \"b\" : 143\n  }",
+    "timeline_start" : "1",
     "uiGraphZoom" : "{\n  \"value\" : 0.9167706370353699\n  }",
+    "timeline_loopMode" : "1",
+    "timeline_simMode" : "0",
+    "camera_mat44" : "{\n  \"row0\" : {\n    \"x\" : 0.7999999523162842,\n    \"y\" : -0.2228344082832336,\n    \"z\" : 0.5570860505104065,\n    \"t\" : 30\n    },\n  \"row1\" : {\n    \"x\" : -1.490116119384766e-08,\n    \"y\" : 0.9284766912460327,\n    \"z\" : 0.3713906705379486,\n    \"t\" : 20\n    },\n  \"row2\" : {\n    \"x\" : -0.6000000834465027,\n    \"y\" : -0.2971125543117523,\n    \"z\" : 0.7427813410758972,\n    \"t\" : 40\n    },\n  \"row3\" : {\n    \"x\" : 0,\n    \"y\" : 0,\n    \"z\" : 0,\n    \"t\" : 1\n    }\n  }",
     "uiTooltip" : "Blends the current value with an average of previous values, by a certain factor. A factor of 0 means only previous values will be used, a factor of 1 means only current values will be used. When resetting the node the first value is used as the average of all previous values.",
+    "timeline_current" : "1",
+    "camera_focalDistance" : "53.85164642333984",
+    "timeline_end" : "250",
     "uiGraphPan" : "{\n  \"x\" : -369.789897568844,\n  \"y\" : -31.19208071618232\n  }"
     },
   "title" : "DampenScalar",
@@ -36,7 +43,6 @@
       },
     {
       "objectType" : "ExecPort",
-      "metadata" : {},
       "name" : "factor",
       "nodePortType" : "Out",
       "defaultValues" : {
@@ -113,7 +119,7 @@
     {
       "objectType" : "Get",
       "metadata" : {
-        "uiGraphPos" : "{\"x\":449.620640397,\"y\":363.480985641}"
+        "uiGraphPos" : "{\"x\":424.532480597,\"y\":362.390202165}"
         },
       "name" : "get",
       "ports" : [
@@ -191,35 +197,9 @@
       "dataType" : "Scalar"
       },
     {
-      "objectType" : "Inst",
-      "metadata" : {
-        "uiGraphPos" : "{\"x\":591.6205793619999,\"y\":378.752011538}"
-        },
-      "name" : "ScalarToSafeSacalar_1",
-      "ports" : [
-        {
-          "objectType" : "InstPort",
-          "name" : "exec",
-          "nodePortType" : "IO"
-          },
-        {
-          "objectType" : "InstPort",
-          "name" : "this",
-          "nodePortType" : "In"
-          },
-        {
-          "objectType" : "InstPort",
-          "name" : "result",
-          "nodePortType" : "Out"
-          }
-        ],
-      "executable" : "fabricUtils.Converters.ScalarToSafeSacalar",
-      "presetGUID" : "5F5A68353319F096CC78E25169C4A869"
-      },
-    {
       "objectType" : "Set",
       "metadata" : {
-        "uiGraphPos" : "{\"x\":1259.71142578,\"y\":415.838867188}"
+        "uiGraphPos" : "{\"x\":1303.34271908,\"y\":419.11122334}"
         },
       "name" : "set",
       "ports" : [
@@ -234,9 +214,9 @@
     {
       "objectType" : "Inst",
       "metadata" : {
-        "uiGraphPos" : "{\"x\":1073.71142578,\"y\":415.838867188}"
+        "uiGraphPos" : "{\"x\":573.524341106,\"y\":375.439853549}"
         },
-      "name" : "ScalarToSafeSacalar_2",
+      "name" : "ScalarToSafeSacalar_3",
       "ports" : [
         {
           "objectType" : "InstPort",
@@ -254,8 +234,34 @@
           "nodePortType" : "Out"
           }
         ],
-      "executable" : "fabricUtils.Converters.ScalarToSafeSacalar",
-      "presetGUID" : "5F5A68353319F096CC78E25169C4A869"
+      "executable" : "fabricUtils.Converters.Scalar.ScalarToSafeSacalar",
+      "presetGUID" : "7E9FE60C4BC1C7879C50A58DD38CAB79"
+      },
+    {
+      "objectType" : "Inst",
+      "metadata" : {
+        "uiGraphPos" : "{\"x\":1089.4661361,\"y\":400.527816772}"
+        },
+      "name" : "ScalarToSafeSacalar_4",
+      "ports" : [
+        {
+          "objectType" : "InstPort",
+          "name" : "exec",
+          "nodePortType" : "IO"
+          },
+        {
+          "objectType" : "InstPort",
+          "name" : "this",
+          "nodePortType" : "In"
+          },
+        {
+          "objectType" : "InstPort",
+          "name" : "result",
+          "nodePortType" : "Out"
+          }
+        ],
+      "executable" : "fabricUtils.Converters.Scalar.ScalarToSafeSacalar",
+      "presetGUID" : "7E9FE60C4BC1C7879C50A58DD38CAB79"
       }
     ],
   "connections" : {
@@ -270,316 +276,25 @@
       "If.cond"
       ],
     "If.result" : [
-      "ScalarToSafeSacalar_2.this"
+      "ScalarToSafeSacalar_4.this"
       ],
     "get.value" : [
-      "ScalarToSafeSacalar_1.this"
+      "ScalarToSafeSacalar_3.this"
       ],
     "LinearInterpolate_1.result" : [
       "If.if_false"
       ],
-    "ScalarToSafeSacalar_1.result" : [
-      "LinearInterpolate_1.this"
-      ],
     "set.value" : [
       "result"
       ],
-    "ScalarToSafeSacalar_2.result" : [
+    "ScalarToSafeSacalar_3.result" : [
+      "LinearInterpolate_1.this"
+      ],
+    "ScalarToSafeSacalar_4.result" : [
       "set.value"
       ]
     },
   "requiredPresets" : {
-    "fabricUtils.Simulation.DampenScalar" : {
-      "objectType" : "Graph",
-      "metadata" : {
-        "uiTextColor" : "{\n  \"r\" : 20,\n  \"g\" : 20,\n  \"b\" : 20\n  }",
-        "uiNodeColor" : "{\n  \"r\" : 121,\n  \"g\" : 134,\n  \"b\" : 143\n  }",
-        "uiGraphZoom" : "{\n  \"value\" : 0.9167706370353699\n  }",
-        "uiTooltip" : "Blends the current value with an average of previous values, by a certain factor. A factor of 0 means only previous values will be used, a factor of 1 means only current values will be used. When resetting the node the first value is used as the average of all previous values.",
-        "uiGraphPan" : "{\n  \"x\" : -369.789897568844,\n  \"y\" : -31.19208071618232\n  }"
-        },
-      "title" : "DampenScalar",
-      "ports" : [
-        {
-          "objectType" : "ExecPort",
-          "name" : "exec",
-          "nodePortType" : "IO",
-          "defaultValues" : {
-            "Execute" : {}
-            },
-          "execPortType" : "IO",
-          "typeSpec" : "Execute"
-          },
-        {
-          "objectType" : "ExecPort",
-          "name" : "value",
-          "nodePortType" : "Out",
-          "defaultValues" : {
-            "Vec3" : {
-              "x" : 0,
-              "y" : 0,
-              "z" : 0
-              },
-            "Scalar" : 0
-            },
-          "execPortType" : "In",
-          "typeSpec" : "Scalar"
-          },
-        {
-          "objectType" : "ExecPort",
-          "metadata" : {},
-          "name" : "factor",
-          "nodePortType" : "Out",
-          "defaultValues" : {
-            "Scalar" : 0.0333000011742115
-            },
-          "execPortType" : "In",
-          "typeSpec" : "Scalar"
-          },
-        {
-          "objectType" : "ExecPort",
-          "name" : "reset",
-          "nodePortType" : "Out",
-          "defaultValues" : {
-            "Boolean" : false
-            },
-          "execPortType" : "In",
-          "typeSpec" : "Boolean"
-          },
-        {
-          "objectType" : "ExecPort",
-          "name" : "result",
-          "nodePortType" : "In",
-          "defaultValues" : {
-            "Vec3" : {
-              "x" : 0,
-              "y" : 0,
-              "z" : 0
-              },
-            "Scalar" : 0
-            },
-          "execPortType" : "Out",
-          "typeSpec" : "Scalar"
-          }
-        ],
-      "extDeps" : {},
-      "presetGUID" : "5E7AB7BB4A75DB06FAA8FCB0DBD99B5D",
-      "nodes" : [
-        {
-          "objectType" : "Inst",
-          "metadata" : {
-            "uiGraphPos" : "{\"x\":950.711425781,\"y\":415.838867188}"
-            },
-          "name" : "If",
-          "ports" : [
-            {
-              "objectType" : "InstPort",
-              "name" : "exec",
-              "nodePortType" : "IO"
-              },
-            {
-              "objectType" : "InstPort",
-              "name" : "cond",
-              "nodePortType" : "In"
-              },
-            {
-              "objectType" : "InstPort",
-              "name" : "if_true",
-              "nodePortType" : "In"
-              },
-            {
-              "objectType" : "InstPort",
-              "name" : "if_false",
-              "nodePortType" : "In"
-              },
-            {
-              "objectType" : "InstPort",
-              "name" : "result",
-              "nodePortType" : "Out"
-              }
-            ],
-          "executable" : "Fabric.Core.Control.If",
-          "presetGUID" : "3182A478A21643455D549E483D35F831"
-          },
-        {
-          "objectType" : "Get",
-          "metadata" : {
-            "uiGraphPos" : "{\"x\":449.620640397,\"y\":363.480985641}"
-            },
-          "name" : "get",
-          "ports" : [
-            {
-              "objectType" : "GetPort",
-              "name" : "value",
-              "nodePortType" : "Out"
-              }
-            ],
-          "varPath" : "valueVar"
-          },
-        {
-          "objectType" : "Inst",
-          "metadata" : {
-            "uiGraphPos" : "{\"x\":780.893057585,\"y\":419.111253858}"
-            },
-          "name" : "LinearInterpolate_1",
-          "ports" : [
-            {
-              "objectType" : "InstPort",
-              "name" : "exec",
-              "nodePortType" : "IO"
-              },
-            {
-              "objectType" : "InstPort",
-              "name" : "this",
-              "nodePortType" : "In",
-              "defaultValues" : {
-                "Vec3" : {
-                  "x" : 0,
-                  "y" : 1,
-                  "z" : 0
-                  }
-                }
-              },
-            {
-              "objectType" : "InstPort",
-              "name" : "other",
-              "nodePortType" : "In",
-              "defaultValues" : {
-                "Vec3" : {
-                  "x" : 1,
-                  "y" : 0,
-                  "z" : 0
-                  }
-                }
-              },
-            {
-              "objectType" : "InstPort",
-              "name" : "t",
-              "nodePortType" : "In"
-              },
-            {
-              "objectType" : "InstPort",
-              "name" : "result",
-              "nodePortType" : "Out"
-              }
-            ],
-          "executable" : "Fabric.Exts.Math.Func.LinearInterpolate",
-          "presetGUID" : "12CF7203114B81451A5EEC920610EDA9"
-          },
-        {
-          "objectType" : "Var",
-          "metadata" : {
-            "uiGraphPos" : "{\"x\":911.707760572,\"y\":308.121762156}"
-            },
-          "name" : "valueVar",
-          "ports" : [
-            {
-              "objectType" : "VarPort",
-              "name" : "value",
-              "nodePortType" : "IO"
-              }
-            ],
-          "dataType" : "Scalar"
-          },
-        {
-          "objectType" : "Inst",
-          "metadata" : {
-            "uiGraphPos" : "{\"x\":591.6205793619999,\"y\":378.752011538}"
-            },
-          "name" : "ScalarToSafeSacalar_1",
-          "ports" : [
-            {
-              "objectType" : "InstPort",
-              "name" : "exec",
-              "nodePortType" : "IO"
-              },
-            {
-              "objectType" : "InstPort",
-              "name" : "this",
-              "nodePortType" : "In"
-              },
-            {
-              "objectType" : "InstPort",
-              "name" : "result",
-              "nodePortType" : "Out"
-              }
-            ],
-          "executable" : "fabricUtils.Converters.ScalarToSafeSacalar",
-          "presetGUID" : "5F5A68353319F096CC78E25169C4A869"
-          },
-        {
-          "objectType" : "Set",
-          "metadata" : {
-            "uiGraphPos" : "{\"x\":1259.71142578,\"y\":415.838867188}"
-            },
-          "name" : "set",
-          "ports" : [
-            {
-              "objectType" : "SetPort",
-              "name" : "value",
-              "nodePortType" : "IO"
-              }
-            ],
-          "varPath" : "valueVar"
-          },
-        {
-          "objectType" : "Inst",
-          "metadata" : {
-            "uiGraphPos" : "{\"x\":1073.71142578,\"y\":415.838867188}"
-            },
-          "name" : "ScalarToSafeSacalar_2",
-          "ports" : [
-            {
-              "objectType" : "InstPort",
-              "name" : "exec",
-              "nodePortType" : "IO"
-              },
-            {
-              "objectType" : "InstPort",
-              "name" : "this",
-              "nodePortType" : "In"
-              },
-            {
-              "objectType" : "InstPort",
-              "name" : "result",
-              "nodePortType" : "Out"
-              }
-            ],
-          "executable" : "fabricUtils.Converters.ScalarToSafeSacalar",
-          "presetGUID" : "5F5A68353319F096CC78E25169C4A869"
-          }
-        ],
-      "connections" : {
-        "value" : [
-          "LinearInterpolate_1.other",
-          "If.if_true"
-          ],
-        "factor" : [
-          "LinearInterpolate_1.t"
-          ],
-        "reset" : [
-          "If.cond"
-          ],
-        "If.result" : [
-          "ScalarToSafeSacalar_2.this"
-          ],
-        "get.value" : [
-          "ScalarToSafeSacalar_1.this"
-          ],
-        "LinearInterpolate_1.result" : [
-          "If.if_false"
-          ],
-        "ScalarToSafeSacalar_1.result" : [
-          "LinearInterpolate_1.this"
-          ],
-        "set.value" : [
-          "result"
-          ],
-        "ScalarToSafeSacalar_2.result" : [
-          "set.value"
-          ]
-        }
-      },
     "Fabric.Core.Control.If" : {
       "objectType" : "Func",
       "title" : "If",
@@ -659,6 +374,9 @@ dfgEntry {
           },
         {
           "objectType" : "ExecPort",
+          "metadata" : {
+            "uiRange" : "(0, 1)"
+            },
           "name" : "t",
           "nodePortType" : "Out",
           "execPortType" : "In",
@@ -683,7 +401,7 @@ dfgEntry {
 }
 "
       },
-    "fabricUtils.Converters.ScalarToSafeSacalar" : {
+    "fabricUtils.Converters.Scalar.ScalarToSafeSacalar" : {
       "objectType" : "Func",
       "metadata" : {
         "uiTooltip" : "Returns a new Vec3 with NaNs removed.\n\nSupported types:\n  this: Scalar\n  result: Scalar\n"
@@ -715,7 +433,7 @@ dfgEntry {
       "extDeps" : {
         "fabricUtils" : "*"
         },
-      "presetGUID" : "5F5A68353319F096CC78E25169C4A869",
+      "presetGUID" : "7E9FE60C4BC1C7879C50A58DD38CAB79",
       "code" : "require fabricUtils;
 
 dfgEntry {
@@ -723,5 +441,23 @@ dfgEntry {
 }
 "
       }
-    }
+    },
+  "args" : [
+    {
+      "type" : "Scalar",
+      "value" : null
+      },
+    {
+      "type" : "Scalar",
+      "value" : null
+      },
+    {
+      "type" : "Boolean",
+      "value" : null
+      },
+    {
+      "type" : "Scalar",
+      "value" : null
+      }
+    ]
   }

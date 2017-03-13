@@ -1,8 +1,8 @@
 {
   "objectType" : "Graph",
   "metadata" : {
-    "uiGraphZoom" : "{\n  \"value\" : 0.7178962826728821\n  }",
-    "uiGraphPan" : "{\n  \"x\" : -471.4117431640625,\n  \"y\" : -424.9558715820313\n  }"
+    "uiGraphZoom" : "{\n  \"value\" : 0.6050596237182617\n  }",
+    "uiGraphPan" : "{\n  \"x\" : -147.4377288818359,\n  \"y\" : -471.5303955078125\n  }"
     },
   "title" : "DrawCharacterBones",
   "ports" : [
@@ -75,8 +75,11 @@
       "typeSpec" : "InlineInstance"
       }
     ],
-  "extDeps" : {},
-  "presetGUID" : "65299BFEF624E77EEF009ED7D815D929",
+  "extDeps" : {
+    "Characters" : "*",
+    "Geometry" : "*"
+    },
+  "presetGUID" : "1AC03A9F29C1109787843C4C4A0B63F1",
   "nodes" : [
     {
       "objectType" : "Inst",
@@ -154,8 +157,8 @@
             }
           ],
         "extDeps" : {
-          "Character" : "*",
-          "PolygonMesh" : "*"
+          "Characters" : "*",
+          "Geometry" : "*"
           },
         "code" : "dfgEntry {
   for(Size i=0; i<skeleton.getNumBones(); i++) {
@@ -241,40 +244,6 @@
         ],
       "executable" : "Fabric.Exts.InlineDrawing.DrawingHandle.DrawPolygonMeshArray",
       "presetGUID" : "C5D3967A103CAE41AF99EA35D2D636A8"
-      },
-    {
-      "objectType" : "Inst",
-      "metadata" : {
-        "uiGraphPos" : "{\"x\":722.001950741,\"y\":1308.95052052}"
-        },
-      "name" : "PoseToXfoArray_1",
-      "ports" : [
-        {
-          "objectType" : "InstPort",
-          "name" : "exec",
-          "nodePortType" : "IO"
-          },
-        {
-          "objectType" : "InstPort",
-          "name" : "this",
-          "nodePortType" : "In"
-          },
-        {
-          "objectType" : "InstPort",
-          "name" : "globalSpace",
-          "nodePortType" : "In",
-          "defaultValues" : {
-            "Boolean" : true
-            }
-          },
-        {
-          "objectType" : "InstPort",
-          "name" : "result",
-          "nodePortType" : "Out"
-          }
-        ],
-      "executable" : "fabricUtils.Converters.PoseToXfoArray",
-      "presetGUID" : "300F294CCB15C3E26EF1AA4793C44BEE"
       },
     {
       "objectType" : "Inst",
@@ -463,7 +432,6 @@
       "GetNumBones_1.this"
       ],
     "animPose" : [
-      "PoseToXfoArray_1.this",
       "SetBoneXfo.pose"
       ],
     "offset" : [
@@ -793,56 +761,6 @@ dfgEntry {
 dfgEntry {
   if(this)
     this.drawPolygonMeshArray(name, color, specular, specFactor, masters, transforms, indices, wireFrame, doubleSided, dummyResult, instance);
-}
-"
-      },
-    "fabricUtils.Converters.PoseToXfoArray" : {
-      "objectType" : "Func",
-      "metadata" : {
-        "uiTooltip" : "Converts a skeleton's pose to an array of Xfos. Returns Xfos in local and global spaces.\n\nSupported types:\n  this: IPose\n  globalSpace: Boolean\n  result: Xfo[]\n"
-        },
-      "title" : "PoseToXfoArray",
-      "ports" : [
-        {
-          "objectType" : "ExecPort",
-          "name" : "exec",
-          "nodePortType" : "IO",
-          "execPortType" : "IO",
-          "typeSpec" : "Execute"
-          },
-        {
-          "objectType" : "ExecPort",
-          "name" : "this",
-          "nodePortType" : "Out",
-          "execPortType" : "In",
-          "typeSpec" : "IPose"
-          },
-        {
-          "objectType" : "ExecPort",
-          "name" : "globalSpace",
-          "nodePortType" : "Out",
-          "execPortType" : "In",
-          "typeSpec" : "Boolean"
-          },
-        {
-          "objectType" : "ExecPort",
-          "metadata" : {
-            "uiColor" : "{\n  \"r\" : 249,\n  \"g\" : 157,\n  \"b\" : 28\n  }"
-            },
-          "name" : "result",
-          "nodePortType" : "In",
-          "execPortType" : "Out",
-          "typeSpec" : "Xfo[]"
-          }
-        ],
-      "extDeps" : {
-        "fabricUtils" : "*"
-        },
-      "presetGUID" : "300F294CCB15C3E26EF1AA4793C44BEE",
-      "code" : "require fabricUtils;
-
-dfgEntry {
-  result = poseToXfoArray(this, globalSpace);
 }
 "
       },

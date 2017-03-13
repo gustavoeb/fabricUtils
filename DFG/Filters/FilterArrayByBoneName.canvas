@@ -1,8 +1,15 @@
 {
   "objectType" : "Graph",
   "metadata" : {
+    "camera_mat44" : "{\n  \"row0\" : {\n    \"x\" : 0.7999999523162842,\n    \"y\" : -0.2228344082832336,\n    \"z\" : 0.5570860505104065,\n    \"t\" : 30\n    },\n  \"row1\" : {\n    \"x\" : -1.490116119384766e-08,\n    \"y\" : 0.9284766912460327,\n    \"z\" : 0.3713906705379486,\n    \"t\" : 20\n    },\n  \"row2\" : {\n    \"x\" : -0.6000000834465027,\n    \"y\" : -0.2971125543117523,\n    \"z\" : 0.7427813410758972,\n    \"t\" : 40\n    },\n  \"row3\" : {\n    \"x\" : 0,\n    \"y\" : 0,\n    \"z\" : 0,\n    \"t\" : 1\n    }\n  }",
+    "timeline_start" : "1",
     "uiGraphZoom" : "{\n  \"value\" : 1.0\n  }",
-    "uiGraphPan" : "{\n  \"x\" : 136.4725103378296,\n  \"y\" : -595.4384155273438\n  }"
+    "timeline_loopMode" : "1",
+    "timeline_simMode" : "0",
+    "camera_focalDistance" : "53.85164642333984",
+    "timeline_current" : "1",
+    "timeline_end" : "250",
+    "uiGraphPan" : "{\n  \"x\" : 197.4725036621094,\n  \"y\" : -648.4384155273438\n  }"
     },
   "title" : "FilterArrayByBoneName",
   "ports" : [
@@ -59,37 +66,6 @@
   "extDeps" : {},
   "presetGUID" : "1594FEF4D6C8F8DDE17D8F86111B742E",
   "nodes" : [
-    {
-      "objectType" : "Inst",
-      "metadata" : {
-        "uiGraphPos" : "{\"x\":141.166409016,\"y\":859.04016161}"
-        },
-      "name" : "BoneNameArrayToIDArray_1",
-      "ports" : [
-        {
-          "objectType" : "InstPort",
-          "name" : "exec",
-          "nodePortType" : "IO"
-          },
-        {
-          "objectType" : "InstPort",
-          "name" : "this",
-          "nodePortType" : "In"
-          },
-        {
-          "objectType" : "InstPort",
-          "name" : "names",
-          "nodePortType" : "In"
-          },
-        {
-          "objectType" : "InstPort",
-          "name" : "result",
-          "nodePortType" : "Out"
-          }
-        ],
-      "executable" : "fabricUtils.Converters.BoneNameArrayToIDArray",
-      "presetGUID" : "93BEF7A03DB91AD6DD3534F825EF9B9F"
-      },
     {
       "objectType" : "Inst",
       "metadata" : {
@@ -178,6 +154,37 @@
         ],
       "executable" : "Fabric.Exts.Util.String.Split",
       "presetGUID" : "E09CFC151D7658D0FD0EAA6DB4FFB18B"
+      },
+    {
+      "objectType" : "Inst",
+      "metadata" : {
+        "uiGraphPos" : "{\"x\":132.527496338,\"y\":857.438415527}"
+        },
+      "name" : "BoneNameArrayToIDArray_2",
+      "ports" : [
+        {
+          "objectType" : "InstPort",
+          "name" : "exec",
+          "nodePortType" : "IO"
+          },
+        {
+          "objectType" : "InstPort",
+          "name" : "this",
+          "nodePortType" : "In"
+          },
+        {
+          "objectType" : "InstPort",
+          "name" : "names",
+          "nodePortType" : "In"
+          },
+        {
+          "objectType" : "InstPort",
+          "name" : "result",
+          "nodePortType" : "Out"
+          }
+        ],
+      "executable" : "fabricUtils.Converters.Bone.BoneNameArrayToIDArray",
+      "presetGUID" : "93BEF7A03DB91AD6DD3534F825EF9B9F"
       }
     ],
   "connections" : {
@@ -185,13 +192,10 @@
       "GetSubArray_1.array"
       ],
     "skeleton" : [
-      "BoneNameArrayToIDArray_1.this"
+      "BoneNameArrayToIDArray_2.this"
       ],
     "names" : [
       "Split_1.this"
-      ],
-    "BoneNameArrayToIDArray_1.result" : [
-      "Cache_2.value"
       ],
     "GetSubArray_1.result" : [
       "result"
@@ -200,57 +204,13 @@
       "GetSubArray_1.indices"
       ],
     "Split_1.result" : [
-      "BoneNameArrayToIDArray_1.names"
+      "BoneNameArrayToIDArray_2.names"
+      ],
+    "BoneNameArrayToIDArray_2.result" : [
+      "Cache_2.value"
       ]
     },
   "requiredPresets" : {
-    "fabricUtils.Converters.BoneNameArrayToIDArray" : {
-      "objectType" : "Func",
-      "metadata" : {
-        "uiTooltip" : "Converts an array of bone names into an array of bone indices.\n\nSupported types:\n  this: ISkeleton\n  names: String[]\n  result: Integer[]\n"
-        },
-      "title" : "BoneNameArrayToIDArray",
-      "ports" : [
-        {
-          "objectType" : "ExecPort",
-          "name" : "exec",
-          "nodePortType" : "IO",
-          "execPortType" : "IO",
-          "typeSpec" : "Execute"
-          },
-        {
-          "objectType" : "ExecPort",
-          "name" : "this",
-          "nodePortType" : "Out",
-          "execPortType" : "In",
-          "typeSpec" : "ISkeleton"
-          },
-        {
-          "objectType" : "ExecPort",
-          "name" : "names",
-          "nodePortType" : "Out",
-          "execPortType" : "In",
-          "typeSpec" : "String[]"
-          },
-        {
-          "objectType" : "ExecPort",
-          "name" : "result",
-          "nodePortType" : "In",
-          "execPortType" : "Out",
-          "typeSpec" : "Integer[]"
-          }
-        ],
-      "extDeps" : {
-        "fabricUtils" : "*"
-        },
-      "presetGUID" : "93BEF7A03DB91AD6DD3534F825EF9B9F",
-      "code" : "require fabricUtils;
-
-dfgEntry {
-  result = boneNameArrayToIDArray(this, names);
-}
-"
-      },
     "fabricUtils.Arrays.GetSubArray" : {
       "objectType" : "Func",
       "title" : "GetSubArray",
@@ -385,6 +345,66 @@ dfgEntry {
   result = this.split(separator);
 }
 "
+      },
+    "fabricUtils.Converters.Bone.BoneNameArrayToIDArray" : {
+      "objectType" : "Func",
+      "metadata" : {
+        "uiTooltip" : "Converts an array of bone names into an array of bone indices.\n\nSupported types:\n  this: ISkeleton\n  names: String[]\n  result: Integer[]\n"
+        },
+      "title" : "BoneNameArrayToIDArray",
+      "ports" : [
+        {
+          "objectType" : "ExecPort",
+          "name" : "exec",
+          "nodePortType" : "IO",
+          "execPortType" : "IO",
+          "typeSpec" : "Execute"
+          },
+        {
+          "objectType" : "ExecPort",
+          "name" : "this",
+          "nodePortType" : "Out",
+          "execPortType" : "In",
+          "typeSpec" : "ISkeleton"
+          },
+        {
+          "objectType" : "ExecPort",
+          "name" : "names",
+          "nodePortType" : "Out",
+          "execPortType" : "In",
+          "typeSpec" : "String[]"
+          },
+        {
+          "objectType" : "ExecPort",
+          "name" : "result",
+          "nodePortType" : "In",
+          "execPortType" : "Out",
+          "typeSpec" : "Integer[]"
+          }
+        ],
+      "extDeps" : {
+        "fabricUtils" : "*"
+        },
+      "presetGUID" : "93BEF7A03DB91AD6DD3534F825EF9B9F",
+      "code" : "require fabricUtils;
+
+dfgEntry {
+  result = boneNameArrayToIDArray(this, names);
+}
+"
       }
-    }
+    },
+  "args" : [
+    null,
+    {
+      "type" : "ISkeleton",
+      "value" : null,
+      "ext" : "Characters"
+      },
+    {
+      "type" : "String",
+      "value" : null
+      },
+    null
+    ]
   }

@@ -83,6 +83,34 @@ function BipedRetargetingSolver.init!(
   this.changeRefFrame(inRefFrame, outRefFrame);
 }
 
+/// \dfgPresetTitle BipedRetargetingSolver_Init2
+/// \dfgPresetColor Color(49, 60, 61)
+/// \dfgPresetHeaderColor Color(42, 94, 102)
+/// \dfgPresetTextColor Color(168, 229, 240)
+/// \dfgPresetFolder Kinematics\BipedRetargtingSolver
+function BipedRetargetingSolver.init!(
+  in ICharacter inCharacter,
+  in ICharacter outCharacter,
+  in FilePath inNameTemplate,
+  in FilePath outNameTemplate,
+  in IPose inRefPose,
+  in IPose outRefPose
+  ) {
+  // initiating default values
+  this.inCharacter = inCharacter;
+  this.outCharacter = outCharacter;
+  this.inNameTemplate = inNameTemplate;
+  this.outNameTemplate = outNameTemplate;
+
+  // initiating indices mapping
+  this.fillLookups();
+  this.fillMappingNames();
+  this.fillMappingIndices();
+
+  // setting reference frame and poses
+  this.changeRefPose(inRefPose, outRefPose);
+}
+
 /// \dfgPresetOmit
 function BipedRetargetingSolver.changeRefFrame!(
   in Scalar inRefFrame,
@@ -90,8 +118,20 @@ function BipedRetargetingSolver.changeRefFrame!(
   ) {
   this.inRefFrame = inRefFrame;
   this.outRefFrame = outRefFrame;
-  this.inRefPose = this.inCharacter.setClipPoseTime(inRefFrame).getPose().clone();
-  this.outRefPose = this.outCharacter.setClipPoseTime(outRefFrame).getPose().clone();
+  IPose inRefPose = this.inCharacter.setClipPoseTime(inRefFrame).getPose().clone();
+  IPose outRefPose = this.outCharacter.setClipPoseTime(outRefFrame).getPose().clone();
+
+  this.changeRefPose(inRefPose, outRefPose);
+}
+
+/// \dfgPresetOmit
+function BipedRetargetingSolver.changeRefPose!(
+  in IPose inRefPose,
+  in IPose outRefPose
+  ) {
+  // first we store the new refPoses
+  this.inRefPose = inRefPose;
+  this.outRefPose = outRefPose;
 
   // now we store the offsets from this ref poses
   this.offsetToInput.resize(this.outCharacter.skeleton.getNumBones());
@@ -180,40 +220,17 @@ function IPose BipedRetargetingSolver.getOutputReferencePose() {
   return this.outRefPose;
 }
 
-
-/// \dfgPresetTitle BipedRetargetingSolver_Solve
-/// \dfgPresetColor Color(49, 60, 61)
-/// \dfgPresetHeaderColor Color(42, 94, 102)
-/// \dfgPresetTextColor Color(168, 229, 240)
-/// \dfgPresetFolder Kinematics\BipedRetargtingSolver
-function BipedRetargetingSolver.solve!(
+function IPose BipedRetargetingSolver.solve!(
   in Boolean drawDebug,
   in Boolean matchSourcePos,
-  in Scalar scaleFactor,
-  in ICharacter inCharacter,
-  in ICharacter outCharacter,
-  in FilePath inNameTemplate,
-  in FilePath outNameTemplate,
-  in Scalar inRefFrame,
-  in Scalar outRefFrame,
-  out IPose retargetPose
+  in IPose _inPose,
+  in IPose _outPose
   ) {
-  // check if needs initiating mapping or updating reference pose values
-  if(inNameTemplate.string() != this.inNameTemplate.string() || outNameTemplate.string() != this.outNameTemplate.string())
-    this.init(inCharacter, outCharacter, inNameTemplate, outNameTemplate, inRefFrame, outRefFrame);
-  else if(this.inCharacter.getName() != inCharacter.getName() || this.outCharacter.getName() != outCharacter.getName())
-    this.init(inCharacter, outCharacter, inNameTemplate, outNameTemplate, inRefFrame, outRefFrame);  
-  else if(inRefFrame != this.inRefFrame || outRefFrame != this.outRefFrame)
-    this.changeRefFrame(inRefFrame, outRefFrame);
-  else if(scaleFactor != this.scaleFactor)
-    this.changeRefFrame(inRefFrame, outRefFrame);
 
-  // get poses
-  IPose inPose = this.inCharacter.getPose().clone();
-  IPose outPose = this.outCharacter.getPose().clone().reset();
+  IPose inPose = _inPose.clone();
+  IPose outPose = _outPose.clone();
 
-  this.scaleFactor = scaleFactor;
-  Xfo scaleXfo(scaleFactor, scaleFactor, scaleFactor, 0, 0, 0, 0, 0, 0);
+  Xfo scaleXfo(this.scaleFactor, this.scaleFactor, this.scaleFactor, 0, 0, 0, 0, 0, 0);
   
   Scalar inHeight = this.inRefPose.getBoneXfo(this.inWorldToId['Hips']).tr.y;
   Scalar outHeight = this.outRefPose.getBoneXfo(this.outWorldToId['Hips']).tr.y;
@@ -261,8 +278,85 @@ function BipedRetargetingSolver.solve!(
     this.updateBoneOri(id, this.inBoneToId, this.outBoneToName, outPose);
   }
 
-  retargetPose = outPose;
+  return outPose;
 }
+
+/// \dfgPresetTitle BipedRetargetingSolver_Solve
+/// \dfgPresetColor Color(49, 60, 61)
+/// \dfgPresetHeaderColor Color(42, 94, 102)
+/// \dfgPresetTextColor Color(168, 229, 240)
+/// \dfgPresetFolder Kinematics\BipedRetargtingSolver
+function BipedRetargetingSolver.solve!(
+  in Boolean drawDebug,
+  in Boolean matchSourcePos,
+  in Scalar scaleFactor,
+  in ICharacter inCharacter,
+  in ICharacter outCharacter,
+  in FilePath inNameTemplate,
+  in FilePath outNameTemplate,
+  in Scalar inRefFrame,
+  in Scalar outRefFrame,
+  out IPose retargetPose
+  ) {
+  // check if needs initiating mapping or updating reference pose values
+  if(inNameTemplate.string() != this.inNameTemplate.string() || outNameTemplate.string() != this.outNameTemplate.string())
+    this.init(inCharacter, outCharacter, inNameTemplate, outNameTemplate, inRefFrame, outRefFrame);
+  else if(this.inCharacter.getName() != inCharacter.getName() || this.outCharacter.getName() != outCharacter.getName())
+    this.init(inCharacter, outCharacter, inNameTemplate, outNameTemplate, inRefFrame, outRefFrame);  
+  else if(inRefFrame != this.inRefFrame || outRefFrame != this.outRefFrame)
+    this.changeRefFrame(inRefFrame, outRefFrame);
+  else if(scaleFactor != this.scaleFactor)
+    this.changeRefFrame(inRefFrame, outRefFrame);
+
+  // get poses
+  IPose inPose = this.inCharacter.getPose().clone();
+  IPose outPose = this.outCharacter.getPose().clone().reset();
+
+  // set scale
+  this.scaleFactor = scaleFactor;
+
+  // retarget
+  retargetPose = this.solve(drawDebug, matchSourcePos, inPose, outPose);
+}
+
+/// \dfgPresetTitle BipedRetargetingSolver_Solve2
+/// \dfgPresetColor Color(49, 60, 61)
+/// \dfgPresetHeaderColor Color(42, 94, 102)
+/// \dfgPresetTextColor Color(168, 229, 240)
+/// \dfgPresetFolder Kinematics\BipedRetargtingSolver
+function BipedRetargetingSolver.solve!(
+  in Boolean drawDebug,
+  in Boolean matchSourcePos,
+  in Scalar scaleFactor,
+  in ICharacter inCharacter,
+  in ICharacter outCharacter,
+  in FilePath inNameTemplate,
+  in FilePath outNameTemplate,
+  in IPose inRefPose,
+  in IPose outRefPose,
+  out IPose retargetPose
+  ) {
+  // check if needs initiating mapping or updating reference pose values
+  if(inNameTemplate.string() != this.inNameTemplate.string() || outNameTemplate.string() != this.outNameTemplate.string())
+    this.init(inCharacter, outCharacter, inNameTemplate, outNameTemplate, inRefPose, outRefPose);
+  else if(this.inCharacter.getName() != inCharacter.getName() || this.outCharacter.getName() != outCharacter.getName())
+    this.init(inCharacter, outCharacter, inNameTemplate, outNameTemplate, inRefPose, outRefPose);  
+  else if(inRefPose != this.inRefPose || outRefPose != this.outRefPose)
+    this.changeRefPose(inRefPose, outRefPose);
+  else if(scaleFactor != this.scaleFactor)
+    this.changeRefPose(inRefPose, outRefPose);
+
+  // get poses
+  IPose inPose = this.inCharacter.getPose().clone();
+  IPose outPose = this.outCharacter.getPose().clone().reset();
+
+  // set scale
+  this.scaleFactor = scaleFactor;
+
+  // retarget
+  retargetPose = this.solve(drawDebug, matchSourcePos, inPose, outPose);
+}
+
 
 /// \dfgPresetOmit
 function BipedRetargetingSolver.updateBoneOri!(

@@ -3,9 +3,16 @@
   "metadata" : {
     "uiTextColor" : "{\n  \"r\" : 20,\n  \"g\" : 20,\n  \"b\" : 20\n  }",
     "uiNodeColor" : "{\n  \"r\" : 121,\n  \"g\" : 134,\n  \"b\" : 143\n  }",
+    "timeline_start" : "1",
     "uiGraphZoom" : "{\n  \"value\" : 0.6899762153625488\n  }",
+    "timeline_loopMode" : "1",
+    "timeline_simMode" : "0",
+    "camera_mat44" : "{\n  \"row0\" : {\n    \"x\" : 0.7999999523162842,\n    \"y\" : -0.2228344082832336,\n    \"z\" : 0.5570860505104065,\n    \"t\" : 30\n    },\n  \"row1\" : {\n    \"x\" : -1.490116119384766e-08,\n    \"y\" : 0.9284766912460327,\n    \"z\" : 0.3713906705379486,\n    \"t\" : 20\n    },\n  \"row2\" : {\n    \"x\" : -0.6000000834465027,\n    \"y\" : -0.2971125543117523,\n    \"z\" : 0.7427813410758972,\n    \"t\" : 40\n    },\n  \"row3\" : {\n    \"x\" : 0,\n    \"y\" : 0,\n    \"z\" : 0,\n    \"t\" : 1\n    }\n  }",
     "uiTooltip" : "Gets the COG velocity normalized by character height. Assumes height is in the Y axis.",
-    "uiGraphPan" : "{\n  \"x\" : -689.8823360764459,\n  \"y\" : -142.8227221422698\n  }"
+    "timeline_current" : "1",
+    "camera_focalDistance" : "53.85164642333984",
+    "timeline_end" : "250",
+    "uiGraphPan" : "{\n  \"x\" : -950.88232421875,\n  \"y\" : -144.8227233886719\n  }"
     },
   "title" : "GetNormalizedCOGVelocity_v2",
   "ports" : [
@@ -21,7 +28,6 @@
       },
     {
       "objectType" : "ExecPort",
-      "metadata" : {},
       "name" : "liveXfo",
       "nodePortType" : "Out",
       "defaultValues" : {
@@ -51,7 +57,6 @@
       },
     {
       "objectType" : "ExecPort",
-      "metadata" : {},
       "name" : "refXfo",
       "nodePortType" : "Out",
       "defaultValues" : {
@@ -537,9 +542,9 @@
     {
       "objectType" : "Inst",
       "metadata" : {
-        "uiGraphPos" : "{\"x\":1785.11380315,\"y\":608.586664438}"
+        "uiGraphPos" : "{\"x\":1768.00614548,\"y\":596.8650972839999}"
         },
-      "name" : "Vec3ToSafeVec3_1",
+      "name" : "Vec3ToSafeVec3_3",
       "ports" : [
         {
           "objectType" : "InstPort",
@@ -557,15 +562,15 @@
           "nodePortType" : "Out"
           }
         ],
-      "executable" : "fabricUtils.Converters.Vec3ToSafeVec3",
+      "executable" : "fabricUtils.Converters.Vec3.Vec3ToSafeVec3",
       "presetGUID" : "097A2395CA52C3542F4378B459C0C6B3"
       },
     {
       "objectType" : "Inst",
       "metadata" : {
-        "uiGraphPos" : "{\"x\":2389.13432312,\"y\":512.734255552}"
+        "uiGraphPos" : "{\"x\":2437.5944922,\"y\":624.401798487}"
         },
-      "name" : "Vec3ToSafeVec3_2",
+      "name" : "Vec3ToSafeVec3_4",
       "ports" : [
         {
           "objectType" : "InstPort",
@@ -583,7 +588,7 @@
           "nodePortType" : "Out"
           }
         ],
-      "executable" : "fabricUtils.Converters.Vec3ToSafeVec3",
+      "executable" : "fabricUtils.Converters.Vec3.Vec3ToSafeVec3",
       "presetGUID" : "097A2395CA52C3542F4378B459C0C6B3"
       }
     ],
@@ -618,7 +623,7 @@
       "Div_1.lhs"
       ],
     "MultiplyScalar_1.result" : [
-      "Vec3ToSafeVec3_2.this"
+      "Vec3ToSafeVec3_4.this"
       ],
     "DeltaXfo_2.delta" : [
       "DecomposeXfo_2.value",
@@ -637,15 +642,15 @@
       "DeltaVec3_1.value"
       ],
     "If_1.result" : [
-      "Vec3ToSafeVec3_1.this"
+      "Vec3ToSafeVec3_3.this"
       ],
     "ToBoolean_1.boolean" : [
       "If_1.cond"
       ],
-    "Vec3ToSafeVec3_1.result" : [
+    "Vec3ToSafeVec3_3.result" : [
       "SetUnit_1.this"
       ],
-    "Vec3ToSafeVec3_2.result" : [
+    "Vec3ToSafeVec3_4.result" : [
       "velocity"
       ]
     },
@@ -1636,7 +1641,7 @@ dfgEntry {
 }
 "
       },
-    "fabricUtils.Converters.Vec3ToSafeVec3" : {
+    "fabricUtils.Converters.Vec3.Vec3ToSafeVec3" : {
       "objectType" : "Func",
       "metadata" : {
         "uiTooltip" : "Returns a new Vec3 with NaNs removed.\n\nSupported types:\n  this: Vec3\n  result: Vec3\n"
@@ -1682,5 +1687,44 @@ dfgEntry {
 }
 "
       }
-    }
+    },
+  "args" : [
+    {
+      "type" : "Xfo",
+      "value" : null,
+      "ext" : "Math"
+      },
+    {
+      "type" : "Xfo",
+      "value" : null,
+      "ext" : "Math"
+      },
+    {
+      "type" : "Integer",
+      "value" : null
+      },
+    {
+      "type" : "Boolean",
+      "value" : null
+      },
+    {
+      "type" : "Quat",
+      "value" : null,
+      "ext" : "Math"
+      },
+    {
+      "type" : "Vec3",
+      "value" : null,
+      "ext" : "Math"
+      },
+    {
+      "type" : "Scalar",
+      "value" : null
+      },
+    {
+      "type" : "Xfo",
+      "value" : null,
+      "ext" : "Math"
+      }
+    ]
   }

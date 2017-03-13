@@ -3,9 +3,9 @@
   "metadata" : {
     "uiTextColor" : "{\n  \"r\" : 20,\n  \"g\" : 20,\n  \"b\" : 20\n  }",
     "uiNodeColor" : "{\n  \"r\" : 121,\n  \"g\" : 134,\n  \"b\" : 143\n  }",
-    "uiGraphZoom" : "{\n  \"value\" : 1.0\n  }",
+    "uiGraphZoom" : "{\n  \"value\" : 0.7552301287651062\n  }",
     "uiTooltip" : "Converts a segment of a pose, determined by coma separated bone names, into an array of Xfos.",
-    "uiGraphPan" : "{\n  \"x\" : -1824.727172851563,\n  \"y\" : 83.15498733520508\n  }"
+    "uiGraphPan" : "{\n  \"x\" : -1454.171482405858,\n  \"y\" : 159.7523349354925\n  }"
     },
   "title" : "PoseSegmentToXfoArray",
   "ports" : [
@@ -70,39 +70,8 @@
       }
     ],
   "extDeps" : {},
-  "presetGUID" : "479CEAB234FB195F3469D6570617D73C",
+  "presetGUID" : "F0DE0B2481C49CDD75DB1DC16FDD98FF",
   "nodes" : [
-    {
-      "objectType" : "Inst",
-      "metadata" : {
-        "uiGraphPos" : "{\"x\":2660.26791501,\"y\":79.1124844551}"
-        },
-      "name" : "GetSubArray",
-      "ports" : [
-        {
-          "objectType" : "InstPort",
-          "name" : "exec",
-          "nodePortType" : "IO"
-          },
-        {
-          "objectType" : "InstPort",
-          "name" : "array",
-          "nodePortType" : "In"
-          },
-        {
-          "objectType" : "InstPort",
-          "name" : "indices",
-          "nodePortType" : "In"
-          },
-        {
-          "objectType" : "InstPort",
-          "name" : "result",
-          "nodePortType" : "Out"
-          }
-        ],
-      "executable" : "fabricUtils.Arrays.GetSubArray",
-      "presetGUID" : "EF6FA4DE9B0619B24F6BC223F43DC310"
-      },
     {
       "objectType" : "Inst",
       "metadata" : {
@@ -179,9 +148,61 @@
     {
       "objectType" : "Inst",
       "metadata" : {
-        "uiGraphPos" : "{\"x\":2242.34106445,\"y\":150.865737915}"
+        "uiGraphPos" : "{\"x\":2549.64491916,\"y\":206.70432663}"
         },
-      "name" : "BoneNameArrayToIDArray_1",
+      "name" : "Cache_1",
+      "ports" : [
+        {
+          "objectType" : "InstPort",
+          "name" : "exec",
+          "nodePortType" : "IO"
+          },
+        {
+          "objectType" : "InstPort",
+          "name" : "value",
+          "nodePortType" : "In"
+          }
+        ],
+      "executable" : "Fabric.Core.Data.Cache",
+      "presetGUID" : "D903AFD981FE9214C69943F542D5FD60"
+      },
+    {
+      "objectType" : "Inst",
+      "metadata" : {
+        "uiGraphPos" : "{\"x\":2717.5557704,\"y\":128.456806898}"
+        },
+      "name" : "GetSubArray_1",
+      "ports" : [
+        {
+          "objectType" : "InstPort",
+          "name" : "exec",
+          "nodePortType" : "IO"
+          },
+        {
+          "objectType" : "InstPort",
+          "name" : "array",
+          "nodePortType" : "In"
+          },
+        {
+          "objectType" : "InstPort",
+          "name" : "indices",
+          "nodePortType" : "In"
+          },
+        {
+          "objectType" : "InstPort",
+          "name" : "result",
+          "nodePortType" : "Out"
+          }
+        ],
+      "executable" : "fabricUtils.Arrays.GetSubArray",
+      "presetGUID" : "EF6FA4DE9B0619B24F6BC223F43DC310"
+      },
+    {
+      "objectType" : "Inst",
+      "metadata" : {
+        "uiGraphPos" : "{\"x\":2253.12358451,\"y\":166.662178993}"
+        },
+      "name" : "BoneNameArrayToIDArray_2",
       "ports" : [
         {
           "objectType" : "InstPort",
@@ -204,15 +225,15 @@
           "nodePortType" : "Out"
           }
         ],
-      "executable" : "fabricUtils.Converters.BoneNameArrayToIDArray",
+      "executable" : "fabricUtils.Converters.Bone.BoneNameArrayToIDArray",
       "presetGUID" : "93BEF7A03DB91AD6DD3534F825EF9B9F"
       },
     {
       "objectType" : "Inst",
       "metadata" : {
-        "uiGraphPos" : "{\"x\":2315.35027194,\"y\":34.8242889643}"
+        "uiGraphPos" : "{\"x\":2314.01510787,\"y\":50.8522665501}"
         },
-      "name" : "PoseToXfoArray_1",
+      "name" : "PoseToXfoArray_2",
       "ports" : [
         {
           "objectType" : "InstPort",
@@ -235,29 +256,8 @@
           "nodePortType" : "Out"
           }
         ],
-      "executable" : "fabricUtils.Converters.PoseToXfoArray",
+      "executable" : "fabricUtils.Converters.Pose.PoseToXfoArray",
       "presetGUID" : "300F294CCB15C3E26EF1AA4793C44BEE"
-      },
-    {
-      "objectType" : "Inst",
-      "metadata" : {
-        "uiGraphPos" : "{\"x\":2510.26391602,\"y\":170.365753174}"
-        },
-      "name" : "Cache_1",
-      "ports" : [
-        {
-          "objectType" : "InstPort",
-          "name" : "exec",
-          "nodePortType" : "IO"
-          },
-        {
-          "objectType" : "InstPort",
-          "name" : "value",
-          "nodePortType" : "In"
-          }
-        ],
-      "executable" : "Fabric.Core.Data.Cache",
-      "presetGUID" : "D903AFD981FE9214C69943F542D5FD60"
       }
     ],
   "connections" : {
@@ -265,95 +265,38 @@
       "PassIn_1.value"
       ],
     "boneNames" : [
-      "BoneNameArrayToIDArray_1.names"
+      "BoneNameArrayToIDArray_2.names"
       ],
     "globalSpace" : [
-      "PoseToXfoArray_1.globalSpace"
-      ],
-    "GetSubArray.indices" : [
-      "ids"
-      ],
-    "GetSubArray.result" : [
-      "xfos"
+      "PoseToXfoArray_2.globalSpace"
       ],
     "PassIn_1.value" : [
       "GetPose_1.this",
       "GetSkeleton_1.this"
       ],
     "GetPose_1.result" : [
-      "PoseToXfoArray_1.this"
+      "PoseToXfoArray_2.this"
       ],
     "GetSkeleton_1.result" : [
-      "BoneNameArrayToIDArray_1.this"
-      ],
-    "BoneNameArrayToIDArray_1.result" : [
-      "Cache_1.value"
-      ],
-    "PoseToXfoArray_1.result" : [
-      "GetSubArray.array"
+      "BoneNameArrayToIDArray_2.this"
       ],
     "Cache_1.value" : [
-      "GetSubArray.indices"
+      "GetSubArray_1.indices"
+      ],
+    "GetSubArray_1.indices" : [
+      "ids"
+      ],
+    "GetSubArray_1.result" : [
+      "xfos"
+      ],
+    "BoneNameArrayToIDArray_2.result" : [
+      "Cache_1.value"
+      ],
+    "PoseToXfoArray_2.result" : [
+      "GetSubArray_1.array"
       ]
     },
   "requiredPresets" : {
-    "fabricUtils.Arrays.GetSubArray" : {
-      "objectType" : "Func",
-      "title" : "GetSubArray",
-      "ports" : [
-        {
-          "objectType" : "ExecPort",
-          "name" : "exec",
-          "nodePortType" : "IO",
-          "defaultValues" : {
-            "Execute" : {}
-            },
-          "execPortType" : "IO",
-          "typeSpec" : "Execute"
-          },
-        {
-          "objectType" : "ExecPort",
-          "name" : "array",
-          "nodePortType" : "Out",
-          "defaultValues" : {
-            "Xfo[]" : []
-            },
-          "execPortType" : "In",
-          "typeSpec" : "$TYPE$"
-          },
-        {
-          "objectType" : "ExecPort",
-          "name" : "indices",
-          "nodePortType" : "Out",
-          "defaultValues" : {
-            "Index[]" : [],
-            "Integer[]" : []
-            },
-          "execPortType" : "In",
-          "typeSpec" : "Integer[]"
-          },
-        {
-          "objectType" : "ExecPort",
-          "name" : "result",
-          "nodePortType" : "In",
-          "defaultValues" : {
-            "Xfo[]" : []
-            },
-          "execPortType" : "Out",
-          "typeSpec" : "$TYPE$"
-          }
-        ],
-      "extDeps" : {},
-      "presetGUID" : "EF6FA4DE9B0619B24F6BC223F43DC310",
-      "code" : "dfgEntry {
-  Integer index = 0;
-  for (Integer i = 0; i <= indices.size() - 1; i++) {
-    index = indices[i];
-    result.push(array[index]);
-  }
-}
-"
-      },
     "Fabric.Core.Data.PassIn" : {
       "objectType" : "Func",
       "metadata" : {
@@ -466,7 +409,95 @@ dfgEntry {
 }
 "
       },
-    "fabricUtils.Converters.BoneNameArrayToIDArray" : {
+    "Fabric.Core.Data.Cache" : {
+      "objectType" : "Func",
+      "metadata" : {
+        "uiNodeColor" : "{\n  \"r\" : 214,\n  \"g\" : 191,\n  \"b\" : 103\n  }",
+        "uiAlwaysShowDaisyChainPorts" : "true",
+        "uiHeaderColor" : "{\n  \"r\" : 188,\n  \"g\" : 129,\n  \"b\" : 83\n  }"
+        },
+      "title" : "Cache",
+      "cacheRule" : "always",
+      "ports" : [
+        {
+          "objectType" : "ExecPort",
+          "name" : "exec",
+          "nodePortType" : "IO",
+          "execPortType" : "IO",
+          "typeSpec" : "Execute"
+          },
+        {
+          "objectType" : "ExecPort",
+          "name" : "value",
+          "nodePortType" : "Out",
+          "execPortType" : "In",
+          "typeSpec" : "$TYPE$"
+          }
+        ],
+      "extDeps" : {},
+      "presetGUID" : "D903AFD981FE9214C69943F542D5FD60",
+      "code" : "dfgEntry {
+}
+"
+      },
+    "fabricUtils.Arrays.GetSubArray" : {
+      "objectType" : "Func",
+      "title" : "GetSubArray",
+      "ports" : [
+        {
+          "objectType" : "ExecPort",
+          "name" : "exec",
+          "nodePortType" : "IO",
+          "defaultValues" : {
+            "Execute" : {}
+            },
+          "execPortType" : "IO",
+          "typeSpec" : "Execute"
+          },
+        {
+          "objectType" : "ExecPort",
+          "name" : "array",
+          "nodePortType" : "Out",
+          "defaultValues" : {
+            "Xfo[]" : []
+            },
+          "execPortType" : "In",
+          "typeSpec" : "$TYPE$"
+          },
+        {
+          "objectType" : "ExecPort",
+          "name" : "indices",
+          "nodePortType" : "Out",
+          "defaultValues" : {
+            "Index[]" : [],
+            "Integer[]" : []
+            },
+          "execPortType" : "In",
+          "typeSpec" : "Integer[]"
+          },
+        {
+          "objectType" : "ExecPort",
+          "name" : "result",
+          "nodePortType" : "In",
+          "defaultValues" : {
+            "Xfo[]" : []
+            },
+          "execPortType" : "Out",
+          "typeSpec" : "$TYPE$"
+          }
+        ],
+      "extDeps" : {},
+      "presetGUID" : "EF6FA4DE9B0619B24F6BC223F43DC310",
+      "code" : "dfgEntry {
+  Integer index = 0;
+  for (Integer i = 0; i <= indices.size() - 1; i++) {
+    index = indices[i];
+    result.push(array[index]);
+  }
+}
+"
+      },
+    "fabricUtils.Converters.Bone.BoneNameArrayToIDArray" : {
       "objectType" : "Func",
       "metadata" : {
         "uiTooltip" : "Converts an array of bone names into an array of bone indices.\n\nSupported types:\n  this: ISkeleton\n  names: String[]\n  result: Integer[]\n"
@@ -513,7 +544,7 @@ dfgEntry {
 }
 "
       },
-    "fabricUtils.Converters.PoseToXfoArray" : {
+    "fabricUtils.Converters.Pose.PoseToXfoArray" : {
       "objectType" : "Func",
       "metadata" : {
         "uiTooltip" : "Converts a skeleton's pose to an array of Xfos. Returns Xfos in local and global spaces.\n\nSupported types:\n  this: IPose\n  globalSpace: Boolean\n  result: Xfo[]\n"
@@ -560,37 +591,6 @@ dfgEntry {
 
 dfgEntry {
   result = poseToXfoArray(this, globalSpace);
-}
-"
-      },
-    "Fabric.Core.Data.Cache" : {
-      "objectType" : "Func",
-      "metadata" : {
-        "uiNodeColor" : "{\n  \"r\" : 214,\n  \"g\" : 191,\n  \"b\" : 103\n  }",
-        "uiAlwaysShowDaisyChainPorts" : "true",
-        "uiHeaderColor" : "{\n  \"r\" : 188,\n  \"g\" : 129,\n  \"b\" : 83\n  }"
-        },
-      "title" : "Cache",
-      "cacheRule" : "always",
-      "ports" : [
-        {
-          "objectType" : "ExecPort",
-          "name" : "exec",
-          "nodePortType" : "IO",
-          "execPortType" : "IO",
-          "typeSpec" : "Execute"
-          },
-        {
-          "objectType" : "ExecPort",
-          "name" : "value",
-          "nodePortType" : "Out",
-          "execPortType" : "In",
-          "typeSpec" : "$TYPE$"
-          }
-        ],
-      "extDeps" : {},
-      "presetGUID" : "D903AFD981FE9214C69943F542D5FD60",
-      "code" : "dfgEntry {
 }
 "
       }

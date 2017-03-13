@@ -3,9 +3,9 @@
   "metadata" : {
     "uiTextColor" : "{\n  \"r\" : 20,\n  \"g\" : 20,\n  \"b\" : 20\n  }",
     "uiNodeColor" : "{\n  \"r\" : 121,\n  \"g\" : 134,\n  \"b\" : 143\n  }",
-    "uiGraphZoom" : "{\n  \"value\" : 1.0\n  }",
+    "uiGraphZoom" : "{\n  \"value\" : 1.14284610748291\n  }",
     "uiTooltip" : "Writes character animation from CSV files filled with quaternions.",
-    "uiGraphPan" : "{\n  \"x\" : -689.2005615234375,\n  \"y\" : -173.5330810546875\n  }"
+    "uiGraphPan" : "{\n  \"x\" : -1051.0712890625,\n  \"y\" : -161.9733581542969\n  }"
     },
   "title" : "WriteCharacterAnimationToQuatCSV",
   "ports" : [
@@ -39,7 +39,6 @@
       },
     {
       "objectType" : "ExecPort",
-      "metadata" : {},
       "name" : "separator",
       "nodePortType" : "Out",
       "defaultValues" : {
@@ -84,7 +83,7 @@
   "extDeps" : {
     "Characters" : "*"
     },
-  "presetGUID" : "1308A469001D81B8C2C35FD355B56571",
+  "presetGUID" : "EC774D0B9C3780D173D9319374979E69",
   "nodes" : [
     {
       "objectType" : "Inst",
@@ -112,37 +111,6 @@
         ],
       "executable" : "Fabric.Exts.Characters.Func.GetPose",
       "presetGUID" : "8065E200C220844A048E8F9F0072D751"
-      },
-    {
-      "objectType" : "Inst",
-      "metadata" : {
-        "uiGraphPos" : "{\"x\":1095.22839355,\"y\":279.855865479}"
-        },
-      "name" : "PoseToXfoArray_2",
-      "ports" : [
-        {
-          "objectType" : "InstPort",
-          "name" : "exec",
-          "nodePortType" : "IO"
-          },
-        {
-          "objectType" : "InstPort",
-          "name" : "this",
-          "nodePortType" : "In"
-          },
-        {
-          "objectType" : "InstPort",
-          "name" : "globalSpace",
-          "nodePortType" : "In"
-          },
-        {
-          "objectType" : "InstPort",
-          "name" : "result",
-          "nodePortType" : "Out"
-          }
-        ],
-      "executable" : "fabricUtils.Converters.PoseToXfoArray",
-      "presetGUID" : "38B5F4ABA2AFC0251221E3498E9CC336"
       },
     {
       "objectType" : "Inst",
@@ -191,9 +159,9 @@
     {
       "objectType" : "Inst",
       "metadata" : {
-        "uiGraphPos" : "{\"x\":1293.60192871,\"y\":263.7003479}"
+        "uiGraphPos" : "{\"x\":1332.70031738,\"y\":312.354622245}"
         },
-      "name" : "XfoArrayToQuatString_1",
+      "name" : "XfoArrayToQuatString_3",
       "ports" : [
         {
           "objectType" : "InstPort",
@@ -208,10 +176,7 @@
         {
           "objectType" : "InstPort",
           "name" : "separator",
-          "nodePortType" : "In",
-          "defaultValues" : {
-            "String" : ";"
-            }
+          "nodePortType" : "In"
           },
         {
           "objectType" : "InstPort",
@@ -219,8 +184,39 @@
           "nodePortType" : "Out"
           }
         ],
-      "executable" : "fabricUtils.Converters.XfoArrayToQuatString",
-      "presetGUID" : "C1F6613453868913A9BF5B6364C6ECE3"
+      "executable" : "fabricUtils.Converters.Xfo.XfoArrayToQuatString",
+      "presetGUID" : "F2B20303A8BC405784E35DD7AD3B5662"
+      },
+    {
+      "objectType" : "Inst",
+      "metadata" : {
+        "uiGraphPos" : "{\"x\":1104.32327604,\"y\":260.729219079}"
+        },
+      "name" : "PoseToXfoArray_1",
+      "ports" : [
+        {
+          "objectType" : "InstPort",
+          "name" : "exec",
+          "nodePortType" : "IO"
+          },
+        {
+          "objectType" : "InstPort",
+          "name" : "this",
+          "nodePortType" : "In"
+          },
+        {
+          "objectType" : "InstPort",
+          "name" : "globalSpace",
+          "nodePortType" : "In"
+          },
+        {
+          "objectType" : "InstPort",
+          "name" : "result",
+          "nodePortType" : "Out"
+          }
+        ],
+      "executable" : "fabricUtils.Converters.Pose.PoseToXfoArray",
+      "presetGUID" : "300F294CCB15C3E26EF1AA4793C44BEE"
       }
     ],
   "connections" : {
@@ -231,7 +227,7 @@
       "WriteLinePerFrame_1.filePath"
       ],
     "separator" : [
-      "XfoArrayToQuatString_1.separator"
+      "XfoArrayToQuatString_3.separator"
       ],
     "startFrame" : [
       "WriteLinePerFrame_1.startFrame"
@@ -240,10 +236,7 @@
       "WriteLinePerFrame_1.frame"
       ],
     "GetPose_1.result" : [
-      "PoseToXfoArray_2.this"
-      ],
-    "PoseToXfoArray_2.result" : [
-      "XfoArrayToQuatString_1.this"
+      "PoseToXfoArray_1.this"
       ],
     "WriteLinePerFrame_1.exec" : [
       "exec"
@@ -251,273 +244,18 @@
     "WriteLinePerFrame_1.value" : [
       "writer"
       ],
-    "XfoArrayToQuatString_1.result" : [
+    "XfoArrayToQuatString_3.result" : [
       "WriteLinePerFrame_1.String"
+      ],
+    "PoseToXfoArray_1.result" : [
+      "XfoArrayToQuatString_3.this"
       ]
     },
   "requiredPresets" : {
-    "fabricUtils.FileIO.WriteCharacterAnimationToQuatCSV" : {
-      "objectType" : "Graph",
-      "metadata" : {
-        "uiTextColor" : "{\n  \"r\" : 20,\n  \"g\" : 20,\n  \"b\" : 20\n  }",
-        "uiNodeColor" : "{\n  \"r\" : 121,\n  \"g\" : 134,\n  \"b\" : 143\n  }",
-        "uiGraphZoom" : "{\n  \"value\" : 1.0\n  }",
-        "uiTooltip" : "Writes character animation from CSV files filled with quaternions.",
-        "uiGraphPan" : "{\n  \"x\" : -689.2005615234375,\n  \"y\" : -173.5330810546875\n  }"
-        },
-      "title" : "WriteCharacterAnimationToQuatCSV",
-      "ports" : [
-        {
-          "objectType" : "ExecPort",
-          "name" : "exec",
-          "nodePortType" : "IO",
-          "defaultValues" : {
-            "Execute" : {}
-            },
-          "execPortType" : "IO",
-          "typeSpec" : "Execute"
-          },
-        {
-          "objectType" : "ExecPort",
-          "name" : "posedCharacter",
-          "nodePortType" : "Out",
-          "defaultValues" : {
-            "Character" : null
-            },
-          "execPortType" : "In"
-          },
-        {
-          "objectType" : "ExecPort",
-          "name" : "filePath",
-          "nodePortType" : "Out",
-          "defaultValues" : {
-            "String" : ""
-            },
-          "execPortType" : "In"
-          },
-        {
-          "objectType" : "ExecPort",
-          "metadata" : {},
-          "name" : "separator",
-          "nodePortType" : "Out",
-          "defaultValues" : {
-            "String" : ";"
-            },
-          "execPortType" : "In",
-          "typeSpec" : "String"
-          },
-        {
-          "objectType" : "ExecPort",
-          "metadata" : {
-            "uiPersistValue" : "true"
-            },
-          "name" : "startFrame",
-          "nodePortType" : "Out",
-          "defaultValues" : {
-            "Float64" : 1
-            },
-          "execPortType" : "In",
-          "typeSpec" : "Float64"
-          },
-        {
-          "objectType" : "ExecPort",
-          "name" : "currentFrame",
-          "nodePortType" : "Out",
-          "defaultValues" : {
-            "Float64" : 0
-            },
-          "execPortType" : "In"
-          },
-        {
-          "objectType" : "ExecPort",
-          "name" : "writer",
-          "nodePortType" : "In",
-          "defaultValues" : {
-            "TextWriter" : null
-            },
-          "execPortType" : "Out",
-          "typeSpec" : "TextWriter"
-          }
-        ],
-      "extDeps" : {
-        "Characters" : "*"
-        },
-      "presetGUID" : "1308A469001D81B8C2C35FD355B56571",
-      "nodes" : [
-        {
-          "objectType" : "Inst",
-          "metadata" : {
-            "uiGraphPos" : "{\"x\":941.737407446,\"y\":249.416703224}",
-            "uiCollapsedState" : "0"
-            },
-          "name" : "GetPose_1",
-          "ports" : [
-            {
-              "objectType" : "InstPort",
-              "name" : "exec",
-              "nodePortType" : "IO"
-              },
-            {
-              "objectType" : "InstPort",
-              "name" : "this",
-              "nodePortType" : "In"
-              },
-            {
-              "objectType" : "InstPort",
-              "name" : "result",
-              "nodePortType" : "Out"
-              }
-            ],
-          "executable" : "Fabric.Exts.Characters.Func.GetPose",
-          "presetGUID" : "8065E200C220844A048E8F9F0072D751"
-          },
-        {
-          "objectType" : "Inst",
-          "metadata" : {
-            "uiGraphPos" : "{\"x\":1095.22839355,\"y\":279.855865479}"
-            },
-          "name" : "PoseToXfoArray_2",
-          "ports" : [
-            {
-              "objectType" : "InstPort",
-              "name" : "exec",
-              "nodePortType" : "IO"
-              },
-            {
-              "objectType" : "InstPort",
-              "name" : "this",
-              "nodePortType" : "In"
-              },
-            {
-              "objectType" : "InstPort",
-              "name" : "globalSpace",
-              "nodePortType" : "In"
-              },
-            {
-              "objectType" : "InstPort",
-              "name" : "result",
-              "nodePortType" : "Out"
-              }
-            ],
-          "executable" : "fabricUtils.Converters.PoseToXfoArray",
-          "presetGUID" : "38B5F4ABA2AFC0251221E3498E9CC336"
-          },
-        {
-          "objectType" : "Inst",
-          "metadata" : {
-            "uiGraphPos" : "{\"x\":1705.66369629,\"y\":190.36579895}"
-            },
-          "name" : "WriteLinePerFrame_1",
-          "ports" : [
-            {
-              "objectType" : "InstPort",
-              "name" : "exec",
-              "nodePortType" : "IO"
-              },
-            {
-              "objectType" : "InstPort",
-              "name" : "filePath",
-              "nodePortType" : "In"
-              },
-            {
-              "objectType" : "InstPort",
-              "name" : "String",
-              "nodePortType" : "In"
-              },
-            {
-              "objectType" : "InstPort",
-              "name" : "frame",
-              "nodePortType" : "In"
-              },
-            {
-              "objectType" : "InstPort",
-              "name" : "startFrame",
-              "nodePortType" : "In",
-              "defaultValues" : {
-                "Float64" : 1
-                }
-              },
-            {
-              "objectType" : "InstPort",
-              "name" : "value",
-              "nodePortType" : "Out"
-              }
-            ],
-          "executable" : "fabricUtils.FileIO.WriteLinePerFrame",
-          "presetGUID" : "0341C417A207FE0163C79827FB64F384"
-          },
-        {
-          "objectType" : "Inst",
-          "metadata" : {
-            "uiGraphPos" : "{\"x\":1293.60192871,\"y\":263.7003479}"
-            },
-          "name" : "XfoArrayToQuatString_1",
-          "ports" : [
-            {
-              "objectType" : "InstPort",
-              "name" : "exec",
-              "nodePortType" : "IO"
-              },
-            {
-              "objectType" : "InstPort",
-              "name" : "this",
-              "nodePortType" : "In"
-              },
-            {
-              "objectType" : "InstPort",
-              "name" : "separator",
-              "nodePortType" : "In",
-              "defaultValues" : {
-                "String" : ";"
-                }
-              },
-            {
-              "objectType" : "InstPort",
-              "name" : "result",
-              "nodePortType" : "Out"
-              }
-            ],
-          "executable" : "fabricUtils.Converters.XfoArrayToQuatString",
-          "presetGUID" : "C1F6613453868913A9BF5B6364C6ECE3"
-          }
-        ],
-      "connections" : {
-        "posedCharacter" : [
-          "GetPose_1.this"
-          ],
-        "filePath" : [
-          "WriteLinePerFrame_1.filePath"
-          ],
-        "separator" : [
-          "XfoArrayToQuatString_1.separator"
-          ],
-        "startFrame" : [
-          "WriteLinePerFrame_1.startFrame"
-          ],
-        "currentFrame" : [
-          "WriteLinePerFrame_1.frame"
-          ],
-        "GetPose_1.result" : [
-          "PoseToXfoArray_2.this"
-          ],
-        "PoseToXfoArray_2.result" : [
-          "XfoArrayToQuatString_1.this"
-          ],
-        "WriteLinePerFrame_1.exec" : [
-          "exec"
-          ],
-        "WriteLinePerFrame_1.value" : [
-          "writer"
-          ],
-        "XfoArrayToQuatString_1.result" : [
-          "WriteLinePerFrame_1.String"
-          ]
-        }
-      },
     "Fabric.Exts.Characters.Func.GetPose" : {
       "objectType" : "Func",
       "metadata" : {
-        "uiDocUrl" : "http://docs.fabric-engine.com/FabricEngine/2.3.0/HTML/KLExtensionsGuide/Characters/ICharacter.html",
+        "uiDocUrl" : "http://docs.fabric-engine.com/FabricEngine/2.4.0/HTML/KLExtensionsGuide/Characters/ICharacter.html",
         "uiTooltip" : "\n\n Supported by ICharacter,Character"
         },
       "title" : "GetPose",
@@ -552,56 +290,6 @@
 
 dfgEntry {
   result = this.getPose();
-}
-"
-      },
-    "fabricUtils.Converters.PoseToXfoArray" : {
-      "objectType" : "Func",
-      "metadata" : {
-        "uiTooltip" : "Converts a skeleton's pose to an array of Xfos. Returns Xfos in local and global spaces.\n\nSupported types:\n  this: IPose\n  globalSpace: Boolean\n  result: Xfo[]\n"
-        },
-      "title" : "PoseToXfoArray",
-      "ports" : [
-        {
-          "objectType" : "ExecPort",
-          "name" : "exec",
-          "nodePortType" : "IO",
-          "execPortType" : "IO",
-          "typeSpec" : "Execute"
-          },
-        {
-          "objectType" : "ExecPort",
-          "name" : "this",
-          "nodePortType" : "Out",
-          "execPortType" : "In",
-          "typeSpec" : "IPose"
-          },
-        {
-          "objectType" : "ExecPort",
-          "name" : "globalSpace",
-          "nodePortType" : "Out",
-          "execPortType" : "In",
-          "typeSpec" : "Boolean"
-          },
-        {
-          "objectType" : "ExecPort",
-          "metadata" : {
-            "uiColor" : "{\n  \"r\" : 249,\n  \"g\" : 157,\n  \"b\" : 28\n  }"
-            },
-          "name" : "result",
-          "nodePortType" : "In",
-          "execPortType" : "Out",
-          "typeSpec" : "Xfo[]"
-          }
-        ],
-      "extDeps" : {
-        "fabricUtils" : "*"
-        },
-      "presetGUID" : "38B5F4ABA2AFC0251221E3498E9CC336",
-      "code" : "require fabricUtils;
-
-dfgEntry {
-  poseToXfoArray(this, globalSpace, result);
 }
 "
       },
@@ -953,7 +641,7 @@ dfgEntry {
     "Fabric.Exts.FileIO.TextWriter.TextWriter" : {
       "objectType" : "Func",
       "metadata" : {
-        "uiDocUrl" : "http://docs.fabric-engine.com/FabricEngine/2.3.0/HTML/KLExtensionsGuide/FileIO/TextWriter.html",
+        "uiDocUrl" : "http://docs.fabric-engine.com/FabricEngine/2.4.0/HTML/KLExtensionsGuide/FileIO/TextWriter.html",
         "uiTooltip" : "constructs a new writer object with a given filePath\n\n Supported by TextWriter"
         },
       "title" : "TextWriter",
@@ -994,7 +682,7 @@ dfgEntry {
     "Fabric.Exts.FileIO.TextWriter.WriteLine" : {
       "objectType" : "Func",
       "metadata" : {
-        "uiDocUrl" : "http://docs.fabric-engine.com/FabricEngine/2.3.0/HTML/KLExtensionsGuide/FileIO/TextWriter.html",
+        "uiDocUrl" : "http://docs.fabric-engine.com/FabricEngine/2.4.0/HTML/KLExtensionsGuide/FileIO/TextWriter.html",
         "uiTooltip" : "writes the content of the string into the file, adding a line break\n\n Supported by TextWriter"
         },
       "title" : "WriteLine",
@@ -1035,7 +723,7 @@ dfgEntry {
     "Fabric.Exts.FileIO.TextWriter.Write" : {
       "objectType" : "Func",
       "metadata" : {
-        "uiDocUrl" : "http://docs.fabric-engine.com/FabricEngine/2.3.0/HTML/KLExtensionsGuide/FileIO/TextWriter.html",
+        "uiDocUrl" : "http://docs.fabric-engine.com/FabricEngine/2.4.0/HTML/KLExtensionsGuide/FileIO/TextWriter.html",
         "uiTooltip" : "writes the content of the string into the file\n\n Supported by TextWriter"
         },
       "title" : "Write",
@@ -1162,7 +850,7 @@ dfgEntry {
 }
 "
       },
-    "fabricUtils.Converters.XfoArrayToQuatString" : {
+    "fabricUtils.Converters.Xfo.XfoArrayToQuatString" : {
       "objectType" : "Func",
       "metadata" : {
         "uiTooltip" : "Converts an array of Xfos to a string of quaternions.\n\nSupported types:\n  this: Xfo[]\n  separator: String\n  result: String\n"
@@ -1204,11 +892,61 @@ dfgEntry {
       "extDeps" : {
         "fabricUtils" : "*"
         },
-      "presetGUID" : "C1F6613453868913A9BF5B6364C6ECE3",
+      "presetGUID" : "F2B20303A8BC405784E35DD7AD3B5662",
       "code" : "require fabricUtils;
 
 dfgEntry {
-  xfoArrayToQuatString(this, separator, result);
+  result = xfoArrayToQuatString(this, separator);
+}
+"
+      },
+    "fabricUtils.Converters.Pose.PoseToXfoArray" : {
+      "objectType" : "Func",
+      "metadata" : {
+        "uiTooltip" : "Converts a skeleton's pose to an array of Xfos. Returns Xfos in local and global spaces.\n\nSupported types:\n  this: IPose\n  globalSpace: Boolean\n  result: Xfo[]\n"
+        },
+      "title" : "PoseToXfoArray",
+      "ports" : [
+        {
+          "objectType" : "ExecPort",
+          "name" : "exec",
+          "nodePortType" : "IO",
+          "execPortType" : "IO",
+          "typeSpec" : "Execute"
+          },
+        {
+          "objectType" : "ExecPort",
+          "name" : "this",
+          "nodePortType" : "Out",
+          "execPortType" : "In",
+          "typeSpec" : "IPose"
+          },
+        {
+          "objectType" : "ExecPort",
+          "name" : "globalSpace",
+          "nodePortType" : "Out",
+          "execPortType" : "In",
+          "typeSpec" : "Boolean"
+          },
+        {
+          "objectType" : "ExecPort",
+          "metadata" : {
+            "uiColor" : "{\n  \"r\" : 249,\n  \"g\" : 157,\n  \"b\" : 28\n  }"
+            },
+          "name" : "result",
+          "nodePortType" : "In",
+          "execPortType" : "Out",
+          "typeSpec" : "Xfo[]"
+          }
+        ],
+      "extDeps" : {
+        "fabricUtils" : "*"
+        },
+      "presetGUID" : "300F294CCB15C3E26EF1AA4793C44BEE",
+      "code" : "require fabricUtils;
+
+dfgEntry {
+  result = poseToXfoArray(this, globalSpace);
 }
 "
       }
