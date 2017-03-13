@@ -1,0 +1,51 @@
+// Created by kl2dfg (processFunction)
+{
+  "objectType" : "Func",
+  "metadata" : {
+    "uiTooltip" : "Sets the xfos on a pose using an xfo array.\n\nSupported types:\n  this: IPose\n  xfos: Xfo[]\n  boneIds: Integer[]\n"
+    },
+  "title" : "xfoArrayToPose_Ids",
+  "ports" : [
+    {
+      "objectType" : "ExecPort",
+      "name" : "exec",
+      "nodePortType" : "IO",
+      "execPortType" : "IO",
+      "typeSpec" : "Execute"
+      },
+    {
+      "objectType" : "ExecPort",
+      "name" : "this",
+      "nodePortType" : "IO",
+      "execPortType" : "IO",
+      "typeSpec" : "IPose"
+      },
+    {
+      "objectType" : "ExecPort",
+      "metadata" : {
+        "uiColor" : "{\n  \"r\" : 249,\n  \"g\" : 157,\n  \"b\" : 28\n  }"
+        },
+      "name" : "xfos",
+      "nodePortType" : "Out",
+      "execPortType" : "In",
+      "typeSpec" : "Xfo[]"
+      },
+    {
+      "objectType" : "ExecPort",
+      "name" : "boneIds",
+      "nodePortType" : "Out",
+      "execPortType" : "In",
+      "typeSpec" : "Integer[]"
+      }
+    ],
+  "extDeps" : {
+    "fabricUtils" : "*"
+    },
+  "presetGUID" : "AB4CFADB805863F92B2E4E312D319B11",
+  "code" : "require fabricUtils;
+
+dfgEntry {
+  xfoArrayToPose(this, xfos, boneIds);
+}
+"
+  }

@@ -1,0 +1,17 @@
+require Math;
+
+/// \dfgPresetFolder Converters/Quat
+/// Converts an array of xfos into an array of scalar values.
+function Scalar[] quatToScalarArray(
+in Quat this,
+)
+{
+  Scalar result[];
+
+  result.push(this.v.x);
+  result.push(this.v.y);
+  result.push(this.v.z);
+  result.push(this.w);
+  
+  return result;
+}

@@ -1,13 +1,10 @@
 {
   "objectType" : "Graph",
   "metadata" : {
-    "uiTextColor" : "{\n  \"r\" : 20,\n  \"g\" : 20,\n  \"b\" : 20\n  }",
-    "uiNodeColor" : "{\n  \"r\" : 121,\n  \"g\" : 134,\n  \"b\" : 143\n  }",
-    "uiGraphZoom" : "{\n  \"value\" : 0.9954173564910889\n  }",
-    "uiTooltip" : "Converts a segment of a pose, determined by coma separated bone names, into an array of Xfos.",
-    "uiGraphPan" : "{\n  \"x\" : -2051.794189453125,\n  \"y\" : 228.2866821289063\n  }"
+    "uiGraphZoom" : "{\n  \"value\" : 1.0\n  }",
+    "uiGraphPan" : "{\n  \"x\" : -146.2745361328125,\n  \"y\" : -479.2538757324219\n  }"
     },
-  "title" : "PoseSegmentToXfoArray",
+  "title" : "GetBoneXfoByName",
   "ports" : [
     {
       "objectType" : "ExecPort",
@@ -21,7 +18,8 @@
       },
     {
       "objectType" : "ExecPort",
-      "name" : "posedCharacter",
+      "metadata" : {},
+      "name" : "character",
       "nodePortType" : "Out",
       "defaultValues" : {
         "Character" : null
@@ -30,105 +28,54 @@
       },
     {
       "objectType" : "ExecPort",
-      "name" : "boneNames",
+      "metadata" : {},
+      "name" : "boneName",
       "nodePortType" : "Out",
       "defaultValues" : {
-        "String[]" : []
+        "String" : "Hips"
         },
       "execPortType" : "In",
-      "typeSpec" : "String[]"
+      "typeSpec" : "String"
       },
     {
       "objectType" : "ExecPort",
-      "name" : "globalSpace",
-      "nodePortType" : "Out",
-      "defaultValues" : {
-        "Boolean" : true
-        },
-      "execPortType" : "In",
-      "typeSpec" : "Boolean"
-      },
-    {
-      "objectType" : "ExecPort",
-      "name" : "ids",
+      "name" : "result",
       "nodePortType" : "In",
       "defaultValues" : {
-        "Index[]" : []
+        "Xfo" : {
+          "ori" : {
+            "v" : {
+              "x" : 0,
+              "y" : 0,
+              "z" : 0
+              },
+            "w" : 1
+            },
+          "tr" : {
+            "x" : 0,
+            "y" : 0,
+            "z" : 0
+            },
+          "sc" : {
+            "x" : 1,
+            "y" : 1,
+            "z" : 1
+            }
+          }
         },
       "execPortType" : "Out",
-      "typeSpec" : "Index[]"
-      },
-    {
-      "objectType" : "ExecPort",
-      "name" : "xfos",
-      "nodePortType" : "In",
-      "defaultValues" : {
-        "Xfo[]" : []
-        },
-      "execPortType" : "Out"
+      "typeSpec" : "Xfo"
       }
     ],
   "extDeps" : {},
-  "presetGUID" : "0A99C8D6D95CC7D2A57D017BDB893998",
+  "presetGUID" : "6794E7C657547D45458496583E54262D",
   "nodes" : [
     {
       "objectType" : "Inst",
       "metadata" : {
-        "uiGraphPos" : "{\"x\":2660.26791501,\"y\":79.1124844551}"
+        "uiGraphPos" : "{\"x\":675.446110249,\"y\":753.930855036}"
         },
-      "name" : "GetSubArray",
-      "ports" : [
-        {
-          "objectType" : "InstPort",
-          "name" : "exec",
-          "nodePortType" : "IO"
-          },
-        {
-          "objectType" : "InstPort",
-          "name" : "array",
-          "nodePortType" : "In"
-          },
-        {
-          "objectType" : "InstPort",
-          "name" : "indices",
-          "nodePortType" : "In"
-          },
-        {
-          "objectType" : "InstPort",
-          "name" : "result",
-          "nodePortType" : "Out"
-          }
-        ],
-      "executable" : "fabricUtils.Arrays.GetSubArray",
-      "presetGUID" : "3EB01AA8D84195FFCC36D66B9DDBB5BE"
-      },
-    {
-      "objectType" : "Inst",
-      "metadata" : {
-        "uiGraphPos" : "{\"x\":1970.18647861,\"y\":89.79358339309999}"
-        },
-      "name" : "PassIn_1",
-      "ports" : [
-        {
-          "objectType" : "InstPort",
-          "name" : "exec",
-          "nodePortType" : "IO"
-          },
-        {
-          "objectType" : "InstPort",
-          "name" : "value",
-          "nodePortType" : "In"
-          }
-        ],
-      "executable" : "Fabric.Core.Data.PassIn",
-      "presetGUID" : "3C33E1B42A2643A035DBAB718554227D"
-      },
-    {
-      "objectType" : "Inst",
-      "metadata" : {
-        "uiGraphPos" : "{\"x\":2150.04512119,\"y\":47.5089154243}"
-        },
-      "name" : "GetPose_1",
+      "name" : "GetPose_4",
       "ports" : [
         {
           "objectType" : "InstPort",
@@ -152,7 +99,7 @@
     {
       "objectType" : "Inst",
       "metadata" : {
-        "uiGraphPos" : "{\"x\":2084.75048828,\"y\":143.378250122}"
+        "uiGraphPos" : "{\"x\":364.10309267,\"y\":740.374153376}"
         },
       "name" : "GetSkeleton_1",
       "ports" : [
@@ -178,9 +125,9 @@
     {
       "objectType" : "Inst",
       "metadata" : {
-        "uiGraphPos" : "{\"x\":2242.34106445,\"y\":150.865737915}"
+        "uiGraphPos" : "{\"x\":514.165104389,\"y\":810.133613825}"
         },
-      "name" : "BoneNameArrayToIDArray_1",
+      "name" : "FindBone_2",
       "ports" : [
         {
           "objectType" : "InstPort",
@@ -194,7 +141,15 @@
           },
         {
           "objectType" : "InstPort",
-          "name" : "names",
+          "name" : "boneName",
+          "nodePortType" : "In",
+          "defaultValues" : {
+            "String" : "Hips"
+            }
+          },
+        {
+          "objectType" : "InstPort",
+          "name" : "startingPoint",
           "nodePortType" : "In"
           },
         {
@@ -203,15 +158,15 @@
           "nodePortType" : "Out"
           }
         ],
-      "executable" : "fabricUtils.Converters.BoneNameArrayToIDArray",
-      "presetGUID" : "A750A14D32A93B49F08C7836E203ECAA"
+      "executable" : "Fabric.Exts.Characters.ISkeleton.FindBone",
+      "presetGUID" : "E103F93250732139B5D21266538BCB68"
       },
     {
       "objectType" : "Inst",
       "metadata" : {
-        "uiGraphPos" : "{\"x\":2315.35027194,\"y\":34.8242889643}"
+        "uiGraphPos" : "{\"x\":790.445988178,\"y\":794.430916071}"
         },
-      "name" : "PoseToXfoArray_1",
+      "name" : "GetBoneXfo_1",
       "ports" : [
         {
           "objectType" : "InstPort",
@@ -221,11 +176,11 @@
         {
           "objectType" : "InstPort",
           "name" : "this",
-          "nodePortType" : "In"
+          "nodePortType" : "IO"
           },
         {
           "objectType" : "InstPort",
-          "name" : "globalSpace",
+          "name" : "index",
           "nodePortType" : "In"
           },
         {
@@ -234,13 +189,13 @@
           "nodePortType" : "Out"
           }
         ],
-      "executable" : "fabricUtils.Converters.PoseToXfoArray",
-      "presetGUID" : "300F294CCB15C3E26EF1AA4793C44BEE"
+      "executable" : "Fabric.Exts.Characters.Func.GetBoneXfo",
+      "presetGUID" : "7D655895D6198CE9CD72765843D152CA"
       },
     {
       "objectType" : "Inst",
       "metadata" : {
-        "uiGraphPos" : "{\"x\":2467.26391602,\"y\":155.365753174}"
+        "uiGraphPos" : "{\"x\":675.446110249,\"y\":834.930916071}"
         },
       "name" : "Cache_1",
       "ports" : [
@@ -260,52 +215,39 @@
       }
     ],
   "connections" : {
-    "posedCharacter" : [
-      "PassIn_1.value"
-      ],
-    "boneNames" : [
-      "BoneNameArrayToIDArray_1.names"
-      ],
-    "globalSpace" : [
-      "PoseToXfoArray_1.globalSpace"
-      ],
-    "GetSubArray.indices" : [
-      "ids"
-      ],
-    "GetSubArray.result" : [
-      "xfos"
-      ],
-    "PassIn_1.value" : [
-      "GetPose_1.this",
+    "character" : [
       "GetSkeleton_1.this"
       ],
-    "GetPose_1.result" : [
-      "PoseToXfoArray_1.this"
+    "boneName" : [
+      "FindBone_2.boneName"
+      ],
+    "GetPose_4.result" : [
+      "GetBoneXfo_1.this"
+      ],
+    "GetSkeleton_1.this" : [
+      "GetPose_4.this"
       ],
     "GetSkeleton_1.result" : [
-      "BoneNameArrayToIDArray_1.this"
+      "FindBone_2.this"
       ],
-    "BoneNameArrayToIDArray_1.result" : [
+    "FindBone_2.result" : [
       "Cache_1.value"
       ],
-    "PoseToXfoArray_1.result" : [
-      "GetSubArray.array"
+    "GetBoneXfo_1.result" : [
+      "result"
       ],
     "Cache_1.value" : [
-      "GetSubArray.indices"
+      "GetBoneXfo_1.index"
       ]
     },
   "requiredPresets" : {
-    "fabricUtils.Converters.PoseSegmentToXfoArray" : {
+    "fabricUtils.Characters.GetBoneXfoByName" : {
       "objectType" : "Graph",
       "metadata" : {
-        "uiTextColor" : "{\n  \"r\" : 20,\n  \"g\" : 20,\n  \"b\" : 20\n  }",
-        "uiNodeColor" : "{\n  \"r\" : 121,\n  \"g\" : 134,\n  \"b\" : 143\n  }",
-        "uiGraphZoom" : "{\n  \"value\" : 0.9954173564910889\n  }",
-        "uiTooltip" : "Converts a segment of a pose, determined by coma separated bone names, into an array of Xfos.",
-        "uiGraphPan" : "{\n  \"x\" : -2051.794189453125,\n  \"y\" : 228.2866821289063\n  }"
+        "uiGraphZoom" : "{\n  \"value\" : 1.0\n  }",
+        "uiGraphPan" : "{\n  \"x\" : -146.2745361328125,\n  \"y\" : -479.2538757324219\n  }"
         },
-      "title" : "PoseSegmentToXfoArray",
+      "title" : "GetBoneXfoByName",
       "ports" : [
         {
           "objectType" : "ExecPort",
@@ -319,7 +261,8 @@
           },
         {
           "objectType" : "ExecPort",
-          "name" : "posedCharacter",
+          "metadata" : {},
+          "name" : "character",
           "nodePortType" : "Out",
           "defaultValues" : {
             "Character" : null
@@ -328,105 +271,54 @@
           },
         {
           "objectType" : "ExecPort",
-          "name" : "boneNames",
+          "metadata" : {},
+          "name" : "boneName",
           "nodePortType" : "Out",
           "defaultValues" : {
-            "String[]" : []
+            "String" : "Hips"
             },
           "execPortType" : "In",
-          "typeSpec" : "String[]"
+          "typeSpec" : "String"
           },
         {
           "objectType" : "ExecPort",
-          "name" : "globalSpace",
-          "nodePortType" : "Out",
-          "defaultValues" : {
-            "Boolean" : true
-            },
-          "execPortType" : "In",
-          "typeSpec" : "Boolean"
-          },
-        {
-          "objectType" : "ExecPort",
-          "name" : "ids",
+          "name" : "result",
           "nodePortType" : "In",
           "defaultValues" : {
-            "Index[]" : []
+            "Xfo" : {
+              "ori" : {
+                "v" : {
+                  "x" : 0,
+                  "y" : 0,
+                  "z" : 0
+                  },
+                "w" : 1
+                },
+              "tr" : {
+                "x" : 0,
+                "y" : 0,
+                "z" : 0
+                },
+              "sc" : {
+                "x" : 1,
+                "y" : 1,
+                "z" : 1
+                }
+              }
             },
           "execPortType" : "Out",
-          "typeSpec" : "Index[]"
-          },
-        {
-          "objectType" : "ExecPort",
-          "name" : "xfos",
-          "nodePortType" : "In",
-          "defaultValues" : {
-            "Xfo[]" : []
-            },
-          "execPortType" : "Out"
+          "typeSpec" : "Xfo"
           }
         ],
       "extDeps" : {},
-      "presetGUID" : "0A99C8D6D95CC7D2A57D017BDB893998",
+      "presetGUID" : "6794E7C657547D45458496583E54262D",
       "nodes" : [
         {
           "objectType" : "Inst",
           "metadata" : {
-            "uiGraphPos" : "{\"x\":2660.26791501,\"y\":79.1124844551}"
+            "uiGraphPos" : "{\"x\":675.446110249,\"y\":753.930855036}"
             },
-          "name" : "GetSubArray",
-          "ports" : [
-            {
-              "objectType" : "InstPort",
-              "name" : "exec",
-              "nodePortType" : "IO"
-              },
-            {
-              "objectType" : "InstPort",
-              "name" : "array",
-              "nodePortType" : "In"
-              },
-            {
-              "objectType" : "InstPort",
-              "name" : "indices",
-              "nodePortType" : "In"
-              },
-            {
-              "objectType" : "InstPort",
-              "name" : "result",
-              "nodePortType" : "Out"
-              }
-            ],
-          "executable" : "fabricUtils.Arrays.GetSubArray",
-          "presetGUID" : "3EB01AA8D84195FFCC36D66B9DDBB5BE"
-          },
-        {
-          "objectType" : "Inst",
-          "metadata" : {
-            "uiGraphPos" : "{\"x\":1970.18647861,\"y\":89.79358339309999}"
-            },
-          "name" : "PassIn_1",
-          "ports" : [
-            {
-              "objectType" : "InstPort",
-              "name" : "exec",
-              "nodePortType" : "IO"
-              },
-            {
-              "objectType" : "InstPort",
-              "name" : "value",
-              "nodePortType" : "In"
-              }
-            ],
-          "executable" : "Fabric.Core.Data.PassIn",
-          "presetGUID" : "3C33E1B42A2643A035DBAB718554227D"
-          },
-        {
-          "objectType" : "Inst",
-          "metadata" : {
-            "uiGraphPos" : "{\"x\":2150.04512119,\"y\":47.5089154243}"
-            },
-          "name" : "GetPose_1",
+          "name" : "GetPose_4",
           "ports" : [
             {
               "objectType" : "InstPort",
@@ -450,7 +342,7 @@
         {
           "objectType" : "Inst",
           "metadata" : {
-            "uiGraphPos" : "{\"x\":2084.75048828,\"y\":143.378250122}"
+            "uiGraphPos" : "{\"x\":364.10309267,\"y\":740.374153376}"
             },
           "name" : "GetSkeleton_1",
           "ports" : [
@@ -476,9 +368,9 @@
         {
           "objectType" : "Inst",
           "metadata" : {
-            "uiGraphPos" : "{\"x\":2242.34106445,\"y\":150.865737915}"
+            "uiGraphPos" : "{\"x\":514.165104389,\"y\":810.133613825}"
             },
-          "name" : "BoneNameArrayToIDArray_1",
+          "name" : "FindBone_2",
           "ports" : [
             {
               "objectType" : "InstPort",
@@ -492,7 +384,15 @@
               },
             {
               "objectType" : "InstPort",
-              "name" : "names",
+              "name" : "boneName",
+              "nodePortType" : "In",
+              "defaultValues" : {
+                "String" : "Hips"
+                }
+              },
+            {
+              "objectType" : "InstPort",
+              "name" : "startingPoint",
               "nodePortType" : "In"
               },
             {
@@ -501,15 +401,15 @@
               "nodePortType" : "Out"
               }
             ],
-          "executable" : "fabricUtils.Converters.BoneNameArrayToIDArray",
-          "presetGUID" : "A750A14D32A93B49F08C7836E203ECAA"
+          "executable" : "Fabric.Exts.Characters.ISkeleton.FindBone",
+          "presetGUID" : "E103F93250732139B5D21266538BCB68"
           },
         {
           "objectType" : "Inst",
           "metadata" : {
-            "uiGraphPos" : "{\"x\":2315.35027194,\"y\":34.8242889643}"
+            "uiGraphPos" : "{\"x\":790.445988178,\"y\":794.430916071}"
             },
-          "name" : "PoseToXfoArray_1",
+          "name" : "GetBoneXfo_1",
           "ports" : [
             {
               "objectType" : "InstPort",
@@ -519,11 +419,11 @@
             {
               "objectType" : "InstPort",
               "name" : "this",
-              "nodePortType" : "In"
+              "nodePortType" : "IO"
               },
             {
               "objectType" : "InstPort",
-              "name" : "globalSpace",
+              "name" : "index",
               "nodePortType" : "In"
               },
             {
@@ -532,13 +432,13 @@
               "nodePortType" : "Out"
               }
             ],
-          "executable" : "fabricUtils.Converters.PoseToXfoArray",
-          "presetGUID" : "300F294CCB15C3E26EF1AA4793C44BEE"
+          "executable" : "Fabric.Exts.Characters.Func.GetBoneXfo",
+          "presetGUID" : "7D655895D6198CE9CD72765843D152CA"
           },
         {
           "objectType" : "Inst",
           "metadata" : {
-            "uiGraphPos" : "{\"x\":2467.26391602,\"y\":155.365753174}"
+            "uiGraphPos" : "{\"x\":675.446110249,\"y\":834.930916071}"
             },
           "name" : "Cache_1",
           "ports" : [
@@ -558,130 +458,31 @@
           }
         ],
       "connections" : {
-        "posedCharacter" : [
-          "PassIn_1.value"
-          ],
-        "boneNames" : [
-          "BoneNameArrayToIDArray_1.names"
-          ],
-        "globalSpace" : [
-          "PoseToXfoArray_1.globalSpace"
-          ],
-        "GetSubArray.indices" : [
-          "ids"
-          ],
-        "GetSubArray.result" : [
-          "xfos"
-          ],
-        "PassIn_1.value" : [
-          "GetPose_1.this",
+        "character" : [
           "GetSkeleton_1.this"
           ],
-        "GetPose_1.result" : [
-          "PoseToXfoArray_1.this"
+        "boneName" : [
+          "FindBone_2.boneName"
+          ],
+        "GetPose_4.result" : [
+          "GetBoneXfo_1.this"
+          ],
+        "GetSkeleton_1.this" : [
+          "GetPose_4.this"
           ],
         "GetSkeleton_1.result" : [
-          "BoneNameArrayToIDArray_1.this"
+          "FindBone_2.this"
           ],
-        "BoneNameArrayToIDArray_1.result" : [
+        "FindBone_2.result" : [
           "Cache_1.value"
           ],
-        "PoseToXfoArray_1.result" : [
-          "GetSubArray.array"
+        "GetBoneXfo_1.result" : [
+          "result"
           ],
         "Cache_1.value" : [
-          "GetSubArray.indices"
+          "GetBoneXfo_1.index"
           ]
         }
-      },
-    "fabricUtils.Arrays.GetSubArray" : {
-      "objectType" : "Func",
-      "title" : "GetSubArray",
-      "ports" : [
-        {
-          "objectType" : "ExecPort",
-          "name" : "exec",
-          "nodePortType" : "IO",
-          "defaultValues" : {
-            "Execute" : {}
-            },
-          "execPortType" : "IO",
-          "typeSpec" : "Execute"
-          },
-        {
-          "objectType" : "ExecPort",
-          "name" : "array",
-          "nodePortType" : "Out",
-          "defaultValues" : {
-            "Xfo[]" : []
-            },
-          "execPortType" : "In",
-          "typeSpec" : "$TYPE$"
-          },
-        {
-          "objectType" : "ExecPort",
-          "name" : "indices",
-          "nodePortType" : "Out",
-          "defaultValues" : {
-            "Index[]" : [
-              0,
-              0
-              ]
-            },
-          "execPortType" : "In",
-          "typeSpec" : "Index[]"
-          },
-        {
-          "objectType" : "ExecPort",
-          "name" : "result",
-          "nodePortType" : "In",
-          "defaultValues" : {
-            "Xfo[]" : []
-            },
-          "execPortType" : "Out",
-          "typeSpec" : "$TYPE$"
-          }
-        ],
-      "extDeps" : {},
-      "presetGUID" : "3EB01AA8D84195FFCC36D66B9DDBB5BE",
-      "code" : "dfgEntry {
-  Integer index = 0;
-  for (Integer i = 0; i <= indices.size() - 1; i++) {
-    index = indices[i];
-    result.push(array[index]);
-  }
-}
-"
-      },
-    "Fabric.Core.Data.PassIn" : {
-      "objectType" : "Func",
-      "metadata" : {
-        "uiNodeColor" : "{\n  \"r\" : 214,\n  \"g\" : 191,\n  \"b\" : 103\n  }",
-        "uiAlwaysShowDaisyChainPorts" : "true",
-        "uiHeaderColor" : "{\n  \"r\" : 188,\n  \"g\" : 129,\n  \"b\" : 83\n  }"
-        },
-      "title" : "PassIn",
-      "ports" : [
-        {
-          "objectType" : "ExecPort",
-          "name" : "exec",
-          "nodePortType" : "IO",
-          "execPortType" : "IO",
-          "typeSpec" : "Execute"
-          },
-        {
-          "objectType" : "ExecPort",
-          "name" : "value",
-          "nodePortType" : "Out",
-          "execPortType" : "In",
-          "typeSpec" : "$TYPE$"
-          }
-        ],
-      "extDeps" : {},
-      "presetGUID" : "3C33E1B42A2643A035DBAB718554227D",
-      "code" : "dfgEntry {
-}
-"
       },
     "Fabric.Exts.Characters.Func.GetPose" : {
       "objectType" : "Func",
@@ -765,12 +566,13 @@ dfgEntry {
 }
 "
       },
-    "fabricUtils.Converters.BoneNameArrayToIDArray" : {
+    "Fabric.Exts.Characters.ISkeleton.FindBone" : {
       "objectType" : "Func",
       "metadata" : {
-        "uiTooltip" : "Converts an array of bone names into an array of bone indices.\n\nSupported types:\n  this: ISkeleton\n  names: String[]\n  result: Index[]\n"
+        "uiDocUrl" : "http://docs.fabric-engine.com/FabricEngine/2.3.0/HTML/KLExtensionsGuide/Characters/ISkeleton.html",
+        "uiTooltip" : "\n\n Supported by ISkeleton"
         },
-      "title" : "BoneNameArrayToIDArray",
+      "title" : "FindBone",
       "ports" : [
         {
           "objectType" : "ExecPort",
@@ -788,36 +590,44 @@ dfgEntry {
           },
         {
           "objectType" : "ExecPort",
-          "name" : "names",
+          "name" : "boneName",
           "nodePortType" : "Out",
           "execPortType" : "In",
-          "typeSpec" : "String[]"
+          "typeSpec" : "String"
+          },
+        {
+          "objectType" : "ExecPort",
+          "name" : "startingPoint",
+          "nodePortType" : "Out",
+          "execPortType" : "In",
+          "typeSpec" : "Index"
           },
         {
           "objectType" : "ExecPort",
           "name" : "result",
           "nodePortType" : "In",
           "execPortType" : "Out",
-          "typeSpec" : "Index[]"
+          "typeSpec" : "Integer"
           }
         ],
       "extDeps" : {
-        "fabricUtils" : "*"
+        "Characters" : "*"
         },
-      "presetGUID" : "A750A14D32A93B49F08C7836E203ECAA",
-      "code" : "require fabricUtils;
+      "presetGUID" : "E103F93250732139B5D21266538BCB68",
+      "code" : "require Characters;
 
 dfgEntry {
-  result = boneNameArrayToIDArray(this, names);
+  result = this.findBone(boneName, startingPoint);
 }
 "
       },
-    "fabricUtils.Converters.PoseToXfoArray" : {
+    "Fabric.Exts.Characters.Func.GetBoneXfo" : {
       "objectType" : "Func",
       "metadata" : {
-        "uiTooltip" : "Converts a skeleton's pose to an array of Xfos. Returns Xfos in local and global spaces.\n\nSupported types:\n  this: IPose\n  globalSpace: Boolean\n  result: Xfo[]\n"
+        "uiDocUrl" : "http://docs.fabric-engine.com/FabricEngine/2.3.0/HTML/KLExtensionsGuide/Characters/IPose.html",
+        "uiTooltip" : "Get the pose of a bone in the skeleton using its index.\n\n Supported by IPose,Pose,ClipPose"
         },
-      "title" : "PoseToXfoArray",
+      "title" : "GetBoneXfo",
       "ports" : [
         {
           "objectType" : "ExecPort",
@@ -829,16 +639,16 @@ dfgEntry {
         {
           "objectType" : "ExecPort",
           "name" : "this",
-          "nodePortType" : "Out",
-          "execPortType" : "In",
-          "typeSpec" : "IPose"
+          "nodePortType" : "IO",
+          "execPortType" : "IO",
+          "typeSpec" : "$TYPE$"
           },
         {
           "objectType" : "ExecPort",
-          "name" : "globalSpace",
+          "name" : "index",
           "nodePortType" : "Out",
           "execPortType" : "In",
-          "typeSpec" : "Boolean"
+          "typeSpec" : "Index"
           },
         {
           "objectType" : "ExecPort",
@@ -848,17 +658,17 @@ dfgEntry {
           "name" : "result",
           "nodePortType" : "In",
           "execPortType" : "Out",
-          "typeSpec" : "Xfo[]"
+          "typeSpec" : "Xfo"
           }
         ],
       "extDeps" : {
-        "fabricUtils" : "*"
+        "Characters" : "*"
         },
-      "presetGUID" : "300F294CCB15C3E26EF1AA4793C44BEE",
-      "code" : "require fabricUtils;
+      "presetGUID" : "7D655895D6198CE9CD72765843D152CA",
+      "code" : "require Characters;
 
 dfgEntry {
-  result = poseToXfoArray(this, globalSpace);
+  result = this.getBoneXfo(index);
 }
 "
       },

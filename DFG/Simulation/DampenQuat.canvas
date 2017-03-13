@@ -1,0 +1,514 @@
+{
+  "objectType" : "Graph",
+  "metadata" : {
+    "uiTextColor" : "{\n  \"r\" : 20,\n  \"g\" : 20,\n  \"b\" : 20\n  }",
+    "uiNodeColor" : "{\n  \"r\" : 121,\n  \"g\" : 134,\n  \"b\" : 143\n  }",
+    "timeline_start" : "1",
+    "uiGraphZoom" : "{\n  \"value\" : 0.8515822291374207\n  }",
+    "timeline_loopMode" : "1",
+    "timeline_simMode" : "0",
+    "camera_mat44" : "{\n  \"row0\" : {\n    \"x\" : 0.7999999523162842,\n    \"y\" : -0.2228344082832336,\n    \"z\" : 0.5570860505104065,\n    \"t\" : 30\n    },\n  \"row1\" : {\n    \"x\" : -1.490116119384766e-08,\n    \"y\" : 0.9284766912460327,\n    \"z\" : 0.3713906705379486,\n    \"t\" : 20\n    },\n  \"row2\" : {\n    \"x\" : -0.6000000834465027,\n    \"y\" : -0.2971125543117523,\n    \"z\" : 0.7427813410758972,\n    \"t\" : 40\n    },\n  \"row3\" : {\n    \"x\" : 0,\n    \"y\" : 0,\n    \"z\" : 0,\n    \"t\" : 1\n    }\n  }",
+    "uiTooltip" : "Blends the current value with an average of previous values, by a certain factor. A factor of 0 means only previous values will be used, a factor of 1 means only current values will be used. When resetting the node the first value is used as the average of all previous values.",
+    "timeline_current" : "1",
+    "camera_focalDistance" : "53.85164642333984",
+    "timeline_end" : "250",
+    "uiGraphPan" : "{\n  \"x\" : -552.7586669921875,\n  \"y\" : 61.02716445922852\n  }"
+    },
+  "title" : "DampenQuat",
+  "ports" : [
+    {
+      "objectType" : "ExecPort",
+      "name" : "exec",
+      "nodePortType" : "IO",
+      "defaultValues" : {
+        "Execute" : {}
+        },
+      "execPortType" : "IO",
+      "typeSpec" : "Execute"
+      },
+    {
+      "objectType" : "ExecPort",
+      "name" : "value",
+      "nodePortType" : "Out",
+      "defaultValues" : {
+        "Vec3" : {
+          "x" : 0,
+          "y" : 0,
+          "z" : 0
+          },
+        "Quat" : {
+          "v" : {
+            "x" : 0,
+            "y" : 0,
+            "z" : 0
+            },
+          "w" : 1
+          }
+        },
+      "execPortType" : "In",
+      "typeSpec" : "Quat"
+      },
+    {
+      "objectType" : "ExecPort",
+      "name" : "factor",
+      "nodePortType" : "Out",
+      "defaultValues" : {
+        "Scalar" : 0.0333000011742115
+        },
+      "execPortType" : "In",
+      "typeSpec" : "Scalar"
+      },
+    {
+      "objectType" : "ExecPort",
+      "name" : "reset",
+      "nodePortType" : "Out",
+      "defaultValues" : {
+        "Boolean" : false
+        },
+      "execPortType" : "In",
+      "typeSpec" : "Boolean"
+      },
+    {
+      "objectType" : "ExecPort",
+      "name" : "result",
+      "nodePortType" : "In",
+      "defaultValues" : {
+        "Vec3" : {
+          "x" : 0,
+          "y" : 0,
+          "z" : 0
+          },
+        "Quat" : {
+          "v" : {
+            "x" : 0,
+            "y" : 0,
+            "z" : 0
+            },
+          "w" : 1
+          }
+        },
+      "execPortType" : "Out",
+      "typeSpec" : "Quat"
+      }
+    ],
+  "extDeps" : {},
+  "presetGUID" : "207405B9920A4801A42E91CC81E3B694",
+  "nodes" : [
+    {
+      "objectType" : "Inst",
+      "metadata" : {
+        "uiGraphPos" : "{\"x\":1319.31445312,\"y\":264.016998291}"
+        },
+      "name" : "If",
+      "ports" : [
+        {
+          "objectType" : "InstPort",
+          "name" : "exec",
+          "nodePortType" : "IO"
+          },
+        {
+          "objectType" : "InstPort",
+          "name" : "cond",
+          "nodePortType" : "In"
+          },
+        {
+          "objectType" : "InstPort",
+          "name" : "if_true",
+          "nodePortType" : "In"
+          },
+        {
+          "objectType" : "InstPort",
+          "name" : "if_false",
+          "nodePortType" : "In"
+          },
+        {
+          "objectType" : "InstPort",
+          "name" : "result",
+          "nodePortType" : "Out"
+          }
+        ],
+      "executable" : "Fabric.Core.Control.If",
+      "presetGUID" : "3182A478A21643455D549E483D35F831"
+      },
+    {
+      "objectType" : "Set",
+      "metadata" : {
+        "uiGraphPos" : "{\"x\":1609.31445312,\"y\":264.016998291}"
+        },
+      "name" : "set",
+      "ports" : [
+        {
+          "objectType" : "SetPort",
+          "name" : "value",
+          "nodePortType" : "IO"
+          }
+        ],
+      "varPath" : "valueVar"
+      },
+    {
+      "objectType" : "Get",
+      "metadata" : {
+        "uiGraphPos" : "{\"x\":663.094582319,\"y\":265.191282988}"
+        },
+      "name" : "get",
+      "ports" : [
+        {
+          "objectType" : "GetPort",
+          "name" : "value",
+          "nodePortType" : "Out"
+          }
+        ],
+      "varPath" : "valueVar"
+      },
+    {
+      "objectType" : "Inst",
+      "metadata" : {
+        "uiGraphPos" : "{\"x\":980.314453125,\"y\":264.016998291}"
+        },
+      "name" : "LinearInterpolate_1",
+      "ports" : [
+        {
+          "objectType" : "InstPort",
+          "name" : "exec",
+          "nodePortType" : "IO"
+          },
+        {
+          "objectType" : "InstPort",
+          "name" : "this",
+          "nodePortType" : "In",
+          "defaultValues" : {
+            "Vec3" : {
+              "x" : 0,
+              "y" : 1,
+              "z" : 0
+              }
+            }
+          },
+        {
+          "objectType" : "InstPort",
+          "name" : "other",
+          "nodePortType" : "In",
+          "defaultValues" : {
+            "Vec3" : {
+              "x" : 1,
+              "y" : 0,
+              "z" : 0
+              }
+            }
+          },
+        {
+          "objectType" : "InstPort",
+          "name" : "t",
+          "nodePortType" : "In"
+          },
+        {
+          "objectType" : "InstPort",
+          "name" : "result",
+          "nodePortType" : "Out"
+          }
+        ],
+      "executable" : "Fabric.Exts.Math.Func.LinearInterpolate",
+      "presetGUID" : "12CF7203114B81451A5EEC920610EDA9"
+      },
+    {
+      "objectType" : "Var",
+      "metadata" : {
+        "uiGraphPos" : "{\"x\":1114.2759819,\"y\":85.8095536232}"
+        },
+      "name" : "valueVar",
+      "ports" : [
+        {
+          "objectType" : "VarPort",
+          "name" : "value",
+          "nodePortType" : "IO"
+          }
+        ],
+      "dataType" : "Quat"
+      },
+    {
+      "objectType" : "Inst",
+      "metadata" : {
+        "uiGraphPos" : "{\"x\":808.799101591,\"y\":241.870802879}"
+        },
+      "name" : "QuatToSafeQuat_4",
+      "ports" : [
+        {
+          "objectType" : "InstPort",
+          "name" : "exec",
+          "nodePortType" : "IO"
+          },
+        {
+          "objectType" : "InstPort",
+          "name" : "this",
+          "nodePortType" : "In"
+          },
+        {
+          "objectType" : "InstPort",
+          "name" : "result",
+          "nodePortType" : "Out"
+          }
+        ],
+      "executable" : "fabricUtils.Converters.Quat.QuatToSafeQuat",
+      "presetGUID" : "3D204C2583052BC61A89C86B13BE156B"
+      },
+    {
+      "objectType" : "Inst",
+      "metadata" : {
+        "uiGraphPos" : "{\"x\":1149.34118652,\"y\":282.970768452}"
+        },
+      "name" : "QuatToSafeQuat_5",
+      "ports" : [
+        {
+          "objectType" : "InstPort",
+          "name" : "exec",
+          "nodePortType" : "IO"
+          },
+        {
+          "objectType" : "InstPort",
+          "name" : "this",
+          "nodePortType" : "In"
+          },
+        {
+          "objectType" : "InstPort",
+          "name" : "result",
+          "nodePortType" : "Out"
+          }
+        ],
+      "executable" : "fabricUtils.Converters.Quat.QuatToSafeQuat",
+      "presetGUID" : "3D204C2583052BC61A89C86B13BE156B"
+      },
+    {
+      "objectType" : "Inst",
+      "metadata" : {
+        "uiGraphPos" : "{\"x\":1444.08753562,\"y\":253.613680363}"
+        },
+      "name" : "QuatToSafeQuat_6",
+      "ports" : [
+        {
+          "objectType" : "InstPort",
+          "name" : "exec",
+          "nodePortType" : "IO"
+          },
+        {
+          "objectType" : "InstPort",
+          "name" : "this",
+          "nodePortType" : "In"
+          },
+        {
+          "objectType" : "InstPort",
+          "name" : "result",
+          "nodePortType" : "Out"
+          }
+        ],
+      "executable" : "fabricUtils.Converters.Quat.QuatToSafeQuat",
+      "presetGUID" : "3D204C2583052BC61A89C86B13BE156B"
+      }
+    ],
+  "connections" : {
+    "value" : [
+      "LinearInterpolate_1.other",
+      "If.if_true"
+      ],
+    "factor" : [
+      "LinearInterpolate_1.t"
+      ],
+    "reset" : [
+      "If.cond"
+      ],
+    "If.result" : [
+      "QuatToSafeQuat_6.this"
+      ],
+    "set.value" : [
+      "result"
+      ],
+    "get.value" : [
+      "QuatToSafeQuat_4.this"
+      ],
+    "LinearInterpolate_1.result" : [
+      "QuatToSafeQuat_5.this"
+      ],
+    "QuatToSafeQuat_4.result" : [
+      "LinearInterpolate_1.this"
+      ],
+    "QuatToSafeQuat_5.result" : [
+      "If.if_false"
+      ],
+    "QuatToSafeQuat_6.result" : [
+      "set.value"
+      ]
+    },
+  "requiredPresets" : {
+    "Fabric.Core.Control.If" : {
+      "objectType" : "Func",
+      "title" : "If",
+      "ports" : [
+        {
+          "objectType" : "ExecPort",
+          "name" : "exec",
+          "nodePortType" : "IO",
+          "execPortType" : "IO",
+          "typeSpec" : "Execute"
+          },
+        {
+          "objectType" : "ExecPort",
+          "name" : "cond",
+          "nodePortType" : "Out",
+          "execPortType" : "In",
+          "typeSpec" : "Boolean"
+          },
+        {
+          "objectType" : "ExecPort",
+          "name" : "if_true",
+          "nodePortType" : "Out",
+          "execPortType" : "In",
+          "typeSpec" : "$TYPE$"
+          },
+        {
+          "objectType" : "ExecPort",
+          "name" : "if_false",
+          "nodePortType" : "Out",
+          "execPortType" : "In",
+          "typeSpec" : "$TYPE$"
+          },
+        {
+          "objectType" : "ExecPort",
+          "name" : "result",
+          "nodePortType" : "In",
+          "execPortType" : "Out",
+          "typeSpec" : "$TYPE$"
+          }
+        ],
+      "extDeps" : {},
+      "presetGUID" : "3182A478A21643455D549E483D35F831",
+      "code" : "
+dfgEntry {
+	result = cond ? if_true : if_false;
+}
+"
+      },
+    "Fabric.Exts.Math.Func.LinearInterpolate" : {
+      "objectType" : "Func",
+      "metadata" : {
+        "uiNodeColor" : "{\n  \"r\" : 99,\n  \"g\" : 129,\n  \"b\" : 92\n  }",
+        "uiTooltip" : "Linearly interpolates a scalar value with another based on a blend (0.0 to 1.0)\n\n Supported by Float32,Float64,RGB,RGBA,ARGB,Color,Vec2,Vec3,Vec4,Quat,Xfo"
+        },
+      "title" : "LinearInterpolate",
+      "ports" : [
+        {
+          "objectType" : "ExecPort",
+          "name" : "exec",
+          "nodePortType" : "IO",
+          "execPortType" : "IO",
+          "typeSpec" : "Execute"
+          },
+        {
+          "objectType" : "ExecPort",
+          "name" : "this",
+          "nodePortType" : "Out",
+          "execPortType" : "In",
+          "typeSpec" : "$TYPE$"
+          },
+        {
+          "objectType" : "ExecPort",
+          "name" : "other",
+          "nodePortType" : "Out",
+          "execPortType" : "In",
+          "typeSpec" : "$TYPE$"
+          },
+        {
+          "objectType" : "ExecPort",
+          "metadata" : {
+            "uiRange" : "(0, 1)"
+            },
+          "name" : "t",
+          "nodePortType" : "Out",
+          "execPortType" : "In",
+          "typeSpec" : "Scalar"
+          },
+        {
+          "objectType" : "ExecPort",
+          "name" : "result",
+          "nodePortType" : "In",
+          "execPortType" : "Out",
+          "typeSpec" : "$TYPE$"
+          }
+        ],
+      "extDeps" : {
+        "Math" : "*"
+        },
+      "presetGUID" : "12CF7203114B81451A5EEC920610EDA9",
+      "code" : "require Math;
+
+dfgEntry {
+  result = this.linearInterpolate(other, t);
+}
+"
+      },
+    "fabricUtils.Converters.Quat.QuatToSafeQuat" : {
+      "objectType" : "Func",
+      "metadata" : {
+        "uiTooltip" : "Returns a new Vec3 with NaNs removed.\n\nSupported types:\n  this: Quat\n  result: Quat\n"
+        },
+      "title" : "QuatToSafeQuat",
+      "ports" : [
+        {
+          "objectType" : "ExecPort",
+          "name" : "exec",
+          "nodePortType" : "IO",
+          "execPortType" : "IO",
+          "typeSpec" : "Execute"
+          },
+        {
+          "objectType" : "ExecPort",
+          "metadata" : {
+            "uiColor" : "{\n  \"r\" : 0,\n  \"g\" : 191,\n  \"b\" : 232\n  }"
+            },
+          "name" : "this",
+          "nodePortType" : "Out",
+          "execPortType" : "In",
+          "typeSpec" : "Quat"
+          },
+        {
+          "objectType" : "ExecPort",
+          "metadata" : {
+            "uiColor" : "{\n  \"r\" : 0,\n  \"g\" : 191,\n  \"b\" : 232\n  }"
+            },
+          "name" : "result",
+          "nodePortType" : "In",
+          "execPortType" : "Out",
+          "typeSpec" : "Quat"
+          }
+        ],
+      "extDeps" : {
+        "fabricUtils" : "*"
+        },
+      "presetGUID" : "3D204C2583052BC61A89C86B13BE156B",
+      "code" : "require fabricUtils;
+
+dfgEntry {
+  result = quatToSafeQuat(this);
+}
+"
+      }
+    },
+  "args" : [
+    {
+      "type" : "Quat",
+      "value" : null,
+      "ext" : "Math"
+      },
+    {
+      "type" : "Scalar",
+      "value" : null
+      },
+    {
+      "type" : "Boolean",
+      "value" : null
+      },
+    {
+      "type" : "Quat",
+      "value" : null,
+      "ext" : "Math"
+      }
+    ]
+  }

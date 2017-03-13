@@ -1,0 +1,58 @@
+// Created by kl2dfg (processFunction)
+{
+  "objectType" : "Func",
+  "metadata" : {
+    "uiTooltip" : "Supported types:\n  name: String\n  defaultValue: Quat\n  flags: Integer\n  result: KeyframeTrackSet\n"
+    },
+  "title" : "EmptyQuatKeyframeTrackSet",
+  "ports" : [
+    {
+      "objectType" : "ExecPort",
+      "name" : "exec",
+      "nodePortType" : "IO",
+      "execPortType" : "IO",
+      "typeSpec" : "Execute"
+      },
+    {
+      "objectType" : "ExecPort",
+      "name" : "name",
+      "nodePortType" : "Out",
+      "execPortType" : "In",
+      "typeSpec" : "String"
+      },
+    {
+      "objectType" : "ExecPort",
+      "metadata" : {
+        "uiColor" : "{\n  \"r\" : 0,\n  \"g\" : 191,\n  \"b\" : 232\n  }"
+        },
+      "name" : "defaultValue",
+      "nodePortType" : "Out",
+      "execPortType" : "In",
+      "typeSpec" : "Quat"
+      },
+    {
+      "objectType" : "ExecPort",
+      "name" : "flags",
+      "nodePortType" : "Out",
+      "execPortType" : "In",
+      "typeSpec" : "Integer"
+      },
+    {
+      "objectType" : "ExecPort",
+      "name" : "result",
+      "nodePortType" : "In",
+      "execPortType" : "Out",
+      "typeSpec" : "KeyframeTrackSet"
+      }
+    ],
+  "extDeps" : {
+    "fabricUtils" : "*"
+    },
+  "presetGUID" : "79C97466E21700B3E218DCEA39B18E2D",
+  "code" : "require fabricUtils;
+
+dfgEntry {
+  result = emptyQuatKeyframeTrackSet(name, defaultValue, flags);
+}
+"
+  }

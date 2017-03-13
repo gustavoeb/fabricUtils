@@ -1,0 +1,48 @@
+// Created by kl2dfg (processFunction)
+{
+  "objectType" : "Func",
+  "metadata" : {
+    "uiTooltip" : "Converts an array of bone names into an array of bone indices.\n\nSupported types:\n  this: ISkeleton\n  names: String[]\n  result: Integer[]\n"
+    },
+  "title" : "BoneNameArrayToIDArray",
+  "ports" : [
+    {
+      "objectType" : "ExecPort",
+      "name" : "exec",
+      "nodePortType" : "IO",
+      "execPortType" : "IO",
+      "typeSpec" : "Execute"
+      },
+    {
+      "objectType" : "ExecPort",
+      "name" : "this",
+      "nodePortType" : "Out",
+      "execPortType" : "In",
+      "typeSpec" : "ISkeleton"
+      },
+    {
+      "objectType" : "ExecPort",
+      "name" : "names",
+      "nodePortType" : "Out",
+      "execPortType" : "In",
+      "typeSpec" : "String[]"
+      },
+    {
+      "objectType" : "ExecPort",
+      "name" : "result",
+      "nodePortType" : "In",
+      "execPortType" : "Out",
+      "typeSpec" : "Integer[]"
+      }
+    ],
+  "extDeps" : {
+    "fabricUtils" : "*"
+    },
+  "presetGUID" : "93BEF7A03DB91AD6DD3534F825EF9B9F",
+  "code" : "require fabricUtils;
+
+dfgEntry {
+  result = boneNameArrayToIDArray(this, names);
+}
+"
+  }

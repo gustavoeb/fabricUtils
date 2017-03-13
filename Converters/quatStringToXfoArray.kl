@@ -1,7 +1,7 @@
 require Math;
 require Util;
 
-/// \dfgPresetFolder Converters
+/// \dfgPresetFolder Converters/Quat
 /// Converts a string of quaternions to an array of Xfos.
 function Xfo[] quatStringToXfoArray(
   in String this,

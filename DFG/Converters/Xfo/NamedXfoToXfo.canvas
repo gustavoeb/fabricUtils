@@ -1,0 +1,109 @@
+{
+  "objectType" : "Func",
+  "metadata" : {
+    "uiTextColor" : "{\n  \"r\" : 20,\n  \"g\" : 20,\n  \"b\" : 20\n  }",
+    "uiNodeColor" : "{\n  \"r\" : 121,\n  \"g\" : 134,\n  \"b\" : 143\n  }"
+    },
+  "title" : "NamedXfoToXfo",
+  "ports" : [
+    {
+      "objectType" : "ExecPort",
+      "name" : "exec",
+      "nodePortType" : "IO",
+      "defaultValues" : {
+        "Execute" : {}
+        },
+      "execPortType" : "IO",
+      "typeSpec" : "Execute"
+      },
+    {
+      "objectType" : "ExecPort",
+      "name" : "dict",
+      "nodePortType" : "Out",
+      "defaultValues" : {
+        "Xfo[String]" : {}
+        },
+      "execPortType" : "In",
+      "typeSpec" : "Xfo[String]"
+      },
+    {
+      "objectType" : "ExecPort",
+      "name" : "key",
+      "nodePortType" : "Out",
+      "defaultValues" : {
+        "String" : "Hips"
+        },
+      "execPortType" : "In",
+      "typeSpec" : "String"
+      },
+    {
+      "objectType" : "ExecPort",
+      "name" : "deflt",
+      "nodePortType" : "Out",
+      "defaultValues" : {
+        "Xfo" : {
+          "ori" : {
+            "v" : {
+              "x" : 0,
+              "y" : 0,
+              "z" : 0
+              },
+            "w" : 1
+            },
+          "tr" : {
+            "x" : 0,
+            "y" : 0,
+            "z" : 0
+            },
+          "sc" : {
+            "x" : 1,
+            "y" : 1,
+            "z" : 1
+            }
+          }
+        },
+      "execPortType" : "In",
+      "typeSpec" : "Xfo"
+      },
+    {
+      "objectType" : "ExecPort",
+      "name" : "result",
+      "nodePortType" : "In",
+      "defaultValues" : {
+        "Xfo" : {
+          "ori" : {
+            "v" : {
+              "x" : 0,
+              "y" : 0,
+              "z" : 0
+              },
+            "w" : 1
+            },
+          "tr" : {
+            "x" : 0,
+            "y" : 0,
+            "z" : 0
+            },
+          "sc" : {
+            "x" : 1,
+            "y" : 1,
+            "z" : 1
+            }
+          }
+        },
+      "execPortType" : "Out",
+      "typeSpec" : "Xfo"
+      }
+    ],
+  "extDeps" : {},
+  "presetGUID" : "38248A8C5BC14FA6950F53E38E93CE7E",
+  "code" : "
+dfgEntry {
+  if (dict.has(key))
+    result = dict.get(key);
+  else
+    result = deflt;
+}
+",
+  "requiredPresets" : {}
+  }

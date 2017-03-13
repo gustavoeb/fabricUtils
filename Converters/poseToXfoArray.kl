@@ -1,6 +1,6 @@
 require Characters;
 
-/// \dfgPresetFolder Converters
+/// \dfgPresetFolder Converters/Pose
 /// Converts a skeleton's pose to an array of Xfos. Returns Xfos in local and global spaces.
 function Xfo[] poseToXfoArray(
   in IPose this,

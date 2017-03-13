@@ -1,5 +1,5 @@
 {
-  "version": "0.0.2",
+  "version": "0.0.3",
   "code": [
     // classes
     
@@ -14,13 +14,19 @@
     "Converters/boneIDArrayToParentIDArray.kl",
     "Converters/boneNameArrayToIDArray.kl",
   	"Converters/poseToXfoArray.kl",
+    "Converters/poseToNamedXfoArray.kl",
     "Converters/quatStringToXfoArray.kl",
+    "Converters/quatToSafeQuat.kl",
+    "Converters/quatToScalarArray.kl",
   	"Converters/referencePoseToXfoArray.kl",
-    "Converters/ScalarToSafeScalar.kl",
-    "Converters/Vec3ToSafeVec3.kl",
-    "Converters/QuatToSafeQuat.kl",
-  	"Converters/xfoArrayToQuatString.kl",
+    "Converters/scalarArrayToClip.kl",
+    "Converters/scalarArrayToXfoArray.kl",
+    "Converters/scalarToSafeScalar.kl",
+    "Converters/vec3ToSafeVec3.kl",
+    "Converters/vec3ToScalarArray.kl",
     "Converters/xfoArrayToPose.kl",
+    "Converters/xfoArrayToQuatString.kl",
+    "Converters/xfoArrayToScalarArray.kl",
 
     "FileIO/getClipPoseFromQuatCSV.kl",
     "FileIO/saveClipToJSON.kl",

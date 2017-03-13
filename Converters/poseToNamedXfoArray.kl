@@ -1,0 +1,26 @@
+require Characters;
+
+/// \dfgPresetFolder Converters/Pose
+/// Converts a skeleton's pose to an array of Xfos. Returns Xfos in local and global spaces.
+function Xfo[String] poseToXfoNamedArray(
+  in IPose this,
+  in Boolean globalSpace
+)
+{
+  Size bones = Pose(this).skeleton.getNumBones();
+  Xfo tmp_array[String];
+
+  for (Size i = 0; i < bones; i++) {
+    Xfo bone = Pose(this).getBoneXfo(i);
+    if (globalSpace == 0) {
+      Size parentID = Pose(this).skeleton.getBone(i).parentIndex;
+      if (parentID > -1) {
+        Xfo parent = Pose(this).getBoneXfo(parentID);
+        bone = parent.inverse() * bone;
+      }
+    }
+    tmp_array.set(Pose(this).skeleton.getBone(i).name, bone);
+  }
+  tmp_array;
+  return tmp_array;
+}

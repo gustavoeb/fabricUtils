@@ -1,0 +1,24 @@
+require Math;
+
+/// \dfgPresetFolder Converters/Quat
+/// Returns a new Vec3 with NaNs removed.
+function Quat quatToSafeQuat(in Quat this) {
+  Quat result();
+  if(this.v.x.isNaN())
+    result.v.x = 0.0;
+  else
+  	result.v.x = this.v.x;
+  if(this.v.y.isNaN())
+    result.v.y = 0.0;
+  else
+  	result.v.y = this.v.y;
+  if(this.v.z.isNaN())
+    result.v.z = 0.0;
+  else
+  	result.v.z = this.v.z;
+  if(this.w.isNaN())
+    result.w = 0.0;
+  else
+    result.w = this.w;
+  return result;
+}

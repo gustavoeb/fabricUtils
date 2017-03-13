@@ -1,0 +1,682 @@
+{
+  "objectType" : "Graph",
+  "metadata" : {
+    "uiTextColor" : "{\n  \"r\" : 20,\n  \"g\" : 20,\n  \"b\" : 20\n  }",
+    "uiNodeColor" : "{\n  \"r\" : 121,\n  \"g\" : 134,\n  \"b\" : 143\n  }",
+    "uiGraphZoom" : "{\n  \"value\" : 1.0\n  }",
+    "uiTooltip" : "Stores a sequence of Quats as a trackset.",
+    "uiGraphPan" : "{\n  \"x\" : -1359.849914550781,\n  \"y\" : -455.9919128417969\n  }"
+    },
+  "title" : "StoreQuatAsTrackSet",
+  "ports" : [
+    {
+      "objectType" : "ExecPort",
+      "name" : "exec",
+      "nodePortType" : "IO",
+      "defaultValues" : {
+        "Execute" : {}
+        },
+      "execPortType" : "IO",
+      "typeSpec" : "Execute"
+      },
+    {
+      "objectType" : "ExecPort",
+      "name" : "clearTrack",
+      "nodePortType" : "Out",
+      "defaultValues" : {
+        "Boolean" : false
+        },
+      "execPortType" : "In",
+      "typeSpec" : "Boolean"
+      },
+    {
+      "objectType" : "ExecPort",
+      "name" : "name",
+      "nodePortType" : "Out",
+      "defaultValues" : {
+        "String" : "cogAngVelocity"
+        },
+      "execPortType" : "In"
+      },
+    {
+      "objectType" : "ExecPort",
+      "name" : "time",
+      "nodePortType" : "Out",
+      "defaultValues" : {
+        "Float64" : 0
+        },
+      "execPortType" : "In"
+      },
+    {
+      "objectType" : "ExecPort",
+      "name" : "Quat",
+      "nodePortType" : "Out",
+      "defaultValues" : {
+        "Quat" : {
+          "v" : {
+            "x" : 0,
+            "y" : 0,
+            "z" : 0
+            },
+          "w" : 1
+          }
+        },
+      "execPortType" : "In",
+      "typeSpec" : "Quat"
+      },
+    {
+      "objectType" : "ExecPort",
+      "name" : "trackSet",
+      "nodePortType" : "In",
+      "defaultValues" : {
+        "KeyframeTrackSet" : null
+        },
+      "execPortType" : "Out"
+      }
+    ],
+  "extDeps" : {},
+  "presetGUID" : "945EEDA64FD4EAAA71938FEABF1865AD",
+  "nodes" : [
+    {
+      "objectType" : "Var",
+      "metadata" : {
+        "uiGraphPos" : "{\"x\":1733.7199707,\"y\":631.991577744}"
+        },
+      "name" : "track",
+      "ports" : [
+        {
+          "objectType" : "VarPort",
+          "name" : "value",
+          "nodePortType" : "IO"
+          }
+        ],
+      "dataType" : "KeyframeTrackSet"
+      },
+    {
+      "objectType" : "Inst",
+      "metadata" : {
+        "uiGraphPos" : "{\"x\":1870.72553635,\"y\":706.550750732}"
+        },
+      "name" : "If_1",
+      "ports" : [
+        {
+          "objectType" : "InstPort",
+          "name" : "exec",
+          "nodePortType" : "IO"
+          },
+        {
+          "objectType" : "InstPort",
+          "name" : "cond",
+          "nodePortType" : "In",
+          "defaultValues" : {
+            "Boolean" : false
+            }
+          },
+        {
+          "objectType" : "InstPort",
+          "name" : "if_true",
+          "nodePortType" : "In"
+          },
+        {
+          "objectType" : "InstPort",
+          "name" : "if_false",
+          "nodePortType" : "In"
+          },
+        {
+          "objectType" : "InstPort",
+          "name" : "result",
+          "nodePortType" : "Out"
+          }
+        ],
+      "executable" : "Fabric.Core.Control.If",
+      "presetGUID" : "3182A478A21643455D549E483D35F831"
+      },
+    {
+      "objectType" : "Set",
+      "metadata" : {
+        "uiGraphPos" : "{\"x\":2015.70273972,\"y\":756.45608139}"
+        },
+      "name" : "set_2",
+      "ports" : [
+        {
+          "objectType" : "SetPort",
+          "name" : "value",
+          "nodePortType" : "IO"
+          }
+        ],
+      "varPath" : "track"
+      },
+    {
+      "objectType" : "Get",
+      "metadata" : {
+        "uiGraphPos" : "{\"x\":1602.63393996,\"y\":911.992264879}"
+        },
+      "name" : "get",
+      "ports" : [
+        {
+          "objectType" : "GetPort",
+          "name" : "value",
+          "nodePortType" : "Out"
+          }
+        ],
+      "varPath" : "track"
+      },
+    {
+      "objectType" : "Inst",
+      "metadata" : {
+        "uiGraphPos" : "{\"x\":2221.84985352,\"y\":797.991943359}"
+        },
+      "name" : "SetTrackValues_1",
+      "ports" : [
+        {
+          "objectType" : "InstPort",
+          "name" : "exec",
+          "nodePortType" : "IO"
+          },
+        {
+          "objectType" : "InstPort",
+          "name" : "this",
+          "nodePortType" : "IO"
+          },
+        {
+          "objectType" : "InstPort",
+          "name" : "time",
+          "nodePortType" : "In"
+          },
+        {
+          "objectType" : "InstPort",
+          "name" : "value",
+          "nodePortType" : "In"
+          }
+        ],
+      "executable" : "Fabric.Exts.Animation.Func.SetTrackValues",
+      "presetGUID" : "1E761D8F13D3FC0AB83B989293ED4AC5"
+      },
+    {
+      "objectType" : "Inst",
+      "metadata" : {
+        "uiGraphPos" : "{\"x\":1465.84985352,\"y\":676.991882324}"
+        },
+      "name" : "EmptyQuatKeyframeTrackSet_1",
+      "ports" : [
+        {
+          "objectType" : "InstPort",
+          "name" : "exec",
+          "nodePortType" : "IO"
+          },
+        {
+          "objectType" : "InstPort",
+          "name" : "name",
+          "nodePortType" : "In"
+          },
+        {
+          "objectType" : "InstPort",
+          "name" : "defaultValue",
+          "nodePortType" : "In"
+          },
+        {
+          "objectType" : "InstPort",
+          "name" : "flags",
+          "nodePortType" : "In"
+          },
+        {
+          "objectType" : "InstPort",
+          "name" : "result",
+          "nodePortType" : "Out"
+          }
+        ],
+      "executable" : "fabricUtils.Animation.KeyframeTrackSet.EmptyQuatKeyframeTrackSet",
+      "presetGUID" : "79C97466E21700B3E218DCEA39B18E2D"
+      }
+    ],
+  "connections" : {
+    "clearTrack" : [
+      "If_1.cond"
+      ],
+    "name" : [
+      "EmptyQuatKeyframeTrackSet_1.name"
+      ],
+    "time" : [
+      "SetTrackValues_1.time"
+      ],
+    "Quat" : [
+      "SetTrackValues_1.value"
+      ],
+    "If_1.result" : [
+      "set_2.value"
+      ],
+    "set_2.value" : [
+      "SetTrackValues_1.this"
+      ],
+    "get.value" : [
+      "If_1.if_false"
+      ],
+    "SetTrackValues_1.this" : [
+      "trackSet"
+      ],
+    "EmptyQuatKeyframeTrackSet_1.result" : [
+      "track.value",
+      "If_1.if_true"
+      ]
+    },
+  "requiredPresets" : {
+    "fabricUtils.Animation.StoreQuatAsTrackSet" : {
+      "objectType" : "Graph",
+      "metadata" : {
+        "uiTextColor" : "{\n  \"r\" : 20,\n  \"g\" : 20,\n  \"b\" : 20\n  }",
+        "uiNodeColor" : "{\n  \"r\" : 121,\n  \"g\" : 134,\n  \"b\" : 143\n  }",
+        "uiGraphZoom" : "{\n  \"value\" : 1.0\n  }",
+        "uiTooltip" : "Stores a sequence of Quats as a trackset.",
+        "uiGraphPan" : "{\n  \"x\" : -1359.849914550781,\n  \"y\" : -455.9919128417969\n  }"
+        },
+      "title" : "StoreQuatAsTrackSet",
+      "ports" : [
+        {
+          "objectType" : "ExecPort",
+          "name" : "exec",
+          "nodePortType" : "IO",
+          "defaultValues" : {
+            "Execute" : {}
+            },
+          "execPortType" : "IO",
+          "typeSpec" : "Execute"
+          },
+        {
+          "objectType" : "ExecPort",
+          "name" : "clearTrack",
+          "nodePortType" : "Out",
+          "defaultValues" : {
+            "Boolean" : false
+            },
+          "execPortType" : "In",
+          "typeSpec" : "Boolean"
+          },
+        {
+          "objectType" : "ExecPort",
+          "name" : "name",
+          "nodePortType" : "Out",
+          "defaultValues" : {
+            "String" : "cogAngVelocity"
+            },
+          "execPortType" : "In"
+          },
+        {
+          "objectType" : "ExecPort",
+          "name" : "time",
+          "nodePortType" : "Out",
+          "defaultValues" : {
+            "Float64" : 0
+            },
+          "execPortType" : "In"
+          },
+        {
+          "objectType" : "ExecPort",
+          "name" : "Quat",
+          "nodePortType" : "Out",
+          "defaultValues" : {
+            "Quat" : {
+              "v" : {
+                "x" : 0,
+                "y" : 0,
+                "z" : 0
+                },
+              "w" : 1
+              }
+            },
+          "execPortType" : "In",
+          "typeSpec" : "Quat"
+          },
+        {
+          "objectType" : "ExecPort",
+          "name" : "trackSet",
+          "nodePortType" : "In",
+          "defaultValues" : {
+            "KeyframeTrackSet" : null
+            },
+          "execPortType" : "Out"
+          }
+        ],
+      "extDeps" : {},
+      "presetGUID" : "945EEDA64FD4EAAA71938FEABF1865AD",
+      "nodes" : [
+        {
+          "objectType" : "Var",
+          "metadata" : {
+            "uiGraphPos" : "{\"x\":1733.7199707,\"y\":631.991577744}"
+            },
+          "name" : "track",
+          "ports" : [
+            {
+              "objectType" : "VarPort",
+              "name" : "value",
+              "nodePortType" : "IO"
+              }
+            ],
+          "dataType" : "KeyframeTrackSet"
+          },
+        {
+          "objectType" : "Inst",
+          "metadata" : {
+            "uiGraphPos" : "{\"x\":1870.72553635,\"y\":706.550750732}"
+            },
+          "name" : "If_1",
+          "ports" : [
+            {
+              "objectType" : "InstPort",
+              "name" : "exec",
+              "nodePortType" : "IO"
+              },
+            {
+              "objectType" : "InstPort",
+              "name" : "cond",
+              "nodePortType" : "In",
+              "defaultValues" : {
+                "Boolean" : false
+                }
+              },
+            {
+              "objectType" : "InstPort",
+              "name" : "if_true",
+              "nodePortType" : "In"
+              },
+            {
+              "objectType" : "InstPort",
+              "name" : "if_false",
+              "nodePortType" : "In"
+              },
+            {
+              "objectType" : "InstPort",
+              "name" : "result",
+              "nodePortType" : "Out"
+              }
+            ],
+          "executable" : "Fabric.Core.Control.If",
+          "presetGUID" : "3182A478A21643455D549E483D35F831"
+          },
+        {
+          "objectType" : "Set",
+          "metadata" : {
+            "uiGraphPos" : "{\"x\":2015.70273972,\"y\":756.45608139}"
+            },
+          "name" : "set_2",
+          "ports" : [
+            {
+              "objectType" : "SetPort",
+              "name" : "value",
+              "nodePortType" : "IO"
+              }
+            ],
+          "varPath" : "track"
+          },
+        {
+          "objectType" : "Get",
+          "metadata" : {
+            "uiGraphPos" : "{\"x\":1602.63393996,\"y\":911.992264879}"
+            },
+          "name" : "get",
+          "ports" : [
+            {
+              "objectType" : "GetPort",
+              "name" : "value",
+              "nodePortType" : "Out"
+              }
+            ],
+          "varPath" : "track"
+          },
+        {
+          "objectType" : "Inst",
+          "metadata" : {
+            "uiGraphPos" : "{\"x\":2221.84985352,\"y\":797.991943359}"
+            },
+          "name" : "SetTrackValues_1",
+          "ports" : [
+            {
+              "objectType" : "InstPort",
+              "name" : "exec",
+              "nodePortType" : "IO"
+              },
+            {
+              "objectType" : "InstPort",
+              "name" : "this",
+              "nodePortType" : "IO"
+              },
+            {
+              "objectType" : "InstPort",
+              "name" : "time",
+              "nodePortType" : "In"
+              },
+            {
+              "objectType" : "InstPort",
+              "name" : "value",
+              "nodePortType" : "In"
+              }
+            ],
+          "executable" : "Fabric.Exts.Animation.Func.SetTrackValues",
+          "presetGUID" : "1E761D8F13D3FC0AB83B989293ED4AC5"
+          },
+        {
+          "objectType" : "Inst",
+          "metadata" : {
+            "uiGraphPos" : "{\"x\":1465.84985352,\"y\":676.991882324}"
+            },
+          "name" : "EmptyQuatKeyframeTrackSet_1",
+          "ports" : [
+            {
+              "objectType" : "InstPort",
+              "name" : "exec",
+              "nodePortType" : "IO"
+              },
+            {
+              "objectType" : "InstPort",
+              "name" : "name",
+              "nodePortType" : "In"
+              },
+            {
+              "objectType" : "InstPort",
+              "name" : "defaultValue",
+              "nodePortType" : "In"
+              },
+            {
+              "objectType" : "InstPort",
+              "name" : "flags",
+              "nodePortType" : "In"
+              },
+            {
+              "objectType" : "InstPort",
+              "name" : "result",
+              "nodePortType" : "Out"
+              }
+            ],
+          "executable" : "fabricUtils.Animation.KeyframeTrackSet.EmptyQuatKeyframeTrackSet",
+          "presetGUID" : "79C97466E21700B3E218DCEA39B18E2D"
+          }
+        ],
+      "connections" : {
+        "clearTrack" : [
+          "If_1.cond"
+          ],
+        "name" : [
+          "EmptyQuatKeyframeTrackSet_1.name"
+          ],
+        "time" : [
+          "SetTrackValues_1.time"
+          ],
+        "Quat" : [
+          "SetTrackValues_1.value"
+          ],
+        "If_1.result" : [
+          "set_2.value"
+          ],
+        "set_2.value" : [
+          "SetTrackValues_1.this"
+          ],
+        "get.value" : [
+          "If_1.if_false"
+          ],
+        "SetTrackValues_1.this" : [
+          "trackSet"
+          ],
+        "EmptyQuatKeyframeTrackSet_1.result" : [
+          "track.value",
+          "If_1.if_true"
+          ]
+        }
+      },
+    "Fabric.Core.Control.If" : {
+      "objectType" : "Func",
+      "title" : "If",
+      "ports" : [
+        {
+          "objectType" : "ExecPort",
+          "name" : "exec",
+          "nodePortType" : "IO",
+          "execPortType" : "IO",
+          "typeSpec" : "Execute"
+          },
+        {
+          "objectType" : "ExecPort",
+          "name" : "cond",
+          "nodePortType" : "Out",
+          "execPortType" : "In",
+          "typeSpec" : "Boolean"
+          },
+        {
+          "objectType" : "ExecPort",
+          "name" : "if_true",
+          "nodePortType" : "Out",
+          "execPortType" : "In",
+          "typeSpec" : "$TYPE$"
+          },
+        {
+          "objectType" : "ExecPort",
+          "name" : "if_false",
+          "nodePortType" : "Out",
+          "execPortType" : "In",
+          "typeSpec" : "$TYPE$"
+          },
+        {
+          "objectType" : "ExecPort",
+          "name" : "result",
+          "nodePortType" : "In",
+          "execPortType" : "Out",
+          "typeSpec" : "$TYPE$"
+          }
+        ],
+      "extDeps" : {},
+      "presetGUID" : "3182A478A21643455D549E483D35F831",
+      "code" : "
+dfgEntry {
+	result = cond ? if_true : if_false;
+}
+"
+      },
+    "Fabric.Exts.Animation.Func.SetTrackValues" : {
+      "objectType" : "Func",
+      "metadata" : {
+        "uiDocUrl" : "http://docs.fabric-engine.com/FabricEngine/2.3.0/HTML/KLExtensionsGuide/Animation/ITrackSet.html",
+        "uiTooltip" : "\n\n Supported by ITrackSet,KeyframeTrackSet"
+        },
+      "title" : "SetTrackValues",
+      "ports" : [
+        {
+          "objectType" : "ExecPort",
+          "name" : "exec",
+          "nodePortType" : "IO",
+          "execPortType" : "IO",
+          "typeSpec" : "Execute"
+          },
+        {
+          "objectType" : "ExecPort",
+          "name" : "this",
+          "nodePortType" : "IO",
+          "execPortType" : "IO",
+          "typeSpec" : "$TYPE$"
+          },
+        {
+          "objectType" : "ExecPort",
+          "name" : "time",
+          "nodePortType" : "Out",
+          "execPortType" : "In",
+          "typeSpec" : "Scalar"
+          },
+        {
+          "objectType" : "ExecPort",
+          "metadata" : {
+            "uiColor" : "{\n  \"r\" : 0,\n  \"g\" : 191,\n  \"b\" : 232\n  }"
+            },
+          "name" : "value",
+          "nodePortType" : "Out",
+          "execPortType" : "In",
+          "typeSpec" : "Quat"
+          }
+        ],
+      "extDeps" : {
+        "Animation" : "*"
+        },
+      "presetGUID" : "1E761D8F13D3FC0AB83B989293ED4AC5",
+      "code" : "require Animation;
+
+dfgEntry {
+  this.setTrackValues(time, value);
+}
+"
+      },
+    "fabricUtils.Animation.KeyframeTrackSet.EmptyQuatKeyframeTrackSet" : {
+      "objectType" : "Func",
+      "metadata" : {
+        "uiTooltip" : "Supported types:\n  name: String\n  defaultValue: Quat\n  flags: Integer\n  result: KeyframeTrackSet\n"
+        },
+      "title" : "EmptyQuatKeyframeTrackSet",
+      "ports" : [
+        {
+          "objectType" : "ExecPort",
+          "name" : "exec",
+          "nodePortType" : "IO",
+          "execPortType" : "IO",
+          "typeSpec" : "Execute"
+          },
+        {
+          "objectType" : "ExecPort",
+          "name" : "name",
+          "nodePortType" : "Out",
+          "execPortType" : "In",
+          "typeSpec" : "String"
+          },
+        {
+          "objectType" : "ExecPort",
+          "metadata" : {
+            "uiColor" : "{\n  \"r\" : 0,\n  \"g\" : 191,\n  \"b\" : 232\n  }"
+            },
+          "name" : "defaultValue",
+          "nodePortType" : "Out",
+          "execPortType" : "In",
+          "typeSpec" : "Quat"
+          },
+        {
+          "objectType" : "ExecPort",
+          "name" : "flags",
+          "nodePortType" : "Out",
+          "execPortType" : "In",
+          "typeSpec" : "Integer"
+          },
+        {
+          "objectType" : "ExecPort",
+          "name" : "result",
+          "nodePortType" : "In",
+          "execPortType" : "Out",
+          "typeSpec" : "KeyframeTrackSet"
+          }
+        ],
+      "extDeps" : {
+        "fabricUtils" : "*"
+        },
+      "presetGUID" : "79C97466E21700B3E218DCEA39B18E2D",
+      "code" : "require fabricUtils;
+
+dfgEntry {
+  result = emptyQuatKeyframeTrackSet(name, defaultValue, flags);
+}
+"
+      }
+    }
+  }

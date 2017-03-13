@@ -3,8 +3,8 @@
   "metadata" : {
     "uiTextColor" : "{\n  \"r\" : 20,\n  \"g\" : 20,\n  \"b\" : 20\n  }",
     "uiNodeColor" : "{\n  \"r\" : 121,\n  \"g\" : 134,\n  \"b\" : 143\n  }",
-    "uiGraphZoom" : "{\n  \"value\" : 0.7406265139579773\n  }",
-    "uiGraphPan" : "{\n  \"x\" : -1940.789184570313,\n  \"y\" : 161.1968536376953\n  }"
+    "uiGraphZoom" : "{\n  \"value\" : 0.620419442653656\n  }",
+    "uiGraphPan" : "{\n  \"x\" : -1476.834686318798,\n  \"y\" : 168.1930120373698\n  }"
     },
   "title" : "globalXfoToBidemensionalPlane",
   "ports" : [
@@ -48,7 +48,6 @@
       },
     {
       "objectType" : "ExecPort",
-      "metadata" : {},
       "name" : "frontVec",
       "nodePortType" : "Out",
       "defaultValues" : {
@@ -584,592 +583,6 @@
       ]
     },
   "requiredPresets" : {
-    "fabricUtils.Converters.globalXfoToBidemensionalPlane" : {
-      "objectType" : "Graph",
-      "metadata" : {
-        "uiTextColor" : "{\n  \"r\" : 20,\n  \"g\" : 20,\n  \"b\" : 20\n  }",
-        "uiNodeColor" : "{\n  \"r\" : 121,\n  \"g\" : 134,\n  \"b\" : 143\n  }",
-        "uiGraphZoom" : "{\n  \"value\" : 0.7406265139579773\n  }",
-        "uiGraphPan" : "{\n  \"x\" : -1940.789184570313,\n  \"y\" : 161.1968536376953\n  }"
-        },
-      "title" : "globalXfoToBidemensionalPlane",
-      "ports" : [
-        {
-          "objectType" : "ExecPort",
-          "name" : "exec",
-          "nodePortType" : "IO",
-          "defaultValues" : {
-            "Execute" : {}
-            },
-          "execPortType" : "IO",
-          "typeSpec" : "Execute"
-          },
-        {
-          "objectType" : "ExecPort",
-          "name" : "globalXfo",
-          "nodePortType" : "Out",
-          "defaultValues" : {
-            "Xfo" : {
-              "ori" : {
-                "v" : {
-                  "x" : 0,
-                  "y" : 0,
-                  "z" : 0
-                  },
-                "w" : 1
-                },
-              "tr" : {
-                "x" : 0,
-                "y" : 0,
-                "z" : 0
-                },
-              "sc" : {
-                "x" : 1,
-                "y" : 1,
-                "z" : 1
-                }
-              }
-            },
-          "execPortType" : "In"
-          },
-        {
-          "objectType" : "ExecPort",
-          "metadata" : {},
-          "name" : "frontVec",
-          "nodePortType" : "Out",
-          "defaultValues" : {
-            "Vec3" : {
-              "x" : -1,
-              "y" : 0,
-              "z" : 0
-              }
-            },
-          "execPortType" : "In",
-          "typeSpec" : "Vec3"
-          },
-        {
-          "objectType" : "ExecPort",
-          "name" : "result",
-          "nodePortType" : "In",
-          "defaultValues" : {
-            "Xfo" : {
-              "ori" : {
-                "v" : {
-                  "x" : 0,
-                  "y" : 0,
-                  "z" : 0
-                  },
-                "w" : 1
-                },
-              "tr" : {
-                "x" : 0,
-                "y" : 0,
-                "z" : 0
-                },
-              "sc" : {
-                "x" : 1,
-                "y" : 1,
-                "z" : 1
-                }
-              }
-            },
-          "execPortType" : "Out"
-          }
-        ],
-      "extDeps" : {},
-      "presetGUID" : "F0AFD3D0FD8B4FF4A4E312870AAC4B49",
-      "nodes" : [
-        {
-          "objectType" : "Inst",
-          "metadata" : {
-            "uiGraphPos" : "{\"x\":2857.813720703125,\"y\":131.8996429443359}"
-            },
-          "name" : "Mul_1",
-          "ports" : [
-            {
-              "objectType" : "InstPort",
-              "name" : "exec",
-              "nodePortType" : "IO"
-              },
-            {
-              "objectType" : "InstPort",
-              "name" : "lhs",
-              "nodePortType" : "In"
-              },
-            {
-              "objectType" : "InstPort",
-              "name" : "rhs",
-              "nodePortType" : "In"
-              },
-            {
-              "objectType" : "InstPort",
-              "name" : "result",
-              "nodePortType" : "Out"
-              }
-            ],
-          "executable" : "Fabric.Core.Math.Mul",
-          "presetGUID" : "CC951B43BB879483B46EFF7965692350"
-          },
-        {
-          "objectType" : "Inst",
-          "metadata" : {
-            "uiGraphPos" : "{\"x\":2657.259765625,\"y\":250.6718444824219}",
-            "uiCollapsedState" : "1"
-            },
-          "name" : "XfoFromSRT_1",
-          "ports" : [
-            {
-              "objectType" : "InstPort",
-              "name" : "exec",
-              "nodePortType" : "IO"
-              },
-            {
-              "objectType" : "InstPort",
-              "name" : "scX",
-              "nodePortType" : "In"
-              },
-            {
-              "objectType" : "InstPort",
-              "name" : "scY",
-              "nodePortType" : "In"
-              },
-            {
-              "objectType" : "InstPort",
-              "name" : "scZ",
-              "nodePortType" : "In"
-              },
-            {
-              "objectType" : "InstPort",
-              "name" : "eulerX",
-              "nodePortType" : "In",
-              "defaultValues" : {
-                "Float32" : 0
-                }
-              },
-            {
-              "objectType" : "InstPort",
-              "name" : "eulerY",
-              "nodePortType" : "In",
-              "defaultValues" : {
-                "Float32" : 1
-                }
-              },
-            {
-              "objectType" : "InstPort",
-              "name" : "eulerZ",
-              "nodePortType" : "In",
-              "defaultValues" : {
-                "Float32" : 1
-                }
-              },
-            {
-              "objectType" : "InstPort",
-              "name" : "trX",
-              "nodePortType" : "In"
-              },
-            {
-              "objectType" : "InstPort",
-              "name" : "trY",
-              "nodePortType" : "In"
-              },
-            {
-              "objectType" : "InstPort",
-              "name" : "trZ",
-              "nodePortType" : "In"
-              },
-            {
-              "objectType" : "InstPort",
-              "name" : "result",
-              "nodePortType" : "Out"
-              }
-            ],
-          "executable" : "Fabric.Exts.Math.Xfo.XfoFromSRT",
-          "presetGUID" : "6C1F06E7900B143FAF73D2032FF0D4A0"
-          },
-        {
-          "objectType" : "Inst",
-          "metadata" : {
-            "uiGraphPos" : "{\"x\":2452.76611328125,\"y\":299.6883239746094}"
-            },
-          "name" : "Math_degToRad_1",
-          "ports" : [
-            {
-              "objectType" : "InstPort",
-              "name" : "exec",
-              "nodePortType" : "IO"
-              },
-            {
-              "objectType" : "InstPort",
-              "name" : "val",
-              "nodePortType" : "In",
-              "defaultValues" : {
-                "Float32" : 90
-                }
-              },
-            {
-              "objectType" : "InstPort",
-              "name" : "result",
-              "nodePortType" : "Out"
-              }
-            ],
-          "executable" : "Fabric.Exts.Math.Func.Math_degToRad",
-          "presetGUID" : "6BC97C4D61BFC82DBF0660BAD1104520"
-          },
-        {
-          "objectType" : "Inst",
-          "metadata" : {
-            "uiGraphPos" : "{\"x\":2967.896240234375,\"y\":140.6815032958984}"
-            },
-          "name" : "DecomposeXfo_1",
-          "ports" : [
-            {
-              "objectType" : "InstPort",
-              "name" : "exec",
-              "nodePortType" : "IO"
-              },
-            {
-              "objectType" : "InstPort",
-              "name" : "value",
-              "nodePortType" : "In"
-              },
-            {
-              "objectType" : "InstPort",
-              "name" : "ori",
-              "nodePortType" : "Out"
-              },
-            {
-              "objectType" : "InstPort",
-              "name" : "tr",
-              "nodePortType" : "Out"
-              },
-            {
-              "objectType" : "InstPort",
-              "name" : "sc",
-              "nodePortType" : "Out"
-              }
-            ],
-          "executable" : "Fabric.Exts.Math.Xfo.DecomposeXfo",
-          "presetGUID" : "B107519BBF556653A095030A4CC02DBC"
-          },
-        {
-          "objectType" : "Inst",
-          "metadata" : {
-            "uiGraphPos" : "{\"x\":3789.967041015625,\"y\":168.8045959472656}"
-            },
-          "name" : "ComposeXfo_1",
-          "ports" : [
-            {
-              "objectType" : "InstPort",
-              "name" : "exec",
-              "nodePortType" : "IO"
-              },
-            {
-              "objectType" : "InstPort",
-              "name" : "ori",
-              "nodePortType" : "In"
-              },
-            {
-              "objectType" : "InstPort",
-              "name" : "tr",
-              "nodePortType" : "In"
-              },
-            {
-              "objectType" : "InstPort",
-              "name" : "sc",
-              "nodePortType" : "In"
-              },
-            {
-              "objectType" : "InstPort",
-              "name" : "result",
-              "nodePortType" : "Out"
-              }
-            ],
-          "executable" : "Fabric.Exts.Math.Xfo.ComposeXfo",
-          "presetGUID" : "C0E51330BF816566F031E94807D29ED1"
-          },
-        {
-          "objectType" : "Inst",
-          "metadata" : {
-            "uiGraphPos" : "{\"x\":3297.7880859375,\"y\":101.7276153564453}"
-            },
-          "name" : "DecomposeVec3_1",
-          "ports" : [
-            {
-              "objectType" : "InstPort",
-              "name" : "exec",
-              "nodePortType" : "IO"
-              },
-            {
-              "objectType" : "InstPort",
-              "name" : "value",
-              "nodePortType" : "In"
-              },
-            {
-              "objectType" : "InstPort",
-              "name" : "x",
-              "nodePortType" : "Out"
-              },
-            {
-              "objectType" : "InstPort",
-              "name" : "y",
-              "nodePortType" : "Out"
-              },
-            {
-              "objectType" : "InstPort",
-              "name" : "z",
-              "nodePortType" : "Out"
-              }
-            ],
-          "executable" : "Fabric.Exts.Math.Vec3.DecomposeVec3",
-          "presetGUID" : "1CFCF896589BEC79A7F1F822BD7A7D42"
-          },
-        {
-          "objectType" : "Inst",
-          "metadata" : {
-            "uiGraphPos" : "{\"x\":3503.69091796875,\"y\":122.4723663330078}"
-            },
-          "name" : "ComposeVec3_1",
-          "ports" : [
-            {
-              "objectType" : "InstPort",
-              "name" : "exec",
-              "nodePortType" : "IO"
-              },
-            {
-              "objectType" : "InstPort",
-              "name" : "x",
-              "nodePortType" : "In"
-              },
-            {
-              "objectType" : "InstPort",
-              "name" : "y",
-              "nodePortType" : "In"
-              },
-            {
-              "objectType" : "InstPort",
-              "name" : "z",
-              "nodePortType" : "In"
-              },
-            {
-              "objectType" : "InstPort",
-              "name" : "result",
-              "nodePortType" : "Out"
-              }
-            ],
-          "executable" : "Fabric.Exts.Math.Vec3.ComposeVec3",
-          "presetGUID" : "49CDCDB01672F8D73A3B71175E0DD2D2"
-          },
-        {
-          "objectType" : "Inst",
-          "metadata" : {
-            "uiGraphPos" : "{\"x\":3490.5966796875,\"y\":4.122097015380859}"
-            },
-          "name" : "SetFromDirectionAndUpvector_1",
-          "ports" : [
-            {
-              "objectType" : "InstPort",
-              "name" : "exec",
-              "nodePortType" : "IO"
-              },
-            {
-              "objectType" : "InstPort",
-              "name" : "direction",
-              "nodePortType" : "In",
-              "defaultValues" : {
-                "Vec3" : {
-                  "x" : 1,
-                  "y" : 0,
-                  "z" : 0
-                  }
-                }
-              },
-            {
-              "objectType" : "InstPort",
-              "name" : "upvector",
-              "nodePortType" : "In",
-              "defaultValues" : {
-                "Vec3" : {
-                  "x" : 0,
-                  "y" : 1,
-                  "z" : 0
-                  }
-                }
-              },
-            {
-              "objectType" : "InstPort",
-              "name" : "result",
-              "nodePortType" : "Out"
-              }
-            ],
-          "executable" : "Fabric.Exts.Math.Quat.SetFromDirectionAndUpvector",
-          "presetGUID" : "249D3B1274A5895F6E1D8C7DA49E7772"
-          },
-        {
-          "objectType" : "Inst",
-          "metadata" : {
-            "uiGraphPos" : "{\"x\":3101.694580078125,\"y\":-24.46098136901856}"
-            },
-          "name" : "RotateVector_1",
-          "ports" : [
-            {
-              "objectType" : "InstPort",
-              "name" : "exec",
-              "nodePortType" : "IO"
-              },
-            {
-              "objectType" : "InstPort",
-              "name" : "this",
-              "nodePortType" : "In"
-              },
-            {
-              "objectType" : "InstPort",
-              "name" : "v",
-              "nodePortType" : "In",
-              "defaultValues" : {
-                "Vec3" : {
-                  "x" : -1,
-                  "y" : 0,
-                  "z" : 0
-                  }
-                }
-              },
-            {
-              "objectType" : "InstPort",
-              "name" : "result",
-              "nodePortType" : "Out"
-              }
-            ],
-          "executable" : "Fabric.Exts.Math.Quat.RotateVector",
-          "presetGUID" : "2C7ED2354B8B602EEF4921F8C6036307"
-          },
-        {
-          "objectType" : "Inst",
-          "metadata" : {
-            "uiGraphPos" : "{\"x\":3254.072509765625,\"y\":-33.21802139282227}"
-            },
-          "name" : "DecomposeVec3_2",
-          "ports" : [
-            {
-              "objectType" : "InstPort",
-              "name" : "exec",
-              "nodePortType" : "IO"
-              },
-            {
-              "objectType" : "InstPort",
-              "name" : "value",
-              "nodePortType" : "In"
-              },
-            {
-              "objectType" : "InstPort",
-              "name" : "x",
-              "nodePortType" : "Out"
-              },
-            {
-              "objectType" : "InstPort",
-              "name" : "y",
-              "nodePortType" : "Out"
-              },
-            {
-              "objectType" : "InstPort",
-              "name" : "z",
-              "nodePortType" : "Out"
-              }
-            ],
-          "executable" : "Fabric.Exts.Math.Vec3.DecomposeVec3",
-          "presetGUID" : "1CFCF896589BEC79A7F1F822BD7A7D42"
-          },
-        {
-          "objectType" : "Inst",
-          "metadata" : {
-            "uiGraphPos" : "{\"x\":3374.6181640625,\"y\":-24.00390625}"
-            },
-          "name" : "ComposeVec3_2",
-          "ports" : [
-            {
-              "objectType" : "InstPort",
-              "name" : "exec",
-              "nodePortType" : "IO"
-              },
-            {
-              "objectType" : "InstPort",
-              "name" : "x",
-              "nodePortType" : "In"
-              },
-            {
-              "objectType" : "InstPort",
-              "name" : "y",
-              "nodePortType" : "In"
-              },
-            {
-              "objectType" : "InstPort",
-              "name" : "z",
-              "nodePortType" : "In"
-              },
-            {
-              "objectType" : "InstPort",
-              "name" : "result",
-              "nodePortType" : "Out"
-              }
-            ],
-          "executable" : "Fabric.Exts.Math.Vec3.ComposeVec3",
-          "presetGUID" : "49CDCDB01672F8D73A3B71175E0DD2D2"
-          }
-        ],
-      "connections" : {
-        "globalXfo" : [
-          "Mul_1.lhs"
-          ],
-        "frontVec" : [
-          "RotateVector_1.v"
-          ],
-        "Mul_1.result" : [
-          "DecomposeXfo_1.value"
-          ],
-        "XfoFromSRT_1.result" : [
-          "Mul_1.rhs"
-          ],
-        "Math_degToRad_1.result" : [
-          "XfoFromSRT_1.eulerY",
-          "XfoFromSRT_1.eulerZ"
-          ],
-        "DecomposeXfo_1.ori" : [
-          "RotateVector_1.this"
-          ],
-        "DecomposeXfo_1.tr" : [
-          "DecomposeVec3_1.value"
-          ],
-        "DecomposeXfo_1.sc" : [
-          "ComposeXfo_1.sc"
-          ],
-        "ComposeXfo_1.result" : [
-          "result"
-          ],
-        "DecomposeVec3_1.x" : [
-          "ComposeVec3_1.x"
-          ],
-        "DecomposeVec3_1.z" : [
-          "ComposeVec3_1.z"
-          ],
-        "ComposeVec3_1.result" : [
-          "ComposeXfo_1.tr"
-          ],
-        "SetFromDirectionAndUpvector_1.result" : [
-          "ComposeXfo_1.ori"
-          ],
-        "RotateVector_1.result" : [
-          "DecomposeVec3_2.value"
-          ],
-        "DecomposeVec3_2.x" : [
-          "ComposeVec3_2.x"
-          ],
-        "DecomposeVec3_2.z" : [
-          "ComposeVec3_2.z"
-          ],
-        "ComposeVec3_2.result" : [
-          "SetFromDirectionAndUpvector_1.direction"
-          ]
-        }
-      },
     "Fabric.Core.Math.Mul" : {
       "objectType" : "Func",
       "title" : "Mul",
@@ -1215,7 +628,7 @@ dfgEntry {
       "objectType" : "Func",
       "metadata" : {
         "uiNodeColor" : "{\n  \"r\" : 99,\n  \"g\" : 129,\n  \"b\" : 92\n  }",
-        "uiDocUrl" : "http://docs.fabric-engine.com/FabricEngine/2.3.0/HTML/KLExtensionsGuide/Math/Xfo.html",
+        "uiDocUrl" : "http://docs.fabric-engine.com/FabricEngine/2.4.0/HTML/KLExtensionsGuide/Math/Xfo.html",
         "uiTooltip" : "Constructor from single channels\n\n Supported by Xfo"
         },
       "title" : "XfoFromSRT",
@@ -1384,7 +797,7 @@ dfgEntry {
       "objectType" : "Func",
       "metadata" : {
         "uiNodeColor" : "{\n  \"r\" : 99,\n  \"g\" : 129,\n  \"b\" : 92\n  }",
-        "uiDocUrl" : "http://docs.fabric-engine.com/FabricEngine/2.3.0/HTML/KLExtensionsGuide/Math/Xfo.html"
+        "uiDocUrl" : "http://docs.fabric-engine.com/FabricEngine/2.4.0/HTML/KLExtensionsGuide/Math/Xfo.html"
         },
       "title" : "Xfo ->",
       "ports" : [
@@ -1475,7 +888,7 @@ dfgEntry {
       "objectType" : "Func",
       "metadata" : {
         "uiNodeColor" : "{\n  \"r\" : 99,\n  \"g\" : 129,\n  \"b\" : 92\n  }",
-        "uiDocUrl" : "http://docs.fabric-engine.com/FabricEngine/2.3.0/HTML/KLExtensionsGuide/Math/Xfo.html"
+        "uiDocUrl" : "http://docs.fabric-engine.com/FabricEngine/2.4.0/HTML/KLExtensionsGuide/Math/Xfo.html"
         },
       "title" : "-> Xfo",
       "ports" : [
@@ -1568,7 +981,7 @@ dfgEntry {
       "objectType" : "Func",
       "metadata" : {
         "uiNodeColor" : "{\n  \"r\" : 99,\n  \"g\" : 129,\n  \"b\" : 92\n  }",
-        "uiDocUrl" : "http://docs.fabric-engine.com/FabricEngine/2.3.0/HTML/KLExtensionsGuide/Math/Vec3.html"
+        "uiDocUrl" : "http://docs.fabric-engine.com/FabricEngine/2.4.0/HTML/KLExtensionsGuide/Math/Vec3.html"
         },
       "title" : "Vec3 ->",
       "ports" : [
@@ -1635,7 +1048,7 @@ dfgEntry {
       "objectType" : "Func",
       "metadata" : {
         "uiNodeColor" : "{\n  \"r\" : 99,\n  \"g\" : 129,\n  \"b\" : 92\n  }",
-        "uiDocUrl" : "http://docs.fabric-engine.com/FabricEngine/2.3.0/HTML/KLExtensionsGuide/Math/Vec3.html"
+        "uiDocUrl" : "http://docs.fabric-engine.com/FabricEngine/2.4.0/HTML/KLExtensionsGuide/Math/Vec3.html"
         },
       "title" : "-> Vec3",
       "ports" : [
@@ -1704,7 +1117,7 @@ dfgEntry {
       "objectType" : "Func",
       "metadata" : {
         "uiNodeColor" : "{\n  \"r\" : 99,\n  \"g\" : 129,\n  \"b\" : 92\n  }",
-        "uiDocUrl" : "http://docs.fabric-engine.com/FabricEngine/2.3.0/HTML/KLExtensionsGuide/Math/Quat.html",
+        "uiDocUrl" : "http://docs.fabric-engine.com/FabricEngine/2.4.0/HTML/KLExtensionsGuide/Math/Quat.html",
         "uiTooltip" : "Set the quat to represent the direction as the Z axis\nand the upvector pointing along the XY plane.\n\n Supported by Quat"
         },
       "title" : "SetFromDirectionAndUpvector",
@@ -1762,7 +1175,7 @@ dfgEntry {
       "objectType" : "Func",
       "metadata" : {
         "uiNodeColor" : "{\n  \"r\" : 99,\n  \"g\" : 129,\n  \"b\" : 92\n  }",
-        "uiDocUrl" : "http://docs.fabric-engine.com/FabricEngine/2.3.0/HTML/KLExtensionsGuide/Math/Quat.html",
+        "uiDocUrl" : "http://docs.fabric-engine.com/FabricEngine/2.4.0/HTML/KLExtensionsGuide/Math/Quat.html",
         "uiTooltip" : "Rotates a vector by this quaterion.\nDon't forget to normalize the quaternion unless\nyou want axial translation as well as rotation.\n\n Supported by Quat"
         },
       "title" : "RotateVector",

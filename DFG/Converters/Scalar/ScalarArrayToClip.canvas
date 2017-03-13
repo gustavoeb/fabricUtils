@@ -1,0 +1,55 @@
+// Created by kl2dfg (processFunction)
+{
+  "objectType" : "Func",
+  "metadata" : {
+    "uiTooltip" : "Supported types:\n  this: Scalar[]\n  pose: Pose\n  activeBones: Integer[]\n  result: Clip\n"
+    },
+  "title" : "ScalarArrayToClip",
+  "ports" : [
+    {
+      "objectType" : "ExecPort",
+      "name" : "exec",
+      "nodePortType" : "IO",
+      "execPortType" : "IO",
+      "typeSpec" : "Execute"
+      },
+    {
+      "objectType" : "ExecPort",
+      "name" : "this",
+      "nodePortType" : "Out",
+      "execPortType" : "In",
+      "typeSpec" : "Scalar[]"
+      },
+    {
+      "objectType" : "ExecPort",
+      "name" : "pose",
+      "nodePortType" : "Out",
+      "execPortType" : "In",
+      "typeSpec" : "Pose"
+      },
+    {
+      "objectType" : "ExecPort",
+      "name" : "activeBones",
+      "nodePortType" : "Out",
+      "execPortType" : "In",
+      "typeSpec" : "Integer[]"
+      },
+    {
+      "objectType" : "ExecPort",
+      "name" : "result",
+      "nodePortType" : "In",
+      "execPortType" : "Out",
+      "typeSpec" : "Clip"
+      }
+    ],
+  "extDeps" : {
+    "fabricUtils" : "*"
+    },
+  "presetGUID" : "0DF9781A78E0B09E2B6C1A4A15F71EEA",
+  "code" : "require fabricUtils;
+
+dfgEntry {
+  result = scalarArrayToClip(this, pose, activeBones);
+}
+"
+  }

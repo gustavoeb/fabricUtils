@@ -1,0 +1,46 @@
+{
+  "objectType" : "Func",
+  "title" : "NamedXfoArrayToXfoArray",
+  "ports" : [
+    {
+      "objectType" : "ExecPort",
+      "name" : "exec",
+      "nodePortType" : "IO",
+      "defaultValues" : {
+        "Execute" : {}
+        },
+      "execPortType" : "IO",
+      "typeSpec" : "Execute"
+      },
+    {
+      "objectType" : "ExecPort",
+      "name" : "this",
+      "nodePortType" : "Out",
+      "defaultValues" : {
+        "Xfo[String]" : {}
+        },
+      "execPortType" : "In",
+      "typeSpec" : "Xfo[String]"
+      },
+    {
+      "objectType" : "ExecPort",
+      "name" : "result",
+      "nodePortType" : "In",
+      "defaultValues" : {
+        "Xfo[]" : []
+        },
+      "execPortType" : "Out",
+      "typeSpec" : "Xfo[]"
+      }
+    ],
+  "extDeps" : {},
+  "presetGUID" : "6CA68783F243B6A392DB21CDD45B59C0",
+  "code" : "dfgEntry {
+  for(k in this)
+  {
+    result.push(this[k]);
+  } 
+}
+",
+  "requiredPresets" : {}
+  }

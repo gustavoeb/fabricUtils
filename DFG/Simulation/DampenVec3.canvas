@@ -3,9 +3,16 @@
   "metadata" : {
     "uiTextColor" : "{\n  \"r\" : 20,\n  \"g\" : 20,\n  \"b\" : 20\n  }",
     "uiNodeColor" : "{\n  \"r\" : 121,\n  \"g\" : 134,\n  \"b\" : 143\n  }",
+    "timeline_start" : "1",
     "uiGraphZoom" : "{\n  \"value\" : 0.8181818127632141\n  }",
+    "timeline_loopMode" : "1",
+    "timeline_simMode" : "0",
+    "camera_mat44" : "{\n  \"row0\" : {\n    \"x\" : 0.7999999523162842,\n    \"y\" : -0.2228344082832336,\n    \"z\" : 0.5570860505104065,\n    \"t\" : 30\n    },\n  \"row1\" : {\n    \"x\" : -1.490116119384766e-08,\n    \"y\" : 0.9284766912460327,\n    \"z\" : 0.3713906705379486,\n    \"t\" : 20\n    },\n  \"row2\" : {\n    \"x\" : -0.6000000834465027,\n    \"y\" : -0.2971125543117523,\n    \"z\" : 0.7427813410758972,\n    \"t\" : 40\n    },\n  \"row3\" : {\n    \"x\" : 0,\n    \"y\" : 0,\n    \"z\" : 0,\n    \"t\" : 1\n    }\n  }",
     "uiTooltip" : "Blends the current value with an average of previous values, by a certain factor. A factor of 0 means only previous values will be used, a factor of 1 means only current values will be used. When resetting the node the first value is used as the average of all previous values.",
-    "uiGraphPan" : "{\n  \"x\" : -486.8036934273769,\n  \"y\" : 112.7076378014449\n  }"
+    "timeline_current" : "1",
+    "camera_focalDistance" : "53.85164642333984",
+    "timeline_end" : "250",
+    "uiGraphPan" : "{\n  \"x\" : -436.8036804199219,\n  \"y\" : 97.7076416015625\n  }"
     },
   "title" : "DampenVec3",
   "ports" : [
@@ -35,7 +42,6 @@
       },
     {
       "objectType" : "ExecPort",
-      "metadata" : {},
       "name" : "factor",
       "nodePortType" : "Out",
       "defaultValues" : {
@@ -126,7 +132,7 @@
     {
       "objectType" : "Set",
       "metadata" : {
-        "uiGraphPos" : "{\"x\":1580.4822998,\"y\":216.381332397}"
+        "uiGraphPos" : "{\"x\":1604.92667639,\"y\":216.381327271}"
         },
       "name" : "set",
       "ports" : [
@@ -141,7 +147,7 @@
     {
       "objectType" : "Get",
       "metadata" : {
-        "uiGraphPos" : "{\"x\":648.482299805,\"y\":216.381332397}"
+        "uiGraphPos" : "{\"x\":595.92644608,\"y\":216.381327271}"
         },
       "name" : "get",
       "ports" : [
@@ -156,7 +162,7 @@
     {
       "objectType" : "Inst",
       "metadata" : {
-        "uiGraphPos" : "{\"x\":955.482299805,\"y\":216.381332397}"
+        "uiGraphPos" : "{\"x\":934.704400182,\"y\":220.048014283}"
         },
       "name" : "LinearInterpolate_1",
       "ports" : [
@@ -206,9 +212,9 @@
     {
       "objectType" : "Inst",
       "metadata" : {
-        "uiGraphPos" : "{\"x\":790.482299805,\"y\":216.381332397}"
+        "uiGraphPos" : "{\"x\":741.648722768,\"y\":195.912992239}"
         },
-      "name" : "Vec3ToSafeVec3_1",
+      "name" : "Vec3ToSafeVec3_4",
       "ports" : [
         {
           "objectType" : "InstPort",
@@ -226,15 +232,15 @@
           "nodePortType" : "Out"
           }
         ],
-      "executable" : "fabricUtils.Converters.Vec3ToSafeVec3",
+      "executable" : "fabricUtils.Converters.Vec3.Vec3ToSafeVec3",
       "presetGUID" : "097A2395CA52C3542F4378B459C0C6B3"
       },
     {
       "objectType" : "Inst",
       "metadata" : {
-        "uiGraphPos" : "{\"x\":1127.4822998,\"y\":216.381332397}"
+        "uiGraphPos" : "{\"x\":1114.42662215,\"y\":244.801861644}"
         },
-      "name" : "Vec3ToSafeVec3_2",
+      "name" : "Vec3ToSafeVec3_5",
       "ports" : [
         {
           "objectType" : "InstPort",
@@ -252,15 +258,15 @@
           "nodePortType" : "Out"
           }
         ],
-      "executable" : "fabricUtils.Converters.Vec3ToSafeVec3",
+      "executable" : "fabricUtils.Converters.Vec3.Vec3ToSafeVec3",
       "presetGUID" : "097A2395CA52C3542F4378B459C0C6B3"
       },
     {
       "objectType" : "Inst",
       "metadata" : {
-        "uiGraphPos" : "{\"x\":1415.4822998,\"y\":216.381332397}"
+        "uiGraphPos" : "{\"x\":1426.09380472,\"y\":195.912951231}"
         },
-      "name" : "Vec3ToSafeVec3_3",
+      "name" : "Vec3ToSafeVec3_6",
       "ports" : [
         {
           "objectType" : "InstPort",
@@ -278,7 +284,7 @@
           "nodePortType" : "Out"
           }
         ],
-      "executable" : "fabricUtils.Converters.Vec3ToSafeVec3",
+      "executable" : "fabricUtils.Converters.Vec3.Vec3ToSafeVec3",
       "presetGUID" : "097A2395CA52C3542F4378B459C0C6B3"
       }
     ],
@@ -294,346 +300,28 @@
       "If.cond"
       ],
     "If.result" : [
-      "Vec3ToSafeVec3_3.this"
+      "Vec3ToSafeVec3_6.this"
       ],
     "set.value" : [
       "delta"
       ],
     "get.value" : [
-      "Vec3ToSafeVec3_1.this"
+      "Vec3ToSafeVec3_4.this"
       ],
     "LinearInterpolate_1.result" : [
-      "Vec3ToSafeVec3_2.this"
+      "Vec3ToSafeVec3_5.this"
       ],
-    "Vec3ToSafeVec3_1.result" : [
+    "Vec3ToSafeVec3_4.result" : [
       "LinearInterpolate_1.this"
       ],
-    "Vec3ToSafeVec3_2.result" : [
+    "Vec3ToSafeVec3_5.result" : [
       "If.if_false"
       ],
-    "Vec3ToSafeVec3_3.result" : [
+    "Vec3ToSafeVec3_6.result" : [
       "set.value"
       ]
     },
   "requiredPresets" : {
-    "fabricUtils.Simulation.DampenVec3" : {
-      "objectType" : "Graph",
-      "metadata" : {
-        "uiTextColor" : "{\n  \"r\" : 20,\n  \"g\" : 20,\n  \"b\" : 20\n  }",
-        "uiNodeColor" : "{\n  \"r\" : 121,\n  \"g\" : 134,\n  \"b\" : 143\n  }",
-        "uiGraphZoom" : "{\n  \"value\" : 0.8181818127632141\n  }",
-        "uiTooltip" : "Blends the current value with an average of previous values, by a certain factor. A factor of 0 means only previous values will be used, a factor of 1 means only current values will be used. When resetting the node the first value is used as the average of all previous values.",
-        "uiGraphPan" : "{\n  \"x\" : -486.8036934273769,\n  \"y\" : 112.7076378014449\n  }"
-        },
-      "title" : "DampenVec3",
-      "ports" : [
-        {
-          "objectType" : "ExecPort",
-          "name" : "exec",
-          "nodePortType" : "IO",
-          "defaultValues" : {
-            "Execute" : {}
-            },
-          "execPortType" : "IO",
-          "typeSpec" : "Execute"
-          },
-        {
-          "objectType" : "ExecPort",
-          "name" : "value",
-          "nodePortType" : "Out",
-          "defaultValues" : {
-            "Vec3" : {
-              "x" : 0,
-              "y" : 0,
-              "z" : 0
-              }
-            },
-          "execPortType" : "In",
-          "typeSpec" : "Vec3"
-          },
-        {
-          "objectType" : "ExecPort",
-          "metadata" : {},
-          "name" : "factor",
-          "nodePortType" : "Out",
-          "defaultValues" : {
-            "Scalar" : 0.0333000011742115
-            },
-          "execPortType" : "In",
-          "typeSpec" : "Scalar"
-          },
-        {
-          "objectType" : "ExecPort",
-          "name" : "reset",
-          "nodePortType" : "Out",
-          "defaultValues" : {
-            "Boolean" : false
-            },
-          "execPortType" : "In",
-          "typeSpec" : "Boolean"
-          },
-        {
-          "objectType" : "ExecPort",
-          "name" : "delta",
-          "nodePortType" : "In",
-          "defaultValues" : {
-            "Vec3" : {
-              "x" : 0,
-              "y" : 0,
-              "z" : 0
-              }
-            },
-          "execPortType" : "Out",
-          "typeSpec" : "Vec3"
-          }
-        ],
-      "extDeps" : {},
-      "presetGUID" : "F7BAE5B7CBA31170F96E2069B941A31D",
-      "nodes" : [
-        {
-          "objectType" : "Var",
-          "metadata" : {
-            "uiGraphPos" : "{\"x\": 905, \"y\": 61}"
-            },
-          "name" : "valueVar",
-          "ports" : [
-            {
-              "objectType" : "VarPort",
-              "name" : "value",
-              "nodePortType" : "IO"
-              }
-            ],
-          "dataType" : "Vec3"
-          },
-        {
-          "objectType" : "Inst",
-          "metadata" : {
-            "uiGraphPos" : "{\"x\":1292.4822998,\"y\":216.381332397}"
-            },
-          "name" : "If",
-          "ports" : [
-            {
-              "objectType" : "InstPort",
-              "name" : "exec",
-              "nodePortType" : "IO"
-              },
-            {
-              "objectType" : "InstPort",
-              "name" : "cond",
-              "nodePortType" : "In"
-              },
-            {
-              "objectType" : "InstPort",
-              "name" : "if_true",
-              "nodePortType" : "In"
-              },
-            {
-              "objectType" : "InstPort",
-              "name" : "if_false",
-              "nodePortType" : "In"
-              },
-            {
-              "objectType" : "InstPort",
-              "name" : "result",
-              "nodePortType" : "Out"
-              }
-            ],
-          "executable" : "Fabric.Core.Control.If",
-          "presetGUID" : "3182A478A21643455D549E483D35F831"
-          },
-        {
-          "objectType" : "Set",
-          "metadata" : {
-            "uiGraphPos" : "{\"x\":1580.4822998,\"y\":216.381332397}"
-            },
-          "name" : "set",
-          "ports" : [
-            {
-              "objectType" : "SetPort",
-              "name" : "value",
-              "nodePortType" : "IO"
-              }
-            ],
-          "varPath" : "valueVar"
-          },
-        {
-          "objectType" : "Get",
-          "metadata" : {
-            "uiGraphPos" : "{\"x\":648.482299805,\"y\":216.381332397}"
-            },
-          "name" : "get",
-          "ports" : [
-            {
-              "objectType" : "GetPort",
-              "name" : "value",
-              "nodePortType" : "Out"
-              }
-            ],
-          "varPath" : "valueVar"
-          },
-        {
-          "objectType" : "Inst",
-          "metadata" : {
-            "uiGraphPos" : "{\"x\":955.482299805,\"y\":216.381332397}"
-            },
-          "name" : "LinearInterpolate_1",
-          "ports" : [
-            {
-              "objectType" : "InstPort",
-              "name" : "exec",
-              "nodePortType" : "IO"
-              },
-            {
-              "objectType" : "InstPort",
-              "name" : "this",
-              "nodePortType" : "In",
-              "defaultValues" : {
-                "Vec3" : {
-                  "x" : 0,
-                  "y" : 1,
-                  "z" : 0
-                  }
-                }
-              },
-            {
-              "objectType" : "InstPort",
-              "name" : "other",
-              "nodePortType" : "In",
-              "defaultValues" : {
-                "Vec3" : {
-                  "x" : 1,
-                  "y" : 0,
-                  "z" : 0
-                  }
-                }
-              },
-            {
-              "objectType" : "InstPort",
-              "name" : "t",
-              "nodePortType" : "In"
-              },
-            {
-              "objectType" : "InstPort",
-              "name" : "result",
-              "nodePortType" : "Out"
-              }
-            ],
-          "executable" : "Fabric.Exts.Math.Func.LinearInterpolate",
-          "presetGUID" : "12CF7203114B81451A5EEC920610EDA9"
-          },
-        {
-          "objectType" : "Inst",
-          "metadata" : {
-            "uiGraphPos" : "{\"x\":790.482299805,\"y\":216.381332397}"
-            },
-          "name" : "Vec3ToSafeVec3_1",
-          "ports" : [
-            {
-              "objectType" : "InstPort",
-              "name" : "exec",
-              "nodePortType" : "IO"
-              },
-            {
-              "objectType" : "InstPort",
-              "name" : "this",
-              "nodePortType" : "In"
-              },
-            {
-              "objectType" : "InstPort",
-              "name" : "result",
-              "nodePortType" : "Out"
-              }
-            ],
-          "executable" : "fabricUtils.Converters.Vec3ToSafeVec3",
-          "presetGUID" : "097A2395CA52C3542F4378B459C0C6B3"
-          },
-        {
-          "objectType" : "Inst",
-          "metadata" : {
-            "uiGraphPos" : "{\"x\":1127.4822998,\"y\":216.381332397}"
-            },
-          "name" : "Vec3ToSafeVec3_2",
-          "ports" : [
-            {
-              "objectType" : "InstPort",
-              "name" : "exec",
-              "nodePortType" : "IO"
-              },
-            {
-              "objectType" : "InstPort",
-              "name" : "this",
-              "nodePortType" : "In"
-              },
-            {
-              "objectType" : "InstPort",
-              "name" : "result",
-              "nodePortType" : "Out"
-              }
-            ],
-          "executable" : "fabricUtils.Converters.Vec3ToSafeVec3",
-          "presetGUID" : "097A2395CA52C3542F4378B459C0C6B3"
-          },
-        {
-          "objectType" : "Inst",
-          "metadata" : {
-            "uiGraphPos" : "{\"x\":1415.4822998,\"y\":216.381332397}"
-            },
-          "name" : "Vec3ToSafeVec3_3",
-          "ports" : [
-            {
-              "objectType" : "InstPort",
-              "name" : "exec",
-              "nodePortType" : "IO"
-              },
-            {
-              "objectType" : "InstPort",
-              "name" : "this",
-              "nodePortType" : "In"
-              },
-            {
-              "objectType" : "InstPort",
-              "name" : "result",
-              "nodePortType" : "Out"
-              }
-            ],
-          "executable" : "fabricUtils.Converters.Vec3ToSafeVec3",
-          "presetGUID" : "097A2395CA52C3542F4378B459C0C6B3"
-          }
-        ],
-      "connections" : {
-        "value" : [
-          "LinearInterpolate_1.other",
-          "If.if_true"
-          ],
-        "factor" : [
-          "LinearInterpolate_1.t"
-          ],
-        "reset" : [
-          "If.cond"
-          ],
-        "If.result" : [
-          "Vec3ToSafeVec3_3.this"
-          ],
-        "set.value" : [
-          "delta"
-          ],
-        "get.value" : [
-          "Vec3ToSafeVec3_1.this"
-          ],
-        "LinearInterpolate_1.result" : [
-          "Vec3ToSafeVec3_2.this"
-          ],
-        "Vec3ToSafeVec3_1.result" : [
-          "LinearInterpolate_1.this"
-          ],
-        "Vec3ToSafeVec3_2.result" : [
-          "If.if_false"
-          ],
-        "Vec3ToSafeVec3_3.result" : [
-          "set.value"
-          ]
-        }
-      },
     "Fabric.Core.Control.If" : {
       "objectType" : "Func",
       "title" : "If",
@@ -713,6 +401,9 @@ dfgEntry {
           },
         {
           "objectType" : "ExecPort",
+          "metadata" : {
+            "uiRange" : "(0, 1)"
+            },
           "name" : "t",
           "nodePortType" : "Out",
           "execPortType" : "In",
@@ -737,7 +428,7 @@ dfgEntry {
 }
 "
       },
-    "fabricUtils.Converters.Vec3ToSafeVec3" : {
+    "fabricUtils.Converters.Vec3.Vec3ToSafeVec3" : {
       "objectType" : "Func",
       "metadata" : {
         "uiTooltip" : "Returns a new Vec3 with NaNs removed.\n\nSupported types:\n  this: Vec3\n  result: Vec3\n"
@@ -783,5 +474,25 @@ dfgEntry {
 }
 "
       }
-    }
+    },
+  "args" : [
+    {
+      "type" : "Vec3",
+      "value" : null,
+      "ext" : "Math"
+      },
+    {
+      "type" : "Scalar",
+      "value" : null
+      },
+    {
+      "type" : "Boolean",
+      "value" : null
+      },
+    {
+      "type" : "Vec3",
+      "value" : null,
+      "ext" : "Math"
+      }
+    ]
   }

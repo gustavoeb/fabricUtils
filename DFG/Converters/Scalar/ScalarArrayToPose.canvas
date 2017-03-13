@@ -1,0 +1,528 @@
+{
+  "objectType" : "Graph",
+  "metadata" : {
+    "camera_mat44" : "{\n  \"row0\" : {\n    \"x\" : 0.7999999523162842,\n    \"y\" : -0.2228344082832336,\n    \"z\" : 0.5570860505104065,\n    \"t\" : 30\n    },\n  \"row1\" : {\n    \"x\" : -1.490116119384766e-08,\n    \"y\" : 0.9284766912460327,\n    \"z\" : 0.3713906705379486,\n    \"t\" : 20\n    },\n  \"row2\" : {\n    \"x\" : -0.6000000834465027,\n    \"y\" : -0.2971125543117523,\n    \"z\" : 0.7427813410758972,\n    \"t\" : 40\n    },\n  \"row3\" : {\n    \"x\" : 0,\n    \"y\" : 0,\n    \"z\" : 0,\n    \"t\" : 1\n    }\n  }",
+    "timeline_start" : "1",
+    "uiGraphZoom" : "{\n  \"value\" : 1.0\n  }",
+    "timeline_loopMode" : "1",
+    "timeline_simMode" : "0",
+    "camera_focalDistance" : "53.85164642333984",
+    "timeline_current" : "1",
+    "timeline_end" : "250",
+    "uiGraphPan" : "{\n  \"x\" : -1886.859313964844,\n  \"y\" : -493.2917175292969\n  }"
+    },
+  "title" : "ScalarArrayToPose",
+  "ports" : [
+    {
+      "objectType" : "ExecPort",
+      "name" : "exec",
+      "nodePortType" : "IO",
+      "defaultValues" : {
+        "Execute" : {}
+        },
+      "execPortType" : "IO",
+      "typeSpec" : "Execute"
+      },
+    {
+      "objectType" : "ExecPort",
+      "name" : "character",
+      "nodePortType" : "Out",
+      "defaultValues" : {
+        "Character" : null
+        },
+      "execPortType" : "In"
+      },
+    {
+      "objectType" : "ExecPort",
+      "name" : "inputArray",
+      "nodePortType" : "Out",
+      "defaultValues" : {
+        "Scalar[]" : []
+        },
+      "execPortType" : "In",
+      "typeSpec" : "Scalar[]"
+      },
+    {
+      "objectType" : "ExecPort",
+      "name" : "activeBones",
+      "nodePortType" : "Out",
+      "defaultValues" : {
+        "Integer[]" : [
+          0,
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7,
+          8,
+          9,
+          10,
+          11,
+          12,
+          13,
+          14,
+          15,
+          16,
+          17,
+          18,
+          19,
+          20,
+          21,
+          22,
+          23,
+          24,
+          25,
+          26,
+          27,
+          28,
+          29,
+          30
+          ]
+        },
+      "execPortType" : "In",
+      "typeSpec" : "Integer[]"
+      },
+    {
+      "objectType" : "ExecPort",
+      "name" : "result",
+      "nodePortType" : "In",
+      "defaultValues" : {
+        "Pose" : null
+        },
+      "execPortType" : "Out",
+      "typeSpec" : "Pose"
+      }
+    ],
+  "extDeps" : {
+    "Characters" : "*"
+    },
+  "presetGUID" : "BC872C98CEECD87AB7314E2FBAB6BE03",
+  "nodes" : [
+    {
+      "objectType" : "Inst",
+      "metadata" : {
+        "uiGraphPos" : "{\"x\":2010.58118296,\"y\":726.343857527}"
+        },
+      "name" : "GetPose_2",
+      "ports" : [
+        {
+          "objectType" : "InstPort",
+          "name" : "exec",
+          "nodePortType" : "IO"
+          },
+        {
+          "objectType" : "InstPort",
+          "name" : "this",
+          "nodePortType" : "In"
+          },
+        {
+          "objectType" : "InstPort",
+          "name" : "result",
+          "nodePortType" : "Out"
+          }
+        ],
+      "definition" : {
+        "objectType" : "Func",
+        "metadata" : {
+          "uiDocUrl" : "http://docs.fabric-engine.com/FabricEngine/2.4.0/HTML/KLExtensionsGuide/Characters/ICharacter.html",
+          "uiTooltip" : "\n\n Supported by ICharacter,Character"
+          },
+        "title" : "GetPose",
+        "ports" : [
+          {
+            "objectType" : "ExecPort",
+            "name" : "exec",
+            "nodePortType" : "IO",
+            "execPortType" : "IO",
+            "typeSpec" : "Execute"
+            },
+          {
+            "objectType" : "ExecPort",
+            "name" : "this",
+            "nodePortType" : "Out",
+            "execPortType" : "In",
+            "typeSpec" : "$TYPE$"
+            },
+          {
+            "objectType" : "ExecPort",
+            "name" : "result",
+            "nodePortType" : "In",
+            "execPortType" : "Out",
+            "typeSpec" : "Pose"
+            }
+          ],
+        "extDeps" : {
+          "Characters" : "*"
+          },
+        "code" : "require Characters;
+
+dfgEntry {
+  result = this.getPose();
+}
+"
+        }
+      },
+    {
+      "objectType" : "Inst",
+      "metadata" : {
+        "uiGraphPos" : "{\"x\":2419.62781382,\"y\":681.950058699}"
+        },
+      "name" : "ClipPose_1",
+      "ports" : [
+        {
+          "objectType" : "InstPort",
+          "name" : "exec",
+          "nodePortType" : "IO"
+          },
+        {
+          "objectType" : "InstPort",
+          "name" : "skeleton",
+          "nodePortType" : "In"
+          },
+        {
+          "objectType" : "InstPort",
+          "name" : "clip",
+          "nodePortType" : "In"
+          },
+        {
+          "objectType" : "InstPort",
+          "name" : "scaleFactor",
+          "nodePortType" : "In",
+          "defaultValues" : {
+            "Float32" : 1
+            }
+          },
+        {
+          "objectType" : "InstPort",
+          "name" : "result",
+          "nodePortType" : "Out"
+          }
+        ],
+      "executable" : "Fabric.Exts.Characters.ClipPose.ClipPose",
+      "presetGUID" : "EE914570888CAABA5DB4187789F39537"
+      },
+    {
+      "objectType" : "Inst",
+      "metadata" : {
+        "uiGraphPos" : "{\"x\":2006.2088685,\"y\":641.990708113}"
+        },
+      "name" : "GetSkeleton_1",
+      "ports" : [
+        {
+          "objectType" : "InstPort",
+          "name" : "exec",
+          "nodePortType" : "IO"
+          },
+        {
+          "objectType" : "InstPort",
+          "name" : "this",
+          "nodePortType" : "In"
+          },
+        {
+          "objectType" : "InstPort",
+          "name" : "result",
+          "nodePortType" : "Out"
+          }
+        ],
+      "definition" : {
+        "objectType" : "Func",
+        "metadata" : {
+          "uiDocUrl" : "http://docs.fabric-engine.com/FabricEngine/2.4.0/HTML/KLExtensionsGuide/Characters/ICharacter.html",
+          "uiTooltip" : "\n\n Supported by ICharacter,Character"
+          },
+        "title" : "GetSkeleton",
+        "ports" : [
+          {
+            "objectType" : "ExecPort",
+            "name" : "exec",
+            "nodePortType" : "IO",
+            "execPortType" : "IO",
+            "typeSpec" : "Execute"
+            },
+          {
+            "objectType" : "ExecPort",
+            "name" : "this",
+            "nodePortType" : "Out",
+            "execPortType" : "In",
+            "typeSpec" : "$TYPE$"
+            },
+          {
+            "objectType" : "ExecPort",
+            "name" : "result",
+            "nodePortType" : "In",
+            "execPortType" : "Out",
+            "typeSpec" : "Skeleton"
+            }
+          ],
+        "extDeps" : {
+          "Characters" : "*"
+          },
+        "code" : "require Characters;
+
+dfgEntry {
+  result = this.getSkeleton();
+}
+"
+        }
+      },
+    {
+      "objectType" : "Inst",
+      "metadata" : {
+        "uiGraphPos" : "{\"x\":2586.50964975,\"y\":681.318344831}"
+        },
+      "name" : "Evaluate_1",
+      "ports" : [
+        {
+          "objectType" : "InstPort",
+          "name" : "exec",
+          "nodePortType" : "IO"
+          },
+        {
+          "objectType" : "InstPort",
+          "name" : "this",
+          "nodePortType" : "IO"
+          },
+        {
+          "objectType" : "InstPort",
+          "name" : "time",
+          "nodePortType" : "In"
+          }
+        ],
+      "executable" : "Fabric.Exts.Characters.ClipPose.Evaluate",
+      "presetGUID" : "9B28537D587E2704AD6E2116B1230D74"
+      },
+    {
+      "objectType" : "Inst",
+      "metadata" : {
+        "uiGraphPos" : "{\"x\":2219.859375,\"y\":731.291687012}"
+        },
+      "name" : "ScalarArrayToClip_2",
+      "ports" : [
+        {
+          "objectType" : "InstPort",
+          "name" : "exec",
+          "nodePortType" : "IO"
+          },
+        {
+          "objectType" : "InstPort",
+          "name" : "this",
+          "nodePortType" : "In"
+          },
+        {
+          "objectType" : "InstPort",
+          "name" : "pose",
+          "nodePortType" : "In"
+          },
+        {
+          "objectType" : "InstPort",
+          "name" : "activeBones",
+          "nodePortType" : "In"
+          },
+        {
+          "objectType" : "InstPort",
+          "name" : "result",
+          "nodePortType" : "Out"
+          }
+        ],
+      "executable" : "fabricUtils.Converters.Scalar.ScalarArrayToClip",
+      "presetGUID" : "0DF9781A78E0B09E2B6C1A4A15F71EEA"
+      }
+    ],
+  "connections" : {
+    "character" : [
+      "GetPose_2.this",
+      "GetSkeleton_1.this"
+      ],
+    "inputArray" : [
+      "ScalarArrayToClip_2.this"
+      ],
+    "activeBones" : [
+      "ScalarArrayToClip_2.activeBones"
+      ],
+    "GetPose_2.result" : [
+      "ScalarArrayToClip_2.pose"
+      ],
+    "ClipPose_1.result" : [
+      "Evaluate_1.this"
+      ],
+    "GetSkeleton_1.result" : [
+      "ClipPose_1.skeleton"
+      ],
+    "Evaluate_1.this" : [
+      "result"
+      ],
+    "ScalarArrayToClip_2.result" : [
+      "ClipPose_1.clip"
+      ]
+    },
+  "requiredPresets" : {
+    "Fabric.Exts.Characters.ClipPose.ClipPose" : {
+      "objectType" : "Func",
+      "metadata" : {
+        "uiDocUrl" : "http://docs.fabric-engine.com/FabricEngine/2.4.0/HTML/KLExtensionsGuide/Characters/ClipPose.html",
+        "uiTooltip" : "standard constructor taking a skeleton and a clip.\n\n Supported by ClipPose"
+        },
+      "title" : "ClipPose",
+      "ports" : [
+        {
+          "objectType" : "ExecPort",
+          "name" : "exec",
+          "nodePortType" : "IO",
+          "execPortType" : "IO",
+          "typeSpec" : "Execute"
+          },
+        {
+          "objectType" : "ExecPort",
+          "name" : "skeleton",
+          "nodePortType" : "Out",
+          "execPortType" : "In",
+          "typeSpec" : "Skeleton"
+          },
+        {
+          "objectType" : "ExecPort",
+          "name" : "clip",
+          "nodePortType" : "Out",
+          "execPortType" : "In",
+          "typeSpec" : "IClip"
+          },
+        {
+          "objectType" : "ExecPort",
+          "name" : "scaleFactor",
+          "nodePortType" : "Out",
+          "execPortType" : "In",
+          "typeSpec" : "Float32"
+          },
+        {
+          "objectType" : "ExecPort",
+          "name" : "result",
+          "nodePortType" : "In",
+          "execPortType" : "Out",
+          "typeSpec" : "ClipPose"
+          }
+        ],
+      "extDeps" : {
+        "Characters" : "*"
+        },
+      "presetGUID" : "EE914570888CAABA5DB4187789F39537",
+      "code" : "require Characters;
+
+dfgEntry {
+  result = ClipPose(skeleton, clip, scaleFactor);
+}
+"
+      },
+    "Fabric.Exts.Characters.ClipPose.Evaluate" : {
+      "objectType" : "Func",
+      "metadata" : {
+        "uiDocUrl" : "http://docs.fabric-engine.com/FabricEngine/2.4.0/HTML/KLExtensionsGuide/Characters/ClipPose.html",
+        "uiTooltip" : "Evaluates the stored clip at the given time.\n\n Supported by ClipPose"
+        },
+      "title" : "Evaluate",
+      "ports" : [
+        {
+          "objectType" : "ExecPort",
+          "name" : "exec",
+          "nodePortType" : "IO",
+          "execPortType" : "IO",
+          "typeSpec" : "Execute"
+          },
+        {
+          "objectType" : "ExecPort",
+          "name" : "this",
+          "nodePortType" : "IO",
+          "execPortType" : "IO",
+          "typeSpec" : "ClipPose"
+          },
+        {
+          "objectType" : "ExecPort",
+          "name" : "time",
+          "nodePortType" : "Out",
+          "execPortType" : "In",
+          "typeSpec" : "Scalar"
+          }
+        ],
+      "extDeps" : {
+        "Characters" : "*"
+        },
+      "presetGUID" : "9B28537D587E2704AD6E2116B1230D74",
+      "code" : "require Characters;
+
+dfgEntry {
+  this.evaluate(time);
+}
+"
+      },
+    "fabricUtils.Converters.Scalar.ScalarArrayToClip" : {
+      "objectType" : "Func",
+      "metadata" : {
+        "uiTooltip" : "Supported types:\n  this: Scalar[]\n  pose: Pose\n  activeBones: Integer[]\n  result: Clip\n"
+        },
+      "title" : "ScalarArrayToClip",
+      "ports" : [
+        {
+          "objectType" : "ExecPort",
+          "name" : "exec",
+          "nodePortType" : "IO",
+          "execPortType" : "IO",
+          "typeSpec" : "Execute"
+          },
+        {
+          "objectType" : "ExecPort",
+          "name" : "this",
+          "nodePortType" : "Out",
+          "execPortType" : "In",
+          "typeSpec" : "Scalar[]"
+          },
+        {
+          "objectType" : "ExecPort",
+          "name" : "pose",
+          "nodePortType" : "Out",
+          "execPortType" : "In",
+          "typeSpec" : "Pose"
+          },
+        {
+          "objectType" : "ExecPort",
+          "name" : "activeBones",
+          "nodePortType" : "Out",
+          "execPortType" : "In",
+          "typeSpec" : "Integer[]"
+          },
+        {
+          "objectType" : "ExecPort",
+          "name" : "result",
+          "nodePortType" : "In",
+          "execPortType" : "Out",
+          "typeSpec" : "Clip"
+          }
+        ],
+      "extDeps" : {
+        "fabricUtils" : "*"
+        },
+      "presetGUID" : "0DF9781A78E0B09E2B6C1A4A15F71EEA",
+      "code" : "require fabricUtils;
+
+dfgEntry {
+  result = scalarArrayToClip(this, pose, activeBones);
+}
+"
+      }
+    },
+  "args" : [
+    null,
+    {
+      "type" : "Scalar[]",
+      "value" : null
+      },
+    {
+      "type" : "Integer[]",
+      "value" : null
+      },
+    {
+      "type" : "Pose",
+      "value" : null,
+      "ext" : "Characters"
+      }
+    ]
+  }

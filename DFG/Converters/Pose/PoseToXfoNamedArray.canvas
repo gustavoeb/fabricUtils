@@ -2,9 +2,9 @@
 {
   "objectType" : "Func",
   "metadata" : {
-    "uiTooltip" : "Converts an array of bone names into an array of bone indices.\n\nSupported types:\n  this: ISkeleton\n  names: String[]\n  result: Index[]\n"
+    "uiTooltip" : "Converts a skeleton's pose to an array of Xfos. Returns Xfos in local and global spaces.\n\nSupported types:\n  this: IPose\n  globalSpace: Boolean\n  result: Xfo[String]\n"
     },
-  "title" : "BoneNameArrayToIDArray",
+  "title" : "PoseToXfoNamedArray",
   "ports" : [
     {
       "objectType" : "ExecPort",
@@ -18,31 +18,34 @@
       "name" : "this",
       "nodePortType" : "Out",
       "execPortType" : "In",
-      "typeSpec" : "ISkeleton"
+      "typeSpec" : "IPose"
       },
     {
       "objectType" : "ExecPort",
-      "name" : "names",
+      "name" : "globalSpace",
       "nodePortType" : "Out",
       "execPortType" : "In",
-      "typeSpec" : "String[]"
+      "typeSpec" : "Boolean"
       },
     {
       "objectType" : "ExecPort",
+      "metadata" : {
+        "uiColor" : "{\n  \"r\" : 249,\n  \"g\" : 157,\n  \"b\" : 28\n  }"
+        },
       "name" : "result",
       "nodePortType" : "In",
       "execPortType" : "Out",
-      "typeSpec" : "Index[]"
+      "typeSpec" : "Xfo[String]"
       }
     ],
   "extDeps" : {
     "fabricUtils" : "*"
     },
-  "presetGUID" : "A750A14D32A93B49F08C7836E203ECAA",
+  "presetGUID" : "CB0587FAF1E7A980A904878E18442E39",
   "code" : "require fabricUtils;
 
 dfgEntry {
-  result = boneNameArrayToIDArray(this, names);
+  result = poseToXfoNamedArray(this, globalSpace);
 }
 "
   }

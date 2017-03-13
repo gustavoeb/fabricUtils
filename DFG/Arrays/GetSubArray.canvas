@@ -27,10 +27,11 @@
       "name" : "indices",
       "nodePortType" : "Out",
       "defaultValues" : {
-        "Index[]" : []
+        "Index[]" : [],
+        "Integer[]" : []
         },
       "execPortType" : "In",
-      "typeSpec" : "Index[]"
+      "typeSpec" : "Integer[]"
       },
     {
       "objectType" : "ExecPort",
@@ -44,7 +45,7 @@
       }
     ],
   "extDeps" : {},
-  "presetGUID" : "3EB01AA8D84195FFCC36D66B9DDBB5BE",
+  "presetGUID" : "EF6FA4DE9B0619B24F6BC223F43DC310",
   "code" : "dfgEntry {
   Integer index = 0;
   for (Integer i = 0; i <= indices.size() - 1; i++) {
@@ -53,62 +54,5 @@
   }
 }
 ",
-  "requiredPresets" : {
-    "fabricUtils.Arrays.GetSubArray" : {
-      "objectType" : "Func",
-      "title" : "GetSubArray",
-      "ports" : [
-        {
-          "objectType" : "ExecPort",
-          "name" : "exec",
-          "nodePortType" : "IO",
-          "defaultValues" : {
-            "Execute" : {}
-            },
-          "execPortType" : "IO",
-          "typeSpec" : "Execute"
-          },
-        {
-          "objectType" : "ExecPort",
-          "name" : "array",
-          "nodePortType" : "Out",
-          "defaultValues" : {
-            "Xfo[]" : []
-            },
-          "execPortType" : "In",
-          "typeSpec" : "$TYPE$"
-          },
-        {
-          "objectType" : "ExecPort",
-          "name" : "indices",
-          "nodePortType" : "Out",
-          "defaultValues" : {
-            "Index[]" : []
-            },
-          "execPortType" : "In",
-          "typeSpec" : "Index[]"
-          },
-        {
-          "objectType" : "ExecPort",
-          "name" : "result",
-          "nodePortType" : "In",
-          "defaultValues" : {
-            "Xfo[]" : []
-            },
-          "execPortType" : "Out",
-          "typeSpec" : "$TYPE$"
-          }
-        ],
-      "extDeps" : {},
-      "presetGUID" : "3EB01AA8D84195FFCC36D66B9DDBB5BE",
-      "code" : "dfgEntry {
-  Integer index = 0;
-  for (Integer i = 0; i <= indices.size() - 1; i++) {
-    index = indices[i];
-    result.push(array[index]);
-  }
-}
-"
-      }
-    }
+  "requiredPresets" : {}
   }

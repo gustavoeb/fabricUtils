@@ -9,7 +9,7 @@
     "camera_focalDistance" : "143.3157196044922",
     "timeline_current" : "0",
     "timeline_end" : "300",
-    "uiGraphPan" : "{\n  \"x\" : -868.323864799376,\n  \"y\" : 224.7463204792006\n  }"
+    "uiGraphPan" : "{\n  \"x\" : -867.3238525390625,\n  \"y\" : 180.7463226318359\n  }"
     },
   "title" : "",
   "ports" : [
@@ -302,7 +302,7 @@
           }
         ],
       "executable" : "fabricUtils.Animation.StorePoseAsTrackSetArray",
-      "presetGUID" : "7B9BA1A2A1E3CEE0686945F93F17D7EF"
+      "presetGUID" : "99BBCB6F197DED8908F1ABE0C5D9C8AE"
       },
     {
       "objectType" : "Inst",
@@ -583,7 +583,7 @@
           }
         ],
       "executable" : "fabricUtils.Draw.DrawCharacter",
-      "presetGUID" : "B4B780410AA51AAC10EDF1B21BC811EB"
+      "presetGUID" : "7FF3C9AF5A0583ACD5E051DA3AA83678"
       },
     {
       "objectType" : "Inst",
@@ -949,7 +949,7 @@ dfgEntry {
     "Fabric.Exts.Characters.Func.GetPose" : {
       "objectType" : "Func",
       "metadata" : {
-        "uiDocUrl" : "http://docs.fabric-engine.com/FabricEngine/2.3.0/HTML/KLExtensionsGuide/Characters/ICharacter.html",
+        "uiDocUrl" : "http://docs.fabric-engine.com/FabricEngine/2.4.0/HTML/KLExtensionsGuide/Characters/ICharacter.html",
         "uiTooltip" : "\n\n Supported by ICharacter,Character"
         },
       "title" : "GetPose",
@@ -1080,9 +1080,9 @@ dfgEntry {
       "metadata" : {
         "uiTextColor" : "{\n  \"r\" : 20,\n  \"g\" : 20,\n  \"b\" : 20\n  }",
         "uiNodeColor" : "{\n  \"r\" : 121,\n  \"g\" : 134,\n  \"b\" : 143\n  }",
-        "uiGraphZoom" : "{\n  \"value\" : 0.7574182152748108\n  }",
+        "uiGraphZoom" : "{\n  \"value\" : 0.7038168907165527\n  }",
         "uiTooltip" : "Stores a sequence of poses as a clip.",
-        "uiGraphPan" : "{\n  \"x\" : -1189.6515620466,\n  \"y\" : -657.7023352594576\n  }"
+        "uiGraphPan" : "{\n  \"x\" : -1263.552612304688,\n  \"y\" : -563.8599243164063\n  }"
         },
       "title" : "StorePoseAsTrackSetArray",
       "ports" : [
@@ -1166,7 +1166,7 @@ dfgEntry {
           }
         ],
       "extDeps" : {},
-      "presetGUID" : "7B9BA1A2A1E3CEE0686945F93F17D7EF",
+      "presetGUID" : "99BBCB6F197DED8908F1ABE0C5D9C8AE",
       "nodes" : [
         {
           "objectType" : "Inst",
@@ -1366,7 +1366,7 @@ dfgEntry {
         {
           "objectType" : "Inst",
           "metadata" : {
-            "uiGraphPos" : "{\"x\":1693.30309963,\"y\":1237.8998735}"
+            "uiGraphPos" : "{\"x\":1596.63295341,\"y\":1239.30093312}"
             },
           "name" : "EmptyArrayFromPose_1",
           "ports" : [
@@ -1397,7 +1397,7 @@ dfgEntry {
         {
           "objectType" : "Inst",
           "metadata" : {
-            "uiGraphPos" : "{\"x\":2277.37960219,\"y\":1246.27969193}"
+            "uiGraphPos" : "{\"x\":2455.2742641,\"y\":1275.92888939}"
             },
           "name" : "SetPoseTrackSetArrayValues_1",
           "ports" : [
@@ -1428,7 +1428,7 @@ dfgEntry {
         {
           "objectType" : "Var",
           "metadata" : {
-            "uiGraphPos" : "{\"x\":1929.33300686,\"y\":1238.00888228}"
+            "uiGraphPos" : "{\"x\":1911.66140509,\"y\":1117.75920343}"
             },
           "name" : "trackset",
           "ports" : [
@@ -1477,11 +1477,26 @@ dfgEntry {
           "presetGUID" : "3182A478A21643455D549E483D35F831"
           },
         {
+          "objectType" : "Set",
+          "metadata" : {
+            "uiGraphPos" : "{\"x\":2235.65023589,\"y\":1255.9974699}"
+            },
+          "name" : "set",
+          "ports" : [
+            {
+              "objectType" : "SetPort",
+              "name" : "value",
+              "nodePortType" : "IO"
+              }
+            ],
+          "varPath" : "trackset"
+          },
+        {
           "objectType" : "Get",
           "metadata" : {
-            "uiGraphPos" : "{\"x\":1911.54663086,\"y\":1323.09905434}"
+            "uiGraphPos" : "{\"x\":1920.3282057,\"y\":1338.38922083}"
             },
-          "name" : "get_2",
+          "name" : "get",
           "ports" : [
             {
               "objectType" : "GetPort",
@@ -1533,18 +1548,19 @@ dfgEntry {
           "If_4.if_true"
           ],
         "EmptyArrayFromPose_1.result" : [
-          "trackset.value"
+          "trackset.value",
+          "If_5.if_true"
           ],
         "SetPoseTrackSetArrayValues_1.trackSetArray" : [
           "trackSetArray"
           ],
-        "trackset.value" : [
-          "If_5.if_true"
-          ],
         "If_5.result" : [
+          "set.value"
+          ],
+        "set.value" : [
           "SetPoseTrackSetArrayValues_1.trackSetArray"
           ],
-        "get_2.value" : [
+        "get.value" : [
           "If_5.if_false"
           ]
         }
@@ -1686,7 +1702,7 @@ dfgEntry {
     "Fabric.Exts.Animation.Clip.Clip" : {
       "objectType" : "Func",
       "metadata" : {
-        "uiDocUrl" : "http://docs.fabric-engine.com/FabricEngine/2.3.0/HTML/KLExtensionsGuide/Animation/Clip.html",
+        "uiDocUrl" : "http://docs.fabric-engine.com/FabricEngine/2.4.0/HTML/KLExtensionsGuide/Animation/Clip.html",
         "uiTooltip" : "\n\n Supported by Clip"
         },
       "title" : "Clip",
@@ -2559,7 +2575,7 @@ dfgEntry {
     "Fabric.Exts.Characters.Character.SetClipPoseTime" : {
       "objectType" : "Func",
       "metadata" : {
-        "uiDocUrl" : "http://docs.fabric-engine.com/FabricEngine/2.3.0/HTML/KLExtensionsGuide/Characters/Character.html",
+        "uiDocUrl" : "http://docs.fabric-engine.com/FabricEngine/2.4.0/HTML/KLExtensionsGuide/Characters/Character.html",
         "uiTooltip" : "changes the time on the clip pose\n\n Supported by Character"
         },
       "title" : "SetClipPoseTime",
@@ -2744,9 +2760,16 @@ dfgEntry {
       "metadata" : {
         "uiTextColor" : "{\n  \"r\" : 20,\n  \"g\" : 20,\n  \"b\" : 20\n  }",
         "uiNodeColor" : "{\n  \"r\" : 121,\n  \"g\" : 134,\n  \"b\" : 143\n  }",
-        "uiGraphZoom" : "{\n  \"value\" : 0.4738622605800629\n  }",
+        "timeline_start" : "1",
+        "uiGraphZoom" : "{\n  \"value\" : 0.4605837166309357\n  }",
+        "timeline_loopMode" : "1",
+        "timeline_simMode" : "0",
+        "camera_mat44" : "{\n  \"row0\" : {\n    \"x\" : 0.7999999523162842,\n    \"y\" : -0.2228344082832336,\n    \"z\" : 0.5570860505104065,\n    \"t\" : 30\n    },\n  \"row1\" : {\n    \"x\" : -1.490116119384766e-08,\n    \"y\" : 0.9284766912460327,\n    \"z\" : 0.3713906705379486,\n    \"t\" : 20\n    },\n  \"row2\" : {\n    \"x\" : -0.6000000834465027,\n    \"y\" : -0.2971125543117523,\n    \"z\" : 0.7427813410758972,\n    \"t\" : 40\n    },\n  \"row3\" : {\n    \"x\" : 0,\n    \"y\" : 0,\n    \"z\" : 0,\n    \"t\" : 1\n    }\n  }",
         "uiTooltip" : "Localizes the pose of a character based on the transforms of one of its bones.",
-        "uiGraphPan" : "{\n  \"x\" : -245.2358386199419,\n  \"y\" : 340.2526683624913\n  }"
+        "timeline_current" : "1",
+        "camera_focalDistance" : "53.85164642333984",
+        "timeline_end" : "250",
+        "uiGraphPan" : "{\n  \"x\" : -203.3661193847656,\n  \"y\" : 367.6805419921875\n  }"
         },
       "title" : "LocalizeCharacterPose",
       "ports" : [
@@ -3041,40 +3064,6 @@ dfgEntry {
         {
           "objectType" : "Inst",
           "metadata" : {
-            "uiGraphPos" : "{\"x\":1742.35283375,\"y\":-428.330763817}"
-            },
-          "name" : "PoseToXfoArray_1",
-          "ports" : [
-            {
-              "objectType" : "InstPort",
-              "name" : "exec",
-              "nodePortType" : "IO"
-              },
-            {
-              "objectType" : "InstPort",
-              "name" : "this",
-              "nodePortType" : "In"
-              },
-            {
-              "objectType" : "InstPort",
-              "name" : "globalSpace",
-              "nodePortType" : "In",
-              "defaultValues" : {
-                "Boolean" : true
-                }
-              },
-            {
-              "objectType" : "InstPort",
-              "name" : "result",
-              "nodePortType" : "Out"
-              }
-            ],
-          "executable" : "fabricUtils.Converters.PoseToXfoArray",
-          "presetGUID" : "300F294CCB15C3E26EF1AA4793C44BEE"
-          },
-        {
-          "objectType" : "Inst",
-          "metadata" : {
             "uiGraphPos" : "{\"x\":2090.10226059,\"y\":-216.374824524}"
             },
           "name" : "Fill_1",
@@ -3185,7 +3174,7 @@ dfgEntry {
         {
           "objectType" : "Inst",
           "metadata" : {
-            "uiGraphPos" : "{\"x\":2732.19087958,\"y\":-518.28209269}"
+            "uiGraphPos" : "{\"x\":2764.44005847,\"y\":-518.282104492}"
             },
           "name" : "SetPose_1",
           "ports" : [
@@ -3207,32 +3196,6 @@ dfgEntry {
             ],
           "executable" : "Fabric.Exts.Characters.Character.SetPose",
           "presetGUID" : "03D48EF598593C73963AF0A4F3828076"
-          },
-        {
-          "objectType" : "Inst",
-          "metadata" : {
-            "uiGraphPos" : "{\"x\":2587.94059873,\"y\":-435.108682871}"
-            },
-          "name" : "XfoArrayToPose_1",
-          "ports" : [
-            {
-              "objectType" : "InstPort",
-              "name" : "exec",
-              "nodePortType" : "IO"
-              },
-            {
-              "objectType" : "InstPort",
-              "name" : "this",
-              "nodePortType" : "IO"
-              },
-            {
-              "objectType" : "InstPort",
-              "name" : "xfos",
-              "nodePortType" : "In"
-              }
-            ],
-          "executable" : "fabricUtils.Converters.XfoArrayToPose",
-          "presetGUID" : "05B4CCDD3E66BA616C15D0BF09A6BCB8"
           },
         {
           "objectType" : "Inst",
@@ -3637,9 +3600,70 @@ dfgEntry {
         {
           "objectType" : "Inst",
           "metadata" : {
-            "uiGraphPos" : "{\"x\":1017.93928099,\"y\":-224.59701252}"
+            "uiGraphPos" : "{\"x\":1728.80627441,\"y\":-429.300012589}"
             },
-          "name" : "globalXfoToBidemensionalPlane_1",
+          "name" : "PoseToXfoArray_2",
+          "ports" : [
+            {
+              "objectType" : "InstPort",
+              "name" : "exec",
+              "nodePortType" : "IO"
+              },
+            {
+              "objectType" : "InstPort",
+              "name" : "this",
+              "nodePortType" : "In"
+              },
+            {
+              "objectType" : "InstPort",
+              "name" : "globalSpace",
+              "nodePortType" : "In",
+              "defaultValues" : {
+                "Boolean" : true
+                }
+              },
+            {
+              "objectType" : "InstPort",
+              "name" : "result",
+              "nodePortType" : "Out"
+              }
+            ],
+          "executable" : "fabricUtils.Converters.Pose.PoseToXfoArray",
+          "presetGUID" : "300F294CCB15C3E26EF1AA4793C44BEE"
+          },
+        {
+          "objectType" : "Inst",
+          "metadata" : {
+            "uiGraphPos" : "{\"x\":2569.85704136,\"y\":-435.749643803}"
+            },
+          "name" : "XfoArrayToPose_2",
+          "ports" : [
+            {
+              "objectType" : "InstPort",
+              "name" : "exec",
+              "nodePortType" : "IO"
+              },
+            {
+              "objectType" : "InstPort",
+              "name" : "this",
+              "nodePortType" : "IO"
+              },
+            {
+              "objectType" : "InstPort",
+              "name" : "xfos",
+              "nodePortType" : "In"
+              }
+            ],
+          "executable" : "fabricUtils.Converters.Xfo.XfoArrayToPose",
+          "presetGUID" : "05B4CCDD3E66BA616C15D0BF09A6BCB8"
+          },
+        {
+          "objectType" : "Inst",
+          "metadata" : {
+            "uiGraphPos" : "{\"x\":1021.91056585,\"y\":-226.776825905}",
+            "uiCollapsedState" : "0"
+            },
+          "name" : "globalXfoToBidemensionalPlane_2",
           "ports" : [
             {
               "objectType" : "InstPort",
@@ -3662,7 +3686,7 @@ dfgEntry {
               "nodePortType" : "Out"
               }
             ],
-          "executable" : "fabricUtils.Converters.globalXfoToBidemensionalPlane",
+          "executable" : "fabricUtils.Converters.Xfo.globalXfoToBidemensionalPlane",
           "presetGUID" : "F0AFD3D0FD8B4FF4A4E312870AAC4B49"
           }
         ],
@@ -3673,7 +3697,7 @@ dfgEntry {
           "SetPose_1.this"
           ],
         "frontVec" : [
-          "globalXfoToBidemensionalPlane_1.frontVec"
+          "globalXfoToBidemensionalPlane_2.frontVec"
           ],
         "scaleFactor" : [
           "Scalar_1.value"
@@ -3690,7 +3714,7 @@ dfgEntry {
           ],
         "GetPose_1.result" : [
           "GetBoneXfo_1.this",
-          "PoseToXfoArray_1.this"
+          "PoseToXfoArray_2.this"
           ],
         "GetSkeleton_1.result" : [
           "FindBone_2.this",
@@ -3705,17 +3729,11 @@ dfgEntry {
           ],
         "GetBoneXfo_1.result" : [
           "If_2.if_false",
-          "globalXfoToBidemensionalPlane_1.globalXfo"
+          "globalXfoToBidemensionalPlane_2.globalXfo"
           ],
         "Inverse_1.result" : [
           "Mul_2.rhs",
           "If_1.if_true"
-          ],
-        "PoseToXfoArray_1.this" : [
-          "XfoArrayToPose_1.this"
-          ],
-        "PoseToXfoArray_1.result" : [
-          "Mul_1.rhs"
           ],
         "Fill_1.count" : [
           "Fill_2.count"
@@ -3731,9 +3749,6 @@ dfgEntry {
           ],
         "SetPose_1.this" : [
           "result"
-          ],
-        "XfoArrayToPose_1.this" : [
-          "SetPose_1.pose"
           ],
         "GetReferencePose_1.result" : [
           "Mul_2.lhs"
@@ -3761,7 +3776,7 @@ dfgEntry {
           "globalXfo"
           ],
         "Mul_4.result" : [
-          "XfoArrayToPose_1.xfos"
+          "XfoArrayToPose_2.xfos"
           ],
         "Fill_2.array" : [
           "Mul_4.lhs"
@@ -3774,7 +3789,16 @@ dfgEntry {
           "XfoFromScalars_1.scY",
           "XfoFromScalars_1.scZ"
           ],
-        "globalXfoToBidemensionalPlane_1.result" : [
+        "PoseToXfoArray_2.this" : [
+          "XfoArrayToPose_2.this"
+          ],
+        "PoseToXfoArray_2.result" : [
+          "Mul_1.rhs"
+          ],
+        "XfoArrayToPose_2.this" : [
+          "SetPose_1.pose"
+          ],
+        "globalXfoToBidemensionalPlane_2.result" : [
           "If_2.if_true"
           ]
         }
@@ -3782,7 +3806,7 @@ dfgEntry {
     "Fabric.Exts.Characters.Func.GetSkeleton" : {
       "objectType" : "Func",
       "metadata" : {
-        "uiDocUrl" : "http://docs.fabric-engine.com/FabricEngine/2.3.0/HTML/KLExtensionsGuide/Characters/ICharacter.html",
+        "uiDocUrl" : "http://docs.fabric-engine.com/FabricEngine/2.4.0/HTML/KLExtensionsGuide/Characters/ICharacter.html",
         "uiTooltip" : "\n\n Supported by ICharacter,Character"
         },
       "title" : "GetSkeleton",
@@ -3823,7 +3847,7 @@ dfgEntry {
     "Fabric.Exts.Characters.ISkeleton.FindBone" : {
       "objectType" : "Func",
       "metadata" : {
-        "uiDocUrl" : "http://docs.fabric-engine.com/FabricEngine/2.3.0/HTML/KLExtensionsGuide/Characters/ISkeleton.html",
+        "uiDocUrl" : "http://docs.fabric-engine.com/FabricEngine/2.4.0/HTML/KLExtensionsGuide/Characters/ISkeleton.html",
         "uiTooltip" : "\n\n Supported by ISkeleton"
         },
       "title" : "FindBone",
@@ -3878,7 +3902,7 @@ dfgEntry {
     "Fabric.Exts.Characters.Func.GetBoneXfo" : {
       "objectType" : "Func",
       "metadata" : {
-        "uiDocUrl" : "http://docs.fabric-engine.com/FabricEngine/2.3.0/HTML/KLExtensionsGuide/Characters/IPose.html",
+        "uiDocUrl" : "http://docs.fabric-engine.com/FabricEngine/2.4.0/HTML/KLExtensionsGuide/Characters/IPose.html",
         "uiTooltip" : "Get the pose of a bone in the skeleton using its index.\n\n Supported by IPose,Pose,ClipPose"
         },
       "title" : "GetBoneXfo",
@@ -3930,7 +3954,7 @@ dfgEntry {
       "objectType" : "Func",
       "metadata" : {
         "uiNodeColor" : "{\n  \"r\" : 99,\n  \"g\" : 129,\n  \"b\" : 92\n  }",
-        "uiDocUrl" : "http://docs.fabric-engine.com/FabricEngine/2.3.0/HTML/KLExtensionsGuide/Math/Vec2.html",
+        "uiDocUrl" : "http://docs.fabric-engine.com/FabricEngine/2.4.0/HTML/KLExtensionsGuide/Math/Vec2.html",
         "uiTooltip" : "Returns the inversed version of this vector\n\n Supported by Vec2,Vec2_d,Vec2_i,Vec3,Vec3_d,Vec3_i,Vec4,Vec4_d,Vec4_i,Mat22,Mat22_d,Mat22_i,Mat33,Mat33_d,Mat33_i,Mat44,Mat44_d,Mat44_i,Quat,Quat_d,Quat_i,Xfo"
         },
       "title" : "Inverse",
@@ -3965,56 +3989,6 @@ dfgEntry {
 
 dfgEntry {
   result = this.inverse();
-}
-"
-      },
-    "fabricUtils.Converters.PoseToXfoArray" : {
-      "objectType" : "Func",
-      "metadata" : {
-        "uiTooltip" : "Converts a skeleton's pose to an array of Xfos. Returns Xfos in local and global spaces.\n\nSupported types:\n  this: IPose\n  globalSpace: Boolean\n  result: Xfo[]\n"
-        },
-      "title" : "PoseToXfoArray",
-      "ports" : [
-        {
-          "objectType" : "ExecPort",
-          "name" : "exec",
-          "nodePortType" : "IO",
-          "execPortType" : "IO",
-          "typeSpec" : "Execute"
-          },
-        {
-          "objectType" : "ExecPort",
-          "name" : "this",
-          "nodePortType" : "Out",
-          "execPortType" : "In",
-          "typeSpec" : "IPose"
-          },
-        {
-          "objectType" : "ExecPort",
-          "name" : "globalSpace",
-          "nodePortType" : "Out",
-          "execPortType" : "In",
-          "typeSpec" : "Boolean"
-          },
-        {
-          "objectType" : "ExecPort",
-          "metadata" : {
-            "uiColor" : "{\n  \"r\" : 249,\n  \"g\" : 157,\n  \"b\" : 28\n  }"
-            },
-          "name" : "result",
-          "nodePortType" : "In",
-          "execPortType" : "Out",
-          "typeSpec" : "Xfo[]"
-          }
-        ],
-      "extDeps" : {
-        "fabricUtils" : "*"
-        },
-      "presetGUID" : "300F294CCB15C3E26EF1AA4793C44BEE",
-      "code" : "require fabricUtils;
-
-dfgEntry {
-  result = poseToXfoArray(this, globalSpace);
 }
 "
       },
@@ -4064,7 +4038,7 @@ dfgEntry {
     "Fabric.Exts.Characters.Func.GetNumBones" : {
       "objectType" : "Func",
       "metadata" : {
-        "uiDocUrl" : "http://docs.fabric-engine.com/FabricEngine/2.3.0/HTML/KLExtensionsGuide/Characters/ISkeleton.html",
+        "uiDocUrl" : "http://docs.fabric-engine.com/FabricEngine/2.4.0/HTML/KLExtensionsGuide/Characters/ISkeleton.html",
         "uiTooltip" : "\n\n Supported by ISkeleton,Skeleton"
         },
       "title" : "GetNumBones",
@@ -4163,7 +4137,7 @@ dfgEntry {
     "Fabric.Exts.Characters.Character.SetPose" : {
       "objectType" : "Func",
       "metadata" : {
-        "uiDocUrl" : "http://docs.fabric-engine.com/FabricEngine/2.3.0/HTML/KLExtensionsGuide/Characters/Character.html",
+        "uiDocUrl" : "http://docs.fabric-engine.com/FabricEngine/2.4.0/HTML/KLExtensionsGuide/Characters/Character.html",
         "uiTooltip" : "Sets a the pose object for this character.\n\n Supported by Character"
         },
       "title" : "SetPose",
@@ -4201,53 +4175,10 @@ dfgEntry {
 }
 "
       },
-    "fabricUtils.Converters.XfoArrayToPose" : {
-      "objectType" : "Func",
-      "metadata" : {
-        "uiTooltip" : "Sets the xfos on a pose using an xfo array.\n\nSupported types:\n  this: IPose\n  xfos: Xfo[]\n"
-        },
-      "title" : "XfoArrayToPose",
-      "ports" : [
-        {
-          "objectType" : "ExecPort",
-          "name" : "exec",
-          "nodePortType" : "IO",
-          "execPortType" : "IO",
-          "typeSpec" : "Execute"
-          },
-        {
-          "objectType" : "ExecPort",
-          "name" : "this",
-          "nodePortType" : "IO",
-          "execPortType" : "IO",
-          "typeSpec" : "IPose"
-          },
-        {
-          "objectType" : "ExecPort",
-          "metadata" : {
-            "uiColor" : "{\n  \"r\" : 249,\n  \"g\" : 157,\n  \"b\" : 28\n  }"
-            },
-          "name" : "xfos",
-          "nodePortType" : "Out",
-          "execPortType" : "In",
-          "typeSpec" : "Xfo[]"
-          }
-        ],
-      "extDeps" : {
-        "fabricUtils" : "*"
-        },
-      "presetGUID" : "05B4CCDD3E66BA616C15D0BF09A6BCB8",
-      "code" : "require fabricUtils;
-
-dfgEntry {
-  xfoArrayToPose(this, xfos);
-}
-"
-      },
     "Fabric.Exts.Characters.Func.GetReferencePose" : {
       "objectType" : "Func",
       "metadata" : {
-        "uiDocUrl" : "http://docs.fabric-engine.com/FabricEngine/2.3.0/HTML/KLExtensionsGuide/Characters/ISkeleton.html",
+        "uiDocUrl" : "http://docs.fabric-engine.com/FabricEngine/2.4.0/HTML/KLExtensionsGuide/Characters/ISkeleton.html",
         "uiTooltip" : "\n\n Supported by ISkeleton,Skeleton"
         },
       "title" : "GetReferencePose",
@@ -4381,7 +4312,7 @@ dfgEntry {
       "objectType" : "Func",
       "metadata" : {
         "uiNodeColor" : "{\n  \"r\" : 99,\n  \"g\" : 129,\n  \"b\" : 92\n  }",
-        "uiDocUrl" : "http://docs.fabric-engine.com/FabricEngine/2.3.0/HTML/KLExtensionsGuide/Math/Xfo.html",
+        "uiDocUrl" : "http://docs.fabric-engine.com/FabricEngine/2.4.0/HTML/KLExtensionsGuide/Math/Xfo.html",
         "uiTooltip" : "Setter from single channels, the rotation being in degrees\n\n Supported by Xfo"
         },
       "title" : "XfoFromScalars",
@@ -4533,13 +4464,106 @@ dfgEntry {
 }
 "
       },
-    "fabricUtils.Converters.globalXfoToBidemensionalPlane" : {
+    "fabricUtils.Converters.Pose.PoseToXfoArray" : {
+      "objectType" : "Func",
+      "metadata" : {
+        "uiTooltip" : "Converts a skeleton's pose to an array of Xfos. Returns Xfos in local and global spaces.\n\nSupported types:\n  this: IPose\n  globalSpace: Boolean\n  result: Xfo[]\n"
+        },
+      "title" : "PoseToXfoArray",
+      "ports" : [
+        {
+          "objectType" : "ExecPort",
+          "name" : "exec",
+          "nodePortType" : "IO",
+          "execPortType" : "IO",
+          "typeSpec" : "Execute"
+          },
+        {
+          "objectType" : "ExecPort",
+          "name" : "this",
+          "nodePortType" : "Out",
+          "execPortType" : "In",
+          "typeSpec" : "IPose"
+          },
+        {
+          "objectType" : "ExecPort",
+          "name" : "globalSpace",
+          "nodePortType" : "Out",
+          "execPortType" : "In",
+          "typeSpec" : "Boolean"
+          },
+        {
+          "objectType" : "ExecPort",
+          "metadata" : {
+            "uiColor" : "{\n  \"r\" : 249,\n  \"g\" : 157,\n  \"b\" : 28\n  }"
+            },
+          "name" : "result",
+          "nodePortType" : "In",
+          "execPortType" : "Out",
+          "typeSpec" : "Xfo[]"
+          }
+        ],
+      "extDeps" : {
+        "fabricUtils" : "*"
+        },
+      "presetGUID" : "300F294CCB15C3E26EF1AA4793C44BEE",
+      "code" : "require fabricUtils;
+
+dfgEntry {
+  result = poseToXfoArray(this, globalSpace);
+}
+"
+      },
+    "fabricUtils.Converters.Xfo.XfoArrayToPose" : {
+      "objectType" : "Func",
+      "metadata" : {
+        "uiTooltip" : "Sets the xfos on a pose using an xfo array.\n\nSupported types:\n  this: IPose\n  xfos: Xfo[]\n"
+        },
+      "title" : "XfoArrayToPose",
+      "ports" : [
+        {
+          "objectType" : "ExecPort",
+          "name" : "exec",
+          "nodePortType" : "IO",
+          "execPortType" : "IO",
+          "typeSpec" : "Execute"
+          },
+        {
+          "objectType" : "ExecPort",
+          "name" : "this",
+          "nodePortType" : "IO",
+          "execPortType" : "IO",
+          "typeSpec" : "IPose"
+          },
+        {
+          "objectType" : "ExecPort",
+          "metadata" : {
+            "uiColor" : "{\n  \"r\" : 249,\n  \"g\" : 157,\n  \"b\" : 28\n  }"
+            },
+          "name" : "xfos",
+          "nodePortType" : "Out",
+          "execPortType" : "In",
+          "typeSpec" : "Xfo[]"
+          }
+        ],
+      "extDeps" : {
+        "fabricUtils" : "*"
+        },
+      "presetGUID" : "05B4CCDD3E66BA616C15D0BF09A6BCB8",
+      "code" : "require fabricUtils;
+
+dfgEntry {
+  xfoArrayToPose(this, xfos);
+}
+"
+      },
+    "fabricUtils.Converters.Xfo.globalXfoToBidemensionalPlane" : {
       "objectType" : "Graph",
       "metadata" : {
         "uiTextColor" : "{\n  \"r\" : 20,\n  \"g\" : 20,\n  \"b\" : 20\n  }",
         "uiNodeColor" : "{\n  \"r\" : 121,\n  \"g\" : 134,\n  \"b\" : 143\n  }",
-        "uiGraphZoom" : "{\n  \"value\" : 0.7406265139579773\n  }",
-        "uiGraphPan" : "{\n  \"x\" : -1940.789184570313,\n  \"y\" : 161.1968536376953\n  }"
+        "uiGraphZoom" : "{\n  \"value\" : 0.620419442653656\n  }",
+        "uiGraphPan" : "{\n  \"x\" : -1476.834686318798,\n  \"y\" : 168.1930120373698\n  }"
         },
       "title" : "globalXfoToBidemensionalPlane",
       "ports" : [
@@ -5122,7 +5146,7 @@ dfgEntry {
       "objectType" : "Func",
       "metadata" : {
         "uiNodeColor" : "{\n  \"r\" : 99,\n  \"g\" : 129,\n  \"b\" : 92\n  }",
-        "uiDocUrl" : "http://docs.fabric-engine.com/FabricEngine/2.3.0/HTML/KLExtensionsGuide/Math/Xfo.html",
+        "uiDocUrl" : "http://docs.fabric-engine.com/FabricEngine/2.4.0/HTML/KLExtensionsGuide/Math/Xfo.html",
         "uiTooltip" : "Constructor from single channels\n\n Supported by Xfo"
         },
       "title" : "XfoFromSRT",
@@ -5291,7 +5315,7 @@ dfgEntry {
       "objectType" : "Func",
       "metadata" : {
         "uiNodeColor" : "{\n  \"r\" : 99,\n  \"g\" : 129,\n  \"b\" : 92\n  }",
-        "uiDocUrl" : "http://docs.fabric-engine.com/FabricEngine/2.3.0/HTML/KLExtensionsGuide/Math/Xfo.html"
+        "uiDocUrl" : "http://docs.fabric-engine.com/FabricEngine/2.4.0/HTML/KLExtensionsGuide/Math/Xfo.html"
         },
       "title" : "Xfo ->",
       "ports" : [
@@ -5382,7 +5406,7 @@ dfgEntry {
       "objectType" : "Func",
       "metadata" : {
         "uiNodeColor" : "{\n  \"r\" : 99,\n  \"g\" : 129,\n  \"b\" : 92\n  }",
-        "uiDocUrl" : "http://docs.fabric-engine.com/FabricEngine/2.3.0/HTML/KLExtensionsGuide/Math/Xfo.html"
+        "uiDocUrl" : "http://docs.fabric-engine.com/FabricEngine/2.4.0/HTML/KLExtensionsGuide/Math/Xfo.html"
         },
       "title" : "-> Xfo",
       "ports" : [
@@ -5475,7 +5499,7 @@ dfgEntry {
       "objectType" : "Func",
       "metadata" : {
         "uiNodeColor" : "{\n  \"r\" : 99,\n  \"g\" : 129,\n  \"b\" : 92\n  }",
-        "uiDocUrl" : "http://docs.fabric-engine.com/FabricEngine/2.3.0/HTML/KLExtensionsGuide/Math/Vec3.html"
+        "uiDocUrl" : "http://docs.fabric-engine.com/FabricEngine/2.4.0/HTML/KLExtensionsGuide/Math/Vec3.html"
         },
       "title" : "Vec3 ->",
       "ports" : [
@@ -5542,7 +5566,7 @@ dfgEntry {
       "objectType" : "Func",
       "metadata" : {
         "uiNodeColor" : "{\n  \"r\" : 99,\n  \"g\" : 129,\n  \"b\" : 92\n  }",
-        "uiDocUrl" : "http://docs.fabric-engine.com/FabricEngine/2.3.0/HTML/KLExtensionsGuide/Math/Vec3.html"
+        "uiDocUrl" : "http://docs.fabric-engine.com/FabricEngine/2.4.0/HTML/KLExtensionsGuide/Math/Vec3.html"
         },
       "title" : "-> Vec3",
       "ports" : [
@@ -5611,7 +5635,7 @@ dfgEntry {
       "objectType" : "Func",
       "metadata" : {
         "uiNodeColor" : "{\n  \"r\" : 99,\n  \"g\" : 129,\n  \"b\" : 92\n  }",
-        "uiDocUrl" : "http://docs.fabric-engine.com/FabricEngine/2.3.0/HTML/KLExtensionsGuide/Math/Quat.html",
+        "uiDocUrl" : "http://docs.fabric-engine.com/FabricEngine/2.4.0/HTML/KLExtensionsGuide/Math/Quat.html",
         "uiTooltip" : "Set the quat to represent the direction as the Z axis\nand the upvector pointing along the XY plane.\n\n Supported by Quat"
         },
       "title" : "SetFromDirectionAndUpvector",
@@ -5669,7 +5693,7 @@ dfgEntry {
       "objectType" : "Func",
       "metadata" : {
         "uiNodeColor" : "{\n  \"r\" : 99,\n  \"g\" : 129,\n  \"b\" : 92\n  }",
-        "uiDocUrl" : "http://docs.fabric-engine.com/FabricEngine/2.3.0/HTML/KLExtensionsGuide/Math/Quat.html",
+        "uiDocUrl" : "http://docs.fabric-engine.com/FabricEngine/2.4.0/HTML/KLExtensionsGuide/Math/Quat.html",
         "uiTooltip" : "Rotates a vector by this quaterion.\nDon't forget to normalize the quaternion unless\nyou want axial translation as well as rotation.\n\n Supported by Quat"
         },
       "title" : "RotateVector",
@@ -5767,7 +5791,7 @@ dfgEntry {
         "uiNodeColor" : "{\n  \"r\" : 121,\n  \"g\" : 134,\n  \"b\" : 143\n  }",
         "uiGraphZoom" : "{\n  \"value\" : 0.7441442012786865\n  }",
         "uiTooltip" : "Draws all the geometry in a given character.",
-        "uiGraphPan" : "{\n  \"x\" : -913.6234130859375,\n  \"y\" : 313.2294311523438\n  }"
+        "uiGraphPan" : "{\n  \"x\" : -817.6234130859375,\n  \"y\" : 186.2294311523438\n  }"
         },
       "title" : "DrawCharacter",
       "ports" : [
@@ -5881,7 +5905,7 @@ dfgEntry {
       "extDeps" : {
         "Characters" : "*"
         },
-      "presetGUID" : "B4B780410AA51AAC10EDF1B21BC811EB",
+      "presetGUID" : "7FF3C9AF5A0583ACD5E051DA3AA83678",
       "nodes" : [
         {
           "objectType" : "Inst",
@@ -5987,41 +6011,6 @@ dfgEntry {
             ],
           "executable" : "fabricUtils.Draw.DrawXfoArray2",
           "presetGUID" : "D602C1F274280E6312E646B6D761EFEF"
-          },
-        {
-          "objectType" : "Inst",
-          "metadata" : {
-            "uiGraphPos" : "{\"x\":1419.84631348,\"y\":124.970062256}",
-            "uiCollapsedState" : "0"
-            },
-          "name" : "PoseToXfoArray_2",
-          "ports" : [
-            {
-              "objectType" : "InstPort",
-              "name" : "exec",
-              "nodePortType" : "IO"
-              },
-            {
-              "objectType" : "InstPort",
-              "name" : "this",
-              "nodePortType" : "In"
-              },
-            {
-              "objectType" : "InstPort",
-              "name" : "globalSpace",
-              "nodePortType" : "In",
-              "defaultValues" : {
-                "Boolean" : true
-                }
-              },
-            {
-              "objectType" : "InstPort",
-              "name" : "result",
-              "nodePortType" : "Out"
-              }
-            ],
-          "executable" : "fabricUtils.Converters.PoseToXfoArray",
-          "presetGUID" : "300F294CCB15C3E26EF1AA4793C44BEE"
           },
         {
           "objectType" : "Inst",
@@ -6141,6 +6130,40 @@ dfgEntry {
             ],
           "executable" : "Fabric.Exts.InlineDrawing.DrawingHandle.EmptyDrawingHandle",
           "presetGUID" : "2440020BA6A1CAB1CEB690A198F99C70"
+          },
+        {
+          "objectType" : "Inst",
+          "metadata" : {
+            "uiGraphPos" : "{\"x\":1475.01416588,\"y\":105.853907824}"
+            },
+          "name" : "PoseToXfoArray_1",
+          "ports" : [
+            {
+              "objectType" : "InstPort",
+              "name" : "exec",
+              "nodePortType" : "IO"
+              },
+            {
+              "objectType" : "InstPort",
+              "name" : "this",
+              "nodePortType" : "In"
+              },
+            {
+              "objectType" : "InstPort",
+              "name" : "globalSpace",
+              "nodePortType" : "In",
+              "defaultValues" : {
+                "Boolean" : true
+                }
+              },
+            {
+              "objectType" : "InstPort",
+              "name" : "result",
+              "nodePortType" : "Out"
+              }
+            ],
+          "executable" : "fabricUtils.Converters.Pose.PoseToXfoArray",
+          "presetGUID" : "300F294CCB15C3E26EF1AA4793C44BEE"
           }
         ],
       "connections" : {
@@ -6173,11 +6196,8 @@ dfgEntry {
         "DrawXfoArray2.drawThis" : [
           "If_2.if_true"
           ],
-        "PoseToXfoArray_2.result" : [
-          "DrawXfoArray2.xfos"
-          ],
         "GetPose_1.result" : [
-          "PoseToXfoArray_2.this"
+          "PoseToXfoArray_1.this"
           ],
         "If_1.result" : [
           "If_2.if_false",
@@ -6188,6 +6208,9 @@ dfgEntry {
           ],
         "EmptyDrawingHandle.handle" : [
           "If_1.if_false"
+          ],
+        "PoseToXfoArray_1.result" : [
+          "DrawXfoArray2.xfos"
           ]
         }
       },
@@ -6604,7 +6627,8 @@ dfgEntry {
       "code" : "require InlineDrawing;
 
 dfgEntry {
-  this.drawPolygonMeshArray(name, color, specular, specFactor, masters, transforms, indices, wireFrame, doubleSided, dummyResult, instance);
+  if(this)
+    this.drawPolygonMeshArray(name, color, specular, specFactor, masters, transforms, indices, wireFrame, doubleSided, dummyResult, instance);
 }
 "
       },
@@ -6732,7 +6756,7 @@ dfgEntry {
     "Fabric.Exts.InlineDrawing.DrawingHandle.Clear" : {
       "objectType" : "Func",
       "metadata" : {
-        "uiDocUrl" : "http://docs.fabric-engine.com/FabricEngine/2.3.0/HTML/KLExtensionsGuide/InlineDrawing/DrawingHandle.html",
+        "uiDocUrl" : "http://docs.fabric-engine.com/FabricEngine/2.4.0/HTML/KLExtensionsGuide/InlineDrawing/DrawingHandle.html",
         "uiTooltip" : "removes all contents from the DrawingHandle\n\n Supported by DrawingHandle"
         },
       "title" : "Clear",
@@ -7273,7 +7297,7 @@ dfgEntry {
     "Fabric.Exts.InlineDrawing.DrawingHandle.DrawAxesInstances" : {
       "objectType" : "Func",
       "metadata" : {
-        "uiDocUrl" : "http://docs.fabric-engine.com/FabricEngine/2.3.0/HTML/KLExtensionsGuide/InlineDrawing/DrawingHandle.html",
+        "uiDocUrl" : "http://docs.fabric-engine.com/FabricEngine/2.4.0/HTML/KLExtensionsGuide/InlineDrawing/DrawingHandle.html",
         "uiTooltip" : "helper function to draw axes at given transforms\n\n Supported by DrawingHandle"
         },
       "title" : "DrawAxesInstances",
@@ -7335,7 +7359,7 @@ dfgEntry {
       "code" : "require InlineDrawing;
 
 dfgEntry {
-  this.drawAxesInstances(name, transforms, dummyResult, instance);
+  if(this) this.drawAxesInstances(name, transforms, dummyResult, instance);
 }
 "
       },
@@ -7343,7 +7367,7 @@ dfgEntry {
       "objectType" : "Func",
       "metadata" : {
         "uiNodeColor" : "{\n  \"r\" : 99,\n  \"g\" : 129,\n  \"b\" : 92\n  }",
-        "uiDocUrl" : "http://docs.fabric-engine.com/FabricEngine/2.3.0/HTML/KLExtensionsGuide/Math/Xfo.html"
+        "uiDocUrl" : "http://docs.fabric-engine.com/FabricEngine/2.4.0/HTML/KLExtensionsGuide/Math/Xfo.html"
         },
       "title" : "Xfo[] ->",
       "ports" : [
@@ -7450,7 +7474,7 @@ dfgEntry {
       "objectType" : "Func",
       "metadata" : {
         "uiNodeColor" : "{\n  \"r\" : 99,\n  \"g\" : 129,\n  \"b\" : 92\n  }",
-        "uiDocUrl" : "http://docs.fabric-engine.com/FabricEngine/2.3.0/HTML/KLExtensionsGuide/Math/Xfo.html"
+        "uiDocUrl" : "http://docs.fabric-engine.com/FabricEngine/2.4.0/HTML/KLExtensionsGuide/Math/Xfo.html"
         },
       "title" : "-> Xfo[]",
       "ports" : [
@@ -7567,7 +7591,7 @@ dfgEntry {
       "objectType" : "Func",
       "metadata" : {
         "uiNodeColor" : "{\n  \"r\" : 99,\n  \"g\" : 129,\n  \"b\" : 92\n  }",
-        "uiDocUrl" : "http://docs.fabric-engine.com/FabricEngine/2.3.0/HTML/KLExtensionsGuide/Math/RGB.html",
+        "uiDocUrl" : "http://docs.fabric-engine.com/FabricEngine/2.4.0/HTML/KLExtensionsGuide/Math/RGB.html",
         "uiTooltip" : "Returns the product of this RGB color and a scalar\n\n Supported by RGB,RGBA,ARGB,Color,Vec2,Vec3,Vec4,Mat22,Mat33,Mat44,Quat"
         },
       "title" : "MultiplyScalar[]",

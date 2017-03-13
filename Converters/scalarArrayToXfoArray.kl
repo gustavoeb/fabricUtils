@@ -1,0 +1,45 @@
+require Math;
+
+/// \dfgPresetFolder Converters/Scalar
+/// Converts an array of scalar values into an array of xfos.
+function Xfo[] scalarArrayToXfoArray(
+in Scalar this[],
+in Boolean ori,
+in Boolean tr,
+in Boolean sc
+)
+{
+  Xfo result[];
+  Xfo xfo;
+  Integer loopSize;
+  if(ori)
+    loopSize += 4;
+  if(tr)
+    loopSize += 3;
+  if(tr)
+    loopSize += 3;
+
+  for(Integer i=0; i < this.size(); i+=loopSize)
+  {
+    xfo = Xfo();
+    if(ori){
+      xfo.ori.v.x = this[i];
+      xfo.ori.v.y = this[i+1];
+      xfo.ori.v.z = this[i+2];
+      xfo.ori.w = this[i+3];
+    }
+    if(tr){
+      xfo.tr.x = this[i+4];
+      xfo.tr.y = this[i+5];
+      xfo.tr.z = this[i+6];
+    }
+    if(sc){
+      xfo.sc.x = this[i+7];
+      xfo.sc.y = this[i+8];
+      xfo.sc.z = this[i+9];
+    }
+    result.push(xfo);
+  }
+  
+  return result;
+}

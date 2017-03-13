@@ -2,7 +2,7 @@
 {
   "objectType" : "Func",
   "metadata" : {
-    "uiTooltip" : "Generates an index array from a value range.\n\nSupported types:\n  from: Index\n  to: Index\n  step: Size\n  result: Index[]\n"
+    "uiTooltip" : "Generates an index array from a value range.\n\nSupported types:\n  from: Integer\n  to: Integer\n  step: Integer\n  result: Integer[]\n"
     },
   "title" : "IndexArrayFromRange",
   "ports" : [
@@ -18,34 +18,34 @@
       "name" : "from",
       "nodePortType" : "Out",
       "execPortType" : "In",
-      "typeSpec" : "Index"
+      "typeSpec" : "Integer"
       },
     {
       "objectType" : "ExecPort",
       "name" : "to",
       "nodePortType" : "Out",
       "execPortType" : "In",
-      "typeSpec" : "Index"
+      "typeSpec" : "Integer"
       },
     {
       "objectType" : "ExecPort",
       "name" : "step",
       "nodePortType" : "Out",
       "execPortType" : "In",
-      "typeSpec" : "Size"
+      "typeSpec" : "Integer"
       },
     {
       "objectType" : "ExecPort",
       "name" : "result",
       "nodePortType" : "In",
       "execPortType" : "Out",
-      "typeSpec" : "Index[]"
+      "typeSpec" : "Integer[]"
       }
     ],
   "extDeps" : {
     "fabricUtils" : "*"
     },
-  "presetGUID" : "ADC8CF33123FD3C616454F0781F5927F",
+  "presetGUID" : "EC2CD2B4E00DC6A51D64588E21816042",
   "code" : "require fabricUtils;
 
 dfgEntry {

@@ -1,6 +1,6 @@
 require Characters;
 
-/// \dfgPresetFolder Converters
+/// \dfgPresetFolder Converters/Xfo
 /// Sets the xfos on a pose using an xfo array.
 function xfoArrayToPose(
   io IPose this,
@@ -9,5 +9,21 @@ function xfoArrayToPose(
 {
   for (Integer i = 0; i <= xfos.size()-1; i++) {
     this.setBoneXfo(i, xfos[i]);
+  }
+}
+
+/// \dfgPresetFolder Converters
+/// \dfgPresetTitle xfoArrayToPose_Ids
+/// Sets the xfos on a pose using an xfo array.
+function xfoArrayToPose(
+  io IPose this,
+  in Xfo xfos[],
+  in Integer boneIds[]
+)
+{
+  if(xfos.size() != boneIds.size())
+    throw FUNC + ": xfos and ids have different number of elements.";
+  for (Integer i = 0; i <= boneIds.size()-1; i++) {
+    this.setBoneXfo(boneIds[i], xfos[i]);
   }
 }
