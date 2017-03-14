@@ -3,13 +3,13 @@
   "metadata" : {
     "camera_mat44" : "{\n  \"row0\" : {\n    \"x\" : 0.7999999523162842,\n    \"y\" : -0.2228344082832336,\n    \"z\" : 0.5570860505104065,\n    \"t\" : 30\n    },\n  \"row1\" : {\n    \"x\" : -1.490116119384766e-08,\n    \"y\" : 0.9284766912460327,\n    \"z\" : 0.3713906705379486,\n    \"t\" : 20\n    },\n  \"row2\" : {\n    \"x\" : -0.6000000834465027,\n    \"y\" : -0.2971125543117523,\n    \"z\" : 0.7427813410758972,\n    \"t\" : 40\n    },\n  \"row3\" : {\n    \"x\" : 0,\n    \"y\" : 0,\n    \"z\" : 0,\n    \"t\" : 1\n    }\n  }",
     "timeline_start" : "1",
-    "uiGraphZoom" : "{\n  \"value\" : 1.0\n  }",
+    "uiGraphZoom" : "{\n  \"value\" : 0.8271999955177307\n  }",
     "timeline_loopMode" : "1",
     "timeline_simMode" : "0",
     "camera_focalDistance" : "53.85164642333984",
     "timeline_current" : "1",
     "timeline_end" : "250",
-    "uiGraphPan" : "{\n  \"x\" : -1886.859313964844,\n  \"y\" : -493.2917175292969\n  }"
+    "uiGraphPan" : "{\n  \"x\" : -1652.3427734375,\n  \"y\" : -338.5597229003906\n  }"
     },
   "title" : "ScalarArrayToPose",
   "ports" : [
@@ -47,42 +47,40 @@
       "name" : "activeBones",
       "nodePortType" : "Out",
       "defaultValues" : {
-        "Integer[]" : [
-          0,
-          1,
-          2,
-          3,
-          4,
-          5,
-          6,
-          7,
-          8,
-          9,
-          10,
-          11,
-          12,
-          13,
-          14,
-          15,
-          16,
-          17,
-          18,
-          19,
-          20,
-          21,
-          22,
-          23,
-          24,
-          25,
-          26,
-          27,
-          28,
-          29,
-          30
-          ]
+        "Integer[]" : []
         },
       "execPortType" : "In",
       "typeSpec" : "Integer[]"
+      },
+    {
+      "objectType" : "ExecPort",
+      "name" : "ori",
+      "nodePortType" : "Out",
+      "defaultValues" : {
+        "Boolean" : true
+        },
+      "execPortType" : "In",
+      "typeSpec" : "Boolean"
+      },
+    {
+      "objectType" : "ExecPort",
+      "name" : "tr",
+      "nodePortType" : "Out",
+      "defaultValues" : {
+        "Boolean" : false
+        },
+      "execPortType" : "In",
+      "typeSpec" : "Boolean"
+      },
+    {
+      "objectType" : "ExecPort",
+      "name" : "sc",
+      "nodePortType" : "Out",
+      "defaultValues" : {
+        "Boolean" : false
+        },
+      "execPortType" : "In",
+      "typeSpec" : "Boolean"
       },
     {
       "objectType" : "ExecPort",
@@ -98,7 +96,7 @@
   "extDeps" : {
     "Characters" : "*"
     },
-  "presetGUID" : "BC872C98CEECD87AB7314E2FBAB6BE03",
+  "presetGUID" : "DA943D9E0F5361C046810124D274B6FC",
   "nodes" : [
     {
       "objectType" : "Inst",
@@ -322,12 +320,27 @@ dfgEntry {
           },
         {
           "objectType" : "InstPort",
+          "name" : "ori",
+          "nodePortType" : "In"
+          },
+        {
+          "objectType" : "InstPort",
+          "name" : "tr",
+          "nodePortType" : "In"
+          },
+        {
+          "objectType" : "InstPort",
+          "name" : "sc",
+          "nodePortType" : "In"
+          },
+        {
+          "objectType" : "InstPort",
           "name" : "result",
           "nodePortType" : "Out"
           }
         ],
       "executable" : "fabricUtils.Converters.Scalar.ScalarArrayToClip",
-      "presetGUID" : "0DF9781A78E0B09E2B6C1A4A15F71EEA"
+      "presetGUID" : "B0A31B9377A99BC9A8287B6CC557F330"
       }
     ],
   "connections" : {
@@ -340,6 +353,15 @@ dfgEntry {
       ],
     "activeBones" : [
       "ScalarArrayToClip_2.activeBones"
+      ],
+    "ori" : [
+      "ScalarArrayToClip_2.ori"
+      ],
+    "tr" : [
+      "ScalarArrayToClip_2.tr"
+      ],
+    "sc" : [
+      "ScalarArrayToClip_2.sc"
       ],
     "GetPose_2.result" : [
       "ScalarArrayToClip_2.pose"
@@ -457,7 +479,7 @@ dfgEntry {
     "fabricUtils.Converters.Scalar.ScalarArrayToClip" : {
       "objectType" : "Func",
       "metadata" : {
-        "uiTooltip" : "Supported types:\n  this: Scalar[]\n  pose: Pose\n  activeBones: Integer[]\n  result: Clip\n"
+        "uiTooltip" : "Supported types:\n  this: Scalar[]\n  pose: Pose\n  activeBones: Integer[]\n  ori: Boolean\n  tr: Boolean\n  sc: Boolean\n  result: Clip\n"
         },
       "title" : "ScalarArrayToClip",
       "ports" : [
@@ -491,6 +513,27 @@ dfgEntry {
           },
         {
           "objectType" : "ExecPort",
+          "name" : "ori",
+          "nodePortType" : "Out",
+          "execPortType" : "In",
+          "typeSpec" : "Boolean"
+          },
+        {
+          "objectType" : "ExecPort",
+          "name" : "tr",
+          "nodePortType" : "Out",
+          "execPortType" : "In",
+          "typeSpec" : "Boolean"
+          },
+        {
+          "objectType" : "ExecPort",
+          "name" : "sc",
+          "nodePortType" : "Out",
+          "execPortType" : "In",
+          "typeSpec" : "Boolean"
+          },
+        {
+          "objectType" : "ExecPort",
           "name" : "result",
           "nodePortType" : "In",
           "execPortType" : "Out",
@@ -500,29 +543,13 @@ dfgEntry {
       "extDeps" : {
         "fabricUtils" : "*"
         },
-      "presetGUID" : "0DF9781A78E0B09E2B6C1A4A15F71EEA",
+      "presetGUID" : "B0A31B9377A99BC9A8287B6CC557F330",
       "code" : "require fabricUtils;
 
 dfgEntry {
-  result = scalarArrayToClip(this, pose, activeBones);
+  result = scalarArrayToClip(this, pose, activeBones, ori, tr, sc);
 }
 "
       }
-    },
-  "args" : [
-    null,
-    {
-      "type" : "Scalar[]",
-      "value" : null
-      },
-    {
-      "type" : "Integer[]",
-      "value" : null
-      },
-    {
-      "type" : "Pose",
-      "value" : null,
-      "ext" : "Characters"
-      }
-    ]
+    }
   }

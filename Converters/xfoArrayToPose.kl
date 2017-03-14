@@ -12,7 +12,7 @@ function xfoArrayToPose(
   }
 }
 
-/// \dfgPresetFolder Converters
+/// \dfgPresetFolder Converters/Xfo
 /// \dfgPresetTitle xfoArrayToPose_Ids
 /// Sets the xfos on a pose using an xfo array.
 function xfoArrayToPose(

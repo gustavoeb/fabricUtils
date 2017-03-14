@@ -220,6 +220,8 @@ function IPose BipedRetargetingSolver.getOutputReferencePose() {
   return this.outRefPose;
 }
 
+
+/// \dfgPresetOmit
 function IPose BipedRetargetingSolver.solve!(
   in Boolean drawDebug,
   in Boolean matchSourcePos,

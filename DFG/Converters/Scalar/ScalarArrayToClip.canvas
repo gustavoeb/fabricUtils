@@ -2,7 +2,7 @@
 {
   "objectType" : "Func",
   "metadata" : {
-    "uiTooltip" : "Supported types:\n  this: Scalar[]\n  pose: Pose\n  activeBones: Integer[]\n  result: Clip\n"
+    "uiTooltip" : "Supported types:\n  this: Scalar[]\n  pose: Pose\n  activeBones: Integer[]\n  ori: Boolean\n  tr: Boolean\n  sc: Boolean\n  result: Clip\n"
     },
   "title" : "ScalarArrayToClip",
   "ports" : [
@@ -36,6 +36,27 @@
       },
     {
       "objectType" : "ExecPort",
+      "name" : "ori",
+      "nodePortType" : "Out",
+      "execPortType" : "In",
+      "typeSpec" : "Boolean"
+      },
+    {
+      "objectType" : "ExecPort",
+      "name" : "tr",
+      "nodePortType" : "Out",
+      "execPortType" : "In",
+      "typeSpec" : "Boolean"
+      },
+    {
+      "objectType" : "ExecPort",
+      "name" : "sc",
+      "nodePortType" : "Out",
+      "execPortType" : "In",
+      "typeSpec" : "Boolean"
+      },
+    {
+      "objectType" : "ExecPort",
       "name" : "result",
       "nodePortType" : "In",
       "execPortType" : "Out",
@@ -45,11 +66,11 @@
   "extDeps" : {
     "fabricUtils" : "*"
     },
-  "presetGUID" : "0DF9781A78E0B09E2B6C1A4A15F71EEA",
+  "presetGUID" : "B0A31B9377A99BC9A8287B6CC557F330",
   "code" : "require fabricUtils;
 
 dfgEntry {
-  result = scalarArrayToClip(this, pose, activeBones);
+  result = scalarArrayToClip(this, pose, activeBones, ori, tr, sc);
 }
 "
   }
