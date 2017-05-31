@@ -1,5 +1,5 @@
 {
-  "version": "0.0.3",
+  "version": "0.0.4",
   "code": [
     // classes
     
@@ -34,6 +34,7 @@
 
     "Kinematics/BipedRetargetingSolver.kl"
     "Kinematics/FootstepConstraintSolver.kl"
+    "Kinematics/SymmetryConstraintSolver.kl"
 
     // other
 

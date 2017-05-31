@@ -1,0 +1,55 @@
+{
+  "objectType" : "Func",
+  "metadata" : {
+    "uiTextColor" : "{\n  \"r\" : 20,\n  \"g\" : 20,\n  \"b\" : 20\n  }",
+    "uiNodeColor" : "{\n  \"r\" : 214,\n  \"g\" : 191,\n  \"b\" : 103\n  }",
+    "uiAlwaysShowDaisyChainPorts" : "true"
+    },
+  "title" : "PassIn_Profiling",
+  "ports" : [
+    {
+      "objectType" : "ExecPort",
+      "name" : "exec",
+      "nodePortType" : "IO",
+      "defaultValues" : {
+        "Execute" : {}
+        },
+      "execPortType" : "IO",
+      "typeSpec" : "Execute"
+      },
+    {
+      "objectType" : "ExecPort",
+      "name" : "name",
+      "nodePortType" : "Out",
+      "defaultValues" : {
+        "String" : "passin"
+        },
+      "execPortType" : "In",
+      "typeSpec" : "String"
+      },
+    {
+      "objectType" : "ExecPort",
+      "name" : "value",
+      "nodePortType" : "Out",
+      "defaultValues" : {
+        "Execute" : {}
+        },
+      "execPortType" : "In",
+      "typeSpec" : "$TYPE$"
+      }
+    ],
+  "extDeps" : {},
+  "presetGUID" : "874D36775D075E379CDD2BA33740D8FE",
+  "code" : "require FabricStatistics;
+
+
+
+
+dfgEntry {
+
+  AutoProfilingEvent profile(name);
+  value.type();
+
+}",
+  "requiredPresets" : {}
+  }

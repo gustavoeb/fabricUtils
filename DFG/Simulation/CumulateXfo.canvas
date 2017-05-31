@@ -3,8 +3,15 @@
   "metadata" : {
     "uiTextColor" : "{\n  \"r\" : 20,\n  \"g\" : 20,\n  \"b\" : 20\n  }",
     "uiNodeColor" : "{\n  \"r\" : 121,\n  \"g\" : 134,\n  \"b\" : 143\n  }",
+    "timeline_start" : "1",
     "uiGraphZoom" : "{\n  \"value\" : 1.0\n  }",
+    "timeline_loopMode" : "1",
+    "timeline_simMode" : "0",
+    "camera_mat44" : "{\n  \"row0\" : {\n    \"x\" : 0.7999999523162842,\n    \"y\" : -0.2228344082832336,\n    \"z\" : 0.5570860505104065,\n    \"t\" : 30\n    },\n  \"row1\" : {\n    \"x\" : -1.490116119384766e-08,\n    \"y\" : 0.9284766912460327,\n    \"z\" : 0.3713906705379486,\n    \"t\" : 20\n    },\n  \"row2\" : {\n    \"x\" : -0.6000000834465027,\n    \"y\" : -0.2971125543117523,\n    \"z\" : 0.7427813410758972,\n    \"t\" : 40\n    },\n  \"row3\" : {\n    \"x\" : 0,\n    \"y\" : 0,\n    \"z\" : 0,\n    \"t\" : 1\n    }\n  }",
     "uiTooltip" : "Cumulates scalar value over time.",
+    "timeline_current" : "1",
+    "camera_focalDistance" : "53.85164642333984",
+    "timeline_end" : "250",
     "uiGraphPan" : "{\n  \"x\" : -487.1694641113281,\n  \"y\" : -210.5567169189453\n  }"
     },
   "title" : "CumulateXfo",
@@ -248,7 +255,8 @@
     ],
   "connections" : {
     "initial" : [
-      "If.if_true"
+      "If.if_true",
+      "valueVar.value"
       ],
     "value" : [
       "Mul_1.rhs"
@@ -359,5 +367,26 @@ dfgEntry {
 }
 "
       }
-    }
+    },
+  "args" : [
+    {
+      "type" : "Xfo",
+      "value" : null,
+      "ext" : "Math"
+      },
+    {
+      "type" : "Xfo",
+      "value" : null,
+      "ext" : "Math"
+      },
+    {
+      "type" : "Boolean",
+      "value" : null
+      },
+    {
+      "type" : "Xfo",
+      "value" : null,
+      "ext" : "Math"
+      }
+    ]
   }

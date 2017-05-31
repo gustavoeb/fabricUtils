@@ -1,0 +1,27 @@
+{
+  "objectType" : "Func",
+  "title" : "startProfiling",
+  "ports" : [
+    {
+      "objectType" : "ExecPort",
+      "name" : "exec",
+      "nodePortType" : "IO",
+      "defaultValues" : {
+        "Execute" : {}
+        },
+      "execPortType" : "IO",
+      "typeSpec" : "Execute"
+      }
+    ],
+  "extDeps" : {},
+  "presetGUID" : "9C4E297D902BD532C28843E0CAD73752",
+  "code" : "require FabricStatistics;
+
+
+dfgEntry {
+
+  StartFabricProfiling();
+
+}",
+  "requiredPresets" : {}
+  }

@@ -1,0 +1,37 @@
+// Created by kl2dfg (processFunction)
+{
+  "objectType" : "Func",
+  "metadata" : {
+    "uiTextColor" : "{\n  \"r\" : 168,\n  \"g\" : 229,\n  \"b\" : 240\n  }",
+    "uiNodeColor" : "{\n  \"r\" : 49,\n  \"g\" : 60,\n  \"b\" : 61\n  }",
+    "uiHeaderColor" : "{\n  \"r\" : 42,\n  \"g\" : 94,\n  \"b\" : 102\n  }",
+    "uiTooltip" : "Supported types:\n  result: SymmetryConstraintSolver\n"
+    },
+  "title" : "SymmetryConstraintSolver_Constructor",
+  "ports" : [
+    {
+      "objectType" : "ExecPort",
+      "name" : "exec",
+      "nodePortType" : "IO",
+      "execPortType" : "IO",
+      "typeSpec" : "Execute"
+      },
+    {
+      "objectType" : "ExecPort",
+      "name" : "result",
+      "nodePortType" : "In",
+      "execPortType" : "Out",
+      "typeSpec" : "SymmetryConstraintSolver"
+      }
+    ],
+  "extDeps" : {
+    "fabricUtils" : "*"
+    },
+  "presetGUID" : "9DFDFAE04FC0F3C8D2E5C8BD98199F8F",
+  "code" : "require fabricUtils;
+
+dfgEntry {
+  result = SymmetryConstraintSolver();
+}
+"
+  }

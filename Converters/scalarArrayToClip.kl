@@ -1,33 +1,98 @@
 /// \dfgPresetFolder Converters/Scalar
-function Clip scalarArrayToClip(Scalar this[], Pose pose, Integer activeBones[]) {
-  Skeleton charSkel = pose.skeleton;
+/// \dfgPresetDefault ori true
+/// \dfgPresetDefault tr false
+/// \dfgPresetDefault tr false
+function Clip scalarArrayToClip(
+  Scalar this[],
+  Pose pose,
+  Integer activeBones[],
+  in Boolean ori,
+  in Boolean tr,
+  in Boolean sc
+  ) {
+
   Clip clip();
 
+  // set up keyframetrackset flags and loop size
+  Integer loop = 0;
+  // due to a bug in the KeyframeTrackSet we have all flags on
+  // or this values will be zeroed during evaluation
+  Integer flags = 22;
+  if(ori) {
+    // flags += 4;
+    loop +=4;
+  }
+  if(tr){
+    // flags += 2;
+    loop += 3;
+  }
+  if(sc) {
+    // flags += 16;
+    loop += 3;
+  }
+
+  // if no range of bones is specified we loop over them all
+  Skeleton charSkel = pose.skeleton;
   Integer boneRange[];
   boneRange = activeBones;
   if(activeBones.size() == 0) {
       indexArrayFromRange(0, charSkel.getNumBones(), 1, boneRange);
       boneRange;
-}
+  }
+
   // Build clip and tracks
   for (Size i=0; i < boneRange.size(); i++) {
     String boneName = charSkel.getBone(boneRange[i]).name;
-    KeyframeTrackSet sampleSet(boneName, Quat(), TRACKSETFLAG_ORI_TRACKS);
+    KeyframeTrackSet sampleSet(boneName, Xfo(), flags);
     clip.addTrackSet(sampleSet);
   }
   
-  // At every 4 scalaras a quaternion
-  for(Integer i=0; i < this.size(); i=i+4) // each bone has a 4 dimensional vector (Quat)
+  for(Integer i=0; i < this.size(); i=i+loop)
   {
-    String boneName = charSkel.getBone(boneRange[i/4]).name;
-    Quat quat(this[i], this[i+1], this[i+2], this[i+3]);
-    clip.getTrackSet(boneName).setTrackValues(0.0, quat); 
+    Bone bone = charSkel.getBone(boneRange[i/loop]);
+    String boneName = bone.name;
+    Xfo xfo();
+
+    // due to a bug in KeyframeTrackset we have to store the default
+    // unwanted values, or they will be zeroed out during evaluation
+    Xfo boneXfo();
+    if(bone.parentIndex > -1) {
+      Bone parent = charSkel.getBone(bone.parentIndex);
+      boneXfo = parent.referencePose.inverse()*bone.referencePose;
+    }
+    else
+      boneXfo = bone.referencePose;
+
+    if(ori){
+      xfo.ori.v.x = this[i];
+      xfo.ori.v.y = this[i+1];
+      xfo.ori.v.z = this[i+2];
+      xfo.ori.w = this[i+3];
+    }
+    else
+      xfo.ori = boneXfo.ori;
+    if(tr){
+      xfo.tr.x = this[i+4];
+      xfo.tr.y = this[i+5];
+      xfo.tr.z = this[i+6];
+    }
+    else
+      xfo.tr = boneXfo.tr;
+    if(sc){
+      xfo.sc.x = this[i+7];
+      xfo.sc.y = this[i+8];
+      xfo.sc.z = this[i+9];
+    }
+    else
+      xfo.sc = boneXfo.sc;
+    
+    clip.getTrackSet(boneName).setTrackValues(0.0, xfo); 
   }
   return clip;
 }
 
 /// \dfgPresetOmit
-function Clip scalarArrayToClip(Scalar this[], Pose pose) {
+function Clip scalarArrayToClip(Scalar this[], Pose pose, in Boolean ori, in Boolean tr, in Boolean sc) {
   Integer activeBones[];
-  return scalarArrayToClip(this, pose, activeBones);
+  return scalarArrayToClip(this, pose, activeBones, ori, tr, sc);
 }

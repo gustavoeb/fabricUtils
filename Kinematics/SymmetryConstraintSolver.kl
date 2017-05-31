@@ -1,0 +1,153 @@
+require Math;
+require InlineDrawing;
+
+object SymmetryConstraintSolver {
+	// default Kraken params
+	Boolean drawDebug;
+	Scalar rigScale;
+	
+	// this solver's params
+	Xfo refPose[];
+	Xfo animPose[];
+	Integer symId[Integer];
+	
+	private Xfo initOffset[Integer];
+};
+
+/// \dfgPresetTitle SymmetryConstraintSolver_Constructor
+/// \dfgPresetColor Color(49, 60, 61)
+/// \dfgPresetHeaderColor Color(42, 94, 102)
+/// \dfgPresetTextColor Color(168, 229, 240)
+/// \dfgPresetFolder Kinematics\SymmetryConstraintSolver
+function SymmetryConstraintSolver(
+  ) {
+
+}
+
+/// \dfgPresetTitle SymmetryConstraintSolver_Init
+/// \dfgPresetColor Color(49, 60, 61)
+/// \dfgPresetHeaderColor Color(42, 94, 102)
+/// \dfgPresetTextColor Color(168, 229, 240)
+/// \dfgPresetFolder Kinematics\SymmetryConstraintSolver
+function SymmetryConstraintSolver.init!(
+	Boolean drawDebug,
+	Scalar rigScale,
+	Xfo refPose[],
+	Xfo animPose[],
+	Integer symId[Integer]
+  ) {
+  report('initing SymmetryConstraintSolver');
+
+  this.drawDebug = drawDebug;
+  this.rigScale = rigScale;
+
+	this.refPose = refPose;
+	this.animPose = animPose;
+	this.symId = symId;
+
+	this.calcInitOffset();
+  //report(this.initOffset);
+}
+
+/// \dfgPresetOmit
+function SymmetryConstraintSolver.calcInitOffset!(
+  ) {
+  for ( key, val in this.symId ) {
+    this.initOffset[key] = this.refPose[val].inverse();
+  }
+}
+
+/// \dfgPresetTitle SymmetryConstraintSolver_Solve
+/// \dfgPresetColor Color(49, 60, 61)
+/// \dfgPresetHeaderColor Color(42, 94, 102)
+/// \dfgPresetTextColor Color(168, 229, 240)
+/// \dfgPresetFolder Kinematics\SymmetryConstraintSolver
+function SymmetryConstraintSolver.solve!(
+	in Boolean drawDebug,
+	in Scalar rigScale,
+	in Xfo refPose[],
+	in Xfo animPose[],
+	in Integer symId[Integer],
+  out Xfo outputs[]
+  ) {
+  this.drawDebug = drawDebug;
+  this.rigScale = rigScale;
+
+  // if params are different we have to reInit
+  Boolean reInit = false;
+
+  // check for differences in the ref pose
+  if(this.refPose.size() != refPose.size()) {
+    reInit = true;
+    //report('ref pose is of a different size');
+  }
+  else {
+    for (Size i = 0; i<refPose.size(); i++) {
+      if(this.refPose[i] != refPose[i]) {
+        reInit = true;
+        //report('ref pose has changed values');
+      }
+    }
+  }
+  
+  // check for differences in the sym mapping
+  for(key, val in symId) {
+    if(this.symId.has(key)) {
+      if(this.symId[key] != val){
+        reInit = true;
+        //report('symIds have changed');
+      }
+    }
+    else {
+      reInit = true;
+      //report('symIds have been added');
+    }
+  }
+  for(key, val in this.symId) {
+    if(symId.has(key)) {
+      if(symId[key] != val) {
+        reInit = true;
+        //report('symIds have changed');
+      }
+    }
+    else {
+      reInit = true;
+      //report('symIds have been removed');
+    }
+  }
+
+  // if differences are found, reInit
+  if(reInit) 
+    this.init(drawDebug, rigScale, refPose, animPose, symId);
+
+  // than solve
+  outputs = this.solve(animPose);
+}
+
+/// \dfgPresetOmit
+function Xfo[] SymmetryConstraintSolver.solve!(
+	in Xfo animPose[]
+  ) {
+  Xfo outputs[];
+  Xfo xfo();
+  Mat44 invMat();
+  invMat.setScaling(Vec3(-1,1,1));
+
+  for(Size i = 0; i<animPose.size(); i++) {
+    if(this.symId.has(i)) {
+      Integer symId = this.symId[i];
+      Xfo animOffset = this.initOffset[i]*animPose[symId];
+      animOffset = Xfo(invMat*animOffset.toMat44());
+
+      xfo.ori = this.refPose[i].ori*animOffset.ori;
+      xfo.tr = this.refPose[i].tr;
+      xfo.sc = this.refPose[i].sc;
+    }
+    else {
+      xfo = animPose[i];
+    }
+    outputs.push(xfo);
+  }
+
+  return outputs;
+}

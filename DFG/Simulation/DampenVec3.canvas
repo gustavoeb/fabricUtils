@@ -7,7 +7,7 @@
     "uiGraphZoom" : "{\n  \"value\" : 0.8181818127632141\n  }",
     "timeline_loopMode" : "1",
     "timeline_simMode" : "0",
-    "camera_mat44" : "{\n  \"row0\" : {\n    \"x\" : 0.7999999523162842,\n    \"y\" : -0.2228344082832336,\n    \"z\" : 0.5570860505104065,\n    \"t\" : 30\n    },\n  \"row1\" : {\n    \"x\" : -1.490116119384766e-08,\n    \"y\" : 0.9284766912460327,\n    \"z\" : 0.3713906705379486,\n    \"t\" : 20\n    },\n  \"row2\" : {\n    \"x\" : -0.6000000834465027,\n    \"y\" : -0.2971125543117523,\n    \"z\" : 0.7427813410758972,\n    \"t\" : 40\n    },\n  \"row3\" : {\n    \"x\" : 0,\n    \"y\" : 0,\n    \"z\" : 0,\n    \"t\" : 1\n    }\n  }",
+    "camera_mat44" : "{\n  \"row0\" : {\n    \"x\" : 0.7999998927116394,\n    \"y\" : -0.2228344827890396,\n    \"z\" : 0.557086169719696,\n    \"t\" : 30\n    },\n  \"row1\" : {\n    \"x\" : 0,\n    \"y\" : 0.9284766912460327,\n    \"z\" : 0.3713907301425934,\n    \"t\" : 20\n    },\n  \"row2\" : {\n    \"x\" : -0.6000002026557922,\n    \"y\" : -0.2971125543117523,\n    \"z\" : 0.7427812814712524,\n    \"t\" : 40\n    },\n  \"row3\" : {\n    \"x\" : 0,\n    \"y\" : 0,\n    \"z\" : 0,\n    \"t\" : 1\n    }\n  }",
     "uiTooltip" : "Blends the current value with an average of previous values, by a certain factor. A factor of 0 means only previous values will be used, a factor of 1 means only current values will be used. When resetting the node the first value is used as the average of all previous values.",
     "timeline_current" : "1",
     "camera_focalDistance" : "53.85164642333984",
@@ -291,7 +291,8 @@
   "connections" : {
     "value" : [
       "LinearInterpolate_1.other",
-      "If.if_true"
+      "If.if_true",
+      "valueVar.value"
       ],
     "factor" : [
       "LinearInterpolate_1.t"
