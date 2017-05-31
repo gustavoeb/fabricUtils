@@ -1,0 +1,43 @@
+{
+  "objectType" : "Func",
+  "title" : "endProfiling",
+  "ports" : [
+    {
+      "objectType" : "ExecPort",
+      "name" : "exec",
+      "nodePortType" : "IO",
+      "defaultValues" : {
+        "Execute" : {}
+        },
+      "execPortType" : "IO",
+      "typeSpec" : "Execute"
+      },
+    {
+      "objectType" : "ExecPort",
+      "name" : "mute",
+      "nodePortType" : "Out",
+      "defaultValues" : {
+        "Boolean" : false
+        },
+      "execPortType" : "In",
+      "typeSpec" : "Boolean"
+      }
+    ],
+  "extDeps" : {},
+  "presetGUID" : "0EEAE5E7BA77F269A10501CDFE0DF444",
+  "code" : "require FabricStatistics;
+
+
+
+
+dfgEntry {
+
+ StopFabricProfiling();
+
+ if(!mute)
+
+   report( GetProfilingReport() );
+
+}",
+  "requiredPresets" : {}
+  }

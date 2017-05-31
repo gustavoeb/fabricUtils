@@ -4,17 +4,17 @@
     "uiTextColor" : "{\n  \"r\" : 20,\n  \"g\" : 20,\n  \"b\" : 20\n  }",
     "uiNodeColor" : "{\n  \"r\" : 121,\n  \"g\" : 134,\n  \"b\" : 143\n  }",
     "timeline_start" : "1",
-    "uiGraphZoom" : "{\n  \"value\" : 0.6351519823074341\n  }",
-    "timeline_loopMode" : "1",
     "timeline_simMode" : "0",
-    "camera_mat44" : "{\n  \"row0\" : {\n    \"x\" : 0.7999999523162842,\n    \"y\" : -0.2228344082832336,\n    \"z\" : 0.5570860505104065,\n    \"t\" : 30\n    },\n  \"row1\" : {\n    \"x\" : -1.490116119384766e-08,\n    \"y\" : 0.9284766912460327,\n    \"z\" : 0.3713906705379486,\n    \"t\" : 20\n    },\n  \"row2\" : {\n    \"x\" : -0.6000000834465027,\n    \"y\" : -0.2971125543117523,\n    \"z\" : 0.7427813410758972,\n    \"t\" : 40\n    },\n  \"row3\" : {\n    \"x\" : 0,\n    \"y\" : 0,\n    \"z\" : 0,\n    \"t\" : 1\n    }\n  }",
-    "uiTooltip" : "Cumulates scalar value over time.",
-    "timeline_current" : "1",
-    "camera_focalDistance" : "53.85164642333984",
+    "uiTooltip" : "Cumulates scalar array value over time.",
     "timeline_end" : "250",
-    "uiGraphPan" : "{\n  \"x\" : -191.2429656982422,\n  \"y\" : 64.77306365966797\n  }"
+    "uiGraphPan" : "{\n  \"x\" : -442.7892280025117,\n  \"y\" : -229.3235150532928\n  }",
+    "camera_mat44" : "{\n  \"row0\" : {\n    \"x\" : 0.7999999523162842,\n    \"y\" : -0.2228344082832336,\n    \"z\" : 0.5570860505104065,\n    \"t\" : 30\n    },\n  \"row1\" : {\n    \"x\" : -1.490116119384766e-08,\n    \"y\" : 0.9284766912460327,\n    \"z\" : 0.3713906705379486,\n    \"t\" : 20\n    },\n  \"row2\" : {\n    \"x\" : -0.6000000834465027,\n    \"y\" : -0.2971125543117523,\n    \"z\" : 0.7427813410758972,\n    \"t\" : 40\n    },\n  \"row3\" : {\n    \"x\" : 0,\n    \"y\" : 0,\n    \"z\" : 0,\n    \"t\" : 1\n    }\n  }",
+    "uiGraphZoom" : "{\n  \"value\" : 0.8468241691589356\n  }",
+    "timeline_loopMode" : "1",
+    "camera_focalDistance" : "53.85164642333984",
+    "timeline_current" : "1"
     },
-  "title" : "CumulateScalar",
+  "title" : "CumulateScalarArray",
   "ports" : [
     {
       "objectType" : "ExecPort",
@@ -28,16 +28,19 @@
       },
     {
       "objectType" : "ExecPort",
+      "metadata" : {},
       "name" : "initial",
       "nodePortType" : "Out",
       "defaultValues" : {
-        "Scalar" : 0
+        "Scalar" : 0,
+        "Scalar[]" : []
         },
       "execPortType" : "In",
-      "typeSpec" : "Scalar"
+      "typeSpec" : "Scalar[]"
       },
     {
       "objectType" : "ExecPort",
+      "metadata" : {},
       "name" : "value",
       "nodePortType" : "Out",
       "defaultValues" : {
@@ -46,10 +49,11 @@
           "y" : 0,
           "z" : 0
           },
-        "Scalar" : 0
+        "Scalar" : 0,
+        "Scalar[]" : []
         },
       "execPortType" : "In",
-      "typeSpec" : "Scalar"
+      "typeSpec" : "Scalar[]"
       },
     {
       "objectType" : "ExecPort",
@@ -63,6 +67,7 @@
       },
     {
       "objectType" : "ExecPort",
+      "metadata" : {},
       "name" : "result",
       "nodePortType" : "In",
       "defaultValues" : {
@@ -71,14 +76,15 @@
           "y" : 0,
           "z" : 0
           },
-        "Scalar" : 0
+        "Scalar" : 0,
+        "Scalar[]" : []
         },
       "execPortType" : "Out",
-      "typeSpec" : "Scalar"
+      "typeSpec" : "Scalar[]"
       }
     ],
   "extDeps" : {},
-  "presetGUID" : "A77CB3EBAF0E22A32B5670504A33284C",
+  "presetGUID" : "FF03C0E6D7032DAE70E140227827202F",
   "nodes" : [
     {
       "objectType" : "Inst",
@@ -132,21 +138,6 @@
       "varPath" : "valueVar"
       },
     {
-      "objectType" : "Var",
-      "metadata" : {
-        "uiGraphPos" : "{\"x\":971.5361576080001,\"y\":369.524614096}"
-        },
-      "name" : "valueVar",
-      "ports" : [
-        {
-          "objectType" : "VarPort",
-          "name" : "value",
-          "nodePortType" : "IO"
-          }
-        ],
-      "dataType" : "Scalar"
-      },
-    {
       "objectType" : "Set",
       "metadata" : {
         "uiGraphPos" : "{\"x\":1108.56612432,\"y\":570.132860661}"
@@ -164,9 +155,9 @@
     {
       "objectType" : "Inst",
       "metadata" : {
-        "uiGraphPos" : "{\"x\":749.809375048,\"y\":567.1500127320001}"
+        "uiGraphPos" : "{\"x\":785.038094521,\"y\":564.843933344}"
         },
-      "name" : "Add_1",
+      "name" : "Add_2",
       "ports" : [
         {
           "objectType" : "InstPort",
@@ -181,10 +172,7 @@
         {
           "objectType" : "InstPort",
           "name" : "rhs",
-          "nodePortType" : "In",
-          "defaultValues" : {
-            "Scalar" : 1
-            }
+          "nodePortType" : "In"
           },
         {
           "objectType" : "InstPort",
@@ -192,17 +180,31 @@
           "nodePortType" : "Out"
           }
         ],
-      "executable" : "Fabric.Core.Math.Add",
-      "presetGUID" : "8146B3E77857E24CAE33F8B5284585E7"
+      "executable" : "Fabric.Core.Array.Add",
+      "presetGUID" : "73DE7C05CEF60BE7FC6B48D0E22673A7"
+      },
+    {
+      "objectType" : "Var",
+      "metadata" : {
+        "uiGraphPos" : "{\"x\":991.692508698,\"y\":386.530680656}"
+        },
+      "name" : "valueVar",
+      "ports" : [
+        {
+          "objectType" : "VarPort",
+          "name" : "value",
+          "nodePortType" : "IO"
+          }
+        ],
+      "dataType" : "Scalar[]"
       }
     ],
   "connections" : {
     "initial" : [
-      "If.if_true",
-      "valueVar.value"
+      "If.if_true"
       ],
     "value" : [
-      "Add_1.rhs"
+      "Add_2.rhs"
       ],
     "reset" : [
       "If.cond"
@@ -211,12 +213,12 @@
       "set.value"
       ],
     "get.value" : [
-      "Add_1.lhs"
+      "Add_2.lhs"
       ],
     "set.value" : [
       "result"
       ],
-    "Add_1.result" : [
+    "Add_2.result" : [
       "If.if_false"
       ]
     },
@@ -269,9 +271,9 @@ dfgEntry {
 }
 "
       },
-    "Fabric.Core.Math.Add" : {
+    "Fabric.Core.Array.Add" : {
       "objectType" : "Func",
-      "title" : "Add",
+      "title" : "Add[]",
       "ports" : [
         {
           "objectType" : "ExecPort",
@@ -303,30 +305,29 @@ dfgEntry {
           }
         ],
       "extDeps" : {},
-      "presetGUID" : "8146B3E77857E24CAE33F8B5284585E7",
+      "presetGUID" : "73DE7C05CEF60BE7FC6B48D0E22673A7",
       "code" : "
+operator core_array_add_task<<<index>>>($TYPE$ lhs, $TYPE$ rhs, io $TYPE$ result) {
+  result[index] = lhs[index < lhs.size() ? index : lhs.size() - 1] + rhs[index < rhs.size() ? index : rhs.size() - 1];
+}
+
 dfgEntry {
-	result = lhs + rhs;
+  if(lhs.size() == 0) return;
+  if(rhs.size() == 0) return;
+  Size size = lhs.size() > rhs.size() ? lhs.size() : rhs.size();
+  result.resize(size);
+
+  if(size < 10000)
+  {
+    for(Size i=0;i<size;i++)
+      core_array_add_task(i, lhs, rhs, result);
+  }
+  else
+  {
+    core_array_add_task<<<size>>>(lhs, rhs, result);
+  }
 }
 "
       }
-    },
-  "args" : [
-    {
-      "type" : "Scalar",
-      "value" : null
-      },
-    {
-      "type" : "Scalar",
-      "value" : null
-      },
-    {
-      "type" : "Boolean",
-      "value" : null
-      },
-    {
-      "type" : "Scalar",
-      "value" : null
-      }
-    ]
+    }
   }

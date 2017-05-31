@@ -4,17 +4,17 @@
     "uiTextColor" : "{\n  \"r\" : 20,\n  \"g\" : 20,\n  \"b\" : 20\n  }",
     "uiNodeColor" : "{\n  \"r\" : 121,\n  \"g\" : 134,\n  \"b\" : 143\n  }",
     "timeline_start" : "1",
-    "uiGraphZoom" : "{\n  \"value\" : 0.9167706370353699\n  }",
+    "uiGraphZoom" : "{\n  \"value\" : 1.0\n  }",
     "timeline_loopMode" : "1",
     "timeline_simMode" : "0",
-    "camera_mat44" : "{\n  \"row0\" : {\n    \"x\" : 0.7999998927116394,\n    \"y\" : -0.2228344827890396,\n    \"z\" : 0.557086169719696,\n    \"t\" : 30\n    },\n  \"row1\" : {\n    \"x\" : 0,\n    \"y\" : 0.9284766912460327,\n    \"z\" : 0.3713907301425934,\n    \"t\" : 20\n    },\n  \"row2\" : {\n    \"x\" : -0.6000002026557922,\n    \"y\" : -0.2971125543117523,\n    \"z\" : 0.7427812814712524,\n    \"t\" : 40\n    },\n  \"row3\" : {\n    \"x\" : 0,\n    \"y\" : 0,\n    \"z\" : 0,\n    \"t\" : 1\n    }\n  }",
+    "camera_mat44" : "{\n  \"row0\" : {\n    \"x\" : 0.7999999523162842,\n    \"y\" : -0.2228344082832336,\n    \"z\" : 0.5570860505104065,\n    \"t\" : 30\n    },\n  \"row1\" : {\n    \"x\" : -1.490116119384766e-08,\n    \"y\" : 0.9284766912460327,\n    \"z\" : 0.3713906705379486,\n    \"t\" : 20\n    },\n  \"row2\" : {\n    \"x\" : -0.6000000834465027,\n    \"y\" : -0.2971125543117523,\n    \"z\" : 0.7427813410758972,\n    \"t\" : 40\n    },\n  \"row3\" : {\n    \"x\" : 0,\n    \"y\" : 0,\n    \"z\" : 0,\n    \"t\" : 1\n    }\n  }",
     "uiTooltip" : "Blends the current value with an average of previous values, by a certain factor. A factor of 0 means only previous values will be used, a factor of 1 means only current values will be used. When resetting the node the first value is used as the average of all previous values.",
     "timeline_current" : "1",
     "camera_focalDistance" : "53.85164642333984",
     "timeline_end" : "250",
-    "uiGraphPan" : "{\n  \"x\" : -369.789897568844,\n  \"y\" : -31.19208071618232\n  }"
+    "uiGraphPan" : "{\n  \"x\" : -1086.314453125,\n  \"y\" : -46.98332977294922\n  }"
     },
-  "title" : "DampenScalar",
+  "title" : "DampenXfo",
   "ports" : [
     {
       "objectType" : "ExecPort",
@@ -36,17 +36,45 @@
           "y" : 0,
           "z" : 0
           },
-        "Scalar" : 0
+        "Quat" : {
+          "v" : {
+            "x" : 0,
+            "y" : 0,
+            "z" : 0
+            },
+          "w" : 1
+          },
+        "Xfo[]" : [],
+        "Xfo" : {
+          "ori" : {
+            "v" : {
+              "x" : 0,
+              "y" : 0,
+              "z" : 0
+              },
+            "w" : 1
+            },
+          "tr" : {
+            "x" : 0,
+            "y" : 0,
+            "z" : 0
+            },
+          "sc" : {
+            "x" : 1,
+            "y" : 1,
+            "z" : 1
+            }
+          }
         },
       "execPortType" : "In",
-      "typeSpec" : "Scalar"
+      "typeSpec" : "Xfo"
       },
     {
       "objectType" : "ExecPort",
       "name" : "factor",
       "nodePortType" : "Out",
       "defaultValues" : {
-        "Scalar" : 0.0333000011742115
+        "Scalar" : 0.1000000014901161
         },
       "execPortType" : "In",
       "typeSpec" : "Scalar"
@@ -71,19 +99,47 @@
           "y" : 0,
           "z" : 0
           },
-        "Scalar" : 0
+        "Quat" : {
+          "v" : {
+            "x" : 0,
+            "y" : 0,
+            "z" : 0
+            },
+          "w" : 1
+          },
+        "Xfo[]" : [],
+        "Xfo" : {
+          "ori" : {
+            "v" : {
+              "x" : 0,
+              "y" : 0,
+              "z" : 0
+              },
+            "w" : 1
+            },
+          "tr" : {
+            "x" : 0,
+            "y" : 0,
+            "z" : 0
+            },
+          "sc" : {
+            "x" : 1,
+            "y" : 1,
+            "z" : 1
+            }
+          }
         },
       "execPortType" : "Out",
-      "typeSpec" : "Scalar"
+      "typeSpec" : "Xfo"
       }
     ],
   "extDeps" : {},
-  "presetGUID" : "5E7AB7BB4A75DB06FAA8FCB0DBD99B5D",
+  "presetGUID" : "7AF43E5DC2EBD7C869B8814A4E6FAD40",
   "nodes" : [
     {
       "objectType" : "Inst",
       "metadata" : {
-        "uiGraphPos" : "{\"x\":950.711425781,\"y\":415.838867188}"
+        "uiGraphPos" : "{\"x\":1474.31445312,\"y\":264.016998291}"
         },
       "name" : "If",
       "ports" : [
@@ -117,9 +173,24 @@
       "presetGUID" : "3182A478A21643455D549E483D35F831"
       },
     {
+      "objectType" : "Set",
+      "metadata" : {
+        "uiGraphPos" : "{\"x\":1609.31445312,\"y\":264.016998291}"
+        },
+      "name" : "set",
+      "ports" : [
+        {
+          "objectType" : "SetPort",
+          "name" : "value",
+          "nodePortType" : "IO"
+          }
+        ],
+      "varPath" : "valueVar"
+      },
+    {
       "objectType" : "Get",
       "metadata" : {
-        "uiGraphPos" : "{\"x\":424.532480597,\"y\":362.390202165}"
+        "uiGraphPos" : "{\"x\":1147.31445312,\"y\":264.016998291}"
         },
       "name" : "get",
       "ports" : [
@@ -134,7 +205,7 @@
     {
       "objectType" : "Inst",
       "metadata" : {
-        "uiGraphPos" : "{\"x\":780.893057585,\"y\":419.111253858}"
+        "uiGraphPos" : "{\"x\":1297.31445312,\"y\":264.016998291}"
         },
       "name" : "LinearInterpolate_1",
       "ports" : [
@@ -184,7 +255,7 @@
     {
       "objectType" : "Var",
       "metadata" : {
-        "uiGraphPos" : "{\"x\":911.707760572,\"y\":308.121762156}"
+        "uiGraphPos" : "{\"x\":1490.31445312,\"y\":194.983329773}"
         },
       "name" : "valueVar",
       "ports" : [
@@ -194,74 +265,7 @@
           "nodePortType" : "IO"
           }
         ],
-      "dataType" : "Scalar"
-      },
-    {
-      "objectType" : "Set",
-      "metadata" : {
-        "uiGraphPos" : "{\"x\":1303.34271908,\"y\":419.11122334}"
-        },
-      "name" : "set",
-      "ports" : [
-        {
-          "objectType" : "SetPort",
-          "name" : "value",
-          "nodePortType" : "IO"
-          }
-        ],
-      "varPath" : "valueVar"
-      },
-    {
-      "objectType" : "Inst",
-      "metadata" : {
-        "uiGraphPos" : "{\"x\":573.524341106,\"y\":375.439853549}"
-        },
-      "name" : "ScalarToSafeSacalar_3",
-      "ports" : [
-        {
-          "objectType" : "InstPort",
-          "name" : "exec",
-          "nodePortType" : "IO"
-          },
-        {
-          "objectType" : "InstPort",
-          "name" : "this",
-          "nodePortType" : "In"
-          },
-        {
-          "objectType" : "InstPort",
-          "name" : "result",
-          "nodePortType" : "Out"
-          }
-        ],
-      "executable" : "fabricUtils.Converters.Scalar.ScalarToSafeSacalar",
-      "presetGUID" : "7E9FE60C4BC1C7879C50A58DD38CAB79"
-      },
-    {
-      "objectType" : "Inst",
-      "metadata" : {
-        "uiGraphPos" : "{\"x\":1089.4661361,\"y\":400.527816772}"
-        },
-      "name" : "ScalarToSafeSacalar_4",
-      "ports" : [
-        {
-          "objectType" : "InstPort",
-          "name" : "exec",
-          "nodePortType" : "IO"
-          },
-        {
-          "objectType" : "InstPort",
-          "name" : "this",
-          "nodePortType" : "In"
-          },
-        {
-          "objectType" : "InstPort",
-          "name" : "result",
-          "nodePortType" : "Out"
-          }
-        ],
-      "executable" : "fabricUtils.Converters.Scalar.ScalarToSafeSacalar",
-      "presetGUID" : "7E9FE60C4BC1C7879C50A58DD38CAB79"
+      "dataType" : "Xfo"
       }
     ],
   "connections" : {
@@ -277,22 +281,16 @@
       "If.cond"
       ],
     "If.result" : [
-      "ScalarToSafeSacalar_4.this"
-      ],
-    "get.value" : [
-      "ScalarToSafeSacalar_3.this"
-      ],
-    "LinearInterpolate_1.result" : [
-      "If.if_false"
+      "set.value"
       ],
     "set.value" : [
       "result"
       ],
-    "ScalarToSafeSacalar_3.result" : [
+    "get.value" : [
       "LinearInterpolate_1.this"
       ],
-    "ScalarToSafeSacalar_4.result" : [
-      "set.value"
+    "LinearInterpolate_1.result" : [
+      "If.if_false"
       ]
     },
   "requiredPresets" : {
@@ -401,52 +399,13 @@ dfgEntry {
   result = this.linearInterpolate(other, t);
 }
 "
-      },
-    "fabricUtils.Converters.Scalar.ScalarToSafeSacalar" : {
-      "objectType" : "Func",
-      "metadata" : {
-        "uiTooltip" : "Returns a new Vec3 with NaNs removed.\n\nSupported types:\n  this: Scalar\n  result: Scalar\n"
-        },
-      "title" : "ScalarToSafeSacalar",
-      "ports" : [
-        {
-          "objectType" : "ExecPort",
-          "name" : "exec",
-          "nodePortType" : "IO",
-          "execPortType" : "IO",
-          "typeSpec" : "Execute"
-          },
-        {
-          "objectType" : "ExecPort",
-          "name" : "this",
-          "nodePortType" : "Out",
-          "execPortType" : "In",
-          "typeSpec" : "Scalar"
-          },
-        {
-          "objectType" : "ExecPort",
-          "name" : "result",
-          "nodePortType" : "In",
-          "execPortType" : "Out",
-          "typeSpec" : "Scalar"
-          }
-        ],
-      "extDeps" : {
-        "fabricUtils" : "*"
-        },
-      "presetGUID" : "7E9FE60C4BC1C7879C50A58DD38CAB79",
-      "code" : "require fabricUtils;
-
-dfgEntry {
-  result = scalarToSafeSacalar(this);
-}
-"
       }
     },
   "args" : [
     {
-      "type" : "Scalar",
-      "value" : null
+      "type" : "Xfo",
+      "value" : null,
+      "ext" : "Math"
       },
     {
       "type" : "Scalar",
@@ -457,8 +416,9 @@ dfgEntry {
       "value" : null
       },
     {
-      "type" : "Scalar",
-      "value" : null
+      "type" : "Xfo",
+      "value" : null,
+      "ext" : "Math"
       }
     ]
   }
